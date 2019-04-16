@@ -22,9 +22,3 @@ sudo apt-get install raspberrypi-ui-mods <br>
 #sudo apt install ibus-mozc <br>
 #リモート環境のインストール <br>
 sudo apt install xrdp <br>
-<<<<<<< HEAD
-
-#テスト
-pip3 install PyAutoGUI
-=======
->>>>>>> develop
