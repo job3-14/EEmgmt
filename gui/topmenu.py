@@ -6,11 +6,8 @@ import subprocess
 import os
 import threading
 import mysql.connector
-<<<<<<< HEAD
-=======
 import slackweb
 from datetime import datetime
->>>>>>> develop
 
 #データベース接続開始##################
 conn = mysql.connector.connect(
