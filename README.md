@@ -12,7 +12,7 @@ raspberrypi3b+<br>
 
 ***環境構築***<br>
 sudo apt install -y  git mariadb-server python3-pip  php7.0 apache2   python-pip  netatalk bridge-utils hostapd python3-tk fonts-noto fonts-noto ibus-mozc<br>
-sudo pip3 install netifaces mysql-connector-python<br>
+sudo pip3 install netifaces mysql-connector-python slackweb<br>
 sudo pip install -U nfcpy<br>
 #GUI環境のインストール <br>
 sudo apt-get install --no-install-recommends xserver-xorg <br>
@@ -22,6 +22,3 @@ sudo apt-get install raspberrypi-ui-mods <br>
 #sudo apt install ibus-mozc <br>
 #リモート環境のインストール <br>
 sudo apt install xrdp <br>
-
-#テスト
-pip3 install PyAutoGUI
