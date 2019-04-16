@@ -61,8 +61,8 @@ def main_gui():
 	text_lo  += text_size2 + 20 
 	lbl2.place(x=2, y=text_lo)
 
-	checkin = tk.Button(root,text="入室\nにゅうしつ",command=checkin,height=4,width=9,bg="#7fbfff",font=("",buttron_size))
-	checkout  = tk.Button(root,text="退室\nたいしつ",command=end ,height=4,width=9,bg="#ffff7f",font=("",buttron_size))
+	checkin = tk.Button(root,text="入室\nにゅうしつ",command=checkin,height=4,width=9,bg="#7fbfff",activebackground="#7fbfff",font=("",buttron_size))
+	checkout  = tk.Button(root,text="退室\nたいしつ",command=end ,height=4,width=9,bg="#ffff7f",activebackground="#ffff7f",font=("",buttron_size))
 
 	#配置
 	checkin.pack(padx=50, side = 'left')
