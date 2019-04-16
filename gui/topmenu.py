@@ -6,6 +6,11 @@ import subprocess
 import os
 import threading
 import mysql.connector
+<<<<<<< HEAD
+=======
+import slackweb
+from datetime import datetime
+>>>>>>> develop
 
 #データベース接続開始##################
 conn = mysql.connector.connect(
@@ -80,7 +85,11 @@ def checkin_gui():
 			id_card = result[idm:idm_end]
 			id_card = "'" + id_card + "'"
 			cur = conn.cursor()
+<<<<<<< HEAD
 			sql = 'SELECT name  FROM Basic_info WHERE idm =' + id_card
+=======
+			sql = 'SELECT name, slack  FROM Basic_info WHERE idm =' + id_card
+>>>>>>> develop
 			cur.execute(sql)
 			result = cur.fetchall()
 			if not result:
@@ -89,6 +98,11 @@ def checkin_gui():
 				name = result[0][0] + 'さん こんにちは'
 			cur.close()
 			conn.close()
+<<<<<<< HEAD
+=======
+			slack = slackweb.Slack(url= result[0][1] ) #slack通知--> URL指定
+			slack.notify(text= datetime.now().strftime('%m月%d日 %H時%M分    ')+result[0][0] + "さんが入室しました。")  #slack通知実行
+>>>>>>> develop
 			lbl_status = tk.Label(text=name,font=("",text_size))
 			lbl_status.place(x=2, y=center_y)
 		elif error_check== True:
@@ -121,6 +135,7 @@ def checkin_gui():
 	lbl2 = tk.Label(text='カードを読み取り部にタッチしてください。',font=("",text_size2))
 	text_lo = text_size + 30
 	lbl2.place(x=2, y=text_lo)
+<<<<<<< HEAD
 	
 	def end():
 		root.quit()
@@ -133,6 +148,20 @@ def checkin_gui():
 	go_read.start()
 
 	root.mainloop() 
+=======
+
+	def end():
+		root.quit()
+
+	exit = tk.Button(root,text="exit",command=end)
+	exit.pack()
+
+
+	read_id_thread = threading.Thread(target=read_id)
+	go_read.start()
+
+	root.mainloop()
+>>>>>>> develop
 	return
 
 
