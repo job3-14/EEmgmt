@@ -82,7 +82,7 @@ def checkin_gui():
 			id_card = result[idm:idm_end]
 			id_card = "'" + id_card + "'"
 			cur = conn.cursor()
-			sql = 'SELECT name  FROM Basic_info WHERE idm =' + id_card
+			sql = 'SELECT name, slack  FROM Basic_info WHERE idm =' + id_card
 			cur.execute(sql)
 			result = cur.fetchall()
 			if not result:
@@ -91,7 +91,7 @@ def checkin_gui():
 				name = result[0][0] + 'さん こんにちは'
 			cur.close()
 			conn.close()
-			slack = slackweb.Slack(url="https://hooks.slack.com/services/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") #slack通知--> URL指定
+			slack = slackweb.Slack(url= result[0][1] ) #slack通知--> URL指定
 			slack.notify(text= datetime.now().strftime('%m月%d日 %H時%M分    ')+result[0][0] + "さんが入室しました。")
 			lbl_status = tk.Label(text=name,font=("",text_size))
 			lbl_status.place(x=2, y=center_y)
