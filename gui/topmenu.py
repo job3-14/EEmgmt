@@ -92,7 +92,7 @@ def checkin_gui():
 			cur.close()
 			conn.close()
 			slack = slackweb.Slack(url= result[0][1] ) #slack通知--> URL指定
-			slack.notify(text= datetime.now().strftime('%m月%d日 %H時%M分    ')+result[0][0] + "さんが入室しました。")
+			slack.notify(text= datetime.now().strftime('%m月%d日 %H時%M分    ')+result[0][0] + "さんが入室しました。")  #slack通知実行
 			lbl_status = tk.Label(text=name,font=("",text_size))
 			lbl_status.place(x=2, y=center_y)
 		elif error_check== True:
@@ -125,18 +125,18 @@ def checkin_gui():
 	lbl2 = tk.Label(text='カードを読み取り部にタッチしてください。',font=("",text_size2))
 	text_lo = text_size + 30
 	lbl2.place(x=2, y=text_lo)
-	
+
 	def end():
 		root.quit()
-	
+
 	exit = tk.Button(root,text="exit",command=end)
 	exit.pack()
 
-	
+
 	read_id_thread = threading.Thread(target=read_id)
 	go_read.start()
 
-	root.mainloop() 
+	root.mainloop()
 	return
 
 
