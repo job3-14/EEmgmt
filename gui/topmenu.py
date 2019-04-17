@@ -148,8 +148,8 @@ def checkin_gui():
 	exit2 = tk.Button(root,text="exit2",command=return_gui)
 	exit2.pack()
 
-	read_id_thread = threading.Thread(target=read_id)
+	#read_id_thread = threading.Thread(target=read_id)
 	go_read.start()
-	root.after(9000,return_gui)
+	root.after(9000,return_gui) #9000秒待機後実行
 	root.mainloop()
 main_gui()
