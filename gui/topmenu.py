@@ -91,8 +91,8 @@ def checkin_gui():
 				name = 'カードが登録されていません'
 			else:
 				name = result[0][0] + 'さん こんにちは'
-			cur.close()
-			conn.close()
+			#cur.close()
+			#conn.close()
 
 			slack = slackweb.Slack(url= result[0][1] ) #slack通知--> URL指定
 			slack.notify(text= datetime.now().strftime('%m月%d日 %H時%M分    ')+result[0][0] + "さんが入室しました。")  #slack通知実行
