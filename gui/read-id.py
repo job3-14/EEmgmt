@@ -27,7 +27,7 @@ def read_start():
         tag = clf.connect(rdwr={'on-connect': read })       #nfcpyドキュメントを参照
 
 def time_out():
-	time.sleep(8)  #待機時間（タイムアウト）
+	time.sleep(5)  #待機時間（タイムアウト）
 	print("Time_out")
 	global frag
 	frag = 'True'
