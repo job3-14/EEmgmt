@@ -91,8 +91,6 @@ def checkin_gui():
 				name = 'カードが登録されていません'
 			else:
 				name = result[0][0] + 'さん こんにちは'
-			#cur.close()
-			#conn.close()
 
 			slack = slackweb.Slack(url= result[0][1] ) #slack通知--> URL指定
 			slack.notify(text= datetime.now().strftime('%m月%d日 %H時%M分    ')+result[0][0] + "さんが入室しました。")  #slack通知実行
@@ -110,7 +108,6 @@ def checkin_gui():
 			id_card = 'その他のエラーです'
 			lbl_status = tk.Label(text= id_card ,font=("",text_size))
 			lbl_status.place(x=2, y=center_y)
-		#time.sleep(3)
 		global frag
 		frag = 'True'
 	##############################################
@@ -118,13 +115,11 @@ def checkin_gui():
 	def return_gui():
 			root.destroy()
 			main_gui()
-			#return
 	
 	def read_thread():
 		go_read  = threading.Thread(target = read_id)
 		go_read.setDaemon(True)
 		go_read.start()
-		#return
 
 	go_read  = threading.Thread(target = read_id)
 	go_read.setDaemon(True)
@@ -151,7 +146,6 @@ def checkin_gui():
 	exit2 = tk.Button(root,text="exit2",command=return_gui)
 	exit2.pack()
 
-	#read_id_thread = threading.Thread(target=read_id)
 	read_thread()
 	root.after(9000,return_gui) #9000秒待機後実行
 	root.mainloop()
