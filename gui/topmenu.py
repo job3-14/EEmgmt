@@ -119,9 +119,11 @@ def checkin_gui():
 			root.destroy()
 			main_gui()
 			return
-
-
-
+	def read_thread():
+		go_read  = threading.Thread(target = read_id)
+		go_read.setDaemon(True)
+		go_read.start()
+		return
 
 	go_read  = threading.Thread(target = read_id)
 	go_read.setDaemon(True)
@@ -149,7 +151,7 @@ def checkin_gui():
 	exit2.pack()
 
 	#read_id_thread = threading.Thread(target=read_id)
-	go_read.start()
+	read_thread()
 	root.after(9000,return_gui) #9000秒待機後実行
 	root.mainloop()
 main_gui()
