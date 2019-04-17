@@ -7,6 +7,7 @@ import os
 import threading
 import mysql.connector
 import slackweb
+import time
 from datetime import datetime
 
 #データベース接続開始##################
@@ -67,6 +68,7 @@ def main_gui():
 	root.mainloop()
 
 def checkin_gui():
+	frag = 'False'
 	###################別スレッドで実行する処理#####
 	def read_id():
 		center_y = int(screen_height / 2)   #解像度計算
@@ -82,11 +84,7 @@ def checkin_gui():
 			id_card = result[idm:idm_end]
 			id_card = "'" + id_card + "'"
 			cur = conn.cursor()
-<<<<<<< HEAD
-			sql = 'SELECT name  FROM Basic_info WHERE idm =' + id_card
-=======
 			sql = 'SELECT name, slack  FROM Basic_info WHERE idm =' + id_card
->>>>>>> develop
 			cur.execute(sql)
 			result = cur.fetchall()
 			if not result:
@@ -95,11 +93,9 @@ def checkin_gui():
 				name = result[0][0] + 'さん こんにちは'
 			cur.close()
 			conn.close()
-<<<<<<< HEAD
-=======
+
 			slack = slackweb.Slack(url= result[0][1] ) #slack通知--> URL指定
 			slack.notify(text= datetime.now().strftime('%m月%d日 %H時%M分    ')+result[0][0] + "さんが入室しました。")  #slack通知実行
->>>>>>> develop
 			lbl_status = tk.Label(text=name,font=("",text_size))
 			lbl_status.place(x=2, y=center_y)
 		elif error_check== True:
@@ -114,10 +110,21 @@ def checkin_gui():
 			id_card = 'その他のエラーです'
 			lbl_status = tk.Label(text= id_card ,font=("",text_size))
 			lbl_status.place(x=2, y=center_y)
+		#time.sleep(3)
+		global frag
+		frag = 'True'
 	##############################################
 
-	go_read  = threading.Thread(target = read_id)
+	def return_gui():
+			root.destroy()
+			main_gui()
+			return
 
+
+
+
+	go_read  = threading.Thread(target = read_id)
+	go_read.setDaemon(True)
 	root = tk.Tk()
 	######スクリーンサイズ計算#####
 	screen_width = root.winfo_screenwidth()   #スクリーンサイズを取得
@@ -132,34 +139,17 @@ def checkin_gui():
 	lbl2 = tk.Label(text='カードを読み取り部にタッチしてください。',font=("",text_size2))
 	text_lo = text_size + 30
 	lbl2.place(x=2, y=text_lo)
-<<<<<<< HEAD
-	
-	def end():
-		root.quit()
-	
-	exit = tk.Button(root,text="exit",command=end)
-	exit.pack()
-
-	
-	read_id_thread = threading.Thread(target=read_id)
-	go_read.start()
-
-	root.mainloop() 
-=======
-
 	def end():
 		root.quit()
 
 	exit = tk.Button(root,text="exit",command=end)
 	exit.pack()
 
+	exit2 = tk.Button(root,text="exit2",command=return_gui)
+	exit2.pack()
 
 	read_id_thread = threading.Thread(target=read_id)
 	go_read.start()
-
+	root.after(9000,return_gui)
 	root.mainloop()
->>>>>>> develop
-	return
-
-
 main_gui()
