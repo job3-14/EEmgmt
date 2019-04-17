@@ -119,11 +119,12 @@ def checkin_gui():
 			root.destroy()
 			main_gui()
 			return
+	
 	def read_thread():
 		go_read  = threading.Thread(target = read_id)
 		go_read.setDaemon(True)
 		go_read.start()
-		return
+		#return
 
 	go_read  = threading.Thread(target = read_id)
 	go_read.setDaemon(True)
