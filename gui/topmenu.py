@@ -118,7 +118,7 @@ def checkin_gui():
 	def return_gui():
 			root.destroy()
 			main_gui()
-			return
+			#return
 	
 	def read_thread():
 		go_read  = threading.Thread(target = read_id)
