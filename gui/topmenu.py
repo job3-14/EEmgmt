@@ -89,27 +89,32 @@ def checkin_gui():
 			result = cur.fetchall()
 			if not result:
 				name = 'カードが登録されていません'
+				subprocess.Popen(["aplay","error.wav"])
 			else:
 				name = result[0][0] + 'さん こんにちは'
-
-			slack = slackweb.Slack(url= result[0][1] ) #slack通知--> URL指定
-			slack.notify(text= datetime.now().strftime('%m月%d日 %H時%M分    ')+result[0][0] + "さんが入室しました。")  #slack通知実行
+				slack = slackweb.Slack(url= result[0][1] ) #slack通知--> URL指定
+				slack.notify(text= datetime.now().strftime('%m月%d日 %H時%M分    ')+result[0][0] + "さんが入室しました。")  #slack通知実行
+				subprocess.Popen(["aplay","success.wav"])
 			lbl_status = tk.Label(text=name,font=("",text_size))
 			lbl_status.place(x=2, y=center_y)
+
 		elif error_check== True:
 			id_card = '非対応のカードです'
 			lbl_status = tk.Label(text= id_card ,font=("",text_size))
 			lbl_status.place(x=2, y=center_y)
+			subprocess.Popen(["aplay","error.wav"])
 		elif timeout_check == True:
 			id_card = 'タイムアウトです'
 			lbl_status = tk.Label(text= id_card ,font=("",text_size))
 			lbl_status.place(x=2, y=center_y)
+			subprocess.Popen(["aplay","error.wav"])
 		else:
 			id_card = 'その他のエラーです'
 			lbl_status = tk.Label(text= id_card ,font=("",text_size))
 			lbl_status.place(x=2, y=center_y)
-		global frag
-		frag = 'True'
+			subprocess.Popen(["aplay","error.wav"])
+		global frag   ###<---
+		frag = 'True' ###<---
 	##############################################
 
 	def return_gui():
