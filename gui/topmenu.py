@@ -87,6 +87,7 @@ def checkin_gui():
 			sql = 'SELECT name, slack  FROM Basic_info WHERE idm =' + id_card
 			cur.execute(sql)
 			result = cur.fetchall()
+			print(result)
 			if not result:
 				name = 'カードが登録されていません'
 			else:
@@ -96,20 +97,24 @@ def checkin_gui():
 			slack.notify(text= datetime.now().strftime('%m月%d日 %H時%M分    ')+result[0][0] + "さんが入室しました。")  #slack通知実行
 			lbl_status = tk.Label(text=name,font=("",text_size))
 			lbl_status.place(x=2, y=center_y)
+			subprocess.call(["aplay","success.wav"])
 		elif error_check== True:
 			id_card = '非対応のカードです'
 			lbl_status = tk.Label(text= id_card ,font=("",text_size))
 			lbl_status.place(x=2, y=center_y)
+			subprocess.call(["aplay","error.wav"])
 		elif timeout_check == True:
 			id_card = 'タイムアウトです'
 			lbl_status = tk.Label(text= id_card ,font=("",text_size))
 			lbl_status.place(x=2, y=center_y)
+			subprocess.call(["aplay","error.wav"])
 		else:
 			id_card = 'その他のエラーです'
 			lbl_status = tk.Label(text= id_card ,font=("",text_size))
 			lbl_status.place(x=2, y=center_y)
-		global frag
-		frag = 'True'
+			subprocess.call(["aplay","error.wav"])
+		global frag   ###<---
+		frag = 'True' ###<---
 	##############################################
 
 	def return_gui():
