@@ -20,3 +20,6 @@ sudo apt-get install --no-install-recommends xinit <br>
 sudo apt-get install raspberrypi-ui-mods <br>
 #リモート環境のインストール <br>
 sudo apt install xrdp <br>
+
+***raspbian以外で動かす場合***
+aplay--->GUI認証完了音に利用
