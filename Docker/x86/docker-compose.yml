@@ -5,8 +5,8 @@ services:
     build:
        context: .
        dockerfile: Dockerfile_ubuntu
-    devices:
-         -  /dev/bus/usb/001/004
+    #devices:
+    #     -  /dev/bus/usb/001/004
     ports:
         - 80:80
         - 443:443
