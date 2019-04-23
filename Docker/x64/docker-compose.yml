@@ -1,0 +1,28 @@
+version: '3'
+services:
+ gui:
+    build:
+       context: .
+       dockerfile: Dockerfile_ubuntu
+    devices:
+         -  /dev/bus/usb/001/004
+    ports:
+        - 80:80
+        - 443:443
+        - 3389:3389
+    tty: true
+
+ db:
+  image: mariadb:10.3.0
+  ports:
+   - 3306:3306
+  volumes:
+   # 永続化
+   - ./db/mysql_data:/var/lib/mysql
+  environment:
+   #データベースrootパスワード
+   MYSQL_ROOT_PASSWORD: passwd
+   MYSQL_DATABASE: EEmgmt
+   #ユーザー
+   MYSQL_USER: eemgmt
+   MYSQL_PASSWORD: passwd
