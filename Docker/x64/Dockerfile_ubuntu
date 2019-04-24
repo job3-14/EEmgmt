@@ -1,13 +1,13 @@
 FROM  ubuntu:18.04
 
 RUN apt update
+RUN apt upgrade -y
 
 RUN apt install -y tzdata
 #timezone
 ENV TZ=Asia/Tokyo
 
-RUN apt install -y git  python3-pip php7.0 apache2 python-pip  python3-tk fonts-noto ibus-mozc
+RUN apt install -y git  python3-pip php7.0 apache2 python-pip  python3-tk fonts-noto ibus-mozc xrdp 
 RUN pip3 install netifaces mysql-connector-python slackweb
 RUN pip install -U nfcpy
-RUN apt install --no-install-recommends ubuntu-mate-core^  -y
-RUN apt install xrdp -y
+RUN apt-get install --no-install-recommends ubuntu-mate-core^  -y
