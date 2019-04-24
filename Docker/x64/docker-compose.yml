@@ -10,10 +10,12 @@ services:
         - 80:80
         - 443:443
         - 3389:3389
+    command: service start xrdp
+    #command: service start apache
     tty: true
 
  db:
-  image: mariadb:10.3.0
+  image: mariadb:10.4
   ports:
    - 3306:3306
   volumes:
