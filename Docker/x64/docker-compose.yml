@@ -1,6 +1,7 @@
 version: '3'
 services:
  gui:
+    tty: true
     build:
        context: .
        dockerfile: Dockerfile_ubuntu
@@ -10,9 +11,8 @@ services:
         - 80:80
         - 443:443
         - 3389:3389
-    command: service start xrdp
-    #command: service start apache
-    tty: true
+    #command: bash -c "sh start.sh"
+    #tty: true
 
  db:
   image: mariadb:10.4

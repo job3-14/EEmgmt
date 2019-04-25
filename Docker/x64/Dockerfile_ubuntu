@@ -12,3 +12,13 @@ RUN pip3 install netifaces mysql-connector-python slackweb
 RUN pip install -U nfcpy
 RUN apt-get install  -y --no-install-recommends ubuntu-mate-core^
 RUN apt-get install -y  --no-install-recommends ubuntu-mate-desktop^
+RUN service xrdp start
+#CMD rm /var/run/xrdp/ -rf
+#CMD service xrdp start &&  tail -f /dev/null
+#CMD service xrdp start
+#CMD rm /var/run/xrdp/xrdp.pid -r
+#CMD service xrdp start &&  tail -f /dev/null
+CMD service xrdp start
+CMD rm /var/run/xrdp/xrdp.pid
+CMD service xrdp restart && tail -f /dev/null
+#CMD tail -f /dev/null
