@@ -8,11 +8,17 @@ services:
     devices:
          -  /dev/bus/usb/001/004
     ports:
-        - 80:80
-        - 443:443
         - 3389:3389
     #command: bash -c "sh start.sh"
     #tty: true
+
+ web:
+   image: php:7.3.4-apache
+   ports:
+     - 80:80
+     - 443:443
+   volumes:
+     - ./www:/var/www/html
 
  db:
   image: mariadb:10.4
