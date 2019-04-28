@@ -35,7 +35,7 @@ iconfont/ のみを利用、再配布<br>
 <br>
 感謝します。
 <br><br>
-***LICENSE***
+***LICENSE***<br>
 ***google/material-design-icons -> Apache License 2.0***<br>
 Changes<br>
 Use and Redistribution only iconfont/<br>
