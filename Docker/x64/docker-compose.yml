@@ -19,7 +19,8 @@ services:
      - 443:443
    volumes:
      - ./apache2/www:/var/www/html
-     #- ./apache2/conf:/etc/apache2
+     - ./apache2/conf:/etc/apache2
+     - ./apache2/ssl:/etc/ssl
 
  db:
   image: mariadb:10.4
