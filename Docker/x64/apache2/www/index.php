@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="./material/material.min.css">
     <script src="./material/material.min.js"></script>
     <link rel="stylesheet" href="./material/iconfont/material-icons.css">
+    <link rel="stylesheet" type="text/css" href="test.css">
   </head>
   <body>
     <!-- The drawer is always open in large screens. The header is always shown,
@@ -16,14 +17,11 @@
           <div class="mdl-layout-spacer"></div>
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
                       mdl-textfield--floating-label mdl-textfield--align-right">
-            <label class="mdl-button mdl-js-button mdl-button--icon"
-                   for="fixed-header-drawer-exp">
-              <i class="material-icons">search</i>
-            </label>
-            <div class="mdl-textfield__expandable-holder">
-              <input class="mdl-textfield__input" type="text" name="sample"
-                     id="fixed-header-drawer-exp">
-            </div>
+          <div class="logout">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect ">
+             logout
+            </button>
+          </div>
           </div>
         </div>
       </header>
