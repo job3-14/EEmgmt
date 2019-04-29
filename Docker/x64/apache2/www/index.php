@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="./material/material.min.css">
     <script src="./material/material.min.js"></script>
     <link rel="stylesheet" href="./material/iconfont/material-icons.css">
-    <link rel="stylesheet" type="text/css" href="test.css">
+    <link rel="stylesheet" type="text/css" href="custom.css">
   </head>
   <body>
     <!-- The drawer is always open in large screens. The header is always shown,
@@ -14,9 +14,9 @@
                 mdl-layout--fixed-header">
       <header class="mdl-layout__header">
         <div class="mdl-layout__header-row">
-          <div class="head-title">
-            <span class="mdl-layout-title">管理トップ</span>
-          </div>
+<div class="head-title">
+<span class="mdl-layout-title">管理トップ</span>
+</div>
           <div class="mdl-layout-spacer"></div>
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
                       mdl-textfield--floating-label mdl-textfield--align-right">
