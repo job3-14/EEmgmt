@@ -31,6 +31,9 @@
         <span class="mdl-layout-title">入退室管理システム</span>
         <nav class="mdl-navigation">
           <a class="mdl-navigation__link" href="">管理トップ</a>
+          <a class="mdl-navigation__link" href="">新規登録</a>
+          <a class="mdl-navigation__link" href="">登録情報変更</a>
+          <a class="mdl-navigation__link" href="">システム操作</a>
         </nav>
       </div>
       <main class="mdl-layout__content">
