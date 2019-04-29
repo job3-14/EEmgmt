@@ -25,16 +25,16 @@ VERSION="18.04.2 LTS (Bionic Beaver)"<br>
 docker-composeを利用<br>
 各環境に合わせてdocker , docker-composeをインストールしてください。<br>
 
-<
+
 <br><br>
 LICENSE<br>
 =====================
-google/material-design-icons -> Apache License 2.0<br>
+***google/material-design-icons -> Apache License 2.0***<br>
 Changes<br>
 Use and Redistribution only iconfont/<br>
 [https://github.com/google/material-design-icons](https://github.com/google/material-design-icons)<br>
 <br>
-google/material-design-lite -> Apache License 2.0<br>
+***google/material-design-lite -> Apache License 2.0***<br>
 Changes<br>
 NONE<br>
 [https://github.com/google/material-design-lite](https://github.com/google/material-design-lite)<br>
