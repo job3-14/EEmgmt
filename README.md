@@ -15,15 +15,18 @@ os : snappy ubuntu core<br>
 VERSION="18.04.2 LTS (Bionic Beaver)"<br>
 タッチパネル<br>
 
-***最低動作環境***<br>
+最低動作環境<br>
+----------------
 ハードウェア ARM64,Unix,<br>
 ディスプレイ 800x600 (GUIが正しく表示されない可能性があります。)<br>
 
-***環境構築***<br>
+環境構築<br>
+-----------------
 docker-composeを利用<br>
 各環境に合わせてdocker , docker-composeをインストールしてください。<br>
 
-***ライセンス***<br>
+ライセンス<br>
+====================
 ***google/material-design-icons -> Apache License 2.0***<br>
 変更箇所<br>
 iconfont/ のみを利用、再配布<br>
@@ -36,7 +39,8 @@ iconfont/ のみを利用、再配布<br>
 <br>
 感謝します。
 <br><br>
-***LICENSE***<br>
+LICENSE<br>
+=====================
 ***google/material-design-icons -> Apache License 2.0***<br>
 Changes<br>
 Use and Redistribution only iconfont/<br>
