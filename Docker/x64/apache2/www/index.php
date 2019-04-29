@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Hello world!</title>
+    <title>入退室管理システム</title>
     <link rel="stylesheet" href="./material/material.min.css">
     <script src="./material/material.min.js"></script>
     <link rel="stylesheet" href="./material/iconfont/material-icons.css">
