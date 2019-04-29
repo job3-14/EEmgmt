@@ -29,7 +29,7 @@
 
 <form action="#">
   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <input class="mdl-textfield__input" type="password" ">
+    <input class="mdl-textfield__input" type="password">
     <label class="mdl-textfield__label" for="sample3">パスワード</label>
   </div>
 </form>
