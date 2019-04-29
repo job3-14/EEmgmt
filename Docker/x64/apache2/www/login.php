@@ -23,14 +23,14 @@
 <form action="#">
   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
     <input class="mdl-textfield__input" type="text">
-    <label class="mdl-textfield__label" for="sample3">ユーザー名</label>
+    <label class="mdl-textfield__label">ユーザー名</label>
   </div>
 </form>
 
 <form action="#">
   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <input class="mdl-textfield__input" type="password">
-    <label class="mdl-textfield__label" for="sample3">パスワード</label>
+    <input class="mdl-textfield__input" type="password" ">
+    <label class="mdl-textfield__label">パスワード</label>
   </div>
 </form>
 
