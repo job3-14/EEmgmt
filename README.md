@@ -8,7 +8,8 @@ Raspberry piはraspberrypi3以上で動作します。また標準のraspbianは
 またこのシステムは本体からのGUI出力は対応していません。RDPをご利用ください。<br>
 
 
-***推奨動作環境***<br>
+推奨動作環境<br>
+===================
 raspberrypi3b+ (ARM64)<br>
 os : snappy ubuntu core<br>
 VERSION="18.04.2 LTS (Bionic Beaver)"<br>
