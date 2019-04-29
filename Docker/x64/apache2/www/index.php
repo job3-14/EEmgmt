@@ -14,12 +14,15 @@
                 mdl-layout--fixed-header">
       <header class="mdl-layout__header">
         <div class="mdl-layout__header-row">
+          <div class="head-title">
+            <span class="mdl-layout-title">管理トップ</span>
+          </div>
           <div class="mdl-layout-spacer"></div>
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
                       mdl-textfield--floating-label mdl-textfield--align-right">
           <div class="logout">
             <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect ">
-             logout
+             ログアウト
             </button>
           </div>
           </div>
