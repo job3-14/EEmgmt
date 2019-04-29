@@ -27,12 +27,12 @@ docker-composeを利用<br>
 
 ライセンス<br>
 ====================
-***google/material-design-icons -> Apache License 2.0***<br>
+google/material-design-icons -> Apache License 2.0<br>
 変更箇所<br>
 iconfont/ のみを利用、再配布<br>
 [https://github.com/google/material-design-icons](https://github.com/google/material-design-icons)<br>
 <br>
-***google/material-design-lite -> Apache License 2.0***<br>
+google/material-design-lite -> Apache License 2.0<br>
 変更箇所<br>
 なし<br>
 [https://github.com/google/material-design-lite](https://github.com/google/material-design-lite)
@@ -41,12 +41,12 @@ iconfont/ のみを利用、再配布<br>
 <br><br>
 LICENSE<br>
 =====================
-***google/material-design-icons -> Apache License 2.0***<br>
+google/material-design-icons -> Apache License 2.0<br>
 Changes<br>
 Use and Redistribution only iconfont/<br>
 [https://github.com/google/material-design-icons](https://github.com/google/material-design-icons)<br>
 <br>
-***google/material-design-lite -> Apache License 2.0***<br>
+google/material-design-lite -> Apache License 2.0<br>
 Changes<br>
 NONE<br>
 [https://github.com/google/material-design-lite](https://github.com/google/material-design-lite)<br>
