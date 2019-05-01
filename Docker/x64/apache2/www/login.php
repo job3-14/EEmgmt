@@ -2,12 +2,14 @@
 require_once('db_setting.php');
 
 if (isset($_POST["user"])){
- if ($_POST["user"]==""){
- echo "ユーザー名を入力してください";
- }elseif ($_POST["password"]==""){
-  echo "パスワードを入力してください";
- }
-
+ if ($_POST["user"]=="" || $_POST["password"]==""){
+   if($_POST["user"]==""){
+     echo "ユーザー名を入力してください";
+   }
+   if ($_POST["password"]==""){
+     echo "パスワードを入力してください";
+   }
+}
 }
 ?>
 
