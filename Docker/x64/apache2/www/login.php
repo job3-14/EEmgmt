@@ -1,3 +1,18 @@
+<?php
+require_once('db_setting.php');
+
+if (isset($_POST["user"])){
+ if ($_POST["user"]==""){
+ echo "ユーザー名を入力してください";
+ }elseif ($_POST["password"]==""){
+  echo "パスワードを入力してください";
+ }
+
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -8,10 +23,6 @@
     <link rel="stylesheet" type="text/css" href="custom.css">
   </head>
   <body>
-
-<?php  echo $_POST["user"].$_POST["password"]?>
-
-
 <div class="c-login-card">
 <div class="demo-card-wide mdl-card mdl-shadow--2dp">
   <div class="mdl-card__title">
@@ -39,6 +50,8 @@
 </button>
 </div>
 </form>
+
+
 
 
   </div>
