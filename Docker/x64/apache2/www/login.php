@@ -9,6 +9,7 @@
   </head>
   <body>
 
+<?php  echo $_POST["user"].$_POST["password"]?>
 
 
 <div class="c-login-card">
@@ -22,23 +23,23 @@
 
 <form action="#" method="POST">
   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <input class="mdl-textfield__input" type="text">
-    <label class="mdl-textfield__label" name="user">ユーザー名</label>
+    <input class="mdl-textfield__input" type="text"  name="user">
+    <label class="mdl-textfield__label">ユーザー名</label>
   </div>
-</form>
 
-<form action="#" method="POST">
+
   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <input class="mdl-textfield__input" type="password" ">
-    <label class="mdl-textfield__label" name="password">パスワード</label>
+    <input class="mdl-textfield__input" type="password"  name="password">
+    <label class="mdl-textfield__label">パスワード</label>
   </div>
-</form>
 
 <div class="c-login">
-<button class="mdl-button mdl-js-button mdl-button--raised ">
+<button class="mdl-button mdl-js-button mdl-button--raised" type="submit">
   ログイン
 </button>
 </div>
+</form>
+
 
   </div>
 </div>
