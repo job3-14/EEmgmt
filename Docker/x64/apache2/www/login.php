@@ -21,10 +21,15 @@ if (isset($_POST["user"])){
   $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
   $sql = "SELECT password  FROM user WHERE name='{$user}'";
   $result = $pdo->query($sql);
-  $password =  $result->fetchColumn();
+  $password_hash =  $result->fetchColumn();
   //データベース終了
-  echo $password;
-
+  echo $password_hash;
+  if ($password==$password_hash){
+   echo "認証成功"; //テスト用
+  }else{
+   $errorMessage =  "ユーザー名またはパスワードが違います。";
+   echo $errorMessage;
+  }
  }
 
 }
