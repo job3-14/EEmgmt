@@ -16,7 +16,6 @@ if (isset($_POST["user"])){
 }else{
   $user = $_POST["user"];
   $password = $_POST["password"];
-  //echo $user."<br>".$password;
   //データベース接続
   $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
      $sql  = $pdo->prepare("SELECT password  FROM user WHERE name= ?");
@@ -24,15 +23,14 @@ if (isset($_POST["user"])){
      $sql->execute();
   $password_hash =  $sql->fetchColumn();
   //データベース終了
-  echo $password_hash;
-  if ($password==$password_hash){
-   echo "認証成功"; //テスト用
-  }else{
-   $errorMessage =  "ユーザー名またはパスワードが違います。";
-   echo $errorMessage;
+  echo $password_hash."<br>";
   }
- }
 
+if (password_verify($password, $password_hash)) {
+    echo "認証成功";
+} else {
+    echo "ユーザー名またはパスワードが間違っています";
+}
 }
 ?>
 
