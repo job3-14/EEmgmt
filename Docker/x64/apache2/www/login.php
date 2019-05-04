@@ -24,12 +24,13 @@ if (isset($_POST["user"])){
   $password_hash =  $sql->fetchColumn();
   //データベース終了
   echo $password_hash."<br>";
-  }
+
 
 if (password_verify($password, $password_hash)) {
     echo "認証成功";
 } else {
     echo "ユーザー名またはパスワードが間違っています";
+}
 }
 }
 ?>
