@@ -19,9 +19,10 @@ if (isset($_POST["user"])){
   //echo $user."<br>".$password;
   //データベース接続
   $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
-  $sql = "SELECT password  FROM user WHERE name='{$user}'";
-  $result = $pdo->query($sql);
-  $password_hash =  $result->fetchColumn();
+     $sql  = $pdo->prepare("SELECT password  FROM user WHERE name= ?");
+     $sql->bindValue(1,$user);
+     $sql->execute();
+  $password_hash =  $sql->fetchColumn();
   //データベース終了
   echo $password_hash;
   if ($password==$password_hash){
