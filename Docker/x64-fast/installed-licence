@@ -166,3 +166,7 @@ ii  tzdata                         2018i-0+deb9u1                   time zone an
 ii  util-linux                     2.29.2-1+deb9u1                  miscellaneous system utilities                               BSD-2-clause BSD-3-clause BSD-4-clause GPL-2 GPL-2+ GPL-3+ LGPL LGPL-2+ LGPL-2.1+ LGPL-3+ MIT public-domain
 ii  xz-utils                       5.2.2-1.2+b1                     XZ-format compression utilities                              Autoconf GPL-2 GPL-2+ LGPL-2.1+ PD PD-debian config-h noderivs none permissive-fsf permissive-nowarranty probably-PD
 ii  zlib1g                         1:1.2.8.dfsg-5                   compression library - runtime                                unknown
+ii  ubuntu18.04                    18.04                                                                                         GNU GPL 2
+ii  netifaces                                                                                                                    MIT License
+ii  mysql-connector-python                                                                                                       GPLv2
+ii  slackweb                                                                                                                     MIT License
