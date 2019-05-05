@@ -1,6 +1,6 @@
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 ![GitHub issues](https://img.shields.io/github/issues/job3-14/EEmgmt.svg)
-
+![Docker Automated build](https://img.shields.io/docker/automated/job314job/eemgmt.svg)
 
 ***製作中*** <br>
 入退室管理システムです。<br>
