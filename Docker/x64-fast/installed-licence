@@ -60,13 +60,13 @@ ii  libc6                          2.24-11+deb9u4                   GNU C Librar
 ii  libc6-dev                      2.24-11+deb9u4                   GNU C Library: Development Libraries and Header Files        GPL-2 LGPL-2.1
 ii  libcap-ng0                     0.7.7-3+b1                       An alternate POSIX capabilities library                      GPL-2 GPL-3 LGPL-2.1
 ii  libcc1-0                       6.3.0-18+deb9u1                  GCC cc1 plugin for GDB                                       Artistic GFDL-1.2 GPL GPL-2 GPL-3
-ii  libcomerr2                     1.43.4-2                         common error description library                             unknown
+ii  libcomerr2                     1.43.4-2                                                                                      MIT License
 ii  libcurl3                       7.52.1-5+deb9u9                  easy-to-use client-side URL transfer library (OpenSSL flavou BSD-3-Clause BSD-4-Clause ISC curl other public-domain
-ii  libdb5.3                       5.3.28-12+deb9u1                 Berkeley v5.3 Database Libraries [runtime]                   unknown
+ii  libdb5.3                       5.3.28-12+deb9u1                 Berkeley v5.3 Database Libraries [runtime]                   libdb5.3
 ii  libdebconfclient0              0.227                            Debian Configuration Management System (C-implementation lib public domain
 ii  libdpkg-perl                   1.18.25                          Dpkg perl modules                                            BSD-2-clause GPL-2 GPL-2+ public-domain-md5 public-domain-s-s-d
-ii  libedit2                       3.1-20160903-3                   BSD editline and history libraries                           unknown
-ii  libexpat1                      2.2.0-2+deb9u1                   XML parsing C library - runtime library                      unknown
+ii  libedit2                       3.1-20160903-3                   BSD editline and history libraries                           BSD
+ii  libexpat1                      2.2.0-2+deb9u1                   XML parsing C library - runtime library                      libexpat1
 ii  libfdisk1                      2.29.2-1+deb9u1                  fdisk partitioning library                                   BSD-2-clause BSD-3-clause BSD-4-clause GPL-2 GPL-2+ GPL-3+ LGPL LGPL-2+ LGPL-2.1+ LGPL-3+ MIT public-domain
 ii  libffi6                        3.2.1-6                          Foreign Function Interface library runtime                   GPL
 ii  libgcc-6-dev                   6.3.0-18+deb9u1                  GCC support library (development files)                      Artistic GFDL-1.2 GPL GPL-2 GPL-3
@@ -80,7 +80,7 @@ ii  libgomp1                       6.3.0-18+deb9u1                  GCC OpenMP (
 ii  libgpg-error0                  1.26-2                           library for common error values and messages in GnuPG compon GPL-2.1+
 ii  libgssapi-krb5-2               1.15-1+deb9u1                    MIT Kerberos runtime libraries - krb5 GSS-API Mechanism      GPL-2
 ii  libhogweed4                    3.3-1+b2                         low level cryptographic library (public-key cryptos)         GAP GPL-2 GPL-2+ GPL-2+ with Autoconf exception LGPL-2+ LGPL-2.1+ other public-domain
-ii  libicu57                       57.1-6+deb9u2                    International Components for Unicode                         unknown
+ii  libicu57                       57.1-6+deb9u2                    International Components for Unicode                         libicu57
 ii  libidn11                       1.33-1                           GNU Libidn library, implementation of IETF IDN specification GAP GFDL-1.3+ GPL-3+ LGPL-2.1+ LGPL-3+ or GPL-2+
 ii  libidn2-0                      0.16-1+deb9u1                    Internationalized domain names (IDNA2008) library            GPL-3+ LGPL-3+ or GPL-2+ Unicode
 ii  libisl15                       0.18-1                           manipulating sets and relations of integer points bounded by BSD-2-clause LGPL-2.1+ MIT
@@ -89,8 +89,8 @@ ii  libk5crypto3                   1.15-1+deb9u1                    MIT Kerberos
 ii  libkeyutils1                   1.5.9-9                          Linux Key Management Utilities (library)                     GPL-2+ LGPL-2+
 ii  libkrb5-3                      1.15-1+deb9u1                    MIT Kerberos runtime libraries                               GPL-2
 ii  libkrb5support0                1.15-1+deb9u1                    MIT Kerberos runtime libraries - Support library             GPL-2
-ii  libldap-2.4-2                  2.4.44+dfsg-5+deb9u2             OpenLDAP libraries                                           unknown
-ii  libldap-common                 2.4.44+dfsg-5+deb9u2             OpenLDAP common files for libraries                          unknown
+ii  libldap-2.4-2                  2.4.44+dfsg-5+deb9u2             OpenLDAP libraries                                           GPL-2
+ii  libldap-common                 2.4.44+dfsg-5+deb9u2             OpenLDAP common files for libraries                          GPL-2
 ii  liblua5.2-0                    5.2.4-1.1+b2                     Shared library for the Lua interpreter version 5.2           Expat
 ii  liblz4-1                       0.0~r131-2+b1                    Fast LZ compression algorithm library - runtime              BSD-2-clause GPL-2+
 ii  liblzma5                       5.2.2-1.2+b1                     XZ-format compression library                                Autoconf GPL-2 GPL-2+ LGPL-2.1+ PD PD-debian config-h noderivs none permissive-fsf permissive-nowarranty probably-PD
@@ -99,8 +99,8 @@ ii  libmagic1                      1:5.30-1+deb9u2                  Recognize th
 ii  libmount1                      2.29.2-1+deb9u1                  device mounting library                                      BSD-2-clause BSD-3-clause BSD-4-clause GPL-2 GPL-2+ GPL-3+ LGPL LGPL-2+ LGPL-2.1+ LGPL-3+ MIT public-domain
 ii  libmpc3                        1.0.3-1+b2                       multiple precision complex floating-point library            LGPL-2.1
 ii  libmpfr4                       3.1.5-1                          multiple precision floating-point computation                GFDL-1.2 LGPL-3
-ii  libncurses5                    6.0+20161126-1+deb9u2            shared libraries for terminal handling                       unknown
-ii  libncursesw5                   6.0+20161126-1+deb9u2            shared libraries for terminal handling (wide character suppo unknown
+ii  libncurses5                    6.0+20161126-1+deb9u2            shared libraries for terminal handling                       MIT
+ii  libncursesw5                   6.0+20161126-1+deb9u2            shared libraries for terminal handling (wide character suppo MIT
 ii  libnettle6                     3.3-1+b2                         low level cryptographic library (symmetric and one-way crypt GAP GPL-2 GPL-2+ GPL-2+ with Autoconf exception LGPL-2+ LGPL-2.1+ other public-domain
 ii  libnghttp2-14                 1.18.1-1                         library implementing HTTP/2 protocol (shared library)        BSD-2-clause Expat GPL-3+ with autoconf exception MIT SIL-OFL-1.1 all-permissive
 ii  libp11-kit0                    0.23.3-2                         library for loading and coordinating access to PKCS#11 modul BSD-3-Clause ISC ISC+IBM permissive-like-automake-output same-as-rest-of-p11kit
@@ -123,7 +123,7 @@ ii  libsigsegv2                    2.10-5                           Library for 
 ii  libsmartcols1                  2.29.2-1+deb9u1                  smart column output alignment library                        BSD-2-clause BSD-3-clause BSD-4-clause GPL-2 GPL-2+ GPL-3+ LGPL LGPL-2+ LGPL-2.1+ LGPL-3+ MIT public-domain
 ii  libsodium18                    1.0.11-2                         Network communication, cryptography and signaturing library  BSD-2-clause CC0 GPL-2+ ISC MIT public-domain
 ii  libsqlite3-0                   3.16.2-5+deb9u1                  SQLite 3 shared library                                      GPL-2+ public-domain
-ii  libss2                         1.43.4-2                         command-line interface parsing library                       unknown
+ii  libss2                         1.43.4-2                         command-line interface parsing library                       https://www.libssh2.org/license.html
 ii  libssh2-1                      1.7.0-1                          SSH2 client-side library                                     BSD3
 ii  libssl1.0.2                    1.0.2r-1~deb9u1                  Secure Sockets Layer toolkit - shared libraries              BSD-style
 ii  libssl1.1                      1.1.0j-1~deb9u1                  Secure Sockets Layer toolkit - shared libraries              BSD-style
@@ -131,13 +131,13 @@ ii  libstdc++-6-dev                6.3.0-18+deb9u1                  GNU Standard
 ii  libstdc++6                     6.3.0-18+deb9u1                  GNU Standard C++ Library v3                                  Artistic GFDL-1.2 GPL GPL-2 GPL-3
 ii  libsystemd0                    232-25+deb9u9                    systemd utility library                                      CC0 Expat GPL-2 GPL-2+ LGPL-2.1+ public-domain
 ii  libtasn1-6                     4.10-1.1+deb9u1                  Manage ASN.1 structures (runtime)                            GFDL-1.3 GPL-3 LGPL LGPL-2.1
-ii  libtinfo5                      6.0+20161126-1+deb9u2            shared low-level terminfo library for terminal handling      unknown
+ii  libtinfo5                      6.0+20161126-1+deb9u2            shared low-level terminfo library for terminal handling      MIT
 ii  libubsan0                      6.3.0-18+deb9u1                  UBSan -- undefined behaviour sanitizer (runtime)             Artistic GFDL-1.2 GPL GPL-2 GPL-3
 ii  libudev1                       232-25+deb9u9                    libudev shared library                                       CC0 Expat GPL-2 GPL-2+ LGPL-2.1+ public-domain
 ii  libunistring0                  0.9.6+really0.9.3-0.1            Unicode string library for C                                 GFDL-1.2+ GPL-2+ GPL-2+ with exception GPL-3+ GPL-3+ or GFDL-1.2+ LGPL-3+ MIT
 ii  libustr-1.0-1                  1.0.4-6                          Micro string library: shared library                         BSD-2-clause GPL-2+ LGPL-2+ LGPL-2+ or BSD-2-clause or MIT MIT
 ii  libuuid1                       2.29.2-1+deb9u1                  Universally Unique ID library                                BSD-2-clause BSD-3-clause BSD-4-clause GPL-2 GPL-2+ GPL-3+ LGPL LGPL-2+ LGPL-2.1+ LGPL-3+ MIT public-domain
-ii  libxml2                        2.9.4+dfsg1-2.2+deb9u2           GNOME XML library                                            unknown
+ii  libxml2                        2.9.4+dfsg1-2.2+deb9u2           GNOME XML library                                            MIT
 ii  linux-libc-dev                 4.9.144-3.1                      Linux support headers for userspace development              CRYPTOGAMS GPL-2 LGPL-2.1 Unicode-data Xen-interface
 ii  login                          1:4.4-4.1                        system login tools                                           GPL-2
 ii  lsb-base                       9.20161125                       Linux Standard Base init script functionality                BSD-3-clause GPL-2
@@ -147,8 +147,8 @@ ii  mawk                           1.3.3-17+b3                      a pattern sc
 ii  mime-support                   3.60                             MIME files 'mime.types' & 'mailcap', and support programs    Bellcore ad-hoc
 ii  mount                          2.29.2-1+deb9u1                  tools for mounting and manipulating filesystems              BSD-2-clause BSD-3-clause BSD-4-clause GPL-2 GPL-2+ GPL-3+ LGPL LGPL-2+ LGPL-2.1+ LGPL-3+ MIT public-domain
 ii  multiarch-support              2.24-11+deb9u4                   Transitional package to ensure multiarch compatibility       GPL-2 LGPL-2.1
-ii  ncurses-base                   6.0+20161126-1+deb9u2            basic terminal type definitions                              unknown
-ii  ncurses-bin                    6.0+20161126-1+deb9u2            terminal-related programs and man pages                      unknown
+ii  ncurses-base                   6.0+20161126-1+deb9u2            basic terminal type definitions                              MIT
+ii  ncurses-bin                    6.0+20161126-1+deb9u2            terminal-related programs and man pages                      GNU
 ii  openssl                        1.1.0j-1~deb9u1                  Secure Sockets Layer toolkit - cryptographic utility         BSD-style
 ii  passwd                         1:4.4-4.1                        change and administer password and group data                GPL-2
 ii  patch                          2.7.5-1+deb9u1                   Apply a diff file to an original                             GPL
@@ -165,7 +165,7 @@ ii  tar                            1.29b-1.1                        GNU version 
 ii  tzdata                         2018i-0+deb9u1                   time zone and daylight-saving time data                      public domain
 ii  util-linux                     2.29.2-1+deb9u1                  miscellaneous system utilities                               BSD-2-clause BSD-3-clause BSD-4-clause GPL-2 GPL-2+ GPL-3+ LGPL LGPL-2+ LGPL-2.1+ LGPL-3+ MIT public-domain
 ii  xz-utils                       5.2.2-1.2+b1                     XZ-format compression utilities                              Autoconf GPL-2 GPL-2+ LGPL-2.1+ PD PD-debian config-h noderivs none permissive-fsf permissive-nowarranty probably-PD
-ii  zlib1g                         1:1.2.8.dfsg-5                   compression library - runtime                                unknown
+ii  zlib1g                         1:1.2.8.dfsg-5                   compression library - runtime                                GNU
 ii  ubuntu18.04                    18.04                                                                                         GNU GPL 2
 ii  netifaces                                                                                                                    MIT License
 ii  mysql-connector-python                                                                                                       GPLv2
