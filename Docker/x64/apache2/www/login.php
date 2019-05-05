@@ -1,13 +1,37 @@
 <?php
 require_once('db_setting.php');
+//エラーメッセージの定義
+$errorMessage = "";
 
 if (isset($_POST["user"])){
- if ($_POST["user"]==""){
- echo "ユーザー名を入力してください";
- }elseif ($_POST["password"]==""){
-  echo "パスワードを入力してください";
- }
+ if ($_POST["user"]=="" || $_POST["password"]==""){
+   if($_POST["user"]==""){
+     $errorMessage =  "ユーザー名を入力してください";
+     echo $errorMessage;
+   }
+   if ($_POST["password"]==""){
+     $errorMessage = "パスワードを入力してください";
+     echo $errorMessage;
+   }
+}else{
+  $user = $_POST["user"];
+  $password = $_POST["password"];
+  //データベース接続
+  $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
+     $sql  = $pdo->prepare("SELECT password  FROM user WHERE name= ?");
+     $sql->bindValue(1,$user);
+     $sql->execute();
+  $password_hash =  $sql->fetchColumn();
+  //データベース終了
+  echo $password_hash."<br>";
 
+
+if (password_verify($password, $password_hash)) {
+    echo "認証成功";
+} else {
+    echo "ユーザー名またはパスワードが間違っています";
+}
+}
 }
 ?>
 
