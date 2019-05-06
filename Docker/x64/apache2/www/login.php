@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 require_once('db_setting.php');
 //エラーメッセージの定義
 $errorMessage = "";
@@ -28,6 +30,7 @@ if (isset($_POST["user"])){
 
 if (password_verify($password, $password_hash)) {
     echo "認証成功";
+    $_SESSION["user"] = $user;
 } else {
     echo "ユーザー名またはパスワードが間違っています";
 }
