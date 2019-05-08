@@ -1,5 +1,6 @@
 <?php
 session_start();
+session_regenerate_id(true); //セッション固定化攻撃対策
 
 require_once('db_setting.php');
 //エラーメッセージの定義
@@ -25,7 +26,6 @@ if (isset($_POST["user"])){
      $sql->execute();
   $password_hash =  $sql->fetchColumn();
   //データベース終了
-  echo $password_hash."<br>";
 
 
 if (password_verify($password, $password_hash)) {
