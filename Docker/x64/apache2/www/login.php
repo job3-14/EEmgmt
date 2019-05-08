@@ -31,7 +31,7 @@ if (isset($_POST["user"])){
 if (password_verify($password, $password_hash)) {
     echo "認証成功";
     $_SESSION["user"] = $user;
-    session_regenerate_id(true); //セッションID再発行
+    session_regenerate_id(true); //セッションID再発行(固定化攻撃対策)
 } else {
     echo "ユーザー名またはパスワードが間違っています";
 }
