@@ -2,6 +2,10 @@
 session_start();
 session_regenerate_id(true); //セッション固定化攻撃対策
 
+//エラーメッセージの定義・初期化
+$errorMessage = "";
+$massage = "";
+
 if (isset($_SESSION["user"])){ //既にログインしている場合index.phpに転送
 header('Location: /index.php');
 }
@@ -12,8 +16,7 @@ if ($_SESSION["message"]=="logout"){
 }
 
 require_once('db_setting.php');
-//エラーメッセージの定義
-$errorMessage = "";
+
 
 if (isset($_POST["user"])){
  if ($_POST["user"]=="" || $_POST["password"]==""){
