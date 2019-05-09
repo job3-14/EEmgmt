@@ -8,5 +8,6 @@ session_destroy();
 #セッションを削除
 
 session_start();
-$_SESSION["message"] = "logout";
+$_SESSION["message"] = "ログアウトしました。";
+header('Location: /login.php');
 ?>
