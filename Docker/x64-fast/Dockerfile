@@ -1,5 +1,6 @@
 FROM  ubuntu:18.04
-ARG DEBIAN_FRONTEND=noninteractive #キーボード入力待ちをさせない
+ENV DEBIAN_FRONTEND noninteractive
+#キーボード入力待ちをさせない
 
 RUN sed -i".bak" -e 's/\/\/us.archive.ubuntu.com/\/\/ftp.jaist.ac.jp/g' /etc/apt/sources.list
 RUN apt update
