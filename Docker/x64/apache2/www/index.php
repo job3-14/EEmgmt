@@ -29,7 +29,7 @@ header('Location: /login.php');
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
                       mdl-textfield--floating-label mdl-textfield--align-right">
           <div class="logout">
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect ">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="location.href='/logout.php'">
              ログアウト
             </button>
           </div>
