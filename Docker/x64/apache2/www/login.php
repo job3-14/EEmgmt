@@ -1,5 +1,11 @@
 <?php
 session_start();
+session_regenerate_id(true); //セッション固定化攻撃対策
+
+if (isset($_SESSION["user"])){ //既にログインしている場合index.phpに転送
+header('Location: /index.php');
+}
+
 
 require_once('db_setting.php');
 //エラーメッセージの定義
@@ -25,13 +31,12 @@ if (isset($_POST["user"])){
      $sql->execute();
   $password_hash =  $sql->fetchColumn();
   //データベース終了
-  echo $password_hash."<br>";
 
 
 if (password_verify($password, $password_hash)) {
     echo "認証成功";
     $_SESSION["user"] = $user;
-    session_regenerate_id(true); //セッションID再発行
+
 } else {
     echo "ユーザー名またはパスワードが間違っています";
 }
