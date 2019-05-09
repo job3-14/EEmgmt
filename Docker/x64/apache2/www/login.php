@@ -6,6 +6,10 @@ if (isset($_SESSION["user"])){ //既にログインしている場合index.php�
 header('Location: /index.php');
 }
 
+if ($_SESSION["message"]=="logout"){
+ $_SESSION = array();  //セッション変数の初期化
+ $massage = "logout";
+}
 
 require_once('db_setting.php');
 //エラーメッセージの定義
