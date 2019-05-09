@@ -70,7 +70,7 @@ if (password_verify($password, $password_hash)) {
   </div>
   <div class="mdl-card__supporting-text">
 <p>入退室管理システムへログイン<p>
-
+<?php echo $massage ?>
 
 <form action="#" method="POST">
   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
