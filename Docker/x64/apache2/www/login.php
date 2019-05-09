@@ -2,24 +2,25 @@
 session_start();
 session_regenerate_id(true); //セッション固定化攻撃対策
 
-if (isset($_SESSION["user"])){ //既にログインしている場合index.phpに転送
-header('Location: /index.php');
+//エラーメッセージの定義・初期化
+$errorMessage = array();
+
+
+if (isset($_SESSION["message"])){
+ $errorMessage[] = $_SESSION["message"];
+ $_SESSION = array();  //セッション変数の初期化
 }
 
-
 require_once('db_setting.php');
-//エラーメッセージの定義
-$errorMessage = "";
+
 
 if (isset($_POST["user"])){
  if ($_POST["user"]=="" || $_POST["password"]==""){
    if($_POST["user"]==""){
-     $errorMessage =  "ユーザー名を入力してください";
-     echo $errorMessage;
+     $errorMessage[] = "ユーザー名を入力してください";
    }
    if ($_POST["password"]==""){
-     $errorMessage = "パスワードを入力してください";
-     echo $errorMessage;
+       $errorMessage[] = "パスワードを入力してください";
    }
 }else{
   $user = $_POST["user"];
@@ -34,13 +35,16 @@ if (isset($_POST["user"])){
 
 
 if (password_verify($password, $password_hash)) {
-    echo "認証成功";
     $_SESSION["user"] = $user;
 
 } else {
-    echo "ユーザー名またはパスワードが間違っています";
+    $errorMessage[] =  "ユーザー名またはパスワードが間違っています";
 }
 }
+}
+
+if (isset($_SESSION["user"])){ //既にログインしている場合index.phpに転送
+header('Location: /index.php');
 }
 ?>
 
@@ -64,6 +68,11 @@ if (password_verify($password, $password_hash)) {
   <div class="mdl-card__supporting-text">
 <p>入退室管理システムへログイン<p>
 
+<?php  //エラーメッセージ等
+foreach($errorMessage as $message){
+echo $message."<br>";
+}
+?>
 
 <form action="#" method="POST">
   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
