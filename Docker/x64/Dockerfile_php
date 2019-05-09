@@ -1,4 +1,5 @@
 FROM php:7.3.4-apache
-
+ENV DEBIAN_FRONTEND noninteractive
+#キーボード入力待ちをさせない
 #PDOをインストール
 RUN docker-php-ext-install pdo_mysql
