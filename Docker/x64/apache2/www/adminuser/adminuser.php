@@ -53,7 +53,7 @@ header('Location: /login.php');
 
 
 
-<div>
+<div class="c-card">
   <div class="mdl-card mdl-shadow--4dp">
   <div class="mdl-card__supporting-text">
     管理ユーザー登録
