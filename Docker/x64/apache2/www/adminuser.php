@@ -23,7 +23,7 @@ header('Location: /login.php');
       <header class="mdl-layout__header">
         <div class="mdl-layout__header-row">
           <div class="head-title">
-            <span class="mdl-layout-title">管理トップ</span>
+            <span class="mdl-layout-title">管理ユーザー</span>
           </div>
           <div class="mdl-layout-spacer"></div>
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
