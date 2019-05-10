@@ -68,11 +68,13 @@ header('Location: /index.php');
   <div class="mdl-card__supporting-text">
 <p>入退室管理システムへログイン<p>
 
+<div class="c-login-message">
 <?php  //エラーメッセージ等
 foreach($errorMessage as $message){
 echo $message."<br>";
 }
 ?>
+</div>
 
 <form action="#" method="POST">
   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
