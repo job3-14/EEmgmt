@@ -13,7 +13,7 @@ header('Location: /login.php');
     <link rel="stylesheet" href="/material/material.min.css">
     <script src="/material/material.min.js"></script>
     <link rel="stylesheet" href="/material/iconfont/material-icons.css">
-    <link rel="stylesheet" type="text/css" href="custom.css">
+    <link rel="stylesheet" type="text/css" href="/custom.css">
   </head>
   <body>
     <!-- The drawer is always open in large screens. The header is always shown,
