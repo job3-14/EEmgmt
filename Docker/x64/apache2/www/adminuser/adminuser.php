@@ -56,22 +56,15 @@ header('Location: /login.php');
 <div class="c-card">
   <div class="mdl-card mdl-shadow--4dp">
   <div class="mdl-card__supporting-text">
-    管理ユーザー登録
+    管理ユーザー設定
   </div>
   <div class="mdl-card__supporting-text">
-  <p>ユーザー</p>
+  <p>ユーザーの一覧(詳細情報)</p>
+  <p>ユーザー情報の登録</p>
+
   </div>
 </div>
 </div>
-
-
-
-
-
-
-
-
-
 
 
 
