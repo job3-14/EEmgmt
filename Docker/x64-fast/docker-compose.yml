@@ -1,11 +1,9 @@
 version: '3'
 services:
  gui:
-    tty: true
-    build:
-       context: .
-       dockerfile: Dockerfile_ubuntu
-    devices:
+   image: job314job/eemgmt:ubuntu
+   tty: true
+   devices:
          -  /dev/bus/usb/001/004
     ports:
         - 3389:3389
