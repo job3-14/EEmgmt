@@ -34,7 +34,26 @@ header('Location: /login.php');
         </div>
       </header>
       <main class="mdl-layout__content">
-        <div class="page-content"><!-- Your content goes here --></div>
+        <div class="page-content"><!-- Your content goes here -->
+
+<div class="c-add-card">
+<div class="mdl-card mdl-shadow--4dp">
+  <div class="mdl-card__supporting-text">
+    新規登録
+  </div>
+  <div class="mdl-card__supporting-text">
+  <p>テキスト</p>
+  </div>
+</div>
+</div>
+
+
+
+
+
+
+
+</div>
       </main>
     </div>
 
