@@ -4,9 +4,9 @@ services:
    image: job314job/eemgmt:ubuntu
    tty: true
    devices:
-         -  /dev/bus/usb/001/004
-    ports:
-        - 3389:3389
+     -  /dev/bus/usb/001/004
+   ports:
+     - 3389:3389
 
  web:
    image: job314job/eemgmt:php
