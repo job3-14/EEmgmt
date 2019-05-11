@@ -71,11 +71,44 @@ header('Location: /login.php');
 <div class="c-switch">
 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-2">
   <input type="checkbox" id="switch-2" class="mdl-switch__input">
-  <span class="mdl-switch__label"></span>
+  <span class="mdl-switch__label">カード登録</span>
 </label>
 </div>
 
+<div class="c-switch">
+<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-3">
+  <input type="checkbox" id="switch-3" class="mdl-switch__input">
+  <span class="mdl-switch__label">カード削除</span>
+</label>
+</div>
 
+<div class="c-switch">
+<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-4">
+  <input type="checkbox" id="switch-4" class="mdl-switch__input">
+  <span class="mdl-switch__label">入退室通知手動送信</span>
+</label>
+</div>
+
+<div class="c-switch">
+<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-5">
+  <input type="checkbox" id="switch-5" class="mdl-switch__input">
+  <span class="mdl-switch__label">入退室ログの閲覧</span>
+</label>
+</div>
+
+<div class="c-switch">
+<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-6">
+  <input type="checkbox" id="switch-6" class="mdl-switch__input">
+  <span class="mdl-switch__label">管理者ログイン試行ログ閲覧</span>
+</label>
+</div>
+
+<div class="c-switch">
+<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-7">
+  <input type="checkbox" id="switch-7" class="mdl-switch__input">
+  <span class="mdl-switch__label">システム終了(シャットダウン)</span>
+</label>
+</div>
 
 
 
