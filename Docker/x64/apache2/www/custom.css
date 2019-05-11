@@ -31,5 +31,9 @@
   top: 50%;
   left: 50%;
   transform: translateY(-50%) translateX(-50%);
-  width: 80%;
+  width: 60%;
+}
+
+.c-switch{
+  margin-top: 20px;
 }
