@@ -27,14 +27,17 @@ header('Location: /login.php');
           <div class="mdl-layout-spacer"></div>
           <!-- Navigation. We hide it in small screens. -->
           <nav class="mdl-navigation mdl-layout--large-screen-only">
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="location.href='/adminuser/adminuser.php'">
-             キャンセル
-            </button>
           </nav>
+          <div class="logout">
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="location.href='/adminuser/adminuser.php'">
+             キャンセル
+          </button>
+          </div>
         </div>
       </header>
       <main class="mdl-layout__content">
         <div class="page-content"><!-- Your content goes here -->
+
 
 <div class="c-add-card mdl-card mdl-shadow--4dp">
   <div class="mdl-card__supporting-text">
@@ -84,7 +87,7 @@ header('Location: /login.php');
 <div class="c-switch">
 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-5">
   <input type="checkbox" id="switch-5" class="mdl-switch__input">
-  <span class="mdl-switch__label">入退室ログの閲覧</span>
+  <span class="mdl-switch__label">入退室履歴の閲覧</span>
 </label>
 </div>
 
@@ -107,19 +110,17 @@ header('Location: /login.php');
 <div class="c-switch">
 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-7">
   <input type="checkbox" id="switch-7" class="mdl-switch__input">
+  <span class="mdl-switch__label">初期化操作</span>
+</label>
+</div>
+
+<div class="c-switch">
+<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-8">
+  <input type="checkbox" id="switch-8" class="mdl-switch__input">
   <span class="mdl-switch__label">システム終了(シャットダウン)</span>
 </label>
 </div>
 
-
-
-
-
-<div class="c-login">
-<button class="mdl-button mdl-js-button mdl-button--raised" type="submit">
-  アカウント作成
-</button>
-</div>
 </form>
 
 
@@ -129,7 +130,6 @@ header('Location: /login.php');
 
 </div>
 </div>
-
 
 
 
