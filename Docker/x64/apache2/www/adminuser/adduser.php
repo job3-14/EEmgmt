@@ -59,6 +59,28 @@ header('Location: /login.php');
   </div>
 <br>
 <p>権限設定</p>
+<br>
+
+<div class="c-switch">
+<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-1">
+  <input type="checkbox" id="switch-1" class="mdl-switch__input">
+  <span class="mdl-switch__label">管理ユーザーの追加・編集・削除</span>
+</label>
+</div>
+
+<div class="c-switch">
+<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-2">
+  <input type="checkbox" id="switch-2" class="mdl-switch__input">
+  <span class="mdl-switch__label"></span>
+</label>
+</div>
+
+
+
+
+
+
+
 <div class="c-login">
 <button class="mdl-button mdl-js-button mdl-button--raised" type="submit">
   アカウント作成
