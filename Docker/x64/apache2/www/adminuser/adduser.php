@@ -36,14 +36,24 @@ header('Location: /login.php');
       <main class="mdl-layout__content">
         <div class="page-content"><!-- Your content goes here -->
 
-<div class="c-add-card">
-<div class="mdl-card mdl-shadow--4dp">
+<div class="c-add-card mdl-card mdl-shadow--4dp">
   <div class="mdl-card__supporting-text">
-    新規登録
+    新規登録する管理ユーザーの情報を入力してください。
   </div>
   <div class="mdl-card__supporting-text">
-  <p>テキスト</p>
+
+  <form action="#">
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <input class="mdl-textfield__input" type="text" id="sample3">
+    <label class="mdl-textfield__label" for="sample3">Text...</label>
   </div>
+</form>
+
+
+
+
+
+
 </div>
 </div>
 
