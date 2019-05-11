@@ -42,11 +42,28 @@ header('Location: /login.php');
   </div>
   <div class="mdl-card__supporting-text">
 
-  <form action="#">
+<form action="#" method="POST">
   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <input class="mdl-textfield__input" type="text" id="sample3">
-    <label class="mdl-textfield__label" for="sample3">Text...</label>
+    <input class="mdl-textfield__input" type="text"  name="user">
+    <label class="mdl-textfield__label">ユーザー名</label>
   </div>
+<br>
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <input class="mdl-textfield__input" type="password"  name="password">
+    <label class="mdl-textfield__label">パスワード</label>
+  </div>
+<br>
+<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <input class="mdl-textfield__input" type="password"  name="password">
+    <label class="mdl-textfield__label">パスワードを再度入力</label>
+  </div>
+<br>
+<p>権限設定</p>
+<div class="c-login">
+<button class="mdl-button mdl-js-button mdl-button--raised" type="submit">
+  アカウント作成
+</button>
+</div>
 </form>
 
 
