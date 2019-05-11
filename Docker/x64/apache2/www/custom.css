@@ -27,11 +27,8 @@
 }
 
 .c-add-card{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateY(-50%) translateX(-50%);
   width: 60%;
+  margin: 30px auto;  //中央寄せ
 }
 
 .c-switch{
