@@ -59,14 +59,6 @@ header('Location: /login.php');
   </div>
 <br>
 <p>権限設定</p>
-<br>
-
-<div class="c-switch">
-<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-1">
-  <input type="checkbox" id="switch-1" class="mdl-switch__input">
-  <span class="mdl-switch__label">管理ユーザーの追加・編集・削除</span>
-</label>
-</div>
 
 <div class="c-switch">
 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-2">
@@ -78,7 +70,7 @@ header('Location: /login.php');
 <div class="c-switch">
 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-3">
   <input type="checkbox" id="switch-3" class="mdl-switch__input">
-  <span class="mdl-switch__label">カード削除</span>
+  <span class="mdl-switch__label">カード編集・削除</span>
 </label>
 </div>
 
@@ -93,6 +85,15 @@ header('Location: /login.php');
 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-5">
   <input type="checkbox" id="switch-5" class="mdl-switch__input">
   <span class="mdl-switch__label">入退室ログの閲覧</span>
+</label>
+</div>
+
+<p>重要権限設定</p>
+
+<div class="c-switch">
+<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-1">
+  <input type="checkbox" id="switch-1" class="mdl-switch__input">
+  <span class="mdl-switch__label">管理ユーザーの追加・編集・削除</span>
 </label>
 </div>
 
