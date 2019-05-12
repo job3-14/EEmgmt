@@ -68,7 +68,7 @@ header('Location: /index.php');
   <div class="mdl-card__supporting-text">
 <p>入退室管理システムへログイン<p>
 
-<div class="c-login-message">
+<div class="c-login-errormessage">
 <?php  //エラーメッセージ等
 foreach($errorMessages as $errorMessage){
 echo $errorMessage."<br>";
@@ -76,7 +76,7 @@ echo $errorMessage."<br>";
 ?>
 </div>
 
-<div>
+<div class="c-login-message">
 <?php  //エラーメッセージ等
 foreach($messages as $message){
 echo $message."<br>";

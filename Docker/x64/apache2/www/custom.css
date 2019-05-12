@@ -18,6 +18,23 @@
   transform: translateY(-50%) translateX(-50%);
 }
 
-.c-login-message{
+.c-login-errormessage{
   color: #ff0000;
+}
+
+.c-login-message{
+  color: #32cd32;
+}
+
+.c-card{
+  padding: 20px;
+}
+
+.c-add-card{
+  width: 60%;
+  margin: 30px auto;  //中央寄せ
+}
+
+.c-switch{
+  margin-bottom: 20px;
 }
