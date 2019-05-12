@@ -69,16 +69,18 @@ header('Location: /index.php');
 <p>入退室管理システムへログイン<p>
 
 <div class="c-login-errormessage">
-<?php  //エラーメッセージ等
+<?php  //エラーメッセージ
 foreach($errorMessages as $errorMessage){
+echo '<img src="/img/HighPriority.png" class="c-login-img">';
 echo $errorMessage."<br>";
 }
 ?>
 </div>
 
 <div class="c-login-message">
-<?php  //エラーメッセージ等
+<?php  //メッセージ
 foreach($messages as $message){
+echo '<img src="/img/Ok.png" class="c-login-img">';
 echo $message."<br>";
 }
 ?>
@@ -112,4 +114,3 @@ echo $message."<br>";
 
   </body>
 </html>
-
