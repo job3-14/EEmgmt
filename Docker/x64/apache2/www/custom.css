@@ -26,6 +26,10 @@
   color: #32cd32;
 }
 
+img.c-login-img{
+  width: 25px;
+}
+
 .c-card{
   padding: 20px;
 }
