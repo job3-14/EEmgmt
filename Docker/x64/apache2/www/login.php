@@ -3,11 +3,11 @@ session_start();
 session_regenerate_id(true); //セッション固定化攻撃対策
 
 //エラーメッセージの定義・初期化
-$errorMessage = array();
-
+$errorMessages = array();
+$messages = array();
 
 if (isset($_SESSION["message"])){
- $errorMessage[] = $_SESSION["message"];
+ $messages[] = $_SESSION["message"];
  $_SESSION = array();  //セッション変数の初期化
 }
 
@@ -17,10 +17,10 @@ require_once('db_setting.php');
 if (isset($_POST["user"])){
  if ($_POST["user"]=="" || $_POST["password"]==""){
    if($_POST["user"]==""){
-     $errorMessage[] = "ユーザー名を入力してください";
+     $errorMessages[] = "ユーザー名を入力してください";
    }
    if ($_POST["password"]==""){
-       $errorMessage[] = "パスワードを入力してください";
+       $errorMessages[] = "パスワードを入力してください";
    }
 }else{
   $user = $_POST["user"];
@@ -38,7 +38,7 @@ if (password_verify($password, $password_hash)) {
     $_SESSION["user"] = $user;
 
 } else {
-    $errorMessage[] =  "ユーザー名またはパスワードが間違っています";
+    $errorMessages[] =  "ユーザー名またはパスワードが間違っています";
 }
 }
 }
@@ -70,7 +70,15 @@ header('Location: /index.php');
 
 <div class="c-login-message">
 <?php  //エラーメッセージ等
-foreach($errorMessage as $message){
+foreach($errorMessages as $errorMessage){
+echo $errorMessage."<br>";
+}
+?>
+</div>
+
+<div>
+<?php  //エラーメッセージ等
+foreach($messages as $message){
 echo $message."<br>";
 }
 ?>
@@ -104,3 +112,4 @@ echo $message."<br>";
 
   </body>
 </html>
+
