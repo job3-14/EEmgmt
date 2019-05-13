@@ -16,8 +16,34 @@
   top: 50%;
   left: 50%;
   transform: translateY(-50%) translateX(-50%);
+  width: 600px;
+}
+
+.c-login-errormessage{
+  color: #ff0000;
 }
 
 .c-login-message{
-  color: #ff0000;
+  color: #32cd32;
+}
+
+img.c-login-img{
+  width: 25px;
+}
+
+.c-login-card-size{
+  width: 60%;
+}
+
+.c-card{
+  padding: 20px;
+}
+
+.c-add-card{
+  width: 60%;
+  margin: 30px auto;  //中央寄せ
+}
+
+.c-switch{
+  margin-bottom: 20px;
 }
