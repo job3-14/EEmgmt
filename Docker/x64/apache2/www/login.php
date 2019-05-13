@@ -61,13 +61,12 @@ header('Location: /index.php');
   </head>
   <body>
 <div class="c-login-card">
-<div class="demo-card-wide mdl-card mdl-shadow--2dp">
-  <div class="mdl-card__title">
-    <h2 class="mdl-card__title-text">ログイン</h2>
+<div class="c-add-card mdl-card mdl-shadow--4dp">
+  <div class="mdl-card__supporting-text">
+   <h4>ログイン</h4>
   </div>
   <div class="mdl-card__supporting-text">
 <p>入退室管理システムへログイン<p>
-
 <div class="c-login-errormessage">
 <?php  //エラーメッセージ
 foreach($errorMessages as $errorMessage){
@@ -97,7 +96,7 @@ echo $message."<br>";
     <input class="mdl-textfield__input" type="password"  name="password">
     <label class="mdl-textfield__label">パスワード</label>
   </div>
-
+<br>
 <div class="c-login">
 <button class="mdl-button mdl-js-button mdl-button--raised" type="submit">
   ログイン
@@ -106,11 +105,11 @@ echo $message."<br>";
 </form>
 
 
-
-
-  </div>
 </div>
 </div>
+</div>
+
+
 
   </body>
 </html>
