@@ -31,5 +31,5 @@ services:
       MYSQL_USER: eemgmt
       MYSQL_PASSWORD: passwd
     volumes:
-      - ./initdb.d:/docker-entrypoint-initdb.d
+      - ./db/initdb:/docker-entrypoint-initdb.d
       - ./db/mysql_data:/var/lib/mysql
