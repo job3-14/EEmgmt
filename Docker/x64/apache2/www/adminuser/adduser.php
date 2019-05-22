@@ -122,6 +122,13 @@ header('Location: /login.php');
 </div>
 
 <div class="c-switch">
+<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-7">
+  <input type="checkbox" id="switch-7" class="mdl-switch__input">
+  <span class="mdl-switch__label">手動送信</span>
+</label>
+</div>
+
+<div class="c-switch">
 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-8">
   <input type="checkbox" id="switch-8" class="mdl-switch__input">
   <span class="mdl-switch__label">システム終了(シャットダウン)</span>
@@ -151,4 +158,3 @@ header('Location: /login.php');
 
   </body>
 </html>
-
