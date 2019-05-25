@@ -32,7 +32,7 @@ docker-composeを利用<br>
 <br><br>
 LICENSE<br>
 =====================
-***google/material-design-icons -> Apache License 2.0***<br>
+***google/material-design-icons -> [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)<br>
 Changes<br>
 Use and Redistribution only iconfont/<br>
 [https://github.com/google/material-design-icons](https://github.com/google/material-design-icons)<br>
