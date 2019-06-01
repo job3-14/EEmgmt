@@ -1,0 +1,10 @@
+[Unit]
+Description=ipaddress Daemon
+
+[Service]
+ExecStart =/usr/bin/python3 /opt/ipaddress.py
+Type=oneshot
+User=root
+
+[Install]
+WantedBy=multi-user.target
