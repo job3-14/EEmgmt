@@ -23,4 +23,6 @@ RUN service xrdp start
 
 CMD service xrdp start
 CMD rm /var/run/xrdp/xrdp.pid
-CMD service xrdp restart && tail -f /dev/null
+#CMD service xrdp restart && tail -f /dev/null
+CMD service xrdp restart
+CMD sudo -u test -c python3 /opt/topmenu.py
