@@ -9,6 +9,7 @@ services:
          -  /dev/bus/usb/001/004
     ports:
         - 3389:3389
+    restart: always
 
  web:
    build:
@@ -21,6 +22,7 @@ services:
      - ./apache2/www:/var/www/html
      - ./apache2/conf:/etc/apache2
      - ./apache2/ssl:/etc/ssl
+   restart: always
 
  db:
   image: mariadb:10.4
@@ -36,3 +38,4 @@ services:
    #ユーザー
    MYSQL_USER: eemgmt
    MYSQL_PASSWORD: passwd
+  restart: always
