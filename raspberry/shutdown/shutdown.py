@@ -4,7 +4,7 @@ import time
 import RPi.GPIO as GPIO
 import subprocess
 
-gpio_pin = 21
+gpio_pin = 13
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(gpio_pin,GPIO.IN,pull_up_down=GPIO.PUD_UP)
 
