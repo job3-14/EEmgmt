@@ -3,11 +3,11 @@ session_start();
 session_regenerate_id(true); //セッション固定化攻撃対策
 
 //エラーメッセージの定義・初期化
-$errorMessage = array();
-
+$errorMessages = array();
+$messages = array();
 
 if (isset($_SESSION["message"])){
- $errorMessage[] = $_SESSION["message"];
+ $messages[] = $_SESSION["message"];
  $_SESSION = array();  //セッション変数の初期化
 }
 
@@ -17,17 +17,17 @@ require_once('db_setting.php');
 if (isset($_POST["user"])){
  if ($_POST["user"]=="" || $_POST["password"]==""){
    if($_POST["user"]==""){
-     $errorMessage[] = "ユーザー名を入力してください";
+     $errorMessages[] = "ユーザー名を入力してください";
    }
    if ($_POST["password"]==""){
-       $errorMessage[] = "パスワードを入力してください";
+       $errorMessages[] = "パスワードを入力してください";
    }
 }else{
   $user = $_POST["user"];
   $password = $_POST["password"];
   //データベース接続
   $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
-     $sql  = $pdo->prepare("SELECT password  FROM user WHERE name= ?");
+     $sql  = $pdo->prepare("SELECT pass FROM login WHERE username= ?");
      $sql->bindValue(1,$user);
      $sql->execute();
   $password_hash =  $sql->fetchColumn();
@@ -38,7 +38,7 @@ if (password_verify($password, $password_hash)) {
     $_SESSION["user"] = $user;
 
 } else {
-    $errorMessage[] =  "ユーザー名またはパスワードが間違っています";
+    $errorMessages[] =  "ユーザー名またはパスワードが間違っています";
 }
 }
 }
@@ -61,18 +61,29 @@ header('Location: /index.php');
   </head>
   <body>
 <div class="c-login-card">
-<div class="demo-card-wide mdl-card mdl-shadow--2dp">
-  <div class="mdl-card__title">
-    <h2 class="mdl-card__title-text">ログイン</h2>
+<div class="c-add-card mdl-card mdl-shadow--4dp">
+  <div class="mdl-card__supporting-text">
+   <h4>ログイン</h4>
   </div>
   <div class="mdl-card__supporting-text">
 <p>入退室管理システムへログイン<p>
+<div class="c-login-errormessage">
+<?php  //エラーメッセージ
+foreach($errorMessages as $errorMessage){
+echo '<img src="/img/HighPriority.png" class="c-login-img">';
+echo $errorMessage."<br>";
+}
+?>
+</div>
 
-<?php  //エラーメッセージ等
-foreach($errorMessage as $message){
+<div class="c-login-message">
+<?php  //メッセージ
+foreach($messages as $message){
+echo '<img src="/img/Ok.png" class="c-login-img">';
 echo $message."<br>";
 }
 ?>
+</div>
 
 <form action="#" method="POST">
   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -85,7 +96,7 @@ echo $message."<br>";
     <input class="mdl-textfield__input" type="password"  name="password">
     <label class="mdl-textfield__label">パスワード</label>
   </div>
-
+<br>
 <div class="c-login">
 <button class="mdl-button mdl-js-button mdl-button--raised" type="submit">
   ログイン
@@ -94,11 +105,11 @@ echo $message."<br>";
 </form>
 
 
-
-
-  </div>
 </div>
 </div>
+</div>
+
+
 
   </body>
 </html>
