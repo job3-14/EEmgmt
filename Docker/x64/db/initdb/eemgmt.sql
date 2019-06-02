@@ -7,7 +7,7 @@ pass VARCHAR(300) NOT NULL,
 PRIMARY KEY (username));
 
 CREATE TABLE service_user(
-idm INTEGER NOT NULL,
+idm VARCHAR(30) NOT NULL,
 notice VARCHAR(30) NOT NULL,
 address VARCHAR(300),
 PRIMARY KEY (idm));
