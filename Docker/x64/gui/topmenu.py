@@ -12,7 +12,7 @@ from datetime import datetime
 
 #データベース接続開始##################
 conn = mysql.connector.connect(
-	host='localhost',
+	host='db',
 	port='3306',
 	user='root',
 	password='passwd',
@@ -39,11 +39,6 @@ def main_gui():
 	def end():
 	        root.quit()
 
-	def ipadress():                    #ipアドレス取得関数
-        	ip = netifaces.ifaddresses('br0')[netifaces.AF_INET][0]['addr']
-        	#print(ip)
-        	return ip
-
 	def checkin():
 	        root.destroy()
         	checkin_gui()
@@ -53,12 +48,9 @@ def main_gui():
 	lbl = tk.Label(text='入退出管理システム',font=("",text_size))
 	lbl.place(x=2, y=2)
 	text_lo = text_size + 20
-	lbl_ip = tk.Label(text="IPアドレスは"+ipadress()+"です。",font=("",text_size2))
-	lbl_ip.place(x=2, y=text_lo)
 	lbl2 = tk.Label(text='入室か退室を選択してください。',font=("",text_size2))
 	text_lo  += text_size2 + 20
 	lbl2.place(x=2, y=text_lo)
-
 	checkin = tk.Button(root,text="入室\nにゅうしつ",command=checkin,height=4,width=9,bg="#7fbfff",activebackground="#7fbfff",font=("",buttron_size))
 	checkout  = tk.Button(root,text="退室\nたいしつ",command=end ,height=4,width=9,bg="#ffff7f",activebackground="#ffff7f",font=("",buttron_size))
 
