@@ -35,7 +35,7 @@ def main_gui():
 	###テキストサイズ計算###
 	text_size = int(screen_width * 0.02868253968254)
 	text_size2 = int(text_size / 2)
-	
+
 	def end():
 	        root.quit()
 
@@ -56,7 +56,7 @@ def main_gui():
 	lbl_ip = tk.Label(text="IPアドレスは"+ipadress()+"です。",font=("",text_size2))
 	lbl_ip.place(x=2, y=text_lo)
 	lbl2 = tk.Label(text='入室か退室を選択してください。',font=("",text_size2))
-	text_lo  += text_size2 + 20 
+	text_lo  += text_size2 + 20
 	lbl2.place(x=2, y=text_lo)
 
 	checkin = tk.Button(root,text="入室\nにゅうしつ",command=checkin,height=4,width=9,bg="#7fbfff",activebackground="#7fbfff",font=("",buttron_size))
@@ -77,14 +77,14 @@ def checkin_gui():
 		id_check = ('ID=' in result)
 		error_check = ('Unsupported_card' in result)
 		timeout_check = ('Time_out' in result)
-		if id_check == True: 
+		if id_check == True:
 			idm = result.find('ID=')
-			idm += 3 
+			idm += 3
 			idm_end = idm + 16
 			id_card = result[idm:idm_end]
 			id_card = "'" + id_card + "'"
 			cur = conn.cursor()
-			sql = 'SELECT name, slack  FROM Basic_info WHERE idm =' + id_card
+			sql = 'SELECT name, slack  FROM service_user WHERE idm =' + id_card
 			cur.execute(sql)
 			result = cur.fetchall()
 			if not result:
@@ -120,7 +120,7 @@ def checkin_gui():
 	def return_gui():
 			root.destroy()
 			main_gui()
-	
+
 	def read_thread():
 		go_read  = threading.Thread(target = read_id)
 		go_read.setDaemon(True)
