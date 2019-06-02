@@ -84,7 +84,7 @@ def checkin_gui():
 			id_card = result[idm:idm_end]
 			id_card = "'" + id_card + "'"
 			cur = conn.cursor()
-			sql = 'SELECT name  FROM service_user WHERE idm =' + id_card
+			sql = 'SELECT name FROM service_user WHERE idm =' + id_card
 			cur.execute(sql)
 			result = cur.fetchall()
 			if not result:
