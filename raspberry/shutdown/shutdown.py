@@ -9,6 +9,8 @@ def lcd():
     subprocess.check_output(["i2cset","-y","1","0x3e","0x40","0xbc","0xac","0xaf","0xc4","0xc0","0xde","0xb3","0xdd","i"])
     subprocess.check_output(["i2cset","-y","1","0x3e","0x00","0xC0","b"])
     subprocess.check_output(["i2cset","-y","1","0x3e","0x40","0xbc","0xcf","0xbd","i"])
+
+def shutdown():
     subprocess.check_output(["shutdown","-h","now"])
 
 gpio_pin = 21
@@ -25,8 +27,9 @@ while True:
             if i >= 499:
                 try:
                     lcd()
+                    shutdown()
                 except:
-                    pass
+                    shutdown()
                 break
         else:
                 break
