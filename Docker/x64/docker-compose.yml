@@ -22,7 +22,7 @@ services:
      - ./apache2/conf:/etc/apache2
      - ./apache2/ssl:/etc/ssl
 
-  db:
+ db:
     image: mariadb:10.4
     ports:
      - 3306:3306
