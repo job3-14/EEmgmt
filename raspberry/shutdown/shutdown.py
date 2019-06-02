@@ -23,7 +23,10 @@ while True:
         button_st = GPIO.input(gpio_pin)
         if button_st == 0:
             if i >= 499:
-                lcd()
+                try:
+                    lcd()
+                except:
+                    pass
                 break
         else:
                 break
