@@ -6,6 +6,8 @@ header('Location: /login.php');
 require_once('../db_setting.php');
 $errorMessages = array();
 $permission = array();
+$permission2 = array();
+
 try {
   if(!$_POST["user"]==""){
     $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
@@ -52,61 +54,61 @@ if (isset($_POST["user"])){
 }
 
 if(isset($_POST["addcard"])){
-  $permission = "カード登録";;
+  $permission[] = "カード登録";
   $_SESSION["permission"]["addcard"]=1;
 }else{
   $_SESSION["permission"]["addcard"]=0;
 }
 if(isset($_POST["editcard"])){
-  $permission = "カード編集・削除";
+  $permission[] = "カード編集・削除";
   $_SESSION["permission"]["editcard"]=1;
 }else{
   $_SESSION["permission"]["editcard"]=0;
 }
 if(isset($_POST["sendnotice"])){
-  $permission = "入退室通知手動送信";
+  $permission[] = "入退室通知手動送信";
   $_SESSION["permission"]["sendnotice"]=1;
 }else{
   $_SESSION["permission"]["sendnotice"]=0;
 }
 if(isset($_POST["viewexit"])){
-  $permission = "入退室履歴の閲覧";
+  $permission[] = "入退室履歴の閲覧";
   $_SESSION["permission"]["viewexit"]=1;
 }else{
   $_SESSION["permission"]["viewexit"]=0;
 }
 if(isset($_POST["viewloginlog"])){
-  $permission2 = "管理者ログイン試行ログ閲覧";
+  $permission2[] = "管理者ログイン試行ログ閲覧";
   $_SESSION["permission"]["viewloginlog"]=1;
 }else{
   $_SESSION["permission"]["viewloginlog"]=0;
 }
 if(isset($_POST["deletelog"])){
-  $permission2 = "入退室履歴の削除";
+  $permission2[] = "入退室履歴の削除";
   $_SESSION["permission"]["deletelog"]=1;
 }else{
   $_SESSION["permission"]["deletelog"]=0;
 }
 if(isset($_POST["initialize"])){
-  $permission2 = "初期化操作";
+  $permission2[] = "初期化操作";
   $_SESSION["permission"]["initialize"]=1;
 }else{
   $_SESSION["permission"]["initialize"]=0;
 }
 if(isset($_POST["setmail"])){
-  $permission2 = "メールサーバー設定操作";
+  $permission2[] = "メールサーバー設定操作";
   $_SESSION["permission"]["setmail"]=1;
 }else{
   $_SESSION["permission"]["setmail"]=0;
 }
 if(isset($_POST["shutdown"])){
-  $permission2 = "システム終了(シャットダウン)";
+  $permission2[] = "システム終了(シャットダウン)";
   $_SESSION["permission"]["shutdown"]=1;
 }else{
   $_SESSION["permission"]["shutdown"]=0;
 }
 if(isset($_POST["edituser"])){
-  $permission2 = "管理ユーザーの追加・編集・削除";
+  $permission2[] = "管理ユーザーの追加・編集・削除";
   $_SESSION["permission"]["edituser"]=1;
 }else{
   $_SESSION["permission"]["edituser"]=0;
@@ -153,8 +155,17 @@ if(isset($_POST["edituser"])){
     登録内容を確認してください
   </div>
   <div class="mdl-card__supporting-text">
+    <?php  //エラーメッセージ
+    foreach($permission as $message){
+    echo $message."<br>";
+    }
+    ?>
 
-
+    <?php  //エラーメッセージ
+    foreach($permission2 as $message){
+    echo $message."<br>";
+    }
+    ?>
 
 
   <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="button" onclick="history.back()">
