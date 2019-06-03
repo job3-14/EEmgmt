@@ -98,13 +98,6 @@ $_SESSION["errorMessages"]=array();
 <p>許可する操作を選択してください</p>
 
 <div class="c-switch">
-<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-1">
-  <input type="checkbox" id="switch-1" class="mdl-switch__input" name="edituser" value="edituser">
-  <span class="mdl-switch__label">管理ユーザーの追加・編集・削除</span>
-</label>
-</div>
-
-<div class="c-switch">
 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-6">
   <input type="checkbox" id="switch-6" class="mdl-switch__input" name="viewloginlog" value="viewloginlog">
   <span class="mdl-switch__label">管理者ログイン試行ログ閲覧</span>
@@ -112,30 +105,37 @@ $_SESSION["errorMessages"]=array();
 </div>
 
 <div class="c-switch">
-<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-8">
-  <input type="checkbox" id="switch-8" class="mdl-switch__input" name="deletelog" value="deletelog">
+<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-7">
+  <input type="checkbox" id="switch-7" class="mdl-switch__input" name="deletelog" value="deletelog">
   <span class="mdl-switch__label">入退室履歴の削除</span>
 </label>
 </div>
 
 <div class="c-switch">
-<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-7">
-  <input type="checkbox" id="switch-7" class="mdl-switch__input" name="initialize" value="Initialize">
+<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-8">
+  <input type="checkbox" id="switch-8" class="mdl-switch__input" name="initialize" value="Initialize">
   <span class="mdl-switch__label">初期化操作</span>
 </label>
 </div>
 
 <div class="c-switch">
-<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-7">
-  <input type="checkbox" id="switch-7" class="mdl-switch__input" name="setmail" value="setmail">
+<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-9">
+  <input type="checkbox" id="switch-9" class="mdl-switch__input" name="setmail" value="setmail">
   <span class="mdl-switch__label">メールサーバー設定操作</span>
 </label>
 </div>
 
 <div class="c-switch">
-<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-8">
-  <input type="checkbox" id="switch-8" class="mdl-switch__input" name="shutdown" value="shutdown">
+<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-10">
+  <input type="checkbox" id="switch-10" class="mdl-switch__input" name="shutdown" value="shutdown">
   <span class="mdl-switch__label">システム終了(シャットダウン)</span>
+</label>
+</div>
+
+<div class="c-switch">
+<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-11">
+  <input type="checkbox" id="switch-11" class="mdl-switch__input" name="edituser" value="edituser">
+  <span class="mdl-switch__label">管理ユーザーの追加・編集・削除</span>
 </label>
 </div>
 
