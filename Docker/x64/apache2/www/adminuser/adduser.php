@@ -47,7 +47,7 @@ $_POST = array();
   </div>
   <div class="mdl-card__supporting-text">
 
-<form action="./adduser-error.php" method="POST">
+<form action="./adduser2.php" method="POST">
   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
     <input class="mdl-textfield__input" type="text"  name="user">
     <label class="mdl-textfield__label">ユーザー名</label>
