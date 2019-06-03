@@ -6,11 +6,11 @@ header('Location: /login.php');
 
 $errorMessages = array();
 if (isset($_POST["user"])){
-  if($_POST["user"]=="" || $_POST["password1"]=="" || $_POST["user"]==$_POST["password1"]){
+  if($_POST["user"]=="" || $_POST["password1"]=="" || $_POST["user"]==$_POST["password1"] || preg_match("/^[a-zA-Z0-9]+$/",$_POST["user"])){
     if($_POST["user"]==""){
       $errorMessages[] = "ユーザー名を入力してください";
     }
-    if($_POST["user"]==$_POST["password1"]){
+    if($_POST["user"]==$_POST["password1"] && !$_POST["user"]==""){
       $errorMessages[] ="ユーザーとパスワードは一致してはいけません。違う組み合わせにしてください";
     }
     if($_POST["password1"]==""){
@@ -20,7 +20,9 @@ if (isset($_POST["user"])){
     }elseif($_POST["password1"]!==$_POST["password2"]){
       $errorMessages[] = "パスワードが一致していません";
     }
-
+    if(!preg_match("/^[a-zA-Z0-9]+$/",$_POST["user"]) && !$_POST["user"]==""){
+      $errorMessages[] = "ユーザー名は半角文字数字のみが使用できます";
+    }
 }else{
     header('Location: ./adduser2.php');
   }
