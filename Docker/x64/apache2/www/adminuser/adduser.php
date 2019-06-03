@@ -68,28 +68,28 @@ $_POST = array();
 
 <div class="c-switch">
 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-2">
-  <input type="checkbox" id="switch-2" class="mdl-switch__input" name="permission[]" value="addcard">
+  <input type="checkbox" id="switch-2" class="mdl-switch__input" name="addcard" value="addcard">
   <span class="mdl-switch__label">カード登録</span>
 </label>
 </div>
 
 <div class="c-switch">
 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-3">
-  <input type="checkbox" id="switch-3" class="mdl-switch__input" name="permission[]" value="editcard">
+  <input type="checkbox" id="switch-3" class="mdl-switch__input" name="editcard" value="editcard">
   <span class="mdl-switch__label">カード編集・削除</span>
 </label>
 </div>
 
 <div class="c-switch">
 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-4">
-  <input type="checkbox" id="switch-4" class="mdl-switch__input" name="permission[]" value="sendnotice">
+  <input type="checkbox" id="switch-4" class="mdl-switch__input" name="sendnotice" value="sendnotice">
   <span class="mdl-switch__label">入退室通知手動送信</span>
 </label>
 </div>
 
 <div class="c-switch">
 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-5">
-  <input type="checkbox" id="switch-5" class="mdl-switch__input" name="permission[]" value="viewexit">
+  <input type="checkbox" id="switch-5" class="mdl-switch__input" name="viewexit" value="viewexit">
   <span class="mdl-switch__label">入退室履歴の閲覧</span>
 </label>
 </div>
@@ -99,42 +99,42 @@ $_POST = array();
 
 <div class="c-switch">
 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-1">
-  <input type="checkbox" id="switch-1" class="mdl-switch__input" name="importantPermission[]" value="edituser">
+  <input type="checkbox" id="switch-1" class="mdl-switch__input" name="edituser" value="edituser">
   <span class="mdl-switch__label">管理ユーザーの追加・編集・削除</span>
 </label>
 </div>
 
 <div class="c-switch">
 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-6">
-  <input type="checkbox" id="switch-6" class="mdl-switch__input" name="importantPermission[]" value="viewloginlog">
+  <input type="checkbox" id="switch-6" class="mdl-switch__input" name="viewloginlog" value="viewloginlog">
   <span class="mdl-switch__label">管理者ログイン試行ログ閲覧</span>
 </label>
 </div>
 
 <div class="c-switch">
 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-8">
-  <input type="checkbox" id="switch-8" class="mdl-switch__input" name="importantPermission[]" value="deletelog">
+  <input type="checkbox" id="switch-8" class="mdl-switch__input" name="deletelog" value="deletelog">
   <span class="mdl-switch__label">入退室履歴の削除</span>
 </label>
 </div>
 
 <div class="c-switch">
 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-7">
-  <input type="checkbox" id="switch-7" class="mdl-switch__input" name="importantPermission[]" value="Initialize">
+  <input type="checkbox" id="switch-7" class="mdl-switch__input" name="initialize" value="Initialize">
   <span class="mdl-switch__label">初期化操作</span>
 </label>
 </div>
 
 <div class="c-switch">
 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-7">
-  <input type="checkbox" id="switch-7" class="mdl-switch__input" name="importantPermission[]" value="setmail">
+  <input type="checkbox" id="switch-7" class="mdl-switch__input" name="setmail" value="setmail">
   <span class="mdl-switch__label">メールサーバー設定操作</span>
 </label>
 </div>
 
 <div class="c-switch">
 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-8">
-  <input type="checkbox" id="switch-8" class="mdl-switch__input" name="importantPermission[]" value="shutdown">
+  <input type="checkbox" id="switch-8" class="mdl-switch__input" name="shutdown" value="shutdown">
   <span class="mdl-switch__label">システム終了(シャットダウン)</span>
 </label>
 </div>
