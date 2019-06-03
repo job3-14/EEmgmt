@@ -45,9 +45,9 @@ if (isset($_POST["user"])){
     if($dberror==1){
       $errorMessages[] = "データベース確立エラー";
     }
-}else{
-    header('Location: ./adduser2.php');
-  }
+    $_SESSION["errorMessages"]=$errorMessages;
+    header('Location: ./adduser_error.php');
+}
 }
 ?>
 
