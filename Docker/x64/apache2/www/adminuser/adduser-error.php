@@ -68,12 +68,14 @@ if (isset($_POST["user"])){
     以下のエラー内容を修正してください
   </div>
   <div class="mdl-card__supporting-text">
+    <div class="c-errormessage">
     <?php  //エラーメッセージ
     foreach($errorMessages as $errorMessage){
     echo '<img src="/img/HighPriority.png" class="c-login-img">';
     echo $errorMessage."<br>";
     }
     ?>
+  </div>
 <form action="./adduser2.php" method="POST">
 
 
