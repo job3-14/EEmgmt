@@ -49,6 +49,7 @@ header('Location: /login.php');
     foreach($_SESSION["errorMessages"] as $errorMessage){
     echo '<img src="/img/HighPriority.png" class="c-login-img">';
     echo $errorMessage."<br>";
+    $_SESSION["errorMessages"]=array();
     }
     ?>
     <br>
