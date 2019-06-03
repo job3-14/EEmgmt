@@ -124,7 +124,7 @@ header('Location: /login.php');
 <div class="c-switch">
 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-7">
   <input type="checkbox" id="switch-7" class="mdl-switch__input">
-  <span class="mdl-switch__label">手動送信</span>
+  <span class="mdl-switch__label">メールサーバー設定操作</span>
 </label>
 </div>
 
