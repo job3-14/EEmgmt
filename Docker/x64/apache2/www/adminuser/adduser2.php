@@ -87,18 +87,13 @@ if (isset($_POST["user"])){
 
 <div class="c-add-card mdl-card mdl-shadow--4dp">
   <div class="mdl-card__supporting-text">
-    以下のエラー内容を修正してください
+    登録内容を確認してください
   </div>
   <div class="mdl-card__supporting-text">
-    <div class="c-errormessage">
-    <?php  //エラーメッセージ
-    foreach($errorMessages as $errorMessage){
-    echo '<img src="/img/HighPriority.png" class="c-login-img">';
-    echo $errorMessage."<br>";
-    }
-    ?>
-    <br>
-  </div>
+
+
+
+
   <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="button" onclick="history.back()">
      戻る
   </button>
