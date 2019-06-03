@@ -61,7 +61,8 @@ header('Location: /login.php');
     <label class="mdl-textfield__label">パスワードを再度入力</label>
   </div>
 <br>
-<p>権限設定</p>
+<h5>権限設定</h5>
+<p>許可する操作を選択してください</p>
 
 <div class="c-switch">
 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-2">
@@ -91,7 +92,8 @@ header('Location: /login.php');
 </label>
 </div>
 
-<p>重要権限設定</p>
+<h5>重要権限設定</h5>
+<p>許可する操作を選択してください</p>
 
 <div class="c-switch">
 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-1">
