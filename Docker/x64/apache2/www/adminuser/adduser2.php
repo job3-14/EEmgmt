@@ -155,12 +155,13 @@ if(isset($_POST["edituser"])){
     登録内容を確認してください
   </div>
   <div class="mdl-card__supporting-text">
+    <h5>基本権限設定</h5>
     <?php  //エラーメッセージ
     foreach($permission as $message){
     echo $message."<br>";
     }
     ?>
-
+    <h5>重要権限設定</h5>
     <?php  //エラーメッセージ
     foreach($permission2 as $message){
     echo $message."<br>";
