@@ -174,9 +174,15 @@ if(isset($_POST["edituser"])){
     ?>
 
   <br>
+  <div class="c-r-button">
   <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="button" onclick="history.back()">
      戻る
   </button>
+
+  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="button" >
+     登録実行
+  </button>
+</div>
 </div>
 </div>
 
