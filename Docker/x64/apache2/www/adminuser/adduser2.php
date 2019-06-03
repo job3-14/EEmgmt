@@ -179,7 +179,7 @@ if(isset($_POST["edituser"])){
      戻る
   </button>
 
-  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="button" >
+  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="button" >
      登録実行
   </button>
 </div>
