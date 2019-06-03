@@ -6,17 +6,20 @@ header('Location: /login.php');
 require_once('../db_setting.php');
 $errorMessages = array();
 try {
-  $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
-  $sql  = $pdo->prepare("SELECT EXISTS(SELECT username FROM login WHERE username = ?)");
-  $sql->bindValue(1,$_POST["user"]);
-  $sql->execute();
-  $result=  $sql->fetchColumn();
+  if(!$_POST["user"]==""){
+    $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
+    $sql  = $pdo->prepare("SELECT EXISTS(SELECT username FROM login WHERE username = ?)");
+    $sql->bindValue(1,$_POST["user"]);
+    $sql->execute();
+    $result=  $sql->fetchColumn();
+    $dberror=0;
+  }
 }catch (Exception $e){
-  $errorMessages[] = "データベース確立エラー";
+  $dberror=1;
 }
 
 if (isset($_POST["user"])){
-  if($_POST["user"]=="" || $_POST["password1"]=="" || $_POST["user"]==$_POST["password1"] || !preg_match("/^[a-zA-Z0-9]+$/", $_POST["user"]) || strlen($_POST["password1"])<6 || strlen($_POST["password1"])>=30 || $result==1){
+  if($_POST["user"]=="" || $_POST["password1"]=="" || $_POST["user"]==$_POST["password1"] || !preg_match("/^[a-zA-Z0-9]+$/", $_POST["user"]) || strlen($_POST["password1"])<6 || strlen($_POST["password1"])>=50 || $result==1 || $dberror==1){
     if($_POST["user"]==""){
       $errorMessages[] = "ユーザー名を入力してください";
     }
@@ -33,11 +36,14 @@ if (isset($_POST["user"])){
     if(!preg_match("/^[a-zA-Z0-9]+$/",$_POST["user"]) && !$_POST["user"]==""){
       $errorMessages[] = "ユーザー名は半角文字数字のみが使用できます";
     }
-    if(strlen($_POST["password1"])<6 || strlen($_POST["password1"])>=30){
-      $errorMessages[] = "パスワードは6文字から30文字で入力してください。";
+    if(strlen($_POST["password1"])<6 || strlen($_POST["password1"])>=50){
+      $errorMessages[] = "パスワードは6文字から50文字で入力してください。";
     }
     if($result==1){
       $errorMessages[] = "このユーザー名は既に使用されている為使えません。別のユーザー名をご利用ください";
+    }
+    if($dberror==1){
+      $errorMessages[] = "データベース確立エラー";
     }
 }else{
     header('Location: ./adduser2.php');
