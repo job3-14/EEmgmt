@@ -52,6 +52,8 @@ if (isset($_POST["user"])){
     header('Location: ./adduser_error.php');
 }
 }
+$_SESSION["adduser"] = $_POST["user"];
+$_SESSION["addpassword"] = password_hash($_POST["password1"], PASSWORD_DEFAULT);
 
 if(isset($_POST["addcard"])){
   $permission[] = "カード登録";
@@ -155,6 +157,9 @@ if(isset($_POST["edituser"])){
     登録内容を確認してください
   </div>
   <div class="mdl-card__supporting-text">
+    <h5>ユーザー名</h5>
+    <?php echo $_POST["user"]; ?>
+    <br>
     <h5>基本権限設定</h5>
     <?php  //エラーメッセージ
     foreach($permission as $message){
@@ -168,7 +173,7 @@ if(isset($_POST["edituser"])){
     }
     ?>
 
-
+  <br>
   <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="button" onclick="history.back()">
      戻る
   </button>
