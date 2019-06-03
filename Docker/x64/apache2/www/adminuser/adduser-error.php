@@ -5,6 +5,26 @@ header('Location: /login.php');
 }
 
 $errorMessages = array();
+if (isset($_POST["user"])){
+  if($_POST["user"]=="" || $_POST["password1"]=="" || $_POST["user"]==$_POST["password1"]){
+    if($_POST["user"]==""){
+      $errorMessages[] = "ユーザー名を入力してください";
+    }
+    if($_POST["user"]==$_POST["password1"]){
+      $errorMessages[] ="ユーザーとパスワードは一致してはいけません。違う組み合わせにしてください";
+    }
+    if($_POST["password1"]==""){
+      $errorMessages[] = "パスワードを入力してください";
+    }elseif($_POST["password2"]==""){
+      $errorMessages[] = "パスワードを2度入力してください";
+    }elseif($_POST["password1"]!==$_POST["password2"]){
+      $errorMessages[] = "パスワードが一致していません";
+    }
+
+}else{
+    header('Location: ./adduser2.php');
+  }
+}
 ?>
 
 
