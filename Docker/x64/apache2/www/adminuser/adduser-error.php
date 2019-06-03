@@ -6,7 +6,7 @@ header('Location: /login.php');
 
 $errorMessages = array();
 if (isset($_POST["user"])){
-  if($_POST["user"]=="" || $_POST["password1"]=="" || $_POST["user"]==$_POST["password1"] || preg_match("/^[a-zA-Z0-9]+$/",$_POST["user"])){
+  if($_POST["user"]=="" || $_POST["password1"]=="" || $_POST["user"]==$_POST["password1"] || !preg_match("/^[a-zA-Z0-9]+$/", $_POST["user"]) || strlen($_POST["password1"])<6 || strlen($_POST["password1"])>=30){
     if($_POST["user"]==""){
       $errorMessages[] = "ユーザー名を入力してください";
     }
@@ -22,6 +22,9 @@ if (isset($_POST["user"])){
     }
     if(!preg_match("/^[a-zA-Z0-9]+$/",$_POST["user"]) && !$_POST["user"]==""){
       $errorMessages[] = "ユーザー名は半角文字数字のみが使用できます";
+    }
+    if(strlen($_POST["password1"])<6 || strlen($_POST["password1"])>=30){
+      $errorMessages[] = "パスワードは6文字から30文字で入力してください。";
     }
 }else{
     header('Location: ./adduser2.php');
