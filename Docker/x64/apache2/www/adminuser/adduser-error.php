@@ -97,13 +97,11 @@ if (isset($_POST["user"])){
     echo $errorMessage."<br>";
     }
     ?>
+    <br>
   </div>
-<form action="./adduser2.php" method="POST">
-
-
-
-
-</form>
+  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="button" onclick="history.back()">
+     戻る
+  </button>
 </div>
 </div>
 
