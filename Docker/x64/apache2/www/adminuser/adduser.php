@@ -52,12 +52,12 @@ header('Location: /login.php');
   </div>
 <br>
   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <input class="mdl-textfield__input" type="password"  name="password">
+    <input class="mdl-textfield__input" type="password"  name="password1">
     <label class="mdl-textfield__label">パスワード</label>
   </div>
 <br>
 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <input class="mdl-textfield__input" type="password"  name="password">
+    <input class="mdl-textfield__input" type="password"  name="password2">
     <label class="mdl-textfield__label">パスワードを再度入力</label>
   </div>
 <br>
@@ -66,28 +66,28 @@ header('Location: /login.php');
 
 <div class="c-switch">
 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-2">
-  <input type="checkbox" id="switch-2" class="mdl-switch__input">
+  <input type="addcard" id="switch-2" class="mdl-switch__input">
   <span class="mdl-switch__label">カード登録</span>
 </label>
 </div>
 
 <div class="c-switch">
 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-3">
-  <input type="checkbox" id="switch-3" class="mdl-switch__input">
+  <input type="editcard" id="switch-3" class="mdl-switch__input">
   <span class="mdl-switch__label">カード編集・削除</span>
 </label>
 </div>
 
 <div class="c-switch">
 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-4">
-  <input type="checkbox" id="switch-4" class="mdl-switch__input">
+  <input type="manualsend" id="switch-4" class="mdl-switch__input">
   <span class="mdl-switch__label">入退室通知手動送信</span>
 </label>
 </div>
 
 <div class="c-switch">
 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-5">
-  <input type="checkbox" id="switch-5" class="mdl-switch__input">
+  <input type="viewhistory" id="switch-5" class="mdl-switch__input">
   <span class="mdl-switch__label">入退室履歴の閲覧</span>
 </label>
 </div>
@@ -97,42 +97,42 @@ header('Location: /login.php');
 
 <div class="c-switch">
 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-1">
-  <input type="checkbox" id="switch-1" class="mdl-switch__input">
+  <input type="edituser" id="switch-1" class="mdl-switch__input">
   <span class="mdl-switch__label">管理ユーザーの追加・編集・削除</span>
 </label>
 </div>
 
 <div class="c-switch">
 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-6">
-  <input type="checkbox" id="switch-6" class="mdl-switch__input">
+  <input type="viewrogin" id="switch-6" class="mdl-switch__input">
   <span class="mdl-switch__label">管理者ログイン試行ログ閲覧</span>
 </label>
 </div>
 
 <div class="c-switch">
 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-8">
-  <input type="checkbox" id="switch-8" class="mdl-switch__input">
+  <input type="rmeehistory" id="switch-8" class="mdl-switch__input">
   <span class="mdl-switch__label">入退室履歴の削除</span>
 </label>
 </div>
 
 <div class="c-switch">
 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-7">
-  <input type="checkbox" id="switch-7" class="mdl-switch__input">
+  <input type="initialize" id="switch-7" class="mdl-switch__input">
   <span class="mdl-switch__label">初期化操作</span>
 </label>
 </div>
 
 <div class="c-switch">
 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-7">
-  <input type="checkbox" id="switch-7" class="mdl-switch__input">
+  <input type="editmail" id="switch-7" class="mdl-switch__input">
   <span class="mdl-switch__label">メールサーバー設定操作</span>
 </label>
 </div>
 
 <div class="c-switch">
 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-8">
-  <input type="checkbox" id="switch-8" class="mdl-switch__input">
+  <input type="shutdown" id="switch-8" class="mdl-switch__input">
   <span class="mdl-switch__label">システム終了(シャットダウン)</span>
 </label>
 </div>
