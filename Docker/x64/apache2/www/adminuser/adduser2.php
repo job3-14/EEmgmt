@@ -3,6 +3,9 @@ session_start();
 if (!isset($_SESSION["user"])){
 header('Location: /login.php');
 }
+if($_SERVER["REQUEST_METHOD"] != "POST"){
+  header('Location: ./adduser.php'); 
+}
 require_once('../db_setting.php');
 $errorMessages = array();
 $permission = array();
