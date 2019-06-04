@@ -185,9 +185,12 @@ if(isset($_POST["edituser"])){
      戻る
   </button>
 
+  <form action="./adduser3.php" method="POST">
+    <input type="hidden" name="adduserstatus" value="1">
   <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="button" >
      登録実行
   </button>
+</form>
 </div>
 </div>
 </div>
