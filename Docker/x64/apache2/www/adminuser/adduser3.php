@@ -30,7 +30,12 @@ if (isset($_POST["user"])){
     $_SESSION["errorMessages"]=$errorMessages;
     header('Location: ./adduser_error.php');
 }
+$errorMessages[] = "操作エラーです。"
+$_SESSION["errorMessages"]=$errorMessages;
+header('Location: ./adduser_error.php');
 }
+
+
 ?>
 
 
