@@ -54,9 +54,10 @@ if (isset($_POST["user"])){
     $_SESSION["errorMessages"]=$errorMessages;
     header('Location: ./adduser_error.php');
 }
-$errorMessages[] = "操作エラーです"
-$_SESSION["errorMessages"]=$errorMessages;
-header('Location: ./adduser_error.php')
+}else{
+  $errorMessages[] = "操作エラーです";
+  $_SESSION["errorMessages"]=$errorMessages;
+  header('Location: ./adduser_error.php');
 }
 $_SESSION["adduser"] = $_POST["user"];
 $_SESSION["addpassword"] = password_hash($_POST["password1"], PASSWORD_DEFAULT);
