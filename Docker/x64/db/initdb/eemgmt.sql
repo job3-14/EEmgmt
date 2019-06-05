@@ -4,16 +4,16 @@ USE EEmgmt;
 CREATE TABLE login(
 username VARCHAR(100) NOT NULL,
 pass VARCHAR(300) NOT NULL,
-p-addcard INTEGER NOT NULL,
-p-editcard INTEGER NOT NULL,
-p-sendnotice INTEGER NOT NULL,
-p-viewexit INTEGER NOT NULL,
-p-viewloginlog INTEGER NOT NULL,
-p-deletelog INTEGER NOT NULL,
-p-initialize INTEGER NOT NULL,
-p-setmail INTEGER NOT NULL,
-p-shutdown INTEGER NOT NULL,
-p-edituser INTEGER NOT NULL,
+addcard INTEGER NOT NULL,
+editcard INTEGER NOT NULL,
+sendnotice INTEGER NOT NULL,
+viewexit INTEGER NOT NULL,
+viewloginlog INTEGER NOT NULL,
+deletelog INTEGER NOT NULL,
+initialize INTEGER NOT NULL,
+setmail INTEGER NOT NULL,
+shutdown INTEGER NOT NULL,
+edituser INTEGER NOT NULL,
 PRIMARY KEY (username));
 
 CREATE TABLE service_user(
