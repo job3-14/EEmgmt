@@ -39,11 +39,8 @@ header('Location: /login.php');
       <div class="mdl-layout__drawer">
         <span class="mdl-layout-title">入退室管理システム</span>
         <nav class="mdl-navigation">
-          <a class="mdl-navigation__link" href="">管理トップ</a>
-          <a class="mdl-navigation__link" href="">入退室履歴</a>
-          <a class="mdl-navigation__link" href="">新規登録</a>
-          <a class="mdl-navigation__link" href="">登録情報変更</a>
-          <a class="mdl-navigation__link" href="">管理ユーザー</a>
+          <a class="mdl-navigation__link" href="/index.php">管理トップ</a>
+          <a class="mdl-navigation__link" href="/adminuser/adminuser.php">管理ユーザー</a>
           <a class="mdl-navigation__link" href="">システム操作</a>
         </nav>
       </div>
