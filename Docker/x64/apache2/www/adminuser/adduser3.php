@@ -8,8 +8,6 @@ if($_POST["adduserstatus"]!==1){
 }
 require_once('../db_setting.php');
 $errorMessages = array();
-$permission = array();
-$permission2 = array();
 
 try {
   if(!$_POST["user"]==""){
