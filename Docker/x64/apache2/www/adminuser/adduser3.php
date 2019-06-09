@@ -10,10 +10,17 @@ require_once('../db_setting.php');
 $errorMessages = array();
 
 try {
-  if(!$_POST["user"]==""){
-    $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
+  $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
+}catch (Exception $e){
+  $errorMessages[] = "データベースエラーです"
+  $_SESSION["errorMessages"]=$errorMessages;
+  header('Location: ./adduser_error.php');
+}
+
+try {
+  if(!$_SESSION["adduser"]==""){
     $sql  = $pdo->prepare("SELECT EXISTS(SELECT username FROM login WHERE username = ?)");
-    $sql->bindValue(1,$_POST["user"]);
+    $sql->bindValue(1,$_SESSION["adduser"]);
     $sql->execute();
     $result=  $sql->fetchColumn();
     $dberror=0;
@@ -31,14 +38,6 @@ if (isset($_POST["user"])){
 $errorMessages[] = "操作エラーです。"
 $_SESSION["errorMessages"]=$errorMessages;
 header('Location: ./adduser_error.php');
-}
-
-try {
-  $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
-}catch (Exception $e){
-  $errorMessages[] = "データベースエラーです"
-  $_SESSION["errorMessages"]=$errorMessages;
-  header('Location: ./adduser_error.php');
 }
 
 
