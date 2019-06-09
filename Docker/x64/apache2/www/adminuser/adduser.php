@@ -5,6 +5,8 @@ header('Location: /login.php');
 }
 $_POST = array();
 $_SESSION["errorMessages"]=array();
+unset($_SESSION["permission"]);
+unset($_SESSION["permission2"]);
 ?>
 
 

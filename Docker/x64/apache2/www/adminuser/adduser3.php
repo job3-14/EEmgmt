@@ -43,6 +43,8 @@ header('Location: ./adduser_error.php');
 }
 
 
+unset($_SESSION["permission"]);
+unset($_SESSION["permission2"]);
 ?>
 
 

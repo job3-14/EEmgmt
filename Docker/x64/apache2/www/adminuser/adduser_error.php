@@ -51,6 +51,7 @@ header('Location: /login.php');
     echo $errorMessage."<br>";
     $_SESSION["errorMessages"]=array();
     }
+    unset($_SESSION["errorMessages"]);
     ?>
     <br>
   </div>
