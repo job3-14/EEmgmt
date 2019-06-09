@@ -122,6 +122,7 @@ if(isset($_POST["edituser"])){
   $_SESSION["permission"]["edituser"]=0;
 }
 
+$_SESSION["adduser_status"] = 1;
 ?>
 
 

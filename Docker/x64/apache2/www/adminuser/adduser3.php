@@ -3,7 +3,10 @@ session_start();
 if (!isset($_SESSION["user"])){
 header('Location: /login.php');
 }
-
+if ($_SESSION["adduser_status"] !== 1){
+header('Location: ./adduser.php');
+}
+unset($_SESSION["adduser_status"]);
 
 require_once('../db_setting.php');
 $errorMessages = array();
