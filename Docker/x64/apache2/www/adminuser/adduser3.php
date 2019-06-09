@@ -29,8 +29,8 @@ try {
   $dberror=1;
 }
 
-if (isset($_POST["user"])){
-  if($_POST["user"]=="" || !preg_match("/^[a-zA-Z0-9]+$/", $_POST["user"]) || $result==1 || $dberror==1){
+if (isset($_SESSION["adduser"])){
+  if($_SESSION["adduser"]=="" || !preg_match("/^[a-zA-Z0-9]+$/", $_SESSION["adduser"]) || $result==1 || $dberror==1){
     $errorMessages[] = "操作エラーです。"
     $_SESSION["errorMessages"]=$errorMessages;
     header('Location: ./adduser_error.php');
