@@ -27,7 +27,6 @@ services:
    restart: always
 
  db:
-  restart: always
     image: mariadb:10.4
     ports:
      - 3306:3306
@@ -38,3 +37,4 @@ services:
     volumes:
       - ./db/initdb:/docker-entrypoint-initdb.d
       - ./db/mysql_data:/var/lib/mysql
+    restart: always
