@@ -38,9 +38,20 @@ if (isset($_SESSION["adduser"])){
     header('Location: ./adduser_error.php');
   }
 
-  echo "正常";
-
-
+  $sql  = $pdo->prepare("INSERT INTO login (username,pass,addcard,editcard,sendnotice,viewexit,viewloginlog,deletelog,initialize,setmail,shutdown,edituser) VALUES ('job314test','jnscos1234anascjkan',0,0,0,0,0,0,0,0,0,0);");
+  $sql->bindValue(1,$_SESSION["adduser"]);
+  $sql->bindValue(2,$_SESSION["addpassword"]);
+  $sql->bindValue(3,$_SESSION["permission"]["addcard"]);
+  $sql->bindValue(4,$_SESSION["permission"]["editcard"]);
+  $sql->bindValue(5,$_SESSION["permission"]["sendnotice"]);
+  $sql->bindValue(6,$_SESSION["permission"]["viewexit"]);
+  $sql->bindValue(7,$_SESSION["permission"]["viewloginlog"]);
+  $sql->bindValue(8,$_SESSION["permission"]["deletelog"]);
+  $sql->bindValue(9,$_SESSION["permission"]["initialize"]);
+  $sql->bindValue(10,$_SESSION["permission"]["setmail"]);
+  $sql->bindValue(11,$_SESSION["permission"]["shutdown"]);
+  $sql->bindValue(12,$_SESSION["permission"]["edituser"]);
+  $sql->execute();
 
 
 }else{
