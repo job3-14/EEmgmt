@@ -1,0 +1,10 @@
+[Unit]
+Description=Shutdown Button Daemon
+
+[Service]
+ExecStart=/usr/bin/python3 /opt/shutdown.py
+Restart=always
+Type=simple
+
+[Install]
+WantedBy=multi-user.target

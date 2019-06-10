@@ -1,0 +1,10 @@
+[Unit]
+Description=ACT Led Deamon
+
+[Service]
+ExecStart =/usr/bin/python3 /opt/led.py
+Type=oneshot
+User=root
+
+[Install]
+WantedBy=multi-user.target
