@@ -186,12 +186,10 @@ $_SESSION["adduser_status"] = 1;
      戻る
   </button>
 
-  <form action="./adduser3.php" method="POST">
-    <input type="hidden" name="adduserstatus" value="1">
-  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="button" >
+
+  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="button"  onclick="location.href='./adduser3.php'">
      登録実行
   </button>
-</form>
 </div>
 </div>
 </div>
