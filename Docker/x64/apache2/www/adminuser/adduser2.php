@@ -116,7 +116,7 @@ if(isset($_POST["shutdown"])){
   $_SESSION["permission"]["shutdown"]=0;
 }
 if(isset($_POST["edituser"])){
-  $permission2[] = "管理ユーザーの追加・編集・削除";
+  $permission3[] = "管理ユーザーの追加・編集・削除";
   $_SESSION["permission"]["edituser"]=1;
 }else{
   $_SESSION["permission"]["edituser"]=0;
@@ -173,12 +173,24 @@ $_SESSION["adduser_status"] = 1;
     echo $message."<br>";
     }
     ?>
+
     <h5>重要権限設定</h5>
     <?php  //エラーメッセージ
     foreach($permission2 as $message){
     echo $message."<br>";
     }
     ?>
+
+    <h5>最重要権限設定</h5>
+    <div class="c-red">
+    !!!この権限を有効にすると間接的に全ての権限を得ることができます!!! <br>
+    <?php  //エラーメッセージ
+    foreach($permission3 as $message){
+    echo $message."<br>";
+    }
+    ?>
+  </div>
+
 
   <br>
   <div class="c-r-button">
