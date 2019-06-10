@@ -14,7 +14,7 @@ $errorMessages = array();
 try {
   $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
 }catch (Exception $e){
-  $errorMessages[] = "データベースエラーです"
+  $errorMessages[] = "データベースエラーです";
   $_SESSION["errorMessages"]=$errorMessages;
   header('Location: ./adduser_error.php');
 }
@@ -32,14 +32,21 @@ try {
 }
 
 if (isset($_SESSION["adduser"])){
-  if($_SESSION["adduser"]=="" || !preg_match("/^[a-zA-Z0-9]+$/", $_SESSION["adduser"]) || $result==1 || $dberror==1){
-    $errorMessages[] = "操作エラーです。"
+  if($_SESSION["adduser"]=="" || $result==1 || $dberror==1){
+    $errorMessages[] = "操作エラーです。1";
     $_SESSION["errorMessages"]=$errorMessages;
     header('Location: ./adduser_error.php');
-}
-$errorMessages[] = "操作エラーです。"
-$_SESSION["errorMessages"]=$errorMessages;
-header('Location: ./adduser_error.php');
+  }
+
+  echo "正常";
+
+
+
+
+}else{
+  $errorMessages[] = "操作エラーです。2";
+  $_SESSION["errorMessages"]=$errorMessages;
+  header('Location: ./adduser_error.php');
 }
 
 
