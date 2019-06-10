@@ -169,24 +169,36 @@ $_SESSION["adduser_status"] = 1;
     <br>
     <h5>基本権限設定</h5>
     <?php  //エラーメッセージ
+    if(!empty($permission)==0){
+      echo("なし");
+    }else{
     foreach($permission as $message){
-    echo $message."<br>";
+      echo $message."<br>";
+    }
     }
     ?>
 
     <h5>重要権限設定</h5>
     <?php  //エラーメッセージ
+    if(!empty($permission2)==0){
+      echo("なし");
+    }else{
     foreach($permission2 as $message){
-    echo $message."<br>";
+      echo $message."<br>";
+    }
     }
     ?>
 
     <h5>最重要権限設定</h5>
     <div class="c-red">
-    !!!この権限を有効にすると間接的に全ての権限を得ることができます!!! <br>
-    <?php  //エラーメッセージ
+    <?php
+    if(!empty($permission3)==0){
+      echo("なし");
+    }else{
+    echo("!!!この権限を有効にすると間接的に全ての権限を得ることができます!!! <br>");
     foreach($permission3 as $message){
-    echo $message."<br>";
+      echo $message."<br>";
+    }
     }
     ?>
   </div>
