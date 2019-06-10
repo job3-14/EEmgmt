@@ -47,3 +47,28 @@ img.c-login-img{
 .c-switch{
   margin-bottom: 20px;
 }
+
+.c-login-message{
+  color: #ff0000;
+}
+
+.c-card{
+  padding: 20px;
+}
+
+.c-add-card{
+  width: 60%;
+  margin: 30px auto;  //中央寄せ
+}
+
+.c-switch{
+  margin-bottom: 20px;
+}
+
+.c-r-button{
+ float: right;
+}
+
+.c-red{
+  color: #ff0000;
+}

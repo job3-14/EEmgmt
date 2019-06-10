@@ -7,6 +7,8 @@ services:
        dockerfile: Dockerfile_ubuntu
     devices:
          -  /dev/bus/usb/001/004
+    volumes:
+        - ./gui/:/opt
     ports:
         - 3389:3389
     restart: always
@@ -25,17 +27,14 @@ services:
    restart: always
 
  db:
-  image: mariadb:10.4
-  ports:
-   - 3306:3306
-  volumes:
-   # 永続化
-   - ./db/mysql_data:/var/lib/mysql
-  environment:
-   #データベースrootパスワード
-   MYSQL_ROOT_PASSWORD: passwd
-   MYSQL_DATABASE: EEmgmt
-   #ユーザー
-   MYSQL_USER: eemgmt
-   MYSQL_PASSWORD: passwd
   restart: always
+    image: mariadb:10.4
+    ports:
+     - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: passwd
+      MYSQL_USER: eemgmt
+      MYSQL_PASSWORD: passwd
+    volumes:
+      - ./db/initdb:/docker-entrypoint-initdb.d
+      - ./db/mysql_data:/var/lib/mysql

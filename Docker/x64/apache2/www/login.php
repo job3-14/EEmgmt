@@ -27,7 +27,7 @@ if (isset($_POST["user"])){
   $password = $_POST["password"];
   //データベース接続
   $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
-     $sql  = $pdo->prepare("SELECT password  FROM user WHERE name= ?");
+     $sql  = $pdo->prepare("SELECT pass FROM login WHERE username= ?");
      $sql->bindValue(1,$user);
      $sql->execute();
   $password_hash =  $sql->fetchColumn();
