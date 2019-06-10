@@ -134,12 +134,16 @@ unset($_SESSION["permission2"]);
 </label>
 </div>
 
+<h5>最重要権限設定</h5>
+<p>許可する操作を選択してください</p>
 <div class="c-switch">
 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-11">
   <input type="checkbox" id="switch-11" class="mdl-switch__input" name="edituser" value=1>
   <span class="mdl-switch__label">管理ユーザーの追加・編集・削除</span>
 </label>
 </div>
+
+<p class="c-red">↑この権限を有効にすると間接的に全ての権限を得ることができます</p>
 
 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" value=1>
    入力内容確認
