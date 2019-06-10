@@ -38,7 +38,7 @@ if (isset($_SESSION["adduser"])){
     header('Location: ./adduser_error.php');
   }
 
-  $sql  = $pdo->prepare("INSERT INTO login (username,pass,addcard,editcard,sendnotice,viewexit,viewloginlog,deletelog,initialize,setmail,shutdown,edituser) VALUES ('job314test','jnscos1234anascjkan',0,0,0,0,0,0,0,0,0,0);");
+  $sql  = $pdo->prepare("INSERT INTO login (username,pass,addcard,editcard,sendnotice,viewexit,viewloginlog,deletelog,initialize,setmail,shutdown,edituser) VALUES (?,?,?,?,?,?,?,?,?,?,?,?);");
   $sql->bindValue(1,$_SESSION["adduser"]);
   $sql->bindValue(2,$_SESSION["addpassword"]);
   $sql->bindValue(3,$_SESSION["permission"]["addcard"]);
@@ -108,7 +108,7 @@ unset($_SESSION["permission2"]);
 
   <br>
   <div class="c-r-button">
-  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="button" >
+  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="button" onclick="location.href='./adminuser.php'">
      メニューへ戻る
   </button>
 </div>
