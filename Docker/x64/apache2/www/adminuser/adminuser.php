@@ -59,7 +59,7 @@ header('Location: /login.php');
     管理ユーザー設定
   </div>
   <div class="mdl-card__supporting-text">
-  <a href="./adduser.php">管理ユーザー情報の登録</a><br>
+  <a href="./adduser/adduser.php">管理ユーザー情報の登録</a><br>
   <p>ユーザー情報の登録</p>
 
   </div>
