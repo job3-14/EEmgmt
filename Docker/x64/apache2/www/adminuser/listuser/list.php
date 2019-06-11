@@ -52,7 +52,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
       </div>
       <main class="mdl-layout__content">
         <div class="page-content"><!-- Your content goes here -->
-          <div class="c-add-card mdl-card mdl-shadow--4dp">
+          <div class="c-card mdl-card mdl-shadow--4dp">
             <div class="mdl-card__supporting-text">
               ユーザー情報一覧
             </div>
