@@ -8,7 +8,7 @@ header('Location: ./adduser.php');
 }
 unset($_SESSION["adduser_status"]);
 
-require_once('../db_setting.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
 $errorMessages = array();
 
 try {

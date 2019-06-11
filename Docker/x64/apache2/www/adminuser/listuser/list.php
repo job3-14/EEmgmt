@@ -3,6 +3,9 @@ session_start();
 if (!isset($_SESSION["user"])){
 header('Location: /login.php');
 }
+
+include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
+
 ?>
 
 
@@ -49,23 +52,12 @@ header('Location: /login.php');
       </div>
       <main class="mdl-layout__content">
         <div class="page-content"><!-- Your content goes here -->
-
-
-
-
           <div class="c-add-card mdl-card mdl-shadow--4dp">
             <div class="mdl-card__supporting-text">
               ユーザー情報一覧
             </div>
             <div class="mdl-card__supporting-text">
-
               <p>１ページにつき100件表示します</p>
-
-
-
-
-
-
 
 
           </div>

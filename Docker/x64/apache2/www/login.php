@@ -11,7 +11,7 @@ if (isset($_SESSION["message"])){
  $_SESSION = array();  //セッション変数の初期化
 }
 
-require_once('db_setting.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
 
 
 if (isset($_POST["user"])){
