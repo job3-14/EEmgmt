@@ -18,37 +18,54 @@ try {
 }
 
 function permission($username) {
-  $permissionlist = "許可された権限: ";
+  $permissionlist = "許可された権限:";
   if ($username['addcard']==1){
-    $permissionlist .= "カード登録 / ";
+    $permissionlist .= " カード登録 /";
+    $count = 1;
   }
   if ($username['editcard']==1){
-    $permissionlist .= "カード編集・削除 / ";
+    $permissionlist .= " カード編集・削除 /";
+    $count = 1;
   }
   if ($username['sendnotice']==1){
-    $permissionlist .= "入退室通知手動送信 / ";
+    $permissionlist .= " 入退室通知手動送信 /";
+    $count = 1;
   }
   if ($username['viewexit']==1){
-    $permissionlist .= "入退室履歴の閲覧 / ";
+    $permissionlist .= " 入退室履歴の閲覧 /";
+    $count = 1;
   }
   if ($username['viewloginlog']==1){
-    $permissionlist .= "管理者ログイン試行ログ閲覧 / ";
+    $permissionlist .= " 管理者ログイン試行ログ閲覧 /";
+    $count = 1;
   }
   if ($username['deletelog']==1){
-    $permissionlist .= "入退室履歴の削除 / ";
+    $permissionlist .= " 入退室履歴の削除 /";
+    $count = 1;
   }
   if ($username['initialize']==1){
-    $permissionlist .= "初期化操作 / ";
+    $permissionlist .= " 初期化操作 /";
+    $count = 1;
   }
   if ($username['setmail']==1){
-    $permissionlist .= "メールサーバー設定操作 / ";
+    $permissionlist .= " メールサーバー設定操作 /";
+    $count = 1;
   }
   if ($username['shutdown']==1){
-    $permissionlist .= "システム操作 / ";
+    $permissionlist .= " システム操作 /";
+    $count = 1;
   }
   if ($username['edituser']==1){
-    $permissionlist .= "管理ユーザーの追加・編集・削除 / ";
+    $permissionlist .= " 管理ユーザーの追加・編集・削除 /";
+    $count = 1;
   }
+  if ($count==1){
+    $permissionlist = substr($permissionlist, 0 ,-1);
+    //0から-1を切り出し
+  }else{
+    $permissionlist = "許可された権限: なし";
+  }
+
   return $permissionlist;
 }
 ?>
