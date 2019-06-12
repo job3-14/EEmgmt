@@ -17,6 +17,40 @@ try {
   header('Location: /operate_error.php');
 }
 
+function permission($username) {
+  $permissionlist = "許可された権限: ";
+  if ($username['addcard']==1){
+    $permissionlist .= "カード登録 / ";
+  }
+  if ($username['editcard']==1){
+    $permissionlist .= "カード編集・削除 / ";
+  }
+  if ($username['sendnotice']==1){
+    $permissionlist .= "入退室通知手動送信 / ";
+  }
+  if ($username['viewexit']==1){
+    $permissionlist .= "入退室履歴の閲覧 / ";
+  }
+  if ($username['viewloginlog']==1){
+    $permissionlist .= "管理者ログイン試行ログ閲覧 / ";
+  }
+  if ($username['deletelog']==1){
+    $permissionlist .= "入退室履歴の削除 / ";
+  }
+  if ($username['initialize']==1){
+    $permissionlist .= "初期化操作 / ";
+  }
+  if ($username['setmail']==1){
+    $permissionlist .= "メールサーバー設定操作 / ";
+  }
+  if ($username['shutdown']==1){
+    $permissionlist .= "システム操作 / ";
+  }
+  if ($username['edituser']==1){
+    $permissionlist .= "管理ユーザーの追加・編集・削除 / ";
+  }
+  return $permissionlist;
+}
 ?>
 
 
@@ -72,11 +106,11 @@ try {
               <ul class='mdl-list'>
               <?php
               foreach($result as $username){
-                echo '<li class="mdl-list__item mdl-list__item--two-line">';
+                echo '<li class="mdl-list__item mdl-list__item--three-line">';
                 echo '<span class="mdl-list__item-primary-content">';
-                echo '<i class="material-icons mdl-list__item-icon">person</i>';
+                echo '<i class="material-icons mdl-list__item-avatar">person</i>';
                 echo '<span>'.$username['username'].'</span>';
-                echo '<span class="mdl-list__item-sub-title">サブタイトル</span>';
+                echo '<span class="mdl-list__item-text-body">'.permission($username).'</span>';
                 echo '</span>';
                 echo '</li>';
               }
