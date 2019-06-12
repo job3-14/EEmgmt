@@ -4,7 +4,19 @@ if (!isset($_SESSION["user"])){
 header('Location: /login.php');
 }
 
+$_SESSION["errorMessages"]= array();
 include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
+try {
+    $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
+    $sql  = $pdo->prepare("SELECT username FROM login");
+    //$sql->bindValue(1,$_POST["user"]);
+    $sql->execute();
+    $result=  $sql->fetchAll();
+}catch (Exception $e){
+  $errorMessages[] = "データベースエラーです";
+  $_SESSION["errorMessages"]=$errorMessages;
+  header('Location: /operate_error.php');
+}
 
 ?>
 
