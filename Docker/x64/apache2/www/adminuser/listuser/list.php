@@ -70,15 +70,17 @@ try {
             </div>
             <div class="mdl-card__supporting-text">
               <p>１ページにつき100件表示します</p>
-
-
               <ul class='mdl-list'>
-              <li class="mdl-list__item">
-              <span class="mdl-list__item-primary-content">
-              <i class="material-icons mdl-list__item-icon">person</i>
-              ヨブ　ホゲホゲ
-            </span>
-              </li>
+              <?php
+              foreach($result as $username){
+                echo '<li class="mdl-list__item">';
+                echo '<span class="mdl-list__item-primary-content">';
+                echo '<i class="material-icons mdl-list__item-icon">person</i>';
+                echo $username['username'];
+                echo '</span>';
+                echo '</li>';
+              }
+               ?>
               </ul>
 
           </div>
