@@ -73,10 +73,11 @@ try {
               <ul class='mdl-list'>
               <?php
               foreach($result as $username){
-                echo '<li class="mdl-list__item">';
+                echo '<li class="mdl-list__item mdl-list__item--two-line">';
                 echo '<span class="mdl-list__item-primary-content">';
                 echo '<i class="material-icons mdl-list__item-icon">person</i>';
-                echo $username['username'];
+                echo '<span>'.$username['username'].'</span>';
+                echo '<span class="mdl-list__item-sub-title">サブタイトル</span>';
                 echo '</span>';
                 echo '</li>';
               }
