@@ -8,8 +8,7 @@ $_SESSION["errorMessages"]= array();
 include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
 try {
     $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
-    $sql  = $pdo->prepare("SELECT username FROM login");
-    //$sql->bindValue(1,$_POST["user"]);
+    $sql  = $pdo->prepare("SELECT * FROM login");
     $sql->execute();
     $result=  $sql->fetchAll();
 }catch (Exception $e){
