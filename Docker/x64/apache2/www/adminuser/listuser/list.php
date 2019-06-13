@@ -10,7 +10,10 @@ try {
     $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
     $sql  = $pdo->prepare("SELECT * FROM login");
     $sql->execute();
-    $result=  $sql->fetchAll();
+    $userlist=  $sql->fetchAll();
+    $sql  = $pdo->prepare("SELECT COUNT(username) FROM login");
+    $sql->execute();
+    $counts = $sql->fetchColumn();
 }catch (Exception $e){
   $errorMessages[] = "データベースエラーです";
   $_SESSION["errorMessages"]=$errorMessages;
@@ -120,9 +123,10 @@ function permission($username) {
             </div>
             <div class="mdl-card__supporting-text">
               <p>１ページにつき100件表示します</p>
+              <p>ユーザー件数: <?php echo $counts;?></p>
               <ul class='mdl-list'>
               <?php
-              foreach($result as $username){
+              foreach($userlist as $username){
                 echo '<li class="mdl-list__item mdl-list__item--three-line">';
                 echo '<span class="mdl-list__item-primary-content">';
                 echo '<i class="material-icons mdl-list__item-avatar">person</i>';
