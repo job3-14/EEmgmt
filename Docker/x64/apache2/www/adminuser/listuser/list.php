@@ -3,9 +3,9 @@ session_start();
 if (!isset($_SESSION["user"])){
 header('Location: /login.php');
 }
-
 $_SESSION["errorMessages"]= array();
 include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
+
 try {
     $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
     $sql  = $pdo->prepare("SELECT COUNT(username) FROM login");
@@ -17,8 +17,13 @@ try {
   header('Location: /operate_error.php');
 }
 
+$maxPageCounts = $counts / 100;
+$totalPageCounts = ceil($pageCounts);  //小数点切り上げ
 if (isset($_GET["pages"])){
   $pages = $_GET["pages"];
+  if($pages>$totalPageCounts){
+    $pages = 0;
+  }
   $pages *= 100;
 }else{
   $pages = 0;
@@ -37,8 +42,6 @@ try {
   $_SESSION["errorMessages"]=$errorMessages;
   header('Location: /operate_error.php');
 }
-
-
 
 function permission($username) {
   $permissionlist = "許可された権限:";
@@ -93,8 +96,6 @@ function permission($username) {
 }
 
 function pages($counts){
-  $maxPageCounts = $counts / 100;
-  $totalPageCounts = ceil($pageCounts);  //小数点切り上げ
   if ($totalPageCounts <= 10){
     $pageCounts = 10;
   }
