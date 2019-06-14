@@ -71,6 +71,19 @@ function permission($username) {
 
   return $permissionlist;
 }
+
+function pages($counts){
+  $maxPageCounts = $counts / 100;
+  $totalPageCounts = ceil($pageCounts);  //小数点切り上げ
+  if ($totalPageCounts <= 10){
+    $pageCounts = 10;
+  }
+  for($i=1;$i<=$pageCounts; $i++){
+    echo '<a href="google.com">'.$i.'</a>';
+  }
+}
+
+pages($counts);
 ?>
 
 
