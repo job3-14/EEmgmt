@@ -4,11 +4,18 @@ if (!isset($_SESSION["user"])){
 header('Location: /login.php');
 }
 
+if (isset($_GET["pages"])){
+  $pages = $_GET["pages"];
+  $pages *= 100;
+}else{
+  $pages = 0;
+}
+
 $_SESSION["errorMessages"]= array();
 include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
 try {
     $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
-    $sql  = $pdo->prepare("SELECT * FROM login ORDER BY addcard LIMIT 0,100");
+    $sql  = $pdo->prepare("SELECT * FROM login ORDER BY addcard LIMIT ".$pages." ,100");
     $sql->execute();
     $userlist=  $sql->fetchAll();
     $sql  = $pdo->prepare("SELECT COUNT(username) FROM login");
