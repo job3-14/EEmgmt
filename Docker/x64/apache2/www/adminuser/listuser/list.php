@@ -99,8 +99,9 @@ function pages($counts){
   if ($totalPageCounts <= 10){
     $pageCounts = 10;
   }
-  for($i=1;$i<=$pageCounts; $i++){
+  for($i=0;$i<=$pageCounts; $i++){
     echo '<a href="google.com">'.$i.'</a>';
+    echo ' ';
   }
 }
 
