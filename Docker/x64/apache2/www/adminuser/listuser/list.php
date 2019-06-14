@@ -18,11 +18,11 @@ try {
 }
 
 $maxPageCounts = $counts / 100;
-$totalPageCounts = ceil($pageCounts);  //小数点切り上げ
+$totalPageCounts = ceil($maxPageCounts);  //小数点切り上げ
 if (isset($_GET["pages"])){
   $pages = $_GET["pages"];
-  if($pages>$totalPageCounts){
-    $pages = 0;
+  if($pages > $totalPageCounts){  //指定ページ数が実際のページより多い場合
+    header('Location: ./list.php');
   }
   $pages *= 100;
 }else{
