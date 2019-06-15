@@ -108,6 +108,8 @@ function pages($currentPages,$totalPageCounts){
         echo ' ';
   }
 }else{  //通常処理
+  echo '<a href="./list.php">0</a>';
+  echo '...';
   for($i=0,$page=$currentPages-5; $i<=4; $i++,$page++){
       echo '<a href="google.com">'.$page.'</a>';
       echo ' ';
