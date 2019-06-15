@@ -98,7 +98,7 @@ function permission($username) {
 }
 
 
-function pages($currentPages){
+function pages($currentPages,$totalPageCounts){
   if ($currentPages<=5){
     for($i=0; $i<=4; $i++){
       if($currentPages==$i){
@@ -111,17 +111,26 @@ function pages($currentPages){
   for($i=0,$page=$currentPages-5; $i<=4; $i++,$page++){
       echo '<a href="google.com">'.$page.'</a>';
       echo ' ';
+    }
   }
- }
   echo $currentPages.' ';
+
+  $limitPage = $totalPageCounts-$currentPages;
+  if($limitPage<=5){
+    for($i=0,$page=$currentPages+1; $i<$limitPage; $i++,$page++){
+      echo '<a href="google.com">'.$page.'</a>';
+      echo ' ';
+    }
+  }else{
   for($i=0,$page=$currentPages+1; $i<=4; $i++,$page++){
     echo '<a href="google.com">'.$page.'</a>';
     echo ' ';
   }
+}
 
 }
 
-pages($currentPages);
+pages($currentPages,$totalPageCounts);
 ?>
 
 
