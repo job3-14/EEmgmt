@@ -104,14 +104,14 @@ function pages($currentPages,$totalPageCounts){
       if($currentPages==$i){
         break;
       }
-        echo '<a href="google.com">'.$i.'</a>';
+        echo '<a href="./list.php?pages='.$i.'">'.$i.'</a>';
         echo ' ';
   }
 }else{  //通常処理
   echo '<a href="./list.php">0</a>';
   echo '...';
   for($i=1,$page=$currentPages-5; $i<=5; $i++,$page++){
-      echo '<a href="google.com">'.$page.'</a>';
+      echo '<a href="./list.php?pages='.$page.'">'.$page.'</a>';
       echo ' ';
     }
   }
@@ -119,13 +119,13 @@ function pages($currentPages,$totalPageCounts){
 
   $limitPage = $totalPageCounts-$currentPages;
   if($limitPage<=5){ //残りページ数が5以下の場合
-    for($i=1,$page=$currentPages+1; $i<$limitPage; $i++,$page++){
-      echo '<a href="google.com">'.$page.'</a>';
+    for($i=1,$page=$currentPages+1; $i<=$limitPage; $i++,$page++){
+      echo '<a href="./list.php?pages='.$page.'">'.$page.'</a>';
       echo ' ';
     }
   }else{ //通常処理
   for($i=1,$page=$currentPages+1; $i<=5; $i++,$page++){
-    echo '<a href="google.com">'.$page.'</a>';
+    echo '<a href="./list.php?pages='.$page.'">'.$page.'</a>';
     echo ' ';
   }
   echo '...';
