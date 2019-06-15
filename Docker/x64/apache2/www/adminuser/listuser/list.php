@@ -128,6 +128,8 @@ function pages($currentPages,$totalPageCounts){
     echo '<a href="google.com">'.$page.'</a>';
     echo ' ';
   }
+  echo '...';
+  echo '<a href="./list.php?pages='.$totalPageCounts.'">'.$totalPageCounts.'</a>';
 }
 
 }
