@@ -15,7 +15,7 @@ initialize INTEGER NOT NULL,
 setmail INTEGER NOT NULL,
 shutdown INTEGER NOT NULL,
 edituser INTEGER NOT NULL,
-PRIMARY KEY (username));
+PRIMARY KEY (userid,username));
 
 CREATE TABLE service_user(
 idm VARCHAR(30) NOT NULL,
