@@ -18,7 +18,7 @@ try {
 }
 
 $maxPageCounts = $counts / 100;
-$totalPageCounts = ceil($maxPageCounts);  //小数点切り上げ
+$totalPageCounts = floor($maxPageCounts);  //小数点切り捨て
 if (isset($_GET["pages"])){
   $pages = $_GET["pages"];
   $currentPages = $_GET["pages"];
@@ -27,8 +27,8 @@ if (isset($_GET["pages"])){
   }
   $pages *= 100;
 }else{
-  $pages = 0;
-  $currentPages = 0;
+  $pages = 1;
+  $currentPages = 1;
 }
 
 try {
@@ -100,7 +100,7 @@ function permission($username) {
 
 function pages($currentPages,$totalPageCounts){
   if ($currentPages<=5){   //ページ数が5以下の場合の処理
-    for($i=0; $i<=4; $i++){
+    for($i=1; $i<=5; $i++){
       if($currentPages==$i){
         break;
       }
@@ -110,7 +110,7 @@ function pages($currentPages,$totalPageCounts){
 }else{  //通常処理
   echo '<a href="./list.php">0</a>';
   echo '...';
-  for($i=0,$page=$currentPages-5; $i<=4; $i++,$page++){
+  for($i=1,$page=$currentPages-5; $i<=5; $i++,$page++){
       echo '<a href="google.com">'.$page.'</a>';
       echo ' ';
     }
@@ -119,12 +119,12 @@ function pages($currentPages,$totalPageCounts){
 
   $limitPage = $totalPageCounts-$currentPages;
   if($limitPage<=5){ //残りページ数が5以下の場合
-    for($i=0,$page=$currentPages+1; $i<$limitPage; $i++,$page++){
+    for($i=1,$page=$currentPages+1; $i<$limitPage; $i++,$page++){
       echo '<a href="google.com">'.$page.'</a>';
       echo ' ';
     }
   }else{ //通常処理
-  for($i=0,$page=$currentPages+1; $i<=4; $i++,$page++){
+  for($i=1,$page=$currentPages+1; $i<=5; $i++,$page++){
     echo '<a href="google.com">'.$page.'</a>';
     echo ' ';
   }
