@@ -21,12 +21,14 @@ $maxPageCounts = $counts / 100;
 $totalPageCounts = ceil($maxPageCounts);  //小数点切り上げ
 if (isset($_GET["pages"])){
   $pages = $_GET["pages"];
+  $currentPages = $_GET["pages"];
   if($pages > $totalPageCounts){  //指定ページ数が実際のページより多い場合
     header('Location: ./list.php');
   }
   $pages *= 100;
 }else{
   $pages = 0;
+  $currentPages = 0;
 }
 
 try {
@@ -95,17 +97,21 @@ function permission($username) {
   return $permissionlist;
 }
 
-function pages($counts){
-  if ($totalPageCounts <= 10){
-    $pageCounts = 10;
+
+function pages($currentPages){
+  for($i=0,$page=$currentPages-5; $i<=4; $i++,$page++){
+      echo '<a href="google.com">'.$page.'</a>';
+      echo ' ';
   }
-  for($i=0;$i<=$pageCounts; $i++){
-    echo '<a href="google.com">'.$i.'</a>';
+  echo $currentPages.' ';
+  for($i=0,$page=$currentPages+1; $i<=4; $i++,$page++){
+    echo '<a href="google.com">'.$page.'</a>';
     echo ' ';
   }
+
 }
 
-pages($counts);
+pages($currentPages);
 ?>
 
 
