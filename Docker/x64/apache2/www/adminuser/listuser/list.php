@@ -99,10 +99,20 @@ function permission($username) {
 
 
 function pages($currentPages){
+  if ($currentPages<=5){
+    for($i=0; $i<=4; $i++){
+      if($currentPages==$i){
+        break;
+      }
+        echo '<a href="google.com">'.$i.'</a>';
+        echo ' ';
+  }
+}else{
   for($i=0,$page=$currentPages-5; $i<=4; $i++,$page++){
       echo '<a href="google.com">'.$page.'</a>';
       echo ' ';
   }
+ }
   echo $currentPages.' ';
   for($i=0,$page=$currentPages+1; $i<=4; $i++,$page++){
     echo '<a href="google.com">'.$page.'</a>';
