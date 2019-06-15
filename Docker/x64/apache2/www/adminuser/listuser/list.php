@@ -99,7 +99,7 @@ function permission($username) {
 
 
 function pages($currentPages,$totalPageCounts){
-  if ($currentPages<=5){
+  if ($currentPages<=5){   //ページ数が5以下の場合の処理
     for($i=0; $i<=4; $i++){
       if($currentPages==$i){
         break;
@@ -107,21 +107,21 @@ function pages($currentPages,$totalPageCounts){
         echo '<a href="google.com">'.$i.'</a>';
         echo ' ';
   }
-}else{
+}else{  //通常処理
   for($i=0,$page=$currentPages-5; $i<=4; $i++,$page++){
       echo '<a href="google.com">'.$page.'</a>';
       echo ' ';
     }
   }
-  echo $currentPages.' ';
+  echo $currentPages.' '; //現在ページ数
 
   $limitPage = $totalPageCounts-$currentPages;
-  if($limitPage<=5){
+  if($limitPage<=5){ //残りページ数が5以下の場合
     for($i=0,$page=$currentPages+1; $i<$limitPage; $i++,$page++){
       echo '<a href="google.com">'.$page.'</a>';
       echo ' ';
     }
-  }else{
+  }else{ //通常処理
   for($i=0,$page=$currentPages+1; $i<=4; $i++,$page++){
     echo '<a href="google.com">'.$page.'</a>';
     echo ' ';
