@@ -8,7 +8,7 @@ header('Location: ./adduser.php');
 }
 unset($_SESSION["adduser_status"]);
 
-require_once('../db_setting.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
 $errorMessages = array();
 
 try {
@@ -35,7 +35,7 @@ if (isset($_SESSION["adduser"])){
   if($_SESSION["adduser"]=="" || $result==1 || $dberror==1){
     $errorMessages[] = "操作エラーです";
     $_SESSION["errorMessages"]=$errorMessages;
-    header('Location: ./operate_error.php');
+    header('Location: /operate_error.php');
   }
 
   $sql  = $pdo->prepare("INSERT INTO login (username,pass,addcard,editcard,sendnotice,viewexit,viewloginlog,deletelog,initialize,setmail,shutdown,edituser) VALUES (?,?,?,?,?,?,?,?,?,?,?,?);");
@@ -57,7 +57,7 @@ if (isset($_SESSION["adduser"])){
 }else{
   $errorMessages[] = "操作エラーです。";
   $_SESSION["errorMessages"]=$errorMessages;
-  header('Location: ./operate_error.php');
+  header('Location: /operate_error.php');
 }
 
 

@@ -72,3 +72,8 @@ img.c-login-img{
 .c-red{
   color: #ff0000;
 }
+
+.c-card{
+  width: 90%;
+  margin: 30px auto;  //中央寄せ
+}

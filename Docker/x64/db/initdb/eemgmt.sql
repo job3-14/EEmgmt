@@ -2,6 +2,7 @@ CREATE DATABASE EEmgmt;
 USE EEmgmt;
 
 CREATE TABLE login(
+userid INTEGER NOT NULL,
 username VARCHAR(100) NOT NULL,
 pass VARCHAR(300) NOT NULL,
 addcard INTEGER NOT NULL,
@@ -14,7 +15,7 @@ initialize INTEGER NOT NULL,
 setmail INTEGER NOT NULL,
 shutdown INTEGER NOT NULL,
 edituser INTEGER NOT NULL,
-PRIMARY KEY (username));
+PRIMARY KEY (userid,username));
 
 CREATE TABLE service_user(
 idm VARCHAR(30) NOT NULL,
