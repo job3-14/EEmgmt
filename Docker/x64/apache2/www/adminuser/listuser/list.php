@@ -100,6 +100,7 @@ function permission($username) {
 
 
 function pages($currentPages,$totalPageCounts){
+  echo "ページ移動: ";
   if ($currentPages<=5){   //ページ数が5以下の場合の処理
     for($i=1; $i<=5; $i++){
       if($currentPages==$i){
@@ -135,7 +136,7 @@ function pages($currentPages,$totalPageCounts){
 
 }
 
-pages($currentPages,$totalPageCounts);
+
 ?>
 
 
@@ -189,6 +190,7 @@ pages($currentPages,$totalPageCounts);
             <div class="mdl-card__supporting-text">
               <p>１ページにつき100件表示します</p>
               <p>ユーザー件数: <?php echo $counts;?></p>
+              <p><?php pages($currentPages,$totalPageCounts); ?></p>
               <ul class='mdl-list'>
               <?php
               foreach($userlist as $username){
@@ -203,8 +205,10 @@ pages($currentPages,$totalPageCounts);
                ?>
               </ul>
 
+              <p><?php pages($currentPages,$totalPageCounts); ?></p>
           </div>
           </div>
+
 
 
 
