@@ -109,7 +109,7 @@ function pages($currentPages,$totalPageCounts){
         echo ' ';
   }
 }else{  //通常処理
-  echo '<a href="./list.php">0</a>';
+  echo '<a href="./list.php">1</a>';
   echo '...';
   for($i=1,$page=$currentPages-5; $i<=5; $i++,$page++){
       echo '<a href="./list.php?pages='.$page.'">'.$page.'</a>';
