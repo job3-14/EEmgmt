@@ -3,6 +3,7 @@ session_start();
 if (!isset($_SESSION["user"])){
 header('Location: /login.php');
 }
+include($_SERVER['DOCUMENT_ROOT'] . '/menu_load.php');
 ?>
 
 
@@ -18,33 +19,7 @@ header('Location: /login.php');
   <body>
     <!-- The drawer is always open in large screens. The header is always shown,
       even in small screens. -->
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
-                mdl-layout--fixed-header">
-      <header class="mdl-layout__header">
-        <div class="mdl-layout__header-row">
-          <div class="head-title">
-            <span class="mdl-layout-title">管理トップ</span>
-          </div>
-          <div class="mdl-layout-spacer"></div>
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
-                      mdl-textfield--floating-label mdl-textfield--align-right">
-          <div class="logout">
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="location.href='/logout.php'">
-             ログアウト
-            </button>
-          </div>
-          </div>
-        </div>
-      </header>
-      <div class="mdl-layout__drawer">
-        <span class="mdl-layout-title">入退室管理システム</span>
-        <nav class="mdl-navigation">
-          <a class="mdl-navigation__link" href="/index.php">管理トップ</a>
-          <a class="mdl-navigation__link" href="/adminuser/adminuser.php">管理ユーザー</a>
-          <a class="mdl-navigation__link" href="/service_user/service_user.php">利用ユーザー</a>
-          <a class="mdl-navigation__link" href="">システム操作</a>
-        </nav>
-      </div>
+      <?php menuload(); ?>
       <main class="mdl-layout__content">
         <div class="page-content"><!-- Your content goes here --></div>
       </main>
