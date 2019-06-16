@@ -41,6 +41,7 @@ header('Location: /login.php');
         <nav class="mdl-navigation">
           <a class="mdl-navigation__link" href="/index.php">管理トップ</a>
           <a class="mdl-navigation__link" href="/adminuser/adminuser.php">管理ユーザー</a>
+          <a class="mdl-navigation__link" href="/service_user/service_user.php">利用ユーザー</a>
           <a class="mdl-navigation__link" href="">システム操作</a>
         </nav>
       </div>
