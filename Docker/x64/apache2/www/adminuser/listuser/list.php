@@ -26,8 +26,9 @@ if (isset($_GET["pages"])){
     header('Location: ./list.php');
   }
   $pages *= 100;
+  $pages -= 1;
 }else{
-  $pages = 1;
+  $pages = 0;
   $currentPages = 1;
 }
 
