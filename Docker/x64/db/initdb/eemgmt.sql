@@ -18,8 +18,9 @@ edituser INTEGER NOT NULL,
 PRIMARY KEY (userid,username));
 
 CREATE TABLE service_user(
+userid INTEGER NOT NULL,
 idm VARCHAR(30) NOT NULL,
 name VARCHAR(30) NOT NULL,
 notice VARCHAR(30) NOT NULL,
 address VARCHAR(300),
-PRIMARY KEY (idm));
+PRIMARY KEY (userid,idm));
