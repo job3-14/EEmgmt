@@ -54,6 +54,31 @@ $_SESSION["errorMessages"]=array();
     <label class="mdl-textfield__label">ユーザー名</label>
   </div>
   <br>
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <input class="mdl-textfield__input" type="text"  name="email">
+    <label class="mdl-textfield__label">メールアドレス</label>
+  </div>
+  <br>
+  <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
+  <input type="radio" id="option-1" class="mdl-radio__button" name="sendMethod" value="1" checked>
+  <span class="mdl-radio__label">Eメール</span>
+  </label>
+  <br>
+  <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-2">
+  <input type="radio" id="option-2" class="mdl-radio__button" name="sendMethod" value="2">
+  <span class="mdl-radio__label">Line</span>
+  </label>
+  <br>
+  <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-3">
+  <input type="radio" id="option-3" class="mdl-radio__button" name="sendMethod" value="3">
+  <span class="mdl-radio__label">Slack</span>
+  </label>
+  <br>
+  <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-3">
+  <input type="radio" id="option-3" class="mdl-radio__button" name="sendMethod" value="3">
+  <span class="mdl-radio__label">Slack</span>
+  </label>
+
 
   <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" value=1>
    入力内容確認
