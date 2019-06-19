@@ -66,22 +66,22 @@ $_SESSION["errorMessages"]=array();
   <br>
   <p>入退室通知送信先を選択してください</p>
   <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
-  <input type="radio" id="option-1" class="mdl-radio__button" name="sendMethod" value="1" checked>
+  <input type="radio" id="option-1" class="mdl-radio__button" name="sendMethod" value="email" checked>
   <span class="mdl-radio__label">Eメール</span>
   </label>
   <br>
   <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-2">
-  <input type="radio" id="option-2" class="mdl-radio__button" name="sendMethod" value="2">
+  <input type="radio" id="option-2" class="mdl-radio__button" name="sendMethod" value="line">
   <span class="mdl-radio__label">Line</span>
   </label>
   <br>
   <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-3">
-  <input type="radio" id="option-3" class="mdl-radio__button" name="sendMethod" value="3">
+  <input type="radio" id="option-3" class="mdl-radio__button" name="sendMethod" value="slack">
   <span class="mdl-radio__label">Slack</span>
   </label>
   <br>
   <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-4">
-  <input type="radio" id="option-4" class="mdl-radio__button" name="sendMethod" value="4">
+  <input type="radio" id="option-4" class="mdl-radio__button" name="sendMethod" value="none">
   <span class="mdl-radio__label">なし</span>
   </label>
   <br>
