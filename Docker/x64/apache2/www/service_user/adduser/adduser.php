@@ -59,6 +59,12 @@ $_SESSION["errorMessages"]=array();
     <label class="mdl-textfield__label">メールアドレス</label>
   </div>
   <br>
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <input class="mdl-textfield__input" type="text"  name="cardidm">
+    <label class="mdl-textfield__label">ICカードIDm</label>
+  </div>
+  <br>
+  <p>入退室通知送信先を選択してください</p>
   <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
   <input type="radio" id="option-1" class="mdl-radio__button" name="sendMethod" value="1" checked>
   <span class="mdl-radio__label">Eメール</span>
@@ -74,14 +80,14 @@ $_SESSION["errorMessages"]=array();
   <span class="mdl-radio__label">Slack</span>
   </label>
   <br>
-  <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-3">
-  <input type="radio" id="option-3" class="mdl-radio__button" name="sendMethod" value="3">
-  <span class="mdl-radio__label">Slack</span>
+  <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-4">
+  <input type="radio" id="option-4" class="mdl-radio__button" name="sendMethod" value="4">
+  <span class="mdl-radio__label">なし</span>
   </label>
-
+  <br>
 
   <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" value=1>
-   入力内容確認
+   次へ
  </button>
 
 </form>
