@@ -29,6 +29,15 @@ if(!is_null($errorMessages)){
   $_SESSION["addcard"]["email"] = $_POST["email"];
   $_SESSION["addcard"]["cardidm"] = $_POST["cardidm"];
   $_SESSION["addcard"]["sendMethod"] = $_POST["sendMethod"];
+  if($_POST["sendMethod"]=="email"){
+    header('Location: ./adduser3_email.php');
+  }elseif($_POST["sendMethod"]=="line"){
+    header('Location: ./adduser3_line.php');
+  }elseif($_POST["sendMethod"]=="slack"){
+    header('Location: ./adduser3_slack.php');
+  }elseif($_POST["sendMethod"]=="none"){
+    header('Location: ./adduser4.php');
+  }
 }
 
  ?>
