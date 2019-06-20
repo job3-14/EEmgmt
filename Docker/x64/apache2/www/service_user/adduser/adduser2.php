@@ -3,7 +3,6 @@ session_start();
 if (!isset($_SESSION["user"])){
 header('Location: /login.php');
 }
-//$errorMessages = array();
 
 if($_POST["user"]==""){
   $errorMessages[] = "ユーザー名を入力してください";
