@@ -18,16 +18,14 @@ if($_POST["sendMethod"]==""){
   $errorMessages[] = "送信方法が指定されていません";
 }
 
-//$_SESSION["addcard"]["user"] = $_POST["user"];
-//$_SESSION["addcard"]["email"] = $_POST["email"];
-//$_SESSION["addcard"]["cardidm"] = $_POST["cardidm"];
-//$_SESSION["addcard"]["sendMethod"] = $_POST["sendMethod"];
-
 if(!is_null($errorMessages)){
   $_SESSION["errorMessages"]=$errorMessages;
   header('Location: ./adduser_error.php');
 }else{
-  echo "エラーなし";
+  $_SESSION["addcard"]["user"] = $_POST["user"];
+  $_SESSION["addcard"]["email"] = $_POST["email"];
+  $_SESSION["addcard"]["cardidm"] = $_POST["cardidm"];
+  $_SESSION["addcard"]["sendMethod"] = $_POST["sendMethod"];
 }
 
  ?>
