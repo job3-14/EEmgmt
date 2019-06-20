@@ -9,13 +9,17 @@ if($_POST["user"]==""){
 }
 if($_POST["email"]==""){
   $errorMessages[] = "メールアドレスを入力してください";
+}elseif(!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)){
+  $errorMessages[] = "メールアドレスを正しく入力してください";
 }
+
 if($_POST["cardidm"]==""){
   $errorMessages[] = "カードidmを入力してください";
 }
 if($_POST["sendMethod"]==""){
   $errorMessages[] = "送信方法が指定されていません";
 }
+
 
 if(!is_null($errorMessages)){
   $_SESSION["errorMessages"]=$errorMessages;
