@@ -3,7 +3,23 @@ session_start();
 if (!isset($_SESSION["user"])){
 header('Location: /login.php');
 }
+include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
 
+try {
+  if(!$_POST["user"]==""){
+    $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
+    $sql  = $pdo->prepare("SELECT EXISTS(SELECT username FROM service_user WHERE mainEmail = ?)");
+    $sql->bindValue(1,$_POST["user"]);
+    $sql->execute();
+    $result=  $sql->fetchColumn();
+  }
+}catch (Exception $e){
+  $errorMessages[] = "データベースエラーです";
+}
+
+if($result==1){
+  $errorMessages[] = "このメールアドレス(メイン)は既に利用されています。他のメールアドレスを入力してください";
+}
 if($_POST["email2"] && !filter_var($_POST["email2"], FILTER_VALIDATE_EMAIL)){
   $errorMessages[] = "メールアドレスを正しく入力してください";
 }elseif($_POST["email3"] && !filter_var($_POST["email3"], FILTER_VALIDATE_EMAIL)){
