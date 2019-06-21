@@ -39,7 +39,7 @@ if(!is_null($errorMessages)){
   $mailList[] = $_POST["email3"];
   $mailList[] = $_POST["email4"];
   $mailList[] = $_POST["email5"];
-  $mailList = array_unique($mailList);
+  $mailList = array_unique($mailList); //重複削除
   $_SESSION["addcard"]["emaiList"] = $mailList;
   header('Location: ./adduser5_email.php');
 }
