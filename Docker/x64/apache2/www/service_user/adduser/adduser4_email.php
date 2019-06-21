@@ -18,6 +18,13 @@ if(!is_null($errorMessages)){
   $_SESSION["errorMessages"]=$errorMessages;
   header('Location: ./adduser_error.php');
 }else{
-  echo "hello!";
+  $mailList[] = $_SESSION["addcard"]["email"];
+  $mailList[] = $_POST["email2"];
+  $mailList[] = $_POST["email3"];
+  $mailList[] = $_POST["email4"];
+  $mailList[] = $_POST["email5"];
+  $mailList = array_unique($mailList);
+  $_SESSION["addcard"]["emaiList"] = $mailList;
+  header('Location: ./adduser5_email.php');
 }
 ?>
