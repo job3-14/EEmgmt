@@ -49,7 +49,7 @@ $_SESSION["errorMessages"]=array();
     <p>メールアドレス(メイン)は前ページで設定した内容です。このページでは変更できません。</p>
     <p>メールアドレス(メイン)を変更するには[戻る]ボタンをクリックし前ページで設定してください。</p>
     <p>メールアドレスは最大5つまで登録できます。</p>
-<form action="./adduser4_line.php" method="POST">
+<form action="./adduser4_email.php" method="POST">
   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
     <input class="mdl-textfield__input" type="text"  name="email_check" value="<?php echo $_SESSION["addcard"]["email"] ?>" readonly="readonly">
     <label class="mdl-textfield__label">メールアドレス(メイン)</label>
