@@ -47,17 +47,23 @@ $_SESSION["errorMessages"]=array();
   </div>
   <div class="mdl-card__supporting-text">
     <h5>ユーザー名</h5>
-      <?php echo $_SESSION["addcard"]["user"] ?>
+    <?php echo $_SESSION["addcard"]["user"] ?>
+
+    <h5>ICカードidm</h5>
+    <?php echo $_SESSION["addcard"]["cardidm"]; ?>
+
+    <h5>入退室通知送信方法</h5>
+    <?php echo $_SESSION["addcard"]["sendMethod"]; ?>
 
     <h5>メールアドレス(メイン)</h5>
-      <?php echo $_SESSION["addcard"]["email"] ?>
+    <?php echo $_SESSION["addcard"]["email"] ?>
 
     <h5>メールアドレス</h5>
-      <?php
-      foreach($_SESSION["addcard"]["emaiList"] as $emaillist){
-        echo $emaillist."<br>";
-      }
-      ?>
+    <?php
+    foreach($_SESSION["addcard"]["emaiList"] as $emaillist){
+      echo $emaillist."<br>";
+    }
+    ?>
 
 </div>
 </div>
