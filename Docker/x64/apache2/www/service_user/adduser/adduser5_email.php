@@ -65,6 +65,16 @@ $_SESSION["errorMessages"]=array();
     }
     ?>
 
+
+    <br>
+    <div class="c-r-button">
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="button" onclick="history.back()">
+       戻る
+    </button>
+
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="button"  onclick="location.href='./adduser3.php'">
+       登録実行
+    </button>
 </div>
 </div>
 </div>
