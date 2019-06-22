@@ -4,6 +4,23 @@ if (!isset($_SESSION["user"])){
 header('Location: /login.php');
 }
 
+include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
+try {
+  if(!$_POST["user"]==""){
+    $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
+    $sql  = $pdo->prepare("SELECT EXISTS(SELECT idm FROM service_user WHERE idm = ?)");
+    $sql->bindValue(1,$_SESSION["addcard"]["cardidm"]);
+    $sql->execute();
+    $result=  $sql->fetchColumn();
+  }
+}catch (Exception $e){
+  $errorMessages[] = "データベースエラーです";
+}
+
+if($result==1){
+  $errorMessages[] = "このカードは既に登録されています";
+}
+
 if($_POST["user"]==""){
   $errorMessages[] = "ユーザー名を入力してください";
 }
