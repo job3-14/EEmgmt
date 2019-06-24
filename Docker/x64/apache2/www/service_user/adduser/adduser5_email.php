@@ -65,7 +65,6 @@ $_SESSION["errorMessages"]=array();
     }
     ?>
 
-
     <br>
     <div class="c-r-button">
     <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="button" onclick="history.back()">
