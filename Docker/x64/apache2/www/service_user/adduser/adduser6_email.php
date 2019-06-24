@@ -25,7 +25,7 @@ if($result==1){
 
 try {
   $sql  = $pdo->prepare("INSERT INTO service_user (idm,name,mainEmail,notice,address1,address2,address3,address4,address5) VALUES (?,?,?,?,?,?,?,?,?);");
-  $sql->bindValue(1,$_SESSION["addcard"]["user"]);
+  $sql->bindValue(1,$_SESSION["addcard"]["cardidm"]);
   $sql->bindValue(2,$_SESSION["addcard"]["user"]);
   $sql->bindValue(3,$_SESSION["addcard"]["email"]);
   $sql->bindValue(4,$_SESSION["addcard"]["sendMethod"]);
