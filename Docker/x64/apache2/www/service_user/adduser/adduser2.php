@@ -9,7 +9,7 @@ try {
   if(!$_POST["user"]==""){
     $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
     $sql  = $pdo->prepare("SELECT EXISTS(SELECT idm FROM service_user WHERE idm = ?)");
-    $sql->bindValue(1,$_SESSION["addcard"]["cardidm"]);
+    $sql->bindValue(1,$_POST["cardidm"]);
     $sql->execute();
     $result=  $sql->fetchColumn();
   }
