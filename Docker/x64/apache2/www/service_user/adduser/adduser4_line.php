@@ -8,7 +8,7 @@ if($_POST["password"]=="" || !isset($_POST["password"])){
   $errorMessages[] = "パスワードを入力してください";
 }
 
-if(!is_null($errorMessages)){
+if(!$errorMessages){
   $_SESSION["errorMessages"]=$errorMessages;
   header('Location: ./adduser_error.php');
 }else{
