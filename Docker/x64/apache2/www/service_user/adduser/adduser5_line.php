@@ -67,7 +67,7 @@ $_SESSION["errorMessages"]=array();
        戻る
     </button>
 
-    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="button"  onclick="location.href='./adduser6_email.php'">
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="button"  onclick="location.href='./adduser6_line.php'">
        登録実行
     </button>
 </div>
