@@ -15,6 +15,6 @@ if($errorMessages){
   header('Location: ./adduser_error.php');
 }else{
   $_SESSION["addcard"]["password"] = password_hash($_POST["password"], PASSWORD_DEFAULT);
-  header('Location: ./adduser5.php');
+  header('Location: ./adduser5_line.php');
 }
 ?>
