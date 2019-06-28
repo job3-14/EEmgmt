@@ -50,7 +50,7 @@ $_SESSION["errorMessages"]=array();
     <p>最大5つのURL(送信先)を設定できます。</p>
     <p>URLはこのページでは取得できません。以下のURLから[Incoming Webhook]と検索して送信先を設定してください</p>
     <p><a href="https://sakai-workspace.slack.com/apps">https://sakai-workspace.slack.com/apps</a></p>
-<form action="./adduser4_email.php" method="POST">
+<form action="./adduser4_slack.php" method="POST">
   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
     <input class="mdl-textfield__input" type="text"  name="slack1">
     <label class="mdl-textfield__label">Slack URL</label>
