@@ -31,7 +31,7 @@ $_SESSION["errorMessages"]=array();
           <nav class="mdl-navigation mdl-layout--large-screen-only">
           </nav>
           <div class="logout">
-          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="location.href='./adduser.php'">
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="location.href='../service_user.php'">
              キャンセル
           </button>
           </div>
