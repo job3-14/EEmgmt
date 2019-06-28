@@ -31,7 +31,7 @@ $_SESSION["errorMessages"]=array();
           <nav class="mdl-navigation mdl-layout--large-screen-only">
           </nav>
           <div class="logout">
-          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="location.href='./adduser.php'">
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="location.href='../service_user.php'">
              キャンセル
           </button>
           </div>
@@ -53,7 +53,7 @@ $_SESSION["errorMessages"]=array();
 <form action="./adduser4_slack.php" method="POST">
   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
     <input class="mdl-textfield__input" type="text"  name="slack1">
-    <label class="mdl-textfield__label">Slack URL</label>
+    <label class="mdl-textfield__label">Slack URL(必須)</label>
   </div>
   <br>
   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
