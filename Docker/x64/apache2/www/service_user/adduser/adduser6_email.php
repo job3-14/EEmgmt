@@ -33,7 +33,7 @@ try {
     if($_SESSION["addcard"]["emaiList"][$i]){
       $sql->bindValue($i2,$_SESSION["addcard"]["emaiList"][$i]);
     }else{
-      $sql->bindValue($i2,'NULL');
+      $sql->bindValue($i2,PDO::PARAM_NULL);
     }
   }
   $sql->execute();
