@@ -19,6 +19,12 @@ PRIMARY KEY (username));
 CREATE TABLE service_user(
 idm VARCHAR(30) NOT NULL,
 name VARCHAR(30) NOT NULL,
+mainEmail VARCHAR(300) NOT NULL,
 notice VARCHAR(30) NOT NULL,
-address VARCHAR(300),
+password VARCHAR(150),
+address1 VARCHAR(300),
+address2 VARCHAR(300),
+address3 VARCHAR(300),
+address4 VARCHAR(300),
+address5 VARCHAR(300),
 PRIMARY KEY (idm));

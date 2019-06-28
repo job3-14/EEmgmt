@@ -5,7 +5,7 @@ header('Location: /login.php');
 }
 
 
-require_once('../db_setting.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
 $errorMessages = array();
 $permission = array();
 $permission2 = array();
