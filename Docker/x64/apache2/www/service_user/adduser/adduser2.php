@@ -53,7 +53,8 @@ if(!is_null($errorMessages)){
   }elseif($_POST["sendMethod"]=="slack"){
     header('Location: ./adduser3_slack.php');
   }elseif($_POST["sendMethod"]=="none"){
-    header('Location: ./adduser4.php');
+    $_SESSION["addcard"]["sendMethod2"] = "なし";
+    header('Location: ./adduser3_null.php');
   }
 }
 
