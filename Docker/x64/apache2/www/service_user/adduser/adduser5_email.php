@@ -3,6 +3,8 @@ session_start();
 if (!isset($_SESSION["user"])){
 header('Location: /login.php');
 }
+
+$_SESSION["errorMessages"]=array();
 ?>
 
 
@@ -22,14 +24,14 @@ header('Location: /login.php');
       <header class="mdl-layout__header">
         <div class="mdl-layout__header-row">
           <!-- Title -->
-          <span class="mdl-layout-title">管理ユーザー新規登録ウィザード</span>
+          <span class="mdl-layout-title">利用ユーザー新規登録ウィザード</span>
           <!-- Add spacer, to align navigation to the right -->
           <div class="mdl-layout-spacer"></div>
           <!-- Navigation. We hide it in small screens. -->
           <nav class="mdl-navigation mdl-layout--large-screen-only">
           </nav>
           <div class="logout">
-          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="location.href='/adminuser/adminuser.php'">
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="location.href='../service_user.php'">
              キャンセル
           </button>
           </div>
@@ -41,31 +43,44 @@ header('Location: /login.php');
 
 <div class="c-add-card mdl-card mdl-shadow--4dp">
   <div class="mdl-card__supporting-text">
-    以下のエラー内容を修正してください
+    入力内容を確認してください
   </div>
   <div class="mdl-card__supporting-text">
-    <div class="c-errormessage">
-    <?php  //エラーメッセージ
-    foreach($_SESSION["errorMessages"] as $errorMessage){
-    echo '<img src="/img/HighPriority.png" class="c-login-img">';
-    echo $errorMessage."<br>";
-    $_SESSION["errorMessages"]=array();
+    <h5>ユーザー名</h5>
+    <?php echo $_SESSION["addcard"]["user"] ?>
+
+    <h5>ICカードidm</h5>
+    <?php echo $_SESSION["addcard"]["cardidm"]; ?>
+
+    <h5>入退室通知送信方法</h5>
+    <?php echo $_SESSION["addcard"]["sendMethod"]; ?>
+
+    <h5>メールアドレス(メイン)</h5>
+    <?php echo $_SESSION["addcard"]["email"] ?>
+
+    <h5>メールアドレス</h5>
+    <?php
+    foreach($_SESSION["addcard"]["emaiList"] as $emaillist){
+      echo $emaillist."<br>";
     }
-    unset($_SESSION["errorMessages"]);
     ?>
+
     <br>
-  </div>
-  <div class="c-r-button">
-    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="button" onclick="location.href='/'">
-       メニューへ戻る
+    <div class="c-r-button">
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="button" onclick="history.back()">
+       戻る
+    </button>
+
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="button"  onclick="location.href='./adduser6_email.php'">
+       登録実行
     </button>
 </div>
 </div>
 </div>
-
-</div>
       </main>
     </div>
+
+
 
   </body>
 </html>

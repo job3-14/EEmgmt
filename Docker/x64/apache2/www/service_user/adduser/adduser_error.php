@@ -55,11 +55,9 @@ header('Location: /login.php');
     ?>
     <br>
   </div>
-  <div class="c-r-button">
-    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="button" onclick="location.href='/'">
-       メニューへ戻る
-    </button>
-</div>
+  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="button" onclick="history.back()">
+     戻る
+  </button>
 </div>
 </div>
 
