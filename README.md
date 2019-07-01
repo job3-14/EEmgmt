@@ -43,8 +43,3 @@ NONE<br>
 [https://github.com/google/material-design-lite](https://github.com/google/material-design-lite)<br>
 <br>
 thank you!
-<br><br>
-
-
-#***その他***
-#mariadb:10.3.0
