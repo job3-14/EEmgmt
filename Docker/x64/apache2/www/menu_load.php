@@ -9,7 +9,7 @@ echo '<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--
 echo '<header class="mdl-layout__header">';
 echo '<div class="mdl-layout__header-row">';
 echo '<div class="head-title">';
-echo '<span class="mdl-layout-title">管理トップ</span>';
+echo '<span class="mdl-layout-title">'.$menuName.'</span>';
 echo '</div>';
 echo '<div class="mdl-layout-spacer"></div>';
 echo '<div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">';
