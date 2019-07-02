@@ -4,7 +4,7 @@ if (!isset($_SESSION["user"])){
 header('Location: /login.php');
 }
 
-function menuload(){
+function menuload($menuName){
 echo '<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">';
 echo '<header class="mdl-layout__header">';
 echo '<div class="mdl-layout__header-row">';
