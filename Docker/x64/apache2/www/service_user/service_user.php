@@ -20,7 +20,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/menu_load.php');
     <!-- The drawer is always open in large screens. The header is always shown,
       even in small screens. -->
       <?php
-      $menuName = "サービスユーザー管理メニュー";
+      $menuName = "利用者管理メニュー";
       menuload($menuName);
       ?>
       <main class="mdl-layout__content">
