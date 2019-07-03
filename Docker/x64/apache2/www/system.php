@@ -24,7 +24,40 @@ include($_SERVER['DOCUMENT_ROOT'] . '/menu_load.php');
       menuload($menuName);
       ?>
       <main class="mdl-layout__content">
-        <div class="page-content"><!-- Your content goes here --></div>
+        <div class="page-content"><!-- Your content goes here -->
+
+
+        <div class="c-card">
+            <div class="mdl-card mdl-shadow--4dp">
+            <div class="mdl-card__supporting-text">
+              システム操作
+            </div>
+            <div class="mdl-card__supporting-text">
+              <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
+              <input type="radio" id="option-1" class="mdl-radio__button" name="sendMethod" value="shutdown" checked>
+              <span class="mdl-radio__label">システム終了(シャットダウン)</span>
+              </label>
+              <br>
+              <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-2">
+              <input type="radio" id="option-2" class="mdl-radio__button" name="sendMethod" value="restart">
+              <span class="mdl-radio__label">システム再起動(リブート)</span>
+              </label>
+              <br><br>
+              <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-3">
+              <input type="radio" id="option-3" class="mdl-radio__button" name="sendMethod" value="initialize">
+              <span class="mdl-radio__label">初期化</span>
+              </label>
+              <br><br>
+              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                    確認
+                </button>
+
+            </div>
+          </div>
+          </div>
+
+
+        </div>
       </main>
     </div>
 
