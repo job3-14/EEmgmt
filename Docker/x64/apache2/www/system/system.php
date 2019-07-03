@@ -48,10 +48,12 @@ include($_SERVER['DOCUMENT_ROOT'] . '/menu_load.php');
               <span class="mdl-radio__label">初期化</span>
               </label>
               <br><br>
-              <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-2">
-                <input type="checkbox" id="switch-2" class="mdl-switch__input">
+              <div class="c-switch">
+              <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-1">
+                <input type="checkbox" id="switch-1" class="mdl-switch__input" name="check" value=1>
                 <span class="mdl-switch__label">内容を確認後チェックを入れてください</span>
               </label>
+              </div>
               <div class="c-r-button">
               <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
                     実行
