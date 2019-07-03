@@ -9,13 +9,13 @@ include($_SERVER['DOCUMENT_ROOT'] . '/menu_load.php');
 
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>入退室管理システム</title>
-    <link rel="stylesheet" href="./material/material.min.css">
-    <script src="./material/material.min.js"></script>
-    <link rel="stylesheet" href="./material/iconfont/material-icons.css">
-    <link rel="stylesheet" type="text/css" href="custom.css">
-  </head>
+<head>
+  <title>入退室管理システム</title>
+  <link rel="stylesheet" href="/material/material.min.css">
+  <script src="/material/material.min.js"></script>
+  <link rel="stylesheet" href="/material/iconfont/material-icons.css">
+  <link rel="stylesheet" type="text/css" href="/custom.css">
+</head>
   <body>
     <!-- The drawer is always open in large screens. The header is always shown,
       even in small screens. -->
@@ -33,6 +33,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/menu_load.php');
               システム操作
             </div>
             <div class="mdl-card__supporting-text">
+              <form action="./system2.php" method="POST">
               <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
               <input type="radio" id="option-1" class="mdl-radio__button" name="sendMethod" value="shutdown" checked>
               <span class="mdl-radio__label">システム終了(シャットダウン)</span>
@@ -51,7 +52,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/menu_load.php');
               <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
                     確認
                 </button>
-
+              </form>
             </div>
           </div>
           </div>
