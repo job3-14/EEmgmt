@@ -29,18 +29,17 @@ include($_SERVER['DOCUMENT_ROOT'] . '/menu_load.php');
 
 
 
-<div class="c-card">
-  <div class="mdl-card mdl-shadow--4dp">
-  <div class="mdl-card__supporting-text">
-    利用ユーザー設定
-  </div>
-  <div class="mdl-card__supporting-text">
-  <a href="./adduser/adduser.php">利用ユーザー情報の登録</a><br>
-  <a href="./listuser/list.php">利用ユーザー情報の一覧</a><br>
-
-  </div>
-</div>
-</div>
+          <div class="c-card-padding">
+            <div class="c-card mdl-card mdl-shadow--4dp">
+              <div class="mdl-card__supporting-text">
+                利用ユーザー設定
+              </div>
+              <div class="mdl-card__supporting-text">
+                <a href="./adduser/adduser.php">利用ユーザー情報の登録</a><br>
+                <a href="./listuser/list.php">利用ユーザー情報の一覧</a><br>
+              </div>
+            </div>
+          </div>
 
 
 

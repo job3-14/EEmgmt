@@ -26,36 +26,42 @@ include($_SERVER['DOCUMENT_ROOT'] . '/menu_load.php');
       <main class="mdl-layout__content">
         <div class="page-content"><!-- Your content goes here -->
 
-
-        <div class="c-card">
-            <div class="mdl-card mdl-shadow--4dp">
+          <div class="c-card-padding">
+            <div class="c-card mdl-card mdl-shadow--4dp">
             <div class="mdl-card__supporting-text">
               システム操作
             </div>
             <div class="mdl-card__supporting-text">
               <form action="./system2.php" method="POST">
               <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
-              <input type="radio" id="option-1" class="mdl-radio__button" name="sendMethod" value="shutdown" checked>
+              <input type="radio" id="option-1" class="mdl-radio__button" name="operete" value="shutdown" checked>
               <span class="mdl-radio__label">システム終了(シャットダウン)</span>
               </label>
               <br>
               <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-2">
-              <input type="radio" id="option-2" class="mdl-radio__button" name="sendMethod" value="restart">
+              <input type="radio" id="option-2" class="mdl-radio__button" name="operete" value="restart">
               <span class="mdl-radio__label">システム再起動(リブート)</span>
               </label>
               <br><br>
               <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-3">
-              <input type="radio" id="option-3" class="mdl-radio__button" name="sendMethod" value="initialize">
+              <input type="radio" id="option-3" class="mdl-radio__button" name="operete" value="initialize">
               <span class="mdl-radio__label">初期化</span>
               </label>
               <br><br>
+              <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-2">
+                <input type="checkbox" id="switch-2" class="mdl-switch__input">
+                <span class="mdl-switch__label">内容を確認後チェックを入れてください</span>
+              </label>
+              <div class="c-r-button">
               <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
                     確認
                 </button>
+              </div>
               </form>
             </div>
           </div>
-          </div>
+        </div>
+
 
 
         </div>
