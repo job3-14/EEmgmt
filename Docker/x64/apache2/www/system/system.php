@@ -54,8 +54,11 @@ include($_SERVER['DOCUMENT_ROOT'] . '/menu_load.php');
               </label>
               <div class="c-r-button">
               <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-                    確認
+                    実行
                 </button>
+              </div>
+              <div class="c-red">
+                実行ボタンクリック後即実行されます
               </div>
               </form>
             </div>
