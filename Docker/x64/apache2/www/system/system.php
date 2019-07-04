@@ -60,7 +60,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/menu_load.php');
                 </button>
               </div>
               <div class="c-red">
-                実行ボタンクリック後即実行されます
+                システム終了・再起動は実行をクリック後即実行されます
               </div>
               </form>
             </div>
