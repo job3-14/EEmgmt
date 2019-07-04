@@ -5,12 +5,12 @@ header('Location: /login.php');
 }
 
 if($_POST["check"]!=1){
-  $errorMessages[] = "ERROR内容確認にチェックを入れてください";
+  $errorMessages[] = "内容確認にチェックを入れてください";
 }
 
 if(!is_null($errorMessages)){
   $_SESSION["errorMessages"]=$errorMessages;
-  header('Location: ./adduser_error.php');
+  header('Location: /adduser_error.php');
 }else{
   if($_POST["operete"]){
     if($_POST["operete"]=="shutdown"){
