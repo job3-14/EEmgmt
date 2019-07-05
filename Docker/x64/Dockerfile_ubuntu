@@ -14,7 +14,7 @@ RUN apt install -y tzdata
 #timezone
 ENV TZ=Asia/Tokyo
 
-RUN apt install -y sudo python3-pip  python-pip  python3-tk fonts-noto  xrdp mate-desktop-environment-core mate-desktop-environment
+RUN apt install -y sudo python3-pip  python-pip  python3-tk fonts-noto  xrdp ssh mate-desktop-environment-core mate-desktop-environment
 RUN pip3 install netifaces mysql-connector-python slackweb
 RUN pip install -U nfcpy
 #RUN apt -y install mate-desktop-environment-core

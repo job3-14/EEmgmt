@@ -24,6 +24,7 @@ services:
      - ./apache2/www:/var/www/html
      - ./apache2/conf:/etc/apache2
      - ./apache2/ssl:/etc/ssl
+     - ./apache2/ssh:/opt/ssh
    restart: always
 
  db:
