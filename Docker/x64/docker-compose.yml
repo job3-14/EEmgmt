@@ -25,6 +25,8 @@ services:
      - ./apache2/conf:/etc/apache2
      - ./apache2/ssl:/etc/ssl
      - ./apache2/ssh:/opt/ssh
+   extra_hosts:
+     -"testhost:127.0.0.1"
    restart: always
 
  db:
