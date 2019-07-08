@@ -26,7 +26,7 @@ services:
      - ./apache2/ssl:/etc/ssl
      - ./apache2/ssh:/opt/ssh
    extra_hosts:
-     - testhost:127.0.0.1
+     - dockerhost:192.168.1.98
    restart: always
 
  db:
