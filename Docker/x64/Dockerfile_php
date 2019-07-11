@@ -3,6 +3,6 @@ ENV DEBIAN_FRONTEND noninteractive
 #キーボード入力待ちをさせない
 #PDOをインストール
 RUN docker-php-ext-install pdo_mysql
-RUN mkdir /var/command
-RUN chmod 777 /var/command
+RUN mkdir -p /var/command
 RUN chown 1000:1000 /var/command
+RUN chmod 777 /var/command
