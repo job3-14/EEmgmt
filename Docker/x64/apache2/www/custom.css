@@ -35,10 +35,6 @@ img.c-login-img{
   width: 60%;
 }
 
-.c-card{
-  padding: 20px;
-}
-
 .c-add-card{
   width: 60%;
   margin: 30px auto;  //中央寄せ
@@ -50,10 +46,6 @@ img.c-login-img{
 
 .c-login-message{
   color: #ff0000;
-}
-
-.c-card{
-  padding: 20px;
 }
 
 .c-add-card{
@@ -74,6 +66,9 @@ img.c-login-img{
 }
 
 .c-card{
-  width: 90%;
-  margin: 30px auto;  //中央寄せ
+  width: 500px;
+  height: 300px;
 }
+ .c-card-padding{
+   padding: 30px;
+ }

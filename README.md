@@ -1,5 +1,4 @@
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
-![GitHub issues](https://img.shields.io/github/issues/job3-14/EEmgmt.svg)
 
 ***製作中*** <br>
 入退室管理システムです。<br>
@@ -28,6 +27,10 @@ VERSION="18.04.2 LTS (Bionic Beaver)"<br>
 docker-composeを利用<br>
 各環境に合わせてdocker , docker-composeをインストールしてください。<br>
 
+ファイルは/opt以下  
+/docker/commamd/fileのパーミッションは777   
+
+
 
 <br><br>
 LICENSE<br>
@@ -43,8 +46,3 @@ NONE<br>
 [https://github.com/google/material-design-lite](https://github.com/google/material-design-lite)<br>
 <br>
 thank you!
-<br><br>
-
-
-#***その他***
-#mariadb:10.3.0
