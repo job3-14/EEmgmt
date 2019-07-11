@@ -11,9 +11,11 @@ while True:
     if os.path.exists(path):
         from file import signalfile  #ファイル読み込み
         if signalfile.command == "Shutdown":
+            time.sleep(5)
             subprocess.check_output(["shutdown","-h","now"])
         elif signalfile.command == "Reboot":
             subprocess.check_output(["reboot"])
+            time.sleep(5)
         else:
             os.remove(path)
     time.sleep(1)
