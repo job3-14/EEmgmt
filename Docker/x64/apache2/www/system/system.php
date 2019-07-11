@@ -43,11 +43,6 @@ include($_SERVER['DOCUMENT_ROOT'] . '/menu_load.php');
               <span class="mdl-radio__label">システム再起動(リブート)</span>
               </label>
               <br><br>
-              <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-3">
-              <input type="radio" id="option-3" class="mdl-radio__button" name="operete" value="initialize">
-              <span class="mdl-radio__label">初期化</span>
-              </label>
-              <br><br>
               <div class="c-switch">
               <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-1">
                 <input type="checkbox" id="switch-1" class="mdl-switch__input" name="check" value=1>
