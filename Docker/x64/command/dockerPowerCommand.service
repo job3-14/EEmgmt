@@ -6,6 +6,6 @@ ExecStart =/usr/bin/python3 /opt/docker/command/command.py
 Restart=always
 Type=simple
 User=root
-
+Group=root
 [Install]
 WantedBy=multi-user.target
