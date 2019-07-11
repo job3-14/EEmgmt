@@ -28,3 +28,7 @@ address3 VARCHAR(300),
 address4 VARCHAR(300),
 address5 VARCHAR(300),
 PRIMARY KEY (idm));
+
+CREATE TABLE setting(
+shutdown VARCHAR(100),
+PRIMARY KEY (shutdown));

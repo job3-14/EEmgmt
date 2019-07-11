@@ -9,6 +9,7 @@ services:
          -  /dev/bus/usb/001/004
     volumes:
         - ./gui/:/opt
+        - ./command/file:/var/command
     ports:
         - 3389:3389
     restart: always
@@ -24,6 +25,7 @@ services:
      - ./apache2/www:/var/www/html
      - ./apache2/conf:/etc/apache2
      - ./apache2/ssl:/etc/ssl
+     - ./command/file:/var/command
    restart: always
 
  db:
