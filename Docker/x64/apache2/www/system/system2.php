@@ -15,10 +15,10 @@ if(!is_null($errorMessages)){
 }else{
   if($_POST["operete"]){
     if($_POST["operete"]=="shutdown"){
-      $command = "command=Shutdown";
+      $command = "command='Shutdown'";
       file_put_contents($path, $command);
     }elseif($_POST["operete"]=="restart"){
-      $command = "command=Reboot";
+      $command = "command='Reboot'";
       file_put_contents($path, $command);
     }
   }else{
