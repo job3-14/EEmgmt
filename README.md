@@ -27,6 +27,10 @@ VERSION="18.04.2 LTS (Bionic Beaver)"<br>
 docker-composeを利用<br>
 各環境に合わせてdocker , docker-composeをインストールしてください。<br>
 
+ファイルは/opt以下  
+/docker/commamd/fileのパーミッションは777   
+
+
 
 <br><br>
 LICENSE<br>
