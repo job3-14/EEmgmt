@@ -17,9 +17,11 @@ if(!is_null($errorMessages)){
     if($_POST["operete"]=="shutdown"){
       $command = "command='Shutdown'";
       file_put_contents($path, $command);
+      header('Location: /index.php');
     }elseif($_POST["operete"]=="restart"){
       $command = "command='Reboot'";
       file_put_contents($path, $command);
+      header('Location: /index.php');
     }
   }else{
     $errorMessages[] = "操作エラーです";
