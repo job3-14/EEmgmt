@@ -2,7 +2,7 @@
 import os
 import subprocess
 import time
-path = "./file/signalfile.py"  #ファイルパス指定
+path = "/opt/docker/command/file/signalfile.py"  #ファイルパス指定
 
 if os.path.exists(path):  #ファイルが存在した場合削除
     os.remove(path)
