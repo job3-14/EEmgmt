@@ -107,8 +107,9 @@ function pages($currentPages,$totalPageCounts){
       ?>
       <main class="mdl-layout__content">
         <div class="page-content"><!-- Your content goes here -->
-          <div class="c-card mdl-card mdl-shadow--4dp">
-            <div class="mdl-card__supporting-text">
+          <div class="c-card-padding">
+            <div class="c-card mdl-card mdl-shadow--4dp">
+              <div class="mdl-card__supporting-text">
               ユーザー情報一覧
             </div>
             <div class="mdl-card__supporting-text">
