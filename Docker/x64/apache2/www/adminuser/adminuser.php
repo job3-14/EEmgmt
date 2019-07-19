@@ -37,6 +37,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/menu_load.php');
                   <div class="mdl-card__supporting-text">
                     <a href="./adduser/adduser.php">管理ユーザー情報の登録</a><br>
                     <a href="./listuser/list.php">管理ユーザー情報の一覧</a><br>
+                    <a href="./search/search.php">管理ユーザーの検索</a><br>
                   </div>
                 </div>
               </div>
