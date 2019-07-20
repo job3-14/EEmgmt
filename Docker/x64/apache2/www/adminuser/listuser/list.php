@@ -165,6 +165,15 @@ function pages($currentPages,$totalPageCounts){
               ユーザー情報一覧
             </div>
             <div class="mdl-card__supporting-text">
+              <form action="#" method="GET">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                  <input class="mdl-textfield__input" type="text"  name="seach">
+                  <label class="mdl-textfield__label">検索</label>
+                </div>
+                <button class="mdl-button mdl-js-button mdl-button--raised" type="submit">
+                  検索
+                </button>
+              </form>
               <p>１ページにつき100件表示します</p>
               <p>ユーザー件数: <?php echo $counts;?></p>
               <p><?php pages($currentPages,$totalPageCounts); ?></p>
