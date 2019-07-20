@@ -183,12 +183,12 @@ function pages($currentPages,$totalPageCounts){
                 </button>
               </form>
               <p>１ページにつき100件表示します</p>
-              <p>ヒット件数: <?php echo $counts;?></p>
               <?php
               if($seach){
                 echo "<p>'".$seach."'の検索結果</p>";
               }
                ?>
+              <p>ヒット件数: <?php echo $counts;?></p>
               <p><?php pages($currentPages,$totalPageCounts); ?></p>
               <ul class='mdl-list'>
               <?php
