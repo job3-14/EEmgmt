@@ -173,7 +173,7 @@ function pages($currentPages,$totalPageCounts){
             <div class="mdl-card__supporting-text">
               <form action="#" method="GET">
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="text"  name="seach">
+                  <input class="mdl-textfield__input" type="text"  name="seach" <?php echo "value=".$seach;?>>
                   <label class="mdl-textfield__label">検索</label>
                 </div>
                 <button class="mdl-button mdl-js-button mdl-button--raised" type="submit">
