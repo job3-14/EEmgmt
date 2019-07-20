@@ -178,8 +178,12 @@ function pages($currentPages,$totalPageCounts){
                   <input class="mdl-textfield__input" type="text"  name="seach" <?php echo "value=".$seach;?>>
                   <label class="mdl-textfield__label">検索</label>
                 </div>
-                <button class="mdl-button mdl-js-button mdl-button--raised" type="submit">
-                  検索
+
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit">
+                    送信
+                  </button>
+                <button class="mdl-button mdl-js-button mdl-button--raised" onclick="location.href='/adminuser/listuser/list.php'">
+                  リセット
                 </button>
               </form>
               <p>１ページにつき100件表示します</p>
