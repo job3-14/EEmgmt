@@ -8,8 +8,14 @@ include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
 include($_SERVER['DOCUMENT_ROOT'] . '/menu_load.php');
 
 try {
+    if($_GET["seach"]){
+     $seach = $_GET["seach"];
+     $countsql= "SELECT COUNT(idm) FROM service_user WHERE name LIKE '%".$seach."%'";
+   }else{
+     $countsql= "SELECT COUNT(idm) FROM service_user";
+   }
     $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
-    $sql  = $pdo->prepare("SELECT COUNT(idm) FROM service_user");
+    $sql  = $pdo->prepare($countsql);
     $sql->execute();
     $counts = $sql->fetchColumn();
 }catch (Exception $e){
@@ -34,13 +40,14 @@ if (isset($_GET["pages"])){
 }
 
 try {
-    //$pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
-    $sql  = $pdo->prepare("SELECT * FROM service_user ORDER BY idm LIMIT ".$pages." ,100");
+    if($seach){
+      $userlistsql = "SELECT * FROM service_user WHERE name LIKE '%".$seach."%' ORDER BY idm LIMIT ".$pages." ,100";
+    }else{
+      $userlistsql = "SELECT * FROM service_user ORDER BY idm LIMIT ".$pages." ,100";
+    }
+    $sql  = $pdo->prepare($userlistsql);
     $sql->execute();
     $userlist=  $sql->fetchAll();
-    //$sql  = $pdo->prepare("SELECT COUNT(username) FROM login");
-    //$sql->execute();
-    //$counts = $sql->fetchColumn();
 }catch (Exception $e){
   $errorMessages[] = "データベースエラーです";
   $_SESSION["errorMessages"]=$errorMessages;
@@ -82,10 +89,7 @@ function pages($currentPages,$totalPageCounts){
   echo '...';
   echo '<a href="./list.php?pages='.$totalPageCounts.'">'.$totalPageCounts.'</a>';
 }
-
 }
-
-
 ?>
 
 
@@ -108,11 +112,24 @@ function pages($currentPages,$totalPageCounts){
       <main class="mdl-layout__content">
         <div class="page-content"><!-- Your content goes here -->
           <div class="c-card-padding">
-            <div class="c-card mdl-card mdl-shadow--4dp">
+            <div class="c-large-card mdl-card mdl-shadow--4dp">
               <div class="mdl-card__supporting-text">
               ユーザー情報一覧
             </div>
             <div class="mdl-card__supporting-text">
+              <form action="#" method="GET">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                  <input class="mdl-textfield__input" type="text"  name="seach" <?php echo "value=".$seach;?>>
+                  <label class="mdl-textfield__label">検索</label>
+                </div>
+
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit">
+                    送信
+                  </button>
+                <button class="mdl-button mdl-js-button mdl-button--raised" onclick="location.href='./list.php'">
+                  リセット
+                </button>
+              </form>
               <p>１ページにつき100件表示します</p>
               <p>ユーザー件数: <?php echo $counts;?></p>
               <p><?php pages($currentPages,$totalPageCounts); ?></p>
@@ -133,9 +150,6 @@ function pages($currentPages,$totalPageCounts){
               <p><?php pages($currentPages,$totalPageCounts); ?></p>
           </div>
           </div>
-
-
-
 
 </div>
       </main>

@@ -182,7 +182,7 @@ function pages($currentPages,$totalPageCounts){
                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit">
                     送信
                   </button>
-                <button class="mdl-button mdl-js-button mdl-button--raised" onclick="location.href='/adminuser/listuser/list.php'">
+                <button class="mdl-button mdl-js-button mdl-button--raised" onclick="location.href='./list.php'">
                   リセット
                 </button>
               </form>
