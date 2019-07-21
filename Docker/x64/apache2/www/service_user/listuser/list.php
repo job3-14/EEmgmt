@@ -89,10 +89,7 @@ function pages($currentPages,$totalPageCounts){
   echo '...';
   echo '<a href="./list.php?pages='.$totalPageCounts.'">'.$totalPageCounts.'</a>';
 }
-
 }
-
-
 ?>
 
 
@@ -153,9 +150,6 @@ function pages($currentPages,$totalPageCounts){
               <p><?php pages($currentPages,$totalPageCounts); ?></p>
           </div>
           </div>
-
-
-
 
 </div>
       </main>
