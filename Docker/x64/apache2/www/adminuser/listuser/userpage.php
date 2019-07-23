@@ -66,13 +66,8 @@ if(isset($operateErrorMessages)){
                   </div>
                 <br>
                   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="password"  name="password1">
+                    <input class="mdl-textfield__input" type="password"  name="password1" value="**********">
                     <label class="mdl-textfield__label">パスワード</label>
-                  </div>
-                <br>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="password"  name="password2">
-                    <label class="mdl-textfield__label">パスワードを再度入力</label>
                   </div>
                 <br>
                 <h5>権限設定</h5>
