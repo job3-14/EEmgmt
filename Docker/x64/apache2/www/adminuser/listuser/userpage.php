@@ -22,13 +22,13 @@ try {
     $sql  = $pdo->prepare("SELECT * FROM login WHERE username = ?");
     $sql->bindValue(1,$username);
     $sql->execute();
-    $userlist=  $sql->fetchAll();
+    $user = $sql->fetchAll();
 }catch (Exception $e){
   $operateErrorMessages[] = "データベース接続エラーです";
 }
 
 if($result==0){
-  $operateErrorMessages[] = "操作エラーです";
+  $operateErrorMessages[] = "ユーザーが存在しません";
 }
 
 if(isset($operateErrorMessages)){
