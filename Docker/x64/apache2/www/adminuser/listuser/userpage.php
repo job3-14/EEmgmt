@@ -35,6 +35,12 @@ if(isset($operateErrorMessages)){
   $_SESSION["errorMessages"]=$operateErrorMessages;
   header('Location: /operate_error.php');
 }
+
+function permission($type){
+  if($type==1){
+    echo 'checked="checked"';
+  }
+}
 ?>
   <!DOCTYPE html>
   <html>
