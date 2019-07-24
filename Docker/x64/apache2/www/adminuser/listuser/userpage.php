@@ -58,10 +58,9 @@ if(isset($operateErrorMessages)){
             <div class="c-large-card mdl-card mdl-shadow--4dp">
               <div class="mdl-card__supporting-text"> 管理ユーザー情報 </div>
               <div class="mdl-card__supporting-text">
-                <h5>ユーザー名:<?php echo $username; ?></h5>
                 <form action="./adduser2.php" method="POST">
                   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="text"  name="user">
+                    <input class="mdl-textfield__input" type="text"  name="user" value="<?php echo $username;?>">
                     <label class="mdl-textfield__label">ユーザー名</label>
                   </div>
                 <br>
