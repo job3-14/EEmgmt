@@ -158,7 +158,7 @@ function permission($type){
                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit">
                     更新
                   </button>
-                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="reset">
+                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="button" onclick="location.href='./userpage.php?username=<?php echo $username; ?>'">
                       リセット
                     </button>
                 </form>
