@@ -6,11 +6,6 @@ header('Location: /login.php');
 $_SESSION["errorMessages"]= array();
 include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
 
-if(isset($errorMessages)){
-  $_SESSION["errorMessages"]=$errorMessages;
-  header('Location: /operate_error.php');
-}
-
 try {
   $pdo=new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
   $sql=$pdo->prepare("INSERT INTO login (addcard,editcard,sendnotice,viewexit,viewloginlog,deletelog,initialize,setmail,shutdown,edituser) VALUES (?,?,?,?,?,?,?,?,?,?,?,?);");
@@ -27,5 +22,10 @@ try {
   $sql->execute();
 }catch (Exception $e){
   $errorMessages[]="データベース接続エラーです";
+}
+
+if(isset($errorMessages)){
+  $_SESSION["errorMessages"]=$errorMessages;
+  header('Location: /operate_error.php');
 }
 ?>
