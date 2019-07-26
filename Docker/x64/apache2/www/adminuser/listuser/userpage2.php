@@ -8,7 +8,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
 
 try {
   $pdo=new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
-  $sql=$pdo->prepare("INSERT INTO login (addcard,editcard,sendnotice,viewexit,viewloginlog,deletelog,initialize,setmail,shutdown,edituser) VALUES (?,?,?,?,?,?,?,?,?,?,?,?);");
+  $sql=$pdo->prepare("INSERT INTO login (addcard,editcard,sendnotice,viewexit,viewloginlog,deletelog,initialize,setmail,shutdown,edituser) VALUES (?,?,?,?,?,?,?,?,?,?) WHERE username=".$_GET["username"]);
   $sql->bindValue(1,$_POST["addcard"]);
   $sql->bindValue(2,$_POST["editcard"]);
   $sql->bindValue(3,$_POST["sendnotice"]);
