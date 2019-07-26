@@ -158,6 +158,9 @@ function permission($type){
                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit">
                     入力内容確認
                   </button>
+                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="reset">
+                      リセット
+                    </button>
                 </form>
 
                </div>
