@@ -156,7 +156,7 @@ function permission($type){
                 <p class="c-red">↑この権限を有効にすると間接的に全ての権限を得ることができます</p>
 
                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit">
-                    入力内容確認
+                    更新
                   </button>
                   <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="reset">
                       リセット
