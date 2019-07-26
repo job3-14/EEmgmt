@@ -6,22 +6,6 @@ header('Location: /login.php');
 $_SESSION["errorMessages"]= array();
 include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
 
-if (isset($_POST["user"])){
-  if($_POST["user"]==""){
-    $errorMessages[] = "ユーザー名を入力してください";
-  }
-  if(!preg_match("/^[a-zA-Z0-9]+$/",$_POST["user"]) && !$_POST["user"]==""){
-    $errorMessages[] = "ユーザー名は半角文字数字のみが使用できます";
-  }
-  if( && $result==1){
-    $errorMessages[] = "このユーザー名は既に使用されている為使えません。別のユーザー名をご利用ください";
-  }
-  $_SESSION["errorMessages"]=$errorMessages;
-  header('Location: ./adduser_error.php');
-}else{
-  $errorMessages[] = "操作エラーです";
-}
-
 if(isset($errorMessages)){
   $_SESSION["errorMessages"]=$errorMessages;
   header('Location: /operate_error.php');
