@@ -19,13 +19,14 @@ try {
 }
 
 try {
-    $sql  = $pdo->prepare("SELECT * FROM login WHERE username=?");
+    $sql  = $pdo->prepare("SELECT * FROM service_user WHERE name=?");
     $sql->bindValue(1,$name);
     $sql->execute();
     $user = $sql->fetchAll();
 }catch (Exception $e){
   $operateErrorMessages[] = "データベース接続エラーです";
 }
+print_r($user);
 
 if($result==0){
   $operateErrorMessages[] = "ユーザーが存在しません";
