@@ -33,6 +33,7 @@ $username = $_GET["username"];
               <div class="mdl-card__supporting-text">
                 <h5>ユーザー名: <?php echo $username;?> </h5>
                 <form action="./userpassword2.php" method="POST">
+                  <input type="hidden" name="username" value="<?php echo $username; ?>">
                   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input class="mdl-textfield__input" type="password"  name="password1">
                     <label class="mdl-textfield__label">新しいパスワードを入力</label>
