@@ -6,6 +6,12 @@ header('Location: /login.php');
 $_SESSION["errorMessages"]= array();
 include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
 
+function conversion($permission){
+  if($permission!==1){
+    $permission=0;
+  }
+}
+
 try {
   $pdo=new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
   //$sql=$pdo->prepare("INSERT INTO login (addcard,editcard,sendnotice,viewexit,viewloginlog,deletelog,initialize,setmail,shutdown,edituser) VALUES (?,?,?,?,?,?,?,?,?,?) WHERE username='".$_POST["username"]."'");
