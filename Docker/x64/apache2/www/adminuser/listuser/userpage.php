@@ -67,10 +67,9 @@ function permission($type){
                 <h5>ユーザー名: <?php echo $username;?> </h5>
                 <form action="./userpage2.php" method="POST">
                   <input type="hidden" name="username" value="<?php echo $username; ?>">
-                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="password"  name="password1" value="**********">
-                    <label class="mdl-textfield__label">パスワード</label>
-                  </div>
+                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="button" onclick="location.href='./userpassword.php?username=<?php echo $username; ?>'">
+                      パスワード変更
+                    </button>
                 <br>
                 <h5>権限設定</h5>
                 <p>許可する操作を選択してください</p>
