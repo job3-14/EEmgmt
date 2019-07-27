@@ -98,7 +98,16 @@ function noticeRadio($sql,$method){
                   <span class="mdl-radio__label">なし</span>
                   </label>
                   <br><br>
+                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="button" onclick="location.href='./userpassword.php?username=<?php echo $username; ?>'">
+                      パスワード変更(Lineのみ)
+                    </button>
+                  <br><br>
                   <p>追加アドレスを入力してください(Email・Slackのみ)</p>
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text"  name="address1" value="<?php echo $user[0]["address1"]; ?>">
+                    <label class="mdl-textfield__label">アドレス2</label>
+                  </div>
+                  <br>
                   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input class="mdl-textfield__input" type="text"  name="address2" value="<?php echo $user[0]["address2"]; ?>">
                     <label class="mdl-textfield__label">アドレス2</label>
@@ -115,7 +124,7 @@ function noticeRadio($sql,$method){
                   </div>
                   <br>
                   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="text"  name="address4" value="<?php echo $user[0]["address4"]; ?>">
+                    <input class="mdl-textfield__input" type="text"  name="address5" value="<?php echo $user[0]["address5"]; ?>">
                     <label class="mdl-textfield__label">アドレス5</label>
                   </div>
                   <br><br>
