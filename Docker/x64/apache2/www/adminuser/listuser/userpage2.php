@@ -8,9 +8,9 @@ include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
 
 function conversion($permission){
   if($permission!==1){
-    return 0
+    return 0;
   }else{
-    return 1
+    return 1;
   }
 }
 
