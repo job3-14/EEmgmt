@@ -36,8 +36,8 @@ if(isset($operateErrorMessages)){
   header('Location: /operate_error.php');
 }
 
-function noticeRadio($method){
-  if($user[0]["notice"]==$method){
+function noticeRadio($sql,$method){
+  if($sql==$method){
     echo "checked";
   }
 }
@@ -79,22 +79,22 @@ function noticeRadio($method){
                   <br>
                   <p>入退室通知送信先を選択してください</p>
                   <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
-                  <input type="radio" id="option-1" class="mdl-radio__button" name="sendMethod" value="email" <?php noticeRadio("email")?>>
+                  <input type="radio" id="option-1" class="mdl-radio__button" name="sendMethod" value="email" <?php noticeRadio($user[0]["notice"],"email")?>>
                   <span class="mdl-radio__label">Eメール</span>
                   </label>
                   <br>
                   <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-2">
-                  <input type="radio" id="option-2" class="mdl-radio__button" name="sendMethod" value="line" <?php noticeRadio("line")?>>
+                  <input type="radio" id="option-2" class="mdl-radio__button" name="sendMethod" value="line" <?php noticeRadio($user[0]["notice"],"line")?>>
                   <span class="mdl-radio__label">Line</span>
                   </label>
                   <br>
                   <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-3">
-                  <input type="radio" id="option-3" class="mdl-radio__button" name="sendMethod" value="slack" <?php noticeRadio("slack")?>>
+                  <input type="radio" id="option-3" class="mdl-radio__button" name="sendMethod" value="slack" <?php noticeRadio($user[0]["notice"],"slack")?>>
                   <span class="mdl-radio__label">Slack</span>
                   </label>
                   <br>
                   <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-4">
-                  <input type="radio" id="option-4" class="mdl-radio__button" name="sendMethod" value="none" <?php noticeRadio("none")?>>
+                  <input type="radio" id="option-4" class="mdl-radio__button" name="sendMethod" value="none" <?php noticeRadio($user[0]["notice"],"none")?>>
                   <span class="mdl-radio__label">なし</span>
                   </label>
                   <br><br>
