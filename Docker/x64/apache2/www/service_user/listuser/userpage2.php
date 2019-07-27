@@ -5,7 +5,7 @@ header('Location: /login.php');
 }
 include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
 include($_SERVER['DOCUMENT_ROOT'] . '/menu_load.php');
-$name = $_GET["name"];
+$name = $_POST["name"];
 
 try {
   $pdo=new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);

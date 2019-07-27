@@ -66,6 +66,7 @@ function noticeRadio($sql,$method){
               <div class="mdl-card__supporting-text">
                 <h5>ユーザー名: <?php echo $name;?> </h5>
                 <form action="./userpage2.php" method="POST">
+                  <input type="hidden" name="username" value="<?php echo $name; ?>">
                   <br>
                   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input class="mdl-textfield__input" type="text"  name="email" value="<?php echo $user[0]["mainEmail"]; ?>">
