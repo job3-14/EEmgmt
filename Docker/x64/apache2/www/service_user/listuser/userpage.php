@@ -97,7 +97,8 @@ function noticeRadio($sql,$method){
                   <input type="radio" id="option-4" class="mdl-radio__button" name="sendMethod" value="none" <?php noticeRadio($user[0]["notice"],"none")?>>
                   <span class="mdl-radio__label">なし</span>
                   </label>
-                  <br>
+                  <br><br>
+                  <p>追加アドレスを入力してください(Email・Slackのみ)</p>
                   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input class="mdl-textfield__input" type="text"  name="address2" value="<?php echo $user[0]["address2"]; ?>">
                     <label class="mdl-textfield__label">アドレス2</label>
@@ -117,7 +118,6 @@ function noticeRadio($sql,$method){
                     <input class="mdl-textfield__input" type="text"  name="address4" value="<?php echo $user[0]["address4"]; ?>">
                     <label class="mdl-textfield__label">アドレス5</label>
                   </div>
-                  <br>
                   <br><br>
                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit">
                     更新
