@@ -26,7 +26,6 @@ try {
 }catch (Exception $e){
   $operateErrorMessages[] = "データベース接続エラーです";
 }
-print_r($user);
 
 if($result==0){
   $operateErrorMessages[] = "ユーザーが存在しません";
@@ -63,12 +62,12 @@ if(isset($operateErrorMessages)){
                 <form action="./userpage2.php" method="POST">
                   <br>
                   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="text"  name="email">
+                    <input class="mdl-textfield__input" type="text"  name="email" value="<?php echo $user[0]["mainEmail"]; ?>">
                     <label class="mdl-textfield__label">メールアドレス(メイン)</label>
                   </div>
                   <br>
                   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="text"  name="cardidm">
+                    <input class="mdl-textfield__input" type="text"  name="cardidm" value="<?php echo $user[0]["idm"]; ?>">
                     <label class="mdl-textfield__label">ICカードIDm</label>
                   </div>
                   <br>
