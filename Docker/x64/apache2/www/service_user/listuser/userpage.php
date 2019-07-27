@@ -105,7 +105,7 @@ function noticeRadio($sql,$method){
                   <p>追加アドレスを入力してください(Email・Slackのみ)</p>
                   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input class="mdl-textfield__input" type="text"  name="address1" value="<?php echo $user[0]["address1"]; ?>">
-                    <label class="mdl-textfield__label">アドレス2</label>
+                    <label class="mdl-textfield__label">アドレス1(Emailは入力禁止)</label>
                   </div>
                   <br>
                   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
