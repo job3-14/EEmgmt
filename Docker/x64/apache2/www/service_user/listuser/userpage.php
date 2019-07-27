@@ -91,11 +91,7 @@ if(isset($operateErrorMessages)){
                   <input type="radio" id="option-4" class="mdl-radio__button" name="sendMethod" value="none">
                   <span class="mdl-radio__label">なし</span>
                   </label>
-
-
-
-
-
+                  <br><br>
                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit">
                     更新
                   </button>
