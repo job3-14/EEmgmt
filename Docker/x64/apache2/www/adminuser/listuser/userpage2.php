@@ -25,7 +25,6 @@ $permisson["setmail"]=conversion($_POST["setmail"]);
 $permisson["shutdown"]=conversion($_POST["shutdown"]);
 $permisson["edituser"]=conversion($_POST["edituser"]);
 
-
 try {
   $pdo=new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
   $sql=$pdo->prepare("UPDATE login SET addcard=?, editcard=?, sendnotice=?, viewexit=?, viewloginlog=?, deletelog=?, initialize=?, setmail=?, shutdown=?, edituser=? WHERE username=?");
@@ -49,4 +48,6 @@ if(isset($errorMessages)){
   $_SESSION["errorMessages"]=$errorMessages;
   header('Location: /operate_error.php');
 }
+
+header('Location: ./userpage3.php?username='.$_POST["username"]);
 ?>
