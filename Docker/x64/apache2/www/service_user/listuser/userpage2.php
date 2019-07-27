@@ -9,7 +9,7 @@ $name = $_POST["name"];
 
 try {
   $pdo=new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
-  $sql=$pdo->prepare("UPDATE login SET mailEmail=?,idm=?,notice=?,address1=?,address2=?,address3=?,address4=?,address5=? WHERE name=?");
+  $sql=$pdo->prepare("UPDATE service_user SET mainEmail=?,idm=?,notice=?,address1=?,address2=?,address3=?,address4=?,address5=? WHERE name=?");
   $sql->bindValue(1,$_POST["email"]);
   $sql->bindValue(2,$_POST["cardidm"]);
   $sql->bindValue(3,$_POST["sendMethod"]);
