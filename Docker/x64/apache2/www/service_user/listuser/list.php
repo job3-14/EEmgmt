@@ -139,7 +139,7 @@ function pages($currentPages,$totalPageCounts){
                 echo '<li class="mdl-list__item mdl-list__item--three-line">';
                 echo '<span class="mdl-list__item-primary-content">';
                 echo '<i class="material-icons mdl-list__item-avatar">person</i>';
-                echo '<span>'.$username['name'].'</span>';
+                echo '<span> <a href="./userpage.php?name='.$username['name'].'">'.$username['name'].'</a></span>';
                 echo '<span class="mdl-list__item-text-body">'.'test'.'</span>';
                 echo '</span>';
                 echo '</li>';
