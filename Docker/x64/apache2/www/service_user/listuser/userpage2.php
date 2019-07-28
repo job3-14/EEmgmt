@@ -28,4 +28,10 @@ try {
   $errorMessages[]="データベース接続エラーです";
 }
 
+if(isset($errorMessages)){
+  $_SESSION["errorMessages"]=$errorMessages;
+  header('Location: /operate_error.php');
+}
+
+header('Location: ./userpage3.php?username='.$_POST["username"]);
 ?>
