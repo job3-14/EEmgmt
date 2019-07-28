@@ -99,7 +99,7 @@ function noticeRadio($sql,$method){
                   <span class="mdl-radio__label">なし</span>
                   </label>
                   <br><br>
-                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="button" onclick="location.href='./userpassword.php?username=<?php echo $username; ?>'">
+                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="button" onclick="location.href='./userpassword.php?name=<?php echo $name; ?>'">
                       パスワード変更(Lineのみ)
                     </button>
                   <br><br>
