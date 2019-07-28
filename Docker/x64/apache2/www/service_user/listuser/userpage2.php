@@ -49,42 +49,21 @@ if($method=="email"){
   }
 
 
-    $mailList[] = $_SESSION["addcard"]["email"];
-    if($_POST["email2"]){
-      $mailList[] = $_POST["email2"];
+    $mailList[] = $_POST["email"];
+    if($_POST["address2"]){
+      $mailList[] = $_POST["address2"];
     }
-    if($_POST["email3"]){
-      $mailList[] = $_POST["email3"];
+    if($_POST["address3"]){
+      $mailList[] = $_POST["address3"];
     }
-    if($_POST["email4"]){
-      $mailList[] = $_POST["email4"];
+    if($_POST["address4"]){
+      $mailList[] = $_POST["address4"];
     }
-    if($_POST["email5"]){
-      $mailList[] = $_POST["email5"];
+    if($_POST["address5"]){
+      $mailList[] = $_POST["address5"];
     }
     $mailList = array_unique($mailList); //重複削除
   }
-
-try {
-  $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
-  $sql=$pdo->prepare("UPDATE service_user SET mainEmail=?,idm=?,notice=?,address1=?,address2=?,address3=?,address4=?,address5=? WHERE name=?");
-  $sql->bindValue(1,$_POST["email"]);
-  $sql->bindValue(2,$_POST["cardidm"]);
-  $sql->bindValue(3,$_POST["sendMethod"]);
-  if($_POST["sendMethod"]=="email"){
-    $sql->bindValue(4,$_POST["email"]);
-  }else{
-    $sql->bindValue(4,$_POST["address1"]);
-  }
-  $sql->bindValue(5,$_POST["address2"]);
-  $sql->bindValue(6,$_POST["address3"]);
-  $sql->bindValue(7,$_POST["address4"]);
-  $sql->bindValue(8,$_POST["address5"]);
-  $sql->bindValue(9,$name);
-  $sql->execute();
-}catch (Exception $e){
-  $operateErrorMessages[]="データベース接続エラーです";
-}
 
 if(isset($operateErrorMessages)){
   $_SESSION["errorMessages"]=$operateErrorMessages;
@@ -99,10 +78,9 @@ if(isset($operateErrorMessages)){
     $sql->bindValue(1,$_POST["email"]);
     $sql->bindValue(2,$_POST["cardidm"]);
     $sql->bindValue(3,$_POST["sendMethod"]);
-    $sql->bindValue(4,$_POST["email"]);
-    for($i=0,$i2=5;$i<=4;$i++,$i2++){
-      if($_SESSION["addcard"]["emaiList"][$i]){
-        $sql->bindValue($i2,$_POST["address".$i]);
+    for($i=0,$i2=4;$i<=4;$i++,$i2++){
+      if($mailList[$i]){
+        $sql->bindValue($i2,$mailList[$i]);
       }else{
         $sql->bindValue($i2,null,PDO::PARAM_NULL);
       }
