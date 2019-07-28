@@ -65,6 +65,27 @@ if($method=="email"){
     $mailList = array_unique($mailList); //重複削除
   }
 
+if($_POST["line"]==""){
+  if($_POST["setPassword"]=="none"){
+    $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
+    $sql  = $pdo->prepare("SELECT EXISTS(SELECT password FROM service_user WHERE idm=?)");
+    $sql->bindValue(1,$_POST["cardidm"]);
+    $sql->execute();
+    $result=$sql->fetchColumn();
+    if($result==0){
+      $errorMessages[] = "パスワードを入力してください"
+    }
+  }elseif($_POST["setPassword"]=="change"){
+    if(!$_POST["password"]){
+      $errorMessages[] = "パスワードを入力してください";
+    }elseif(strlen($_POST["password"])<6 || strlen($_POST["password"])>=50){
+      $errorMessages[] = "パスワードは6文字から50文字で入力してください";
+    }
+  }else{
+    $operateErrorMessages[]="操作エラーです";
+  }
+}
+
 if(isset($operateErrorMessages)){
   $_SESSION["errorMessages"]=$operateErrorMessages;
   header('Location: /operate_error.php');
