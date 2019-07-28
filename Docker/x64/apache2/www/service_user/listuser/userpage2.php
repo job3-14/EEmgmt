@@ -7,6 +7,18 @@ include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
 include($_SERVER['DOCUMENT_ROOT'] . '/menu_load.php');
 $name = $_POST["name"];
 
+if($_POST["sendMethod"]=="email"){
+  if($_POST["email2"] && !filter_var($_POST["address2"], FILTER_VALIDATE_EMAIL)){
+    $errorMessages[] = "メールアドレスを正しく入力してください";
+  }elseif($_POST["email3"] && !filter_var($_POST["address3"], FILTER_VALIDATE_EMAIL)){
+    $errorMessages[] = "メールアドレスを正しく入力してください";
+  }elseif($_POST["email4"] && !filter_var($_POST["address4"], FILTER_VALIDATE_EMAIL)){
+    $errorMessages[] = "メールアドレスを正しく入力してください";
+  }elseif($_POST["email5"] && !filter_var($_POST["address5"], FILTER_VALIDATE_EMAIL)){
+    $errorMessages[] = "メールアドレスを正しく入力してください";
+  }
+}
+
 try {
   $pdo=new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
   $sql=$pdo->prepare("UPDATE service_user SET mainEmail=?,idm=?,notice=?,address1=?,address2=?,address3=?,address4=?,address5=? WHERE name=?");
