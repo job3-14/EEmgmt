@@ -65,15 +65,15 @@ if($method=="email"){
     $mailList = array_unique($mailList); //重複削除
   }
 
-if($_POST["line"]==""){
+if($method=="line"){
   if($_POST["setPassword"]=="none"){
     $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
-    $sql  = $pdo->prepare("SELECT EXISTS(SELECT password FROM service_user WHERE idm=?)");
+    $sql  = $pdo->prepare('SELECT IFNULL(password,"NULL") FROM service_user WHERE idm=?');
     $sql->bindValue(1,$_POST["cardidm"]);
     $sql->execute();
     $result=$sql->fetchColumn();
-    if($result==0){
-      $errorMessages[] = "パスワードを入力してください"
+    if($result=="NULL"){
+      $errorMessages[] = "パスワードを入力してください";
     }
   }elseif($_POST["setPassword"]=="change"){
     if(!$_POST["password"]){
@@ -109,6 +109,19 @@ if(isset($operateErrorMessages)){
     $sql->bindValue(9,$name);
     $sql->execute();
   }
+
+  if($method=="line"){
+    $password=password_hash($_POST["password"], PASSWORD_DEFAULT);
+    $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
+    $sql=$pdo->prepare("UPDATE service_user SET mainEmail=?,idm=?,notice=?,password=? WHERE name=?");
+    $sql->bindValue(1,$_POST["email"]);
+    $sql->bindValue(2,$_POST["cardidm"]);
+    $sql->bindValue(3,$_POST["sendMethod"]);
+    $sql->bindValue(4,$password);
+    $sql->bindValue(5,$name);
+    $sql->execute();
+  }
+
   header('Location: ./userpage3.php?name='.$name);
 }
 ?>
