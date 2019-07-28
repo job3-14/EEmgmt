@@ -33,5 +33,5 @@ if(isset($errorMessages)){
   header('Location: /operate_error.php');
 }
 
-header('Location: ./userpage3.php?username='.$_POST["username"]);
+header('Location: ./userpage3.php?name='.$name);
 ?>
