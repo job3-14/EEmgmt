@@ -108,7 +108,7 @@ unset($_SESSION["permission2"]);
 
   <br>
   <div class="c-r-button">
-  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="button" onclick="location.href='./adminuser.php'">
+  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="button" onclick="location.href='../adminuser.php'">
      メニューへ戻る
   </button>
 </div>

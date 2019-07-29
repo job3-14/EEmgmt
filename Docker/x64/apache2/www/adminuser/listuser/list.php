@@ -182,7 +182,7 @@ function pages($currentPages,$totalPageCounts){
                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit">
                     送信
                   </button>
-                <button class="mdl-button mdl-js-button mdl-button--raised" onclick="location.href='/adminuser/listuser/list.php'">
+                <button class="mdl-button mdl-js-button mdl-button--raised" onclick="location.href='./list.php'">
                   リセット
                 </button>
               </form>
@@ -200,7 +200,7 @@ function pages($currentPages,$totalPageCounts){
                 echo '<li class="mdl-list__item mdl-list__item--three-line">';
                 echo '<span class="mdl-list__item-primary-content">';
                 echo '<i class="material-icons mdl-list__item-avatar">person</i>';
-                echo '<span>'.$username['username'].'</span>';
+                echo '<span> <a href="./userpage.php?username='.$username['username'].'">'.$username['username'].'</a></span>';
                 echo '<span class="mdl-list__item-text-body">'.permission($username).'</span>';
                 echo '</span>';
                 echo '</li>';
