@@ -98,20 +98,21 @@ if($method=="slack"){
   }elseif($_POST["address5"] && !filter_var($_POST["address5"], FILTER_VALIDATE_URL)){
     $errorMessages[] = "URLを正しく入力してください";
   }
-  $mailList[] = $_POST["address1"];
+
+  $urlList[] = $_POST["address1"];
   if($_POST["address2"]){
-    $mailList[] = $_POST["address2"];
+    $urlList[] = $_POST["address2"];
   }
   if($_POST["address3"]){
-    $mailList[] = $_POST["address3"];
+    $urlList[] = $_POST["address3"];
   }
   if($_POST["address4"]){
-    $mailList[] = $_POST["address4"];
+    $urlList[] = $_POST["address4"];
   }
   if($_POST["address5"]){
-    $mailList[] = $_POST["address5"];
+    $urlList[] = $_POST["address5"];
   }
-  $mailList = array_unique($mailList); //重複削除
+  $urlList = array_unique($urlList); //重複削除
 }
 
 if(isset($operateErrorMessages)){
@@ -147,6 +148,23 @@ if(isset($operateErrorMessages)){
     $sql->bindValue(3,$_POST["sendMethod"]);
     $sql->bindValue(4,$password);
     $sql->bindValue(5,$name);
+    $sql->execute();
+  }
+
+  if($method=="slack"){
+    $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
+    $sql=$pdo->prepare("UPDATE service_user SET mainEmail=?,idm=?,notice=?,address1=?,address2=?,address3=?,address4=?,address5=? WHERE name=?");
+    $sql->bindValue(1,$_POST["email"]);
+    $sql->bindValue(2,$_POST["cardidm"]);
+    $sql->bindValue(3,$_POST["sendMethod"]);
+    for($i=0,$i2=4;$i<=4;$i++,$i2++){
+      if($urlList[$i]){
+        $sql->bindValue($i2,$urlList[$i]);
+      }else{
+        $sql->bindValue($i2,null,PDO::PARAM_NULL);
+      }
+    }
+    $sql->bindValue(9,$name);
     $sql->execute();
   }
 
