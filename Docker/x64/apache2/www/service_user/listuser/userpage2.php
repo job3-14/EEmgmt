@@ -86,6 +86,20 @@ if($method=="line"){
   }
 }
 
+if($method=="slack"){
+  if($_POST["address1"] && !filter_var($_POST["address1"], FILTER_VALIDATE_URL)){
+    $errorMessages[] = "URLを入力してください";
+  }elseif($_POST["address2"] && !filter_var($_POST["address2"], FILTER_VALIDATE_URL)){
+    $errorMessages[] = "URLを正しく入力してください";
+  }elseif($_POST["address3"] && !filter_var($_POST["address3"], FILTER_VALIDATE_URL)){
+    $errorMessages[] = "URLを正しく入力してください";
+  }elseif($_POST["address4"] && !filter_var($_POST["address4"], FILTER_VALIDATE_URL)){
+    $errorMessages[] = "URLを正しく入力してください";
+  }elseif($_POST["address5"] && !filter_var($_POST["address5"], FILTER_VALIDATE_URL)){
+    $errorMessages[] = "URLを正しく入力してください";
+  }
+}
+
 if(isset($operateErrorMessages)){
   $_SESSION["errorMessages"]=$operateErrorMessages;
   header('Location: /operate_error.php');
