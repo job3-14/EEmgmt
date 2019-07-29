@@ -98,6 +98,20 @@ if($method=="slack"){
   }elseif($_POST["address5"] && !filter_var($_POST["address5"], FILTER_VALIDATE_URL)){
     $errorMessages[] = "URLを正しく入力してください";
   }
+  $mailList[] = $_POST["address1"];
+  if($_POST["address2"]){
+    $mailList[] = $_POST["address2"];
+  }
+  if($_POST["address3"]){
+    $mailList[] = $_POST["address3"];
+  }
+  if($_POST["address4"]){
+    $mailList[] = $_POST["address4"];
+  }
+  if($_POST["address5"]){
+    $mailList[] = $_POST["address5"];
+  }
+  $mailList = array_unique($mailList); //重複削除
 }
 
 if(isset($operateErrorMessages)){
