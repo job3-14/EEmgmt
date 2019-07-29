@@ -30,5 +30,5 @@ address5 VARCHAR(300),
 PRIMARY KEY (idm));
 
 CREATE TABLE gui(
-password INTEGER,
+password INTEGER
 );
