@@ -43,7 +43,7 @@ header('Location: /login.php');
 
   <br>
   <div class="c-r-button">
-  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="button" onclick="location.href='./userpage.php?name=<?php echo $_GET["name"]; ?>'">
+  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="button" onclick="location.href='./userpage.php?idm=<?php echo $_GET["idm"]; ?>'">
      ユーザーページへ戻る
   </button>
 </div>

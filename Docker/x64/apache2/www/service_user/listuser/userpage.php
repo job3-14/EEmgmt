@@ -6,12 +6,12 @@ header('Location: /login.php');
 $_SESSION["errorMessages"]= array();
 include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
 include($_SERVER['DOCUMENT_ROOT'] . '/menu_load.php');
-$name = $_GET["name"];
+$idm = $_GET["idm"];
 
 try {
     $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
-    $sql  = $pdo->prepare("SELECT EXISTS(SELECT name FROM service_user WHERE name=?)");
-    $sql->bindValue(1,$name);
+    $sql  = $pdo->prepare("SELECT EXISTS(SELECT name FROM service_user WHERE idm=?)");
+    $sql->bindValue(1,$idm);
     $sql->execute();
     $result=  $sql->fetchColumn();
 }catch (Exception $e){
@@ -19,8 +19,8 @@ try {
 }
 
 try {
-    $sql  = $pdo->prepare("SELECT * FROM service_user WHERE name=?");
-    $sql->bindValue(1,$name);
+    $sql  = $pdo->prepare("SELECT * FROM service_user WHERE idm=?");
+    $sql->bindValue(1,$idm);
     $sql->execute();
     $user = $sql->fetchAll();
 }catch (Exception $e){
@@ -64,9 +64,9 @@ function noticeRadio($sql,$method){
             <div class="c-large-card mdl-card mdl-shadow--4dp">
               <div class="mdl-card__supporting-text"> 管理ユーザー情報 </div>
               <div class="mdl-card__supporting-text">
-                <h5>ユーザー名: <?php echo $name;?> </h5>
+                <h5>ユーザー名: <?php echo $user[0]["name"];?> </h5>
                 <form action="./userpage2.php" method="POST">
-                  <input type="hidden" name="name" value="<?php echo $name; ?>">
+                  <input type="hidden" name="idm" value="<?php echo $idm; ?>">
                   <br>
                   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input class="mdl-textfield__input" type="text"  name="email" value="<?php echo $user[0]["mainEmail"]; ?>">

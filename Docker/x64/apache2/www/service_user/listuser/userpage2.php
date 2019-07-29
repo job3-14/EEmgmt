@@ -5,14 +5,14 @@ header('Location: /login.php');
 }
 include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
 include($_SERVER['DOCUMENT_ROOT'] . '/menu_load.php');
-$name=$_POST["name"];
+$idm=$_POST["idm"];
 $method=$_POST["sendMethod"];
 
 try {
   if(!$_POST["user"]==""){
     $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
     $sql  = $pdo->prepare("SELECT EXISTS(SELECT idm FROM service_user WHERE idm = ?)");
-    $sql->bindValue(1,$_POST["cardidm"]);
+    $sql->bindValue(1,$idm);
     $sql->execute();
     $result=$sql->fetchColumn();
   }
@@ -69,7 +69,7 @@ if($method=="line"){
   if($_POST["setPassword"]=="none"){
     $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
     $sql  = $pdo->prepare('SELECT IFNULL(password,"NULL") FROM service_user WHERE idm=?');
-    $sql->bindValue(1,$_POST["cardidm"]);
+    $sql->bindValue(1,$idm);
     $sql->execute();
     $result=$sql->fetchColumn();
     if($result=="NULL"){
@@ -124,7 +124,7 @@ if(isset($operateErrorMessages)){
 }else{
   if($method=="email"){
     $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
-    $sql=$pdo->prepare("UPDATE service_user SET mainEmail=?,idm=?,notice=?,address1=?,address2=?,address3=?,address4=?,address5=? WHERE name=?");
+    $sql=$pdo->prepare("UPDATE service_user SET mainEmail=?,idm=?,notice=?,address1=?,address2=?,address3=?,address4=?,address5=? WHERE idm=?");
     $sql->bindValue(1,$_POST["email"]);
     $sql->bindValue(2,$_POST["cardidm"]);
     $sql->bindValue(3,$_POST["sendMethod"]);
@@ -135,25 +135,25 @@ if(isset($operateErrorMessages)){
         $sql->bindValue($i2,null,PDO::PARAM_NULL);
       }
     }
-    $sql->bindValue(9,$name);
+    $sql->bindValue(9,$idm);
     $sql->execute();
   }
 
   if($method=="line"){
     $password=password_hash($_POST["password"], PASSWORD_DEFAULT);
     $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
-    $sql=$pdo->prepare("UPDATE service_user SET mainEmail=?,idm=?,notice=?,password=? WHERE name=?");
+    $sql=$pdo->prepare("UPDATE service_user SET mainEmail=?,idm=?,notice=?,password=? WHERE idm=?");
     $sql->bindValue(1,$_POST["email"]);
     $sql->bindValue(2,$_POST["cardidm"]);
     $sql->bindValue(3,$_POST["sendMethod"]);
     $sql->bindValue(4,$password);
-    $sql->bindValue(5,$name);
+    $sql->bindValue(5,$idm);
     $sql->execute();
   }
 
   if($method=="slack"){
     $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
-    $sql=$pdo->prepare("UPDATE service_user SET mainEmail=?,idm=?,notice=?,address1=?,address2=?,address3=?,address4=?,address5=? WHERE name=?");
+    $sql=$pdo->prepare("UPDATE service_user SET mainEmail=?,idm=?,notice=?,address1=?,address2=?,address3=?,address4=?,address5=? WHERE idm=?");
     $sql->bindValue(1,$_POST["email"]);
     $sql->bindValue(2,$_POST["cardidm"]);
     $sql->bindValue(3,$_POST["sendMethod"]);
@@ -164,20 +164,20 @@ if(isset($operateErrorMessages)){
         $sql->bindValue($i2,null,PDO::PARAM_NULL);
       }
     }
-    $sql->bindValue(9,$name);
+    $sql->bindValue(9,$idm);
     $sql->execute();
   }
 
   if($method=="none"){
     $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
-    $sql=$pdo->prepare("UPDATE service_user SET mainEmail=?,idm=?,notice=? WHERE name=?");
+    $sql=$pdo->prepare("UPDATE service_user SET mainEmail=?,idm=?,notice=? WHERE idm=?");
     $sql->bindValue(1,$_POST["email"]);
     $sql->bindValue(2,$_POST["cardidm"]);
     $sql->bindValue(3,$_POST["sendMethod"]);
-    $sql->bindValue(4,$name);
+    $sql->bindValue(4,$idm);
     $sql->execute();
   }
 
-  header('Location: ./userpage3.php?name='.$name);
+  header('Location: ./userpage3.php?idm='.$_POST["cardidm"]);
 }
 ?>
