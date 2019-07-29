@@ -168,6 +168,16 @@ if(isset($operateErrorMessages)){
     $sql->execute();
   }
 
+  if($method=="none"){
+    $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
+    $sql=$pdo->prepare("UPDATE service_user SET mainEmail=?,idm=?,notice=? WHERE name=?");
+    $sql->bindValue(1,$_POST["email"]);
+    $sql->bindValue(2,$_POST["cardidm"]);
+    $sql->bindValue(3,$_POST["sendMethod"]);
+    $sql->bindValue(4,$name);
+    $sql->execute();
+  }
+
   header('Location: ./userpage3.php?name='.$name);
 }
 ?>
