@@ -4,3 +4,9 @@ ENV DEBIAN_FRONTEND noninteractive
 #PDOをインストール
 RUN docker-php-ext-install pdo_mysql
 RUN mkdir -p /var/command
+
+ENV DOCKERVERSION=18.03.1-ce
+RUN curl -fsSLO https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKERVERSION}.tgz \
+  && tar xzvf docker-${DOCKERVERSION}.tgz --strip 1 \
+                 -C /usr/local/bin docker/docker \
+  && rm docker-${DOCKERVERSION}.tgz
