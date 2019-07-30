@@ -40,3 +40,12 @@ services:
       - ./db/initdb:/docker-entrypoint-initdb.d
       - ./db/mysql_data:/var/lib/mysql
     restart: always
+
+ sendMessages:
+   build:
+      context: .
+      dockerfile: Dockerfile_sendMessages
+   tty: true
+   volumes:
+       - ./python3/:/opt
+   restart: always
