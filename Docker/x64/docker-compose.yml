@@ -46,6 +46,8 @@ services:
       context: .
       dockerfile: Dockerfile_sendMessages
    tty: true
+   ports:
+     - 5000:5000
    volumes:
        - ./python3/:/opt
    restart: always
