@@ -1,2 +1,2 @@
 FROM python:alpine3.10
-RUN pip install flask
+RUN pip install flask requests
