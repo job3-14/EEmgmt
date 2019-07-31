@@ -30,19 +30,36 @@ def sendMessage():
         addressList = []
         i = 0
         if "address1" in postData:
-            addressList.append(postData["address1"])
+            addressList.append(postData["address1"]) #配列追加
         if "address2" in postData:
-            addressList.append(postData["address2"])
+            addressList.append(postData["address2"]) #配列追加
         if "address3" in postData:
-            addressList.append(postData["address3"])
+            addressList.append(postData["address3"]) #配列追加
         if "address4" in postData:
-            addressList.append(postData["address4"])
+            addressList.append(postData["address4"]) #配列追加
         if "address5" in postData:
-            addressList.append(postData["address5"])
+            addressList.append(postData["address5"]) #配列追加
         for address in addressList:
             message['To'] = address
             with smtplib.SMTP_SSL('smtp.gmail.com') as smtp:
                 smtp.login(postData["userid"], postData["password"])
                 smtp.send_message(message)
+
+    if postData["method"]=="line":
+        url = 'https://api.line.me/v2/bot/message/push'
+        headers = {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer "+postData["token"]
+        }
+        payload = {
+              "to":postData["userid"],
+              "messages":[
+              {
+                  "type":"text",
+                  "text":postData["text"]
+              }
+          ]
+        }
+        requests.post(url, headers=headers,data=json.dumps(payload))
     return "200"
 app.run(debug=False, host='0.0.0.0', port=5000)
