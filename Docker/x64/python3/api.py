@@ -42,14 +42,14 @@ def sendMessage():
         for address in addressList:
             message['To'] = address
             with smtplib.SMTP_SSL('smtp.gmail.com') as smtp:
-                smtp.login(postData["userid"], postData["password"])
+                smtp.login(postData["mailUserid"], postData["mailPassword"])
                 smtp.send_message(message)
 
     if postData["method"]=="line":
         url = 'https://api.line.me/v2/bot/message/push'
         headers = {
             "Content-Type": "application/json",
-            "Authorization": "Bearer "+postData["token"]
+            "Authorization": "Bearer "+postData["lineToken"]
         }
         payload = {
               "to":postData["userid"],
