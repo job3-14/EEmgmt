@@ -44,10 +44,10 @@ services:
  messages:
    build:
       context: .
-      dockerfile: Dockerfile_sendMessages
+      dockerfile: Dockerfile_flask
    tty: true
    ports:
      - 5000:5000
    volumes:
-       - ./python3/:/opt
+       - ./flask/:/opt
    restart: always
