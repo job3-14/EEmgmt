@@ -37,6 +37,5 @@ CREATE TABLE setting(
 fromEmail VARCHAR(150),
 mailUserid VARCHAR(150),
 mailPassword VARCHAR(150),
-lineToken VARCHAR(150),
-
+lineToken VARCHAR(150)
 );
