@@ -25,6 +25,7 @@ echo '<div class="mdl-layout__drawer">';
 echo '<span class="mdl-layout-title">入退室管理システム</span>';
 echo '<nav class="mdl-navigation">';
 echo '<a class="mdl-navigation__link" href="/index.php">管理トップ</a>';
+echo '<a class="mdl-navigation__link" href="/sendmessage/list.php">メッセージ送信</a>';
 echo '<a class="mdl-navigation__link" href="/adminuser/adminuser.php">管理ユーザー</a>';
 echo '<a class="mdl-navigation__link" href="/service_user/service_user.php">利用ユーザー</a>';
 echo '<a class="mdl-navigation__link" href="/system/system.php">システム操作</a>';

@@ -40,3 +40,14 @@ services:
       - ./db/initdb:/docker-entrypoint-initdb.d
       - ./db/mysql_data:/var/lib/mysql
     restart: always
+
+ messages:
+   build:
+      context: .
+      dockerfile: Dockerfile_flask
+   tty: true
+   ports:
+     - 5000:5000
+   volumes:
+       - ./flask/:/opt
+   restart: always
