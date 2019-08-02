@@ -28,7 +28,6 @@ def sendMessage():
         message['Subject'] = Header(postData["subject"], 'utf-8')
         message['From'] = postData["fromEmail"]
         addressList = []
-        i = 0
         if "address1" in postData:
             addressList.append(postData["address1"]) #配列追加
         if "address2" in postData:
