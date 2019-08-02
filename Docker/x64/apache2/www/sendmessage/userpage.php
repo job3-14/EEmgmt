@@ -35,12 +35,6 @@ if(isset($operateErrorMessages)){
   $_SESSION["errorMessages"]=$operateErrorMessages;
   header('Location: /operate_error.php');
 }
-
-function noticeRadio($sql,$method){
-  if($sql==$method){
-    echo "checked";
-  }
-}
 ?>
   <!DOCTYPE html>
   <html>
@@ -79,10 +73,10 @@ function noticeRadio($sql,$method){
                   </button>
                 </form>
                 <br>
-                <form action="./submit.php" method="POST">
+                <form action="./manual.php" method="POST">
                   <input type="hidden" name="idm" value="<?php echo $idm; ?>">
                   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="text" id="message">
+                    <input class="mdl-textfield__input" type="text" id="message" name="message">
                     <label class="mdl-textfield__label" for="message">メッセージ手動送信</label>
                   </div>
                   <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit">
