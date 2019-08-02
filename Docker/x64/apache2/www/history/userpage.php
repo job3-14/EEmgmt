@@ -19,7 +19,7 @@ try {
 }
 
 try {
-    $sql = $pdo->prepare("SELECT * FROM history WHERE idm=?");
+    $sql = $pdo->prepare("SELECT * FROM history WHERE idm=? ORDER BY date DESC");
     $sql->bindValue(1,$idm);
     $sql->execute();
     $userList = $sql->fetchAll();
