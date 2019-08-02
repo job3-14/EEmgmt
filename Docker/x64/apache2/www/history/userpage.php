@@ -19,10 +19,10 @@ try {
 }
 
 try {
-    $sql  = $pdo->prepare("SELECT * FROM service_user WHERE idm=?");
+    $sql = $pdo->prepare("SELECT * FROM history WHERE idm=?");
     $sql->bindValue(1,$idm);
     $sql->execute();
-    $user = $sql->fetchAll();
+    $userList = $sql->fetchAll();
 }catch (Exception $e){
   $operateErrorMessages[] = "データベース接続エラーです";
 }
@@ -34,12 +34,6 @@ if($result==0){
 if(isset($operateErrorMessages)){
   $_SESSION["errorMessages"]=$operateErrorMessages;
   header('Location: /operate_error.php');
-}
-
-function noticeRadio($sql,$method){
-  if($sql==$method){
-    echo "checked";
-  }
 }
 ?>
   <!DOCTYPE html>
@@ -67,16 +61,20 @@ function noticeRadio($sql,$method){
                 <h5>ユーザー名: <?php echo $user[0]["name"];?> </h5>
                 <table class="mdl-data-table mdl-js-data-table">
 <thead>
-    <tr>
-      <th class="mdl-data-table__cell--non-numeric">種別</th>
-      <th class="mdl-data-table__cell--non-numeric">日時</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td class="mdl-data-table__cell--non-numeric">John Lennon</td>
-      <td class="mdl-data-table__cell--non-numeric">The smart one</td>
-    </tr>
+  <tr>
+    <th class="mdl-data-table__cell--non-numeric">種別</th>
+    <th class="mdl-data-table__cell--non-numeric">日時</th>
+  </tr>
+</thead>
+<tbody>
+  <?php
+  foreach($userList as $userInfo){
+    echo '<tr>';
+    echo '<td class="mdl-data-table__cell--non-numeric">'.$userInfo["type"].'</td>';
+    echo '<td class="mdl-data-table__cell--non-numeric">'.$userInfo["date"].'</td>';
+    echo '</tr>';
+  }
+  ?>
   </tbody>
 </table>
                </div>
