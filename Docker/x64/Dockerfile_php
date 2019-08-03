@@ -10,3 +10,4 @@ ENV DEBIAN_FRONTEND noninteractive
 #PDOをインストール
 RUN docker-php-ext-install pdo_mysql
 RUN mkdir -p /var/command
+ADD ./apache2/php/php.ini /usr/local/etc/php/php.ini
