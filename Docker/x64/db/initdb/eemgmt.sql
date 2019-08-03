@@ -29,6 +29,12 @@ address4 VARCHAR(300),
 address5 VARCHAR(300),
 PRIMARY KEY (idm));
 
+CREATE TABLE history(
+idm VARCHAR(30) NOT NULL,
+type VARCHAR(10) NOT NULL,
+date DATETIME NOT NULL
+);
+
 CREATE TABLE gui(
 password INTEGER
 );

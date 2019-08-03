@@ -26,6 +26,26 @@ try {
   $operateErrorMessages[] = "データベース接続エラーです";
 }
 
+$data = date("Y-m-d H:i"); #日時取得
+try {
+  $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
+  $sql  = $pdo->prepare("INSERT INTO history (idm,type,date) VALUES (?,?,?)");
+  $sql->bindValue(1,$idm);
+  $sql->bindValue(2,"退室");
+  $sql->bindValue(3,$data);
+  $sql->execute();
+}catch (Exception $e){
+  $errorMessages[] = "データベースエラーです";
+}
+
+try {
+  $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
+  $sql = $pdo->prepare("DELETE FROM history  WHERE date NOT IN (SELECT * FROM (SELECT date FROM history ORDER BY date DESC LIMIT 100) AS v)");
+  $sql->execute();
+}catch (Exception $e){
+  $errorMessages[] = "データベースエラーです";
+}
+
 if($user[0]["notice"]=="slack"){
   $jsonList=array("method"=>"slack");
   if($user[0]["address1"]){
