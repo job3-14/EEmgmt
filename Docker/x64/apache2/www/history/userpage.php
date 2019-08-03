@@ -19,6 +19,15 @@ try {
 }
 
 try {
+    $sql  = $pdo->prepare("SELECT name FROM service_user WHERE idm=?");
+    $sql->bindValue(1,$idm);
+    $sql->execute();
+    $user = $sql->fetchAll();
+}catch (Exception $e){
+  $operateErrorMessages[] = "データベース接続エラーです";
+}
+
+try {
     $sql = $pdo->prepare("SELECT * FROM history WHERE idm=? ORDER BY date DESC");
     $sql->bindValue(1,$idm);
     $sql->execute();
