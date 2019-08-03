@@ -1,0 +1,78 @@
+.logout{
+ padding:15px 102px;
+}
+
+.head-title{
+ padding:15px;
+ text-align: left;
+}
+
+.c-login{
+ float: right;
+}
+
+.c-login-card{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  width: 600px;
+}
+
+.c-login-errormessage{
+  color: #ff0000;
+}
+
+.c-login-message{
+  color: #32cd32;
+}
+
+img.c-login-img{
+  width: 25px;
+}
+
+.c-login-card-size{
+  width: 60%;
+}
+
+.c-add-card{
+  width: 60%;
+  margin: 30px auto;  //中央寄せ
+}
+
+.c-switch{
+  margin-bottom: 20px;
+}
+
+.c-login-message{
+  color: #ff0000;
+}
+
+.c-add-card{
+  width: 60%;
+  margin: 30px auto;  //中央寄せ
+}
+
+.c-switch{
+  margin-bottom: 20px;
+}
+
+.c-r-button{
+ float: right;
+}
+
+.c-red{
+  color: #ff0000;
+}
+
+.c-card{
+  width: 500px;
+  height: 300px;
+}
+
+.c-large-card{
+  width: 100%;  
+}
+ .c-card-padding{
+   padding: 30px;
+ }

@@ -1,0 +1,90 @@
+<?php
+session_start();
+if (!isset($_SESSION["user"])){
+header('Location: /login.php');
+}
+$_SESSION["errorMessages"]= array();
+include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
+$idm = $_POST["idm"];
+
+try {
+    $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
+    $sql  = $pdo->prepare("SELECT * FROM service_user WHERE idm=?");
+    $sql->bindValue(1,$idm);
+    $sql->execute();
+    $user = $sql->fetchAll();
+}catch (Exception $e){
+  $operateErrorMessages[] = "データベース接続エラーです";
+}
+
+try {
+    $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
+    $sql  = $pdo->prepare("SELECT * FROM setting");
+    $sql->execute();
+    $setting = $sql->fetchAll();
+}catch (Exception $e){
+  $operateErrorMessages[] = "データベース接続エラーです";
+}
+
+if($user[0]["notice"]=="slack"){
+  $jsonList=array("method"=>"slack");
+  if($user[0]["address1"]){
+    $jsonList["address1"]=$user[0]["address1"];
+  }
+  if($user[0]["address2"]){
+    $jsonList["address2"]=$user[0]["address2"];
+  }
+  if($user[0]["address3"]){
+    $jsonList["address3"]=$user[0]["address3"];
+  }
+  if($user[0]["address4"]){
+    $jsonList["address4"]=$user[0]["address4"];
+  }
+  if($user[0]["address5"]){
+    $jsonList["address5"]=$user[0]["address5"];
+  }
+}
+
+if($user[0]["notice"]=="email"){
+  $jsonList=array("method"=>"email");
+  $jsonList["subject"]="入退室通知からのお知らせ";
+  $jsonList["fromEmail"]=$setting[0]["fromEmail"];
+  $jsonList["mailUserid"]=$setting[0]["mailUserid"];
+  $jsonList["mailPassword"]=$setting[0]["mailPassword"];
+  if($user[0]["address1"]){
+    $jsonList["address1"]=$user[0]["address1"];
+  }
+  if($user[0]["address2"]){
+    $jsonList["address2"]=$user[0]["address2"];
+  }
+  if($user[0]["address3"]){
+    $jsonList["address3"]=$user[0]["address3"];
+  }
+  if($user[0]["address4"]){
+    $jsonList["address4"]=$user[0]["address4"];
+  }
+  if($user[0]["address5"]){
+    $jsonList["address5"]=$user[0]["address5"];
+  }
+}
+
+if($user[0]["notice"]=="line"){
+  $jsonList=array("method"=>"line");
+  $jsonList["lineToken"]=$setting[0]["lineToken"];
+  $jsonList["userid"]=$user[0]["address1"];
+}
+
+$data = date("m月d日H時i分"); #日時取得
+$jsonList["text"]=$_POST["message"];
+$data=json_encode($jsonList,JSON_UNESCAPED_UNICODE);
+$url="http://messages:5000/sendMessage";
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $url);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_POST, true);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+$result = curl_exec($ch);
+curl_close($ch);
+
+header('Location: ./done.php?idm='.$idm);
+?>
