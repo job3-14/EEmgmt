@@ -1,4 +1,10 @@
 FROM php:7.3.4-apache
+
+#タイムゾーン設定
+ENV TZ Asia/Tokyo
+RUN echo "${TZ}" > /etc/timezone \
+   && dpkg-reconfigure -f noninteractive tzdata
+
 ENV DEBIAN_FRONTEND noninteractive
 #キーボード入力待ちをさせない
 #PDOをインストール
