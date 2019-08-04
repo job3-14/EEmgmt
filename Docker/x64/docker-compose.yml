@@ -54,9 +54,10 @@ services:
  linelogin:
    build:
       context: .
-      dockerfile: Dockerfile_php
+      dockerfile: Dockerfile_linelogin
    ports:
      - 10000:10000
+     - 10001:10001
    volumes:
      - ./apache2-lineLogin/www:/var/www/html
      - ./apache2-lineLogin/conf:/etc/apache2
