@@ -56,8 +56,8 @@ services:
       context: .
       dockerfile: Dockerfile_php
    ports:
-     - 10000:10000
-     - 10001:10001
+     - 10000:80
+     - 10001:443
    volumes:
      - ./apache2-lineLogin/www:/var/www/html
      - ./apache2-lineLogin/conf:/etc/apache2
