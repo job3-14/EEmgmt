@@ -47,9 +47,6 @@ services:
       context: .
       dockerfile: Dockerfile_flask
    tty: true
-   ports:
-     - 5000:5000
-     - 5001:5001
    volumes:
        - ./flask/:/opt
    restart: always
@@ -60,9 +57,8 @@ services:
       dockerfile: Dockerfile_php
    ports:
      - 10000:10000
-     - 10001:10001
    volumes:
-     - ./line/apache2/www:/var/www/html
-     - ./line/apache2/conf:/etc/apache2
-     - ./line/apache2/ssl:/etc/ssl
+     - ./apache2-lineLogin/www:/var/www/html
+     - ./apache2-lineLogin/conf:/etc/apache2
+     - ./apache2-lineLogin/ssl:/etc/ssl
    restart: always
