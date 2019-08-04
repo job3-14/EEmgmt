@@ -54,7 +54,7 @@ services:
  linelogin:
    build:
       context: .
-      dockerfile: Dockerfile_linelogin
+      dockerfile: Dockerfile_php
    ports:
      - 10000:10000
      - 10001:10001
