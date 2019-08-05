@@ -1,4 +1,4 @@
-from flask import Flask, session, request
+from flask import Flask, session, request, redirect
 import os, requests, random, json, jwt
 
 app = Flask(__name__)
@@ -17,7 +17,7 @@ def apply():
     state = str(random.randint(100000000000000,9999999999999999))
     session['state'] = state
     url = "https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=1605802644&redirect_uri=https://job314.tokyo/apply2&state="+state+"&bot_prompt=aggressive&scope=openid%20email"
-    return url
+    return redirect(url, code=302)
 
 @app.route('/apply2',methods=["GET", "POST"])
 def apply2():
@@ -48,7 +48,7 @@ def apply2():
     print(decoded_id_token["sub"])
     print(decoded_id_token["email"])
 
-    return id_token
+    return "認証が完了しました。このページを閉じてください。"
 
 
 app.run(debug=False, host='0.0.0.0', port=10000)
