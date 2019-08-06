@@ -1,3 +1,0 @@
-ErrorDocument 403 /error/error.html
-ErrorDocument 404 /error/error.html
-ErrorDocument 500 /error/error.html
