@@ -15,12 +15,13 @@ services:
     restart: always
 
  web:
-   image: nginx:1.17.2-alpine
+   image: nginx:1.17.2-alpine-perl
    ports:
      - 80:80
    volumes:
      - ./nginx/html:/var/www/html
      - ./nginx/conf.d:/etc/nginx/conf.d
+     - ./nginx/ssl:/etc/pki/tls/private
 
  fpm:
    build:
