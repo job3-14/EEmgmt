@@ -18,12 +18,14 @@ services:
    image: nginx:1.17.2-alpine-perl
    ports:
     - 80:80
+    - 443:443
+    - 10000:10000
    volumes:
     - ./nginx/html:/var/www/html
     - ./nginx/conf.d:/etc/nginx/conf.d
     - ./nginx/ssl:/etc/pki/tls/private
    environment:
-     SERVER_NAME: job314.tokyo
+     DOMAIN_NAME: job314.tokyo
 
  fpm:
    build:
