@@ -27,8 +27,8 @@ services:
    build:
      context: .
      dockerfile: Dockerfile_php
-     volumes:
-       - ./nginx/html:/var/www/html
+   volumes:
+    - ./nginx/html:/var/www/html
 
  db:
     image: mariadb:10.4
