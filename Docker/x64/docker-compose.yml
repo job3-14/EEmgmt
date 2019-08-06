@@ -18,9 +18,9 @@ services:
    image: nginx:1.17.2-alpine
    ports:
      - 80:80
-     volumes:
-       - ./nginx/html:/var/www/html
-       - ./nginx/conf.d:/etc/nginx/conf.d
+   volumes:
+     - ./nginx/html:/var/www/html
+     - ./nginx/conf.d:/etc/nginx/conf.d
 
  fpm:
    build:
