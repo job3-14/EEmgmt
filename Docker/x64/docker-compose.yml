@@ -23,7 +23,7 @@ services:
     - ./nginx/conf.d:/etc/nginx/conf.d
     - ./nginx/ssl:/etc/pki/tls/private
    environment:
-     DOMAIN_NAME: job314.tokyo
+     SERVER_NAME: job314.tokyo
 
  fpm:
    build:
