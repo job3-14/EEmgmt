@@ -9,4 +9,4 @@ RUN apk --update add tzdata && \
 #PDOをインストール
 RUN docker-php-ext-install pdo_mysql
 RUN mkdir -p /var/command
-ADD ./php/php.ini /usr/local/etc/php/php.ini
+ADD ./nginx/php/php.ini /usr/local/etc/php/php.ini
