@@ -62,7 +62,7 @@ services:
       context: .
       dockerfile: Dockerfile_flask
    ports:
-    - 10000:10000
+    - 10001:10001
    tty: true
    volumes:
        - ./linelogin/:/opt
