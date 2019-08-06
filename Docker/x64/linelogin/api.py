@@ -51,4 +51,4 @@ def apply2():
     return "認証が完了しました。このページを閉じてください。"
 
 
-app.run(debug=False, host='0.0.0.0', port=10000)
+app.run(debug=False, host='0.0.0.0', port=10000, threaded=True)
