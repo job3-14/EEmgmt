@@ -1,4 +1,0 @@
-FROM  nginx:1.17.2-alpine
-ARG MAINDOMAIN
-COPY ./buildfile/fullchain.pem /etc/letsencrypt/live/{MAINDOMAIN}
-COPY ./buildfile/privkey.pem /etc/letsencrypt/live/{MAINDOMAIN}
