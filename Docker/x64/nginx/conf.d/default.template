@@ -1,11 +1,6 @@
-ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
-perl_set $domain_name_from_env 'sub { return $ENV{"DOMAIN_NAME"}; }';
 server {
-    listen 443;
-    ssl on;
-    server_name $server_name_from_env;
-    ssl_certificate /etc/pki/tls/private/{$domain_name_from_env}.crt; # サーバー証明書のパス
-    ssl_certificate_key /etc/pki/tls/private/{$domain_name_from_env}.key; # 秘密鍵のパス
+    listen 80;
+    server_name ${DOMAIN_NAME};
 
     root  /var/www/html;
     index index.php index.html;
