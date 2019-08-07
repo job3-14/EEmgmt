@@ -1,0 +1,6 @@
+FROM  alpine:3.10.1
+ARG MAINDOMAIN
+ARG EMAILADDRESS
+RUN apk --update upgrade
+RUN apk add --no-cache --no-progress certbot
+RUN certbot certonly --standalone -d ${MAINDOMAIN} -m ${EMAILADDRESS} --agree-tos -n
