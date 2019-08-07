@@ -24,7 +24,7 @@ services:
    volumes:
     - ./nginx/html:/var/www/html
     - ./nginx/conf.d:/etc/nginx/conf.d
-    - ./nginx/ssl:/etc/ssl_cert/
+    - ./ssl:/etc/ssl_cert/
    environment:
      MAINDOMAIN: ${MAINDOMAIN}
    command: /bin/sh -c "envsubst '$$MAINDOMAIN' < ./nginx/conf.d/default.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
@@ -80,4 +80,4 @@ services:
    ports:
      - 80:80
    volumes:
-     - ./ssl:/etc/letsencrypt/live/
+     - ./ssl:/etc/letsencrypt/live/${MAINDOMAIN}
