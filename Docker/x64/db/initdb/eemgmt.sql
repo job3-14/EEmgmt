@@ -45,3 +45,8 @@ mailUserid VARCHAR(150),
 mailPassword VARCHAR(150),
 lineToken VARCHAR(300)
 );
+
+CREATE TABLE line(
+mainEmail VARCHAR(300) NOT NULL,
+userid VARCHAR(300) NOT NULL,
+PRIMARY KEY (userid));
