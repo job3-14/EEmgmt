@@ -1,3 +1,4 @@
 FROM  nginx:1.17.2-alpine
-COPY ./buildfile/server.crt /etc/letsencrypt/live/{MAINDOMAIN}/fullchain.pem
-COPY ./buildfile/server.key /etc/letsencrypt/live/{MAINDOMAIN}/privkey.pem;
+ARG MAINDOMAIN
+COPY ./buildfile/fullchain.pem /etc/letsencrypt/live/{MAINDOMAIN}
+COPY ./buildfile/privkey.pem /etc/letsencrypt/live/{MAINDOMAIN}
