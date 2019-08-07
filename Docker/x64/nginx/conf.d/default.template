@@ -9,8 +9,8 @@ server {
     listen 443;
     server_name ${MAINDOMAIN};
     ssl on;
-    ssl_certificate /etc/pki/tls/private/${MAINDOMAIN}.crt;
-    ssl_certificate_key /etc/pki/tls/private/${MAINDOMAIN}.key;
+    ssl_certificate /etc/letsencrypt/live/${MAINDOMAIN}/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/${MAINDOMAIN}/privkey.pem;
     location / {
         proxy_pass http://linelogin:80;
     }
