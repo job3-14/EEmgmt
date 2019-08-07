@@ -7,20 +7,15 @@ app.secret_key = os.urandom(24)
 channel_id="1605802644"
 channel_secret="3cf738681ede4bf72107443fdb54565a"
 
-
 @app.route('/')
 def index():
-    return 'hello'
-
-@app.route('/apply')
-def apply():
     state = str(random.randint(100000000000000,9999999999999999))
     session['state'] = state
-    url = "https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=1605802644&redirect_uri=https://job314.tokyo/apply2&state="+state+"&bot_prompt=aggressive&scope=openid%20email"
+    url = "https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=1605802644&redirect_uri=https://job314.tokyo/apply&state="+state+"&bot_prompt=aggressive&scope=openid%20email"
     return redirect(url, code=302)
 
-@app.route('/apply2',methods=["GET", "POST"])
-def apply2():
+@app.route('/apply',methods=["GET", "POST"])
+def apply():
     state = request.args.get("state")
     state2 = session.get('state')
     code = request.args.get("code")
@@ -51,4 +46,4 @@ def apply2():
     return "認証が完了しました。このページを閉じてください。"
 
 
-app.run(debug=False, host='0.0.0.0', port=10000, threaded=True)
+app.run(debug=False, host='0.0.0.0', port=80, threaded=True)
