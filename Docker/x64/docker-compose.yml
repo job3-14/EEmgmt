@@ -69,3 +69,15 @@ services:
    volumes:
        - ./linelogin/:/opt
    restart: always
+
+ certbot:
+   build:
+     context: .
+     dockerfile: Dockerfile_alpine_cetbot
+     args:
+       MAINDOMAIN: $MAINDOMAIN
+       EMAILADDRESS: $EMAILADDRESS
+   ports:
+     - 80:80
+   volumes:
+     - ./ssl:/etc/letsencrypt/live/
