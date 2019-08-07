@@ -15,7 +15,10 @@ services:
     restart: always
 
  web:
-   image: nginx:1.17.2-alpine
+   tty: true
+   build:
+     context: .
+     dockerfile: Dockerfile_nginx
    ports:
     - 80:80
     - 443:443
