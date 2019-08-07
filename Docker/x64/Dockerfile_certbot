@@ -1,4 +1,0 @@
-FROM  ubuntu:18.04
-RUN apt update
-RUN apt -y install certbot
-RUN certbot certonly --agree-tos -d example.com -n --http-01-port 10000 --tls-sni-01-port 10001
