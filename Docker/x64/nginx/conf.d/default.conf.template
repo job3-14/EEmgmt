@@ -1,12 +1,18 @@
+ssl_protocols TLSv1.2 TLSv1.3;
 server {
-    listen 10000;
+    listen 443;
+    server_name ${DOMAIN_NAME};
+    ssl_certificate /etc/letsencrypt/live/${DOMAIN_NAME}/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/${DOMAIN_NAME}/privkey.pem;
     location / {
         proxy_pass http://linelogin:80;
     }
 }
 
 server {
-  listen 80;
+  listen 8080;
+  ssl_certificate /etc/letsencrypt/live/${DOMAIN_NAME}/fullchain.pem;
+  ssl_certificate_key /etc/letsencrypt/live/${DOMAIN_NAME}/privkey.pem;
 
     root  /var/www/html;
     index index.php index.html;
