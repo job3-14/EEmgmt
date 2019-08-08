@@ -6,8 +6,7 @@ server {
 }
 
 server {
-    listen 443;
-    server_name ${MAINDOMAIN};
+    listen 10000 ssl default_server;      server_name _;
     ssl on;
     ssl_certificate /etc/ssl_cert/fullchain.pem
     ssl_certificate_key /etc/ssl_cert/privkey.pem;
@@ -17,11 +16,11 @@ server {
 }
 
 server {
-    listen 10000 ssl default_server;
-    server_name _;
-    ssl on;
-    ssl_certificate /etc/ssl_cert/fullchain.pem
-    ssl_certificate_key /etc/ssl_cert/privkey.pem;
+  listen 443;
+  server_name ${MAINDOMAIN};
+  ssl on;
+  ssl_certificate /etc/ssl_cert/fullchain.pem
+  ssl_certificate_key /etc/ssl_cert/privkey.pem;
 
     root  /var/www/html;
     index index.php index.html;
