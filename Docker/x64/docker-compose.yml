@@ -17,9 +17,6 @@ services:
  web:
    image: nginx:1.17.2-alpine
    tty: true
-   ports:
-    - 80:80
-    - 10000:10000
    volumes:
     - ./nginx/html:/var/www/html
     - ./nginx/conf.d:/etc/nginx/conf.d
@@ -62,3 +59,15 @@ services:
    volumes:
        - ./linelogin/:/opt
    restart: always
+
+ https-portal:
+   image: steveltn/https-portal:1
+   ports:
+     - 80:80
+     - 443:443
+   restart: always
+   environment:
+     DOMAINS: '${MAINDOMAIN} -> http://web:10000'
+     STAGE: local
+   volumes:
+     - ./org-chimata-ssl-certs:/var/lib/https-portal
