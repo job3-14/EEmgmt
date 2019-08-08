@@ -16,6 +16,9 @@ services:
 
  web:
    image: nginx:1.17.2-alpine
+   ports:
+     - 443:443
+     - 8080:8080
    tty: true
    volumes:
     - ./nginx/html:/var/www/html
