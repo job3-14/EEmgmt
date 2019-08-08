@@ -59,15 +59,3 @@ services:
    volumes:
        - ./linelogin/:/opt
    restart: always
-
- https-portal:
-   image: steveltn/https-portal:1
-   ports:
-     - 80:80
-     - 443:443
-   restart: always
-   environment:
-     DOMAINS: '${MAINDOMAIN} -> http://web:10000'
-     STAGE: local
-   volumes:
-     - ./org-chimata-ssl-certs:/var/lib/https-portal
