@@ -65,4 +65,8 @@ services:
    tty: true
    volumes:
        - ./linelogin/:/opt
+   environment:
+     CHANNEL_ID: ${CHANNEL_ID}
+     CHANNNEL_SECREST: ${CHANNNEL_SECREST}
+     CALLBACK_URL: ${CALLBACK_URL}
    restart: always
