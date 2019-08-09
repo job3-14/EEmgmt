@@ -17,15 +17,6 @@ try {
   $operateErrorMessages[] = "データベース接続エラーです";
 }
 
-try {
-    $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
-    $sql  = $pdo->prepare("SELECT * FROM setting");
-    $sql->execute();
-    $setting = $sql->fetchAll();
-}catch (Exception $e){
-  $operateErrorMessages[] = "データベース接続エラーです";
-}
-
 $data = date("Y-m-d H:i"); #日時取得
 try {
   $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
