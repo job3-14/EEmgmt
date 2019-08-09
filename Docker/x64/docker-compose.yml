@@ -35,6 +35,8 @@ services:
      dockerfile: Dockerfile_php
    volumes:
     - ./nginx/html:/var/www/html
+   environment:
+     MYSQL_PASSWORD: ${MYSQL_PASSWORD}
 
  db:
     image: mariadb:10.4
@@ -43,7 +45,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: passwd
       MYSQL_USER: eemgmt
-      MYSQL_PASSWORD: passwd
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
       - ./db/initdb:/docker-entrypoint-initdb.d
       - ./db/conf.d/:/etc/mysql/conf.d
