@@ -17,15 +17,6 @@ try {
   $operateErrorMessages[] = "データベース接続エラーです";
 }
 
-try {
-    $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
-    $sql  = $pdo->prepare("SELECT * FROM setting");
-    $sql->execute();
-    $setting = $sql->fetchAll();
-}catch (Exception $e){
-  $operateErrorMessages[] = "データベース接続エラーです";
-}
-
 if($user[0]["notice"]=="slack"){
   $jsonList=array("method"=>"slack");
   if($user[0]["address1"]){
@@ -48,9 +39,9 @@ if($user[0]["notice"]=="slack"){
 if($user[0]["notice"]=="email"){
   $jsonList=array("method"=>"email");
   $jsonList["subject"]="入退室通知からのお知らせ";
-  $jsonList["fromEmail"]=$setting[0]["fromEmail"];
-  $jsonList["mailUserid"]=$setting[0]["mailUserid"];
-  $jsonList["mailPassword"]=$setting[0]["mailPassword"];
+  $jsonList["fromEmail"]=getenv("FROM_EMAIL");
+  $jsonList["mailUserid"]=getenv("ID_EMAIL");
+  $jsonList["mailPassword"]=getenv("PASS_EMAIL");
   if($user[0]["address1"]){
     $jsonList["address1"]=$user[0]["address1"];
   }
@@ -70,7 +61,7 @@ if($user[0]["notice"]=="email"){
 
 if($user[0]["notice"]=="line"){
   $jsonList=array("method"=>"line");
-  $jsonList["lineToken"]=$setting[0]["lineToken"];
+  $jsonList["lineToken"]=getenv("LINEAPI_TOKEN");
   $jsonList["userid"]=$user[0]["address1"];
 }
 
