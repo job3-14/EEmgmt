@@ -1,6 +1,7 @@
 ssl_protocols TLSv1.2 TLSv1.3;
 server {
-    listen 443;
+    listen 8080;
+    ssl on;
     server_name ${DOMAIN_NAME};
     ssl_certificate /etc/letsencrypt/live/${DOMAIN_NAME}/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/${DOMAIN_NAME}/privkey.pem;
@@ -10,7 +11,8 @@ server {
 }
 
 server {
-  listen 8080;
+  listen 443;
+  ssl on;
   ssl_certificate /etc/letsencrypt/live/${DOMAIN_NAME}/fullchain.pem;
   ssl_certificate_key /etc/letsencrypt/live/${DOMAIN_NAME}/privkey.pem;
 
