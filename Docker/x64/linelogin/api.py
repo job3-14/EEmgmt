@@ -5,7 +5,7 @@ app = Flask(__name__)
 app.secret_key = os.urandom(24)
 
 channel_id = os.environ.get('CHANNEL_ID')
-channel_secret = os.environ.get('CHANNNEL_SECREST')
+channel_secret = os.environ.get('CHANNEL_SECREST')
 callback_url = os.environ.get('CALLBACK_URL')
 
 @app.route('/')
