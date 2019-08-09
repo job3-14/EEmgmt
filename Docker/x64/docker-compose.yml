@@ -37,6 +37,10 @@ services:
     - ./nginx/html:/var/www/html
    environment:
      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+     FROM_EMAIL: ${FROM_EMAIL}
+     ID_EMAIL: ${ID_EMAIL}
+     PASS_EMAIL: ${PASS_EMAIL}
+     LINEAPI_TOKEN: ${LINEAPI_TOKEN}
 
  db:
     image: mariadb:10.4
