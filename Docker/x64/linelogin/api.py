@@ -4,14 +4,15 @@ import os, requests, random, json, jwt
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
 
-channel_id="1605802644"
-channel_secret="3cf738681ede4bf72107443fdb54565a"
+channel_id = os.environ.get('CHANNEL_ID')
+channel_secret = os.environ.get('CHANNNEL_SECREST')
+callback_url = os.environ.get('CALLBACK_URL')
 
 @app.route('/')
 def index():
     state = str(random.randint(100000000000000,9999999999999999))
     session['state'] = state
-    url = "https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=1605802644&redirect_uri=https://job314.tokyo/apply&state="+state+"&bot_prompt=aggressive&scope=openid%20email"
+    url = "https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id="+channel_id+"&redirect_uri="+callback_url+"&state="+state+"&bot_prompt=aggressive&scope=openid%20email"
     return redirect(url, code=302)
 
 @app.route('/apply',methods=["GET", "POST"])
@@ -27,7 +28,7 @@ def apply():
     payload = {
     "grant_type":"authorization_code",
     "code": code,
-    "redirect_uri": "https://job314.tokyo/apply2",
+    "redirect_uri": callback_url,
     "client_id": channel_id,
     "client_secret": channel_secret
     }
