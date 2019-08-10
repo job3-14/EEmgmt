@@ -53,9 +53,10 @@ def apply():
     conn.ping(reconnect=True) #自動再接続
     cur = conn.cursor() #操作用カーソルオブジェクト作成
     #######################################
-    cur.execute('DELETE FROM line WHERE email = %s' % email)
-    cur.execute("INSERT INTO line (email, userid) VALUES (%s, %s)" % (decoded_id_token["email"], decoded_id_token["sub"]))
+    cur.execute("DELETE FROM line WHERE email = '%s';" % decoded_id_token["email"])
+    cur.execute("INSERT INTO line (email, userid) VALUES ('%s', '%s');" % (decoded_id_token["email"], decoded_id_token["sub"]))
     cur.close()
+    conn.commit()
     conn.close()
     return "認証が完了しました。このページを閉じてください。"
 
