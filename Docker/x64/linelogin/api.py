@@ -1,5 +1,15 @@
 from flask import Flask, session, request, redirect
-import os, requests, random, json, jwt
+import os, requests, random, json, jwt, mysql.connector
+
+#データベース接続開始##################
+conn = mysql.connector.connect(
+	host='db',
+	port='3306',
+	user=os.environ.get('MYSQL_USERNAME'),
+	password=os.environ.get('MYSQL_PASSWORD'),
+	database='EEmgmt'
+)
+#######################################
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
