@@ -29,13 +29,17 @@ address4 VARCHAR(300),
 address5 VARCHAR(300),
 PRIMARY KEY (idm));
 
-CREATE TABLE gui(
-password INTEGER
+CREATE TABLE history(
+idm VARCHAR(30) NOT NULL,
+type VARCHAR(10) NOT NULL,
+date DATETIME NOT NULL
 );
 
-CREATE TABLE setting(
-fromEmail VARCHAR(150),
-mailUserid VARCHAR(150),
-mailPassword VARCHAR(150),
-lineToken VARCHAR(300)
+CREATE TABLE line(
+email VARCHAR(300) NOT NULL,
+userid VARCHAR(100) NOT NULL,
+PRIMARY KEY (email));
+
+CREATE TABLE gui(
+password INTEGER
 );
