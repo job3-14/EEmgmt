@@ -83,8 +83,6 @@ services:
      context: .
      dockerfile: Dockerfile_linereply
    tty: true
-   ports:
-     - 5000:5000
    volumes:
      - ./linelogin/:/opt
    restart: always
