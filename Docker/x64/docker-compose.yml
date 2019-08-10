@@ -81,7 +81,7 @@ services:
  linereply:
    build:
      context: .
-     dockerfile: Dockerfile_flask
+     dockerfile: Dockerfile_linereply
    tty: true
    ports:
      - 5000:5000
