@@ -1,17 +1,6 @@
 from flask import Flask, session, request, redirect
 import os, requests, random, json, jwt, mysql.connector
 
-#データベース接続開始##################
-conn = mysql.connector.connect(
-	host='db',
-	port='3306',
-	user='root';
-	password=os.environ.get('MYSQL_PASSWORD'),
-	database='EEmgmt'
-)
-conn.ping(reconnect=True) #自動再接続
-#######################################
-
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
 
@@ -52,9 +41,22 @@ def apply():
                                   audience=channel_id,
                                   issuer='https://access.line.me',
                                   algorithms=['HS256'])
-    print(decoded_id_token["sub"])
-    print(decoded_id_token["email"])
 
+    #データベース接続開始##################
+    conn = mysql.connector.connect(
+    	host='db',
+    	port='3306',
+    	user='root',
+    	password=os.environ.get('MYSQL_PASSWORD'),
+    	database='EEmgmt'
+    )
+    conn.ping(reconnect=True) #自動再接続
+    cur = conn.cursor() #操作用カーソルオブジェクト作成
+    #######################################
+    cur.execute('DELETE FROM line WHERE email = %s' % email)
+    cur.execute("INSERT INTO line (email, userid) VALUES (%s, %s)" % (decoded_id_token["email"], decoded_id_token["sub"]))
+    cur.close()
+    conn.close()
     return "認証が完了しました。このページを閉じてください。"
 
 
