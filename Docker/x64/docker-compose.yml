@@ -47,8 +47,7 @@ services:
     ports:
      - 3306:3306
     environment:
-      MYSQL_ROOT_PASSWORD: passwd
-      MYSQL_USER: eemgmt
+      MYSQL_USER: ${MYSQL_USERNAME}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
       - ./db/initdb:/docker-entrypoint-initdb.d
