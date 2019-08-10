@@ -9,6 +9,7 @@ conn = mysql.connector.connect(
 	password=os.environ.get('MYSQL_PASSWORD'),
 	database='EEmgmt'
 )
+conn.ping(reconnect=True) #自動再接続
 #######################################
 
 app = Flask(__name__)
