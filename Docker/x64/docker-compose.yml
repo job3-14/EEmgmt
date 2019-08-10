@@ -77,3 +77,14 @@ services:
      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
      CANCEL_CALLBACK_URL: ${CANCEL_CALLBACK_URL}
    restart: always
+
+ linereply:
+   build:
+     context: .
+     dockerfile: Dockerfile_flask
+   tty: true
+   ports:
+     - 5000:5000
+   volumes:
+     - ./linelogin/:/opt
+   restart: always
