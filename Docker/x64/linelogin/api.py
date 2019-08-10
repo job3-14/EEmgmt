@@ -20,7 +20,7 @@ def index():
 def cancek():
     state = str(random.randint(100000000000000,9999999999999999))
     session['state'] = state
-    url = "https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id="+channel_id+"&redirect_uri="+callback_url+"&state="+state+"&bot_prompt=aggressive&scope=openid%20email"
+    url = "https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id="+channel_id+"&redirect_uri="+cancel_callback_url+"&state="+state+"&bot_prompt=aggressive&scope=openid%20email"
     return redirect(url, code=302)
 
 @app.route('/apply',methods=["GET", "POST"])
@@ -81,7 +81,7 @@ def cancelapply():
     payload = {
     "grant_type":"authorization_code",
     "code": code,
-    "redirect_uri": callback_url,
+    "redirect_uri": cancel_callback_url,
     "client_id": channel_id,
     "client_secret": channel_secret
     }
