@@ -35,13 +35,11 @@ type VARCHAR(10) NOT NULL,
 date DATETIME NOT NULL
 );
 
+CREATE TABLE line(
+email VARCHAR(300) NOT NULL,
+userid VARCHAR(100) NOT NULL,
+PRIMARY KEY (email));
+
 CREATE TABLE gui(
 password INTEGER
-);
-
-CREATE TABLE setting(
-fromEmail VARCHAR(150),
-mailUserid VARCHAR(150),
-mailPassword VARCHAR(150),
-lineToken VARCHAR(300)
 );
