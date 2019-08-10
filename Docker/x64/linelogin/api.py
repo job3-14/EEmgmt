@@ -5,7 +5,7 @@ import os, requests, random, json, jwt, mysql.connector
 conn = mysql.connector.connect(
 	host='db',
 	port='3306',
-	user=os.environ.get('MYSQL_USERNAME'),
+	user='root';
 	password=os.environ.get('MYSQL_PASSWORD'),
 	database='EEmgmt'
 )
