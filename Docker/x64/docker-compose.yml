@@ -85,5 +85,5 @@ services:
      dockerfile: Dockerfile_linereply
    tty: true
    volumes:
-     - ./linelogin/:/opt
+     - ./linereply:/opt
    restart: always
