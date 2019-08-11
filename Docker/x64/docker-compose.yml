@@ -11,8 +11,7 @@ services:
     devices:
          -  /dev/bus/usb/001/004
     volumes:
-        - ./gui/:/opt
-        - ./command/file:/var/command
+        - ./gui/:/home/${GUIUSERNAME}
     ports:
         - 3389:3389
     environment:
