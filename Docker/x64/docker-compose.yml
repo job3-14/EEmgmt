@@ -89,4 +89,5 @@ services:
    environment:
      LINEAPI_TOKEN: ${LINEAPI_TOKEN}
      LINEAPI_SECRET: ${LINEAPI_SECRET}
+     MYSQL_PASSWORD: ${MYSQL_PASSWORD}
    restart: always
