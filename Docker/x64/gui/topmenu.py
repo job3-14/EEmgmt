@@ -10,18 +10,6 @@ import slackweb
 import time
 from datetime import datetime
 
-#データベース接続開始##################
-conn = mysql.connector.connect(
-	host='db',
-	port='3306',
-	user='root',
-	password='passwd',
-	database='EEmgmt'
-)
-#######################################
-
-
-
 def main_gui():
 	root = tk.Tk()
 	screen_width = root.winfo_screenwidth()   #スクリーンサイズを取得
