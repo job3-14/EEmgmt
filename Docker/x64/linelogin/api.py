@@ -4,8 +4,8 @@ import os, requests, random, json, jwt, mysql.connector
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
 
-channel_id = os.environ.get('CHANNEL_ID')
-channel_secret = os.environ.get('CHANNEL_SECREST')
+channel_id = os.environ.get('LOGIN_CHANNEL_ID')
+channel_secret = os.environ.get('LOGIN_CHANNEL_SECREST')
 callback_url = os.environ.get('CALLBACK_URL')
 cancel_callback_url = os.environ.get('CANCEL_CALLBACK_URL')
 mysql_password = os.environ.get('MYSQL_PASSWORD')
