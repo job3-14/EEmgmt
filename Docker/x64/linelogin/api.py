@@ -8,6 +8,7 @@ channel_id = os.environ.get('CHANNEL_ID')
 channel_secret = os.environ.get('CHANNEL_SECREST')
 callback_url = os.environ.get('CALLBACK_URL')
 cancel_callback_url = os.environ.get('CANCEL_CALLBACK_URL')
+mysql_password = os.environ.get('MYSQL_PASSWORD')
 
 @app.route('/')
 def index():
@@ -55,7 +56,7 @@ def apply():
     	host='db',
     	port='3306',
     	user='root',
-    	password=os.environ.get('MYSQL_PASSWORD'),
+    	password=mysql_password,
     	database='EEmgmt'
     )
     conn.ping(reconnect=True) #自動再接続
@@ -100,7 +101,7 @@ def cancelapply():
     	host='db',
     	port='3306',
     	user='root',
-    	password=os.environ.get('MYSQL_PASSWORD'),
+    	password=mysql_password,
     	database='EEmgmt'
     )
     conn.ping(reconnect=True) #自動再接続
