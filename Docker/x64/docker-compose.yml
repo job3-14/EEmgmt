@@ -12,6 +12,12 @@ services:
         - ./command/file:/var/command
     ports:
         - 3389:3389
+    environment:
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      LINEAPI_TOKEN: ${LINEAPI_TOKEN}
+      FROM_EMAIL: ${FROM_EMAIL}
+      ID_EMAIL: ${ID_EMAIL}
+      PASS_EMAIL: ${PASS_EMAIL}
     restart: always
 
  web:
