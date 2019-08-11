@@ -1,3 +1,4 @@
+# coding: utf-8
 import os, sys, mysql.connector
 from argparse import ArgumentParser
 
@@ -64,11 +65,7 @@ def message_text(event):
     result = cur.fetchone()[0]
     cur.close()
     conn.close()
-    if result=="1":
-        text = "このアカウントは連携済みです。連携を解除する場合は以下のリンクより認証してください。\n https://%s:8080/cancel" $ domain_name
-    line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text=text)
-    )
+    if result==1:
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="このアカウントは連携済みです。連携を解除する場合は以下のリンクより認証してください。\n https://%s:8080/cancel" % domain_name))
 
 app.run(debug=False, host='0.0.0.0', port=5000)
