@@ -86,4 +86,7 @@ services:
    tty: true
    volumes:
      - ./linereply:/opt
+   environment:
+     LINEAPI_TOKEN: ${LINEAPI_TOKEN}
+     LINEAPI_SECRET: ${LINEAPI_SECRET}
    restart: always
