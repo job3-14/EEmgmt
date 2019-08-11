@@ -1,5 +1,4 @@
-import os
-import sys
+import os, sys, mysql.connector
 from argparse import ArgumentParser
 
 from flask import Flask, request, abort
@@ -49,9 +48,21 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def message_text(event):
+    #データベース接続開始##################
+    conn = mysql.connector.connect(
+    	host='db',
+    	port='3306',
+    	user='root',
+    	password=os.environ.get('MYSQL_PASSWORD'),
+    	database='EEmgmt'
+    )
+    conn.ping(reconnect=True) #自動再接続
+    cur = conn.cursor() #操作用カーソルオブジェクト作成
+    #######################################
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=event.message.text)
+        #TextSendMessage(text=event.message.text)
+        TextSendMessage(text="event.message.text")
     )
 
 app.run(debug=False, host='0.0.0.0', port=5000)
