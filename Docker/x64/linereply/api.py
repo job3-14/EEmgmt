@@ -67,5 +67,7 @@ def message_text(event):
     conn.close()
     if result==1:
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="このアカウントは連携済みです。連携を解除する場合は以下のリンクより認証してください。\n https://%s:8080/cancel" % domain_name))
+    else:
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="このアカウントは連携していません。連携する場合は以下のリンクより認証してください。\n https://%s:8080/" % domain_name))
 
 app.run(debug=False, host='0.0.0.0', port=5000)
