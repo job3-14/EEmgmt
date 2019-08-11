@@ -6,8 +6,8 @@ RUN sed -i".bak" -e 's/\/\/us.archive.ubuntu.com/\/\/ftp.jaist.ac.jp/g' /etc/apt
 RUN apt update
 RUN apt upgrade -y
 
-RUN useradd -m test
-RUN echo "test:passwd" | chpasswd
+RUN useradd -m ${GUIUSERNAME}
+RUN echo "test:${GUIPASSWORD}" | chpasswd
 RUN gpasswd -a test sudo
 
 RUN apt install -y tzdata
