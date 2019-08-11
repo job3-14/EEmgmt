@@ -19,6 +19,7 @@ services:
    ports:
      - 443:443
      - 8080:8080
+     - 8081:8081
    tty: true
    volumes:
     - ./nginx/html:/var/www/html
@@ -71,9 +72,23 @@ services:
    volumes:
        - ./linelogin/:/opt
    environment:
-     CHANNEL_ID: ${CHANNEL_ID}
-     CHANNEL_SECREST: ${CHANNEL_SECREST}
+     LOGIN_CHANNEL_ID: ${LOGIN_CHANNEL_ID}
+     LOGIN_CHANNEL_SECREST: ${LOGIN_CHANNEL_SECREST}
      CALLBACK_URL: ${CALLBACK_URL}
      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
      CANCEL_CALLBACK_URL: ${CANCEL_CALLBACK_URL}
+   restart: always
+
+ linereply:
+   build:
+     context: .
+     dockerfile: Dockerfile_linereply
+   tty: true
+   volumes:
+     - ./linereply:/opt
+   environment:
+     LINEAPI_TOKEN: ${LINEAPI_TOKEN}
+     LINEAPI_SECRET: ${LINEAPI_SECRET}
+     MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+     DOMAIN_NAME: ${DOMAIN_NAME}
    restart: always

@@ -11,6 +11,17 @@ server {
 }
 
 server {
+    listen 8081;
+    ssl on;
+    server_name ${DOMAIN_NAME};
+    ssl_certificate /etc/letsencrypt/live/${DOMAIN_NAME}/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/${DOMAIN_NAME}/privkey.pem;
+    location / {
+        proxy_pass http://linereply:5000;
+    }
+}
+
+server {
   listen 443;
   ssl on;
   ssl_certificate /etc/letsencrypt/live/${DOMAIN_NAME}/fullchain.pem;
