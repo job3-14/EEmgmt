@@ -5,6 +5,9 @@ services:
     build:
        context: .
        dockerfile: Dockerfile_ubuntu
+       args:
+         guiusername: ${GUIUSERNAME}
+         guipassword: ${GUIPASSWORD}
     devices:
          -  /dev/bus/usb/001/004
     volumes:
