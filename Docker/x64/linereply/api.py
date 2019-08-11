@@ -14,6 +14,7 @@ from linebot.models import (
 
 app = Flask(__name__)
 
+domain_name = os.environ.get('DOMAIN_NAME')
 # get channel_secret and channel_access_token from your environment variable
 channel_secret = os.environ.get('LINEAPI_SECRET')
 channel_access_token = os.environ.get('LINEAPI_TOKEN')
@@ -48,6 +49,7 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def message_text(event):
+
     #データベース接続開始##################
     conn = mysql.connector.connect(
     	host='db',
@@ -58,11 +60,15 @@ def message_text(event):
     )
     conn.ping(reconnect=True) #自動再接続
     cur = conn.cursor() #操作用カーソルオブジェクト作成
-    #######################################
+    cur.execute("SELECT EXISTS(SELECT userid FROM line WHERE userid = '%s');" % event.source.user_id)
+    result = cur.fetchone()[0]
+    cur.close()
+    conn.close()
+    if result=="1":
+        text = "このアカウントは連携済みです。連携を解除する場合は以下のリンクより認証してください。\n https://%s:8080/cancel" $ domain_name
     line_bot_api.reply_message(
         event.reply_token,
-        #TextSendMessage(text=event.message.text)
-        TextSendMessage(text="event.message.text")
+        TextSendMessage(text=text)
     )
 
 app.run(debug=False, host='0.0.0.0', port=5000)
