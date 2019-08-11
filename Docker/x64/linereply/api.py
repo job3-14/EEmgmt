@@ -10,7 +10,7 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage,
+    MessageEvent, TextMessage, TextSendMessage, FollowEvent
 )
 
 app = Flask(__name__)
@@ -47,6 +47,26 @@ def callback():
 
     return 'OK'
 
+@handler.add(FollowEvent)
+def handle_follow(event):
+    #データベース接続開始##################
+    conn = mysql.connector.connect(
+    	host='db',
+    	port='3306',
+    	user='root',
+    	password=os.environ.get('MYSQL_PASSWORD'),
+    	database='EEmgmt'
+    )
+    conn.ping(reconnect=True) #自動再接続
+    cur = conn.cursor() #操作用カーソルオブジェクト作成
+    cur.execute("SELECT EXISTS(SELECT userid FROM line WHERE userid = '%s');" % event.source.user_id)
+    result = cur.fetchone()[0]
+    cur.close()
+    conn.close()
+    if result==1:
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="このアカウントは連携済みです。連携を解除する場合は以下のリンクより認証してください。\n https://%s:8080/cancel" % domain_name))
+    else:
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="このアカウントは連携していません。連携する場合は以下のリンクより認証してください。\n https://%s:8080/" % domain_name))
 
 @handler.add(MessageEvent, message=TextMessage)
 def message_text(event):
