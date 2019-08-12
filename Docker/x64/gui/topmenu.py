@@ -28,7 +28,7 @@ def main_gui():
 	        root.quit()
 
 	def checkin():
-	        root.destroy()
+	        #root.destroy()
         	checkin_gui()
 	        return
 
@@ -52,7 +52,7 @@ def checkin_gui():
 	###################別スレッドで実行する処理#####
 	def read_id():
 		center_y = int(screen_height / 2)   #解像度計算
-		result = subprocess.check_output(["sudo", "python","/home/pi/EEmgmt/gui/read-id.py"])
+		result = subprocess.check_output(["sudo", "python","/opt/read-id.py"])
 		result = str(result)
 		id_check = ('ID=' in result)
 		error_check = ('Unsupported_card' in result)
