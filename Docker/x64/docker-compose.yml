@@ -11,7 +11,8 @@ services:
     devices:
          -  /dev/bus/usb/001/004
     volumes:
-        - ./gui/:/home/${GUIUSERNAME}
+        - ./gui/api:/opt
+        - ./gui/build:/home/${GUIUSERNAME}/.config/autostart
     ports:
         - 3389:3389
     environment:
