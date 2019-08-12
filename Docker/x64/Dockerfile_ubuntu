@@ -1,14 +1,12 @@
 FROM  ubuntu:18.04
 ENV DEBIAN_FRONTEND noninteractive
 #キーボード入力待ちをさせない
+ARG GUIUSERNAME
+ARG GUIPASSWORD
 
 RUN sed -i".bak" -e 's/\/\/us.archive.ubuntu.com/\/\/ftp.jaist.ac.jp/g' /etc/apt/sources.list
 RUN apt update
 RUN apt upgrade -y
-
-RUN useradd -m ${GUIUSERNAME}
-RUN echo "${GUIUSERNAME}:${GUIPASSWORD}" | chpasswd
-RUN gpasswd -a test sudo
 
 RUN apt install -y tzdata
 #timezone
@@ -17,8 +15,12 @@ ENV TZ=Asia/Tokyo
 RUN apt install -y sudo python3-pip  python-pip  python3-tk fonts-noto  xrdp mate-desktop-environment-core mate-desktop-environment
 RUN pip3 install netifaces mysql-connector-python slackweb
 RUN pip install -U nfcpy
-#RUN apt -y install mate-desktop-environment-core
-#RUN apt -y install mate-desktop-environment
+
+RUN useradd -m ${GUIUSERNAME}
+RUN echo "${GUIUSERNAME}:${GUIPASSWORD}" | chpasswd
+RUN gpasswd -a ${GUIUSERNAME} sudo
+RUN echo ${GUIUSERNAME} ALL=NOPASSWD: ALL >> /etc/sudoers
+
 RUN service xrdp start
 
 CMD service xrdp start
