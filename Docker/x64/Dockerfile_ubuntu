@@ -12,15 +12,14 @@ RUN apt install -y tzdata
 #timezone
 ENV TZ=Asia/Tokyo
 
-RUN apt install -y sudo python3-pip  python-pip  python3-tk fonts-noto  xrdp mate-desktop-environment-core mate-desktop-environment
+RUN apt install -y sudo python3-pip python3-tk fonts-noto xrdp mate-desktop-environment-core mate-desktop-environment
 RUN pip3 install netifaces mysql-connector-python slackweb
-RUN pip install -U nfcpy
+RUN pip3 install -U nfcpy
 
 RUN useradd -m ${GUIUSERNAME}
 RUN echo "${GUIUSERNAME}:${GUIPASSWORD}" | chpasswd
 RUN gpasswd -a ${GUIUSERNAME} sudo
 RUN echo ${GUIUSERNAME} ALL=NOPASSWD: ALL >> /etc/sudoers
-CMD chmod 777 /home/${GUIUSERNAME}/.config
 
 RUN service xrdp start
 
