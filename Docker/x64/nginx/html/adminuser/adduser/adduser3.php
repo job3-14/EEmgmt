@@ -16,7 +16,7 @@ try {
 }catch (Exception $e){
   $errorMessages[] = "データベースエラーです";
   $_SESSION["errorMessages"]=$errorMessages;
-  header('Location: ./adduser_error.php');
+  header('Location: /normal_error.php');
 }
 
 try {
