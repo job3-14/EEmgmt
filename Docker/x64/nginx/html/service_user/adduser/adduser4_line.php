@@ -12,7 +12,7 @@ if(!$_POST["password"]){
 
 if($errorMessages){
   $_SESSION["errorMessages"]=$errorMessages;
-  header('Location: ./adduser_error.php');
+  header('Location: /normal_error.php');
 }else{
   $_SESSION["addcard"]["password"] = password_hash($_POST["password"], PASSWORD_DEFAULT);
   header('Location: ./adduser5_line.php');
