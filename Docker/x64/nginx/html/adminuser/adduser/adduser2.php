@@ -23,8 +23,7 @@ try {
   $dberror=1;
 }
 
-if (isset($_POST["user"])){
-  if($_POST["user"]=="" || $_POST["password1"]=="" || $_POST["user"]==$_POST["password1"] || !preg_match("/^[a-zA-Z0-9]+$/", $_POST["user"]) || strlen($_POST["password1"])<6 || strlen($_POST["password1"])>=50 || $result==1 || $dberror==1){
+
     if($_POST["user"]==""){
       $errorMessages[] = "ユーザー名を入力してください";
     }
@@ -50,14 +49,11 @@ if (isset($_POST["user"])){
     if($dberror==1){
       $errorMessages[] = "データベース確立エラー";
     }
-    $_SESSION["errorMessages"]=$errorMessages;
-    header('Location: ./adduser_error.php');
-}
-}else{
-  $errorMessages[] = "操作エラーです";
+
+if($errorMessages){
   $_SESSION["errorMessages"]=$errorMessages;
   header('Location: ./adduser_error.php');
-}
+}else{
 $_SESSION["adduser"] = $_POST["user"];
 $_SESSION["addpassword"] = password_hash($_POST["password1"], PASSWORD_DEFAULT);
 
@@ -121,7 +117,7 @@ if(isset($_POST["edituser"])){
 }else{
   $_SESSION["permission"]["edituser"]=0;
 }
-
+}
 $_SESSION["adduser_status"] = 1;
 ?>
 
