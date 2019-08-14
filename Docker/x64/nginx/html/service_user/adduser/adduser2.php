@@ -40,7 +40,7 @@ if($_POST["sendMethod"]==""){
 
 if(!is_null($errorMessages)){
   $_SESSION["errorMessages"]=$errorMessages;
-  header('Location: ./adduser_error.php');
+  header('Location: /normal_error.php');
 }else{
   $_SESSION["addcard"]["user"] = $_POST["user"];
   $_SESSION["addcard"]["email"] = $_POST["email"];
