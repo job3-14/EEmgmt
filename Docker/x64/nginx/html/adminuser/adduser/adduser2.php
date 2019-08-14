@@ -52,7 +52,7 @@ try {
 
 if($errorMessages){
   $_SESSION["errorMessages"]=$errorMessages;
-  header('Location: ./adduser_error.php');
+  header('Location: /normal_error.php');
 }else{
 $_SESSION["adduser"] = $_POST["user"];
 $_SESSION["addpassword"] = password_hash($_POST["password1"], PASSWORD_DEFAULT);
