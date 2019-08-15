@@ -11,6 +11,7 @@ RUN apt upgrade -y
 RUN apt install -y tzdata
 #timezone
 ENV TZ=Asia/Tokyo
+RUN timedatectl set-timezone Asia/Tokyo
 
 RUN apt install -y sudo python3-pip python3-tk fonts-noto xrdp mate-desktop-environment-core mate-desktop-environment
 RUN pip3 install netifaces mysql-connector-python slackweb
