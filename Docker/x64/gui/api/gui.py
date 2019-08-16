@@ -7,6 +7,7 @@ import time
 import nfc, threading
 import setting
 from datetime import datetime
+import requests, json
 
 class Gui():
     def __init__(self):
@@ -84,6 +85,7 @@ class Gui():
                 cur.execute("DELETE FROM history WHERE date NOT IN (SELECT * FROM (SELECT date FROM history ORDER BY date DESC LIMIT 3000) AS v)")
                 self.conn.commit()
                 cur.close()
+                self.sendmessage(result_idm,"入室")
             else:
                 self.result = "[エラー]このカードは登録されていません"
                 self.frag = "True"
@@ -120,11 +122,29 @@ class Gui():
     def end(self):
         self.root.quit()
 
-    def sendmessage(self,idm,type):
+    def sendmessage(self,idm,message):
         cur = self.conn.cursor(dictionary=True)  #カーソル作成
-        cur.execute("SELECT * FROM service_user WHERE idm = '%s';" % result_idm)
+        cur.execute("SELECT * FROM service_user WHERE idm = '%s';" % idm)
         sqlresult = cur.fetchall()
         cur.close()
-
+        date = datetime.now().strftime('%m月%d日%H時%M分')
+        url = "http://messages:5000/sendMessage"
+        headers = {
+            "Content-Type": "application/json",
+        }
+        if sqlresult[0]["notice"] == "slack":
+            jsonlist = {"method":"slack"}
+            if sqlresult[0]["address1"]:
+                jsonlist["address1"] = sqlresult[0]["address1"]
+            if sqlresult[0]["address2"]:
+                jsonlist["address2"] = sqlresult[0]["address2"]
+            if sqlresult[0]["address3"]:
+                jsonlist["address3"] = sqlresult[0]["address3"]
+            if sqlresult[0]["address4"]:
+                jsonlist["address4"] = sqlresult[0]["address4"]
+            if sqlresult[0]["address5"]:
+                jsonlist["address5"] = sqlresult[0]["address5"]
+        jsonlist["text"]=sqlresult[0]["name"]+"さんが"+date+"に"+message+"しました。"
+        requests.post(url, headers=headers,data=json.dumps(jsonlist))
 
 main = Gui()
