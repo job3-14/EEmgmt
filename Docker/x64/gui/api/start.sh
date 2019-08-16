@@ -1,2 +1,2 @@
 #!/bin/sh
-python3 /opt/gui.py
+sudo python3 /opt/gui.py
