@@ -144,7 +144,8 @@ class Gui():
                 jsonlist["address4"] = sqlresult[0]["address4"]
             if sqlresult[0]["address5"]:
                 jsonlist["address5"] = sqlresult[0]["address5"]
-        jsonlist["text"]=sqlresult[0]["name"]+"さんが"+date+"に"+message+"しました。"
-        requests.post(url, headers=headers,data=json.dumps(jsonlist))
+            jsonlist["text"]=sqlresult[0]["name"]+"さんが"+date+"に"+message+"しました。"
+            requests.post(url, headers=headers,data=json.dumps(jsonlist))
+
 
 main = Gui()
