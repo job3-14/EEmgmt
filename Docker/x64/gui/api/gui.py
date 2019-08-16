@@ -147,5 +147,24 @@ class Gui():
             jsonlist["text"]=sqlresult[0]["name"]+"さんが"+date+"に"+message+"しました。"
             requests.post(url, headers=headers,data=json.dumps(jsonlist))
 
+        if sqlresult[0]["notice"] == "email":
+            jsonlist = {"method":"email"}
+            if sqlresult[0]["address1"]:
+                jsonlist["address1"] = sqlresult[0]["address1"]
+            if sqlresult[0]["address2"]:
+                jsonlist["address2"] = sqlresult[0]["address2"]
+            if sqlresult[0]["address3"]:
+                jsonlist["address3"] = sqlresult[0]["address3"]
+            if sqlresult[0]["address4"]:
+                jsonlist["address4"] = sqlresult[0]["address4"]
+            if sqlresult[0]["address5"]:
+                jsonlist["address5"] = sqlresult[0]["address5"]
+            jsonlist["fromEmail"] = setting.from_email()
+            jsonlist["mailUserid"] = setting.id_email()
+            jsonlist["mailPassword"] = setting.pass_email()
+            jsonlist["subject"] = message + "通知"
+            jsonlist["text"]=sqlresult[0]["name"]+"さんが"+date+"に"+message+"しました。"
+            requests.post(url, headers=headers,data=json.dumps(jsonlist))
+
 
 main = Gui()
