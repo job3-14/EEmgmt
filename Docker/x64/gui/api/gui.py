@@ -166,5 +166,16 @@ class Gui():
             jsonlist["text"]=sqlresult[0]["name"]+"さんが"+date+"に"+message+"しました。"
             requests.post(url, headers=headers,data=json.dumps(jsonlist))
 
+        if sqlresult[0]["notice"] == "line":
+            jsonlist = {"method":"line"}
+            cur = self.conn.cursor(dictionary=True)
+            cur.execute("SELECT userid FROM line WHERE email = '%s';" % sqlresult[0]["mainEmail"])
+            sqlresult2 = cur.fetchall()
+            cur.close()
+            jsonlist["lineToken"] = setting.lineapi_token()
+            jsonlist["userid"] = sqlresult2[0]["userid"]
+            jsonlist["text"]=sqlresult[0]["name"]+"さんが"+date+"に"+message+"しました。"
+            requests.post(url, headers=headers,data=json.dumps(jsonlist))
+
 
 main = Gui()
