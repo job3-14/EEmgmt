@@ -9,7 +9,7 @@ services:
          GUIUSERNAME: ${GUIUSERNAME}
          GUIPASSWORD: ${GUIPASSWORD}
     devices:
-         -  /dev/bus/usb/001/004
+         -  /dev/nfc
     volumes:
         - ./gui/api:/opt
         - ./gui/build:/home/${GUIUSERNAME}/.config/autostart
