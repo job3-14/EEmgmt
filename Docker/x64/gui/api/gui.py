@@ -102,7 +102,7 @@ class Gui():
             pass
 
     def timeOut(self):
-        time.sleep(3)
+        time.sleep(4)
         self.result = "[エラー]タイムアウトです"
         self.frag = "True"
 
@@ -116,7 +116,7 @@ class Gui():
                 pass
             lbl_status = tk.Label(self.sub,text= self.result ,font=("",self.text_size))
             lbl_status.place(x=2, y=self.center_y)
-            time.sleep(3)
+            time.sleep(6)
             self.sub.destroy()
 
     def end(self):
