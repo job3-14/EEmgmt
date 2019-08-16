@@ -50,7 +50,7 @@ class Gui():
         lbl2 = tk.Label(self.sub,text='カードを読み取り部にタッチしてください。',font=("",self.text_size2))
         lbl.place(x=2, y=2)
         lbl2.place(x=2, y=self.text_lo)
-        thread1 = threading.Thread(target=self.readIdm)
+        thread1 = threading.Thread(target=self.checkinReadIdm)
         thread2 = threading.Thread(target=self.timeOut)
         thread3 = threading.Thread(target=self.fragTimer)
         thread1.setDaemon(True)
@@ -62,7 +62,7 @@ class Gui():
         self.sub.mainloop()
 
 
-    def outputIdm(self,tag):
+    def checkinOutputIdm(self,tag):
         tag = str(tag)                        #変数tsgを文字列型に変換
         id_check = ('ID=' in tag)             #対応カードかどうか確認
         if id_check == True:                  #対応カードなら実行
@@ -93,9 +93,9 @@ class Gui():
             self.result = "[エラー]未対応カードです"       #エラーメッセージを出力
             self.frag = "True"
 
-    def readIdm(self):
+    def checkinReadIdm(self):
         self.clf = nfc.ContactlessFrontend('usb')                        #nfcpyドキュメントを参照
-        tag = self.clf.connect(rdwr={'on-connect': self.outputIdm })       #nfcpyドキュメントを参照
+        tag = self.clf.connect(rdwr={'on-connect': self.checkinOutputIdm })       #nfcpyドキュメントを参照
         try:
             self.clf.close()
         except:
