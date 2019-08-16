@@ -69,7 +69,7 @@ class Gui():
             idm_end = idm + 16         #idの終了インデックスを指定
             result_idm = tag[idm:idm_end]           #idを出力
             cur = self.conn.cursor(dictionary=True)  #カーソル作成
-            cur.execute("SELECT * FROM service_user WHERE idm = '%s';" % result_idm)
+            cur.execute("SELECT name FROM service_user WHERE idm = '%s';" % result_idm)
             sqlresult = cur.fetchall()
             if sqlresult:
                 try:
@@ -120,6 +120,11 @@ class Gui():
     def end(self):
         self.root.quit()
 
+    def sendmessage(self,idm,type):
+        cur = self.conn.cursor(dictionary=True)  #カーソル作成
+        cur.execute("SELECT * FROM service_user WHERE idm = '%s';" % result_idm)
+        sqlresult = cur.fetchall()
+        cur.close()
 
 
 main = Gui()
