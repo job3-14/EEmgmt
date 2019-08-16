@@ -9,3 +9,6 @@ def id_email():
 
 def pass_email():
     return "pass_email"
+
+def lineapi_token():
+    return "lineapi_token"
