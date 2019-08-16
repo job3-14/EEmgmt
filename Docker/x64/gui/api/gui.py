@@ -37,7 +37,7 @@ class Gui():
         lbl2 = tk.Label(text='入室か退室を選択してください。',font=("",self.text_size2))
         lbl2.place(x=2, y=self.text_lo)
         checkin = tk.Button(self.root,text="入室\nにゅうしつ",command=self.checkin,height=4,width=9,bg="#7fbfff",activebackground="#7fbfff",font=("",self.buttron_size))
-        checkout  = tk.Button(self.root,text="退室\nたいしつ",command=self.end ,height=4,width=9,bg="#ffff7f",activebackground="#ffff7f",font=("",self.buttron_size))
+        checkout  = tk.Button(self.root,text="退室\nたいしつ",command=self.checkout ,height=4,width=9,bg="#ffff7f",activebackground="#ffff7f",font=("",self.buttron_size))
         checkin.pack(padx=50, side = 'left')
         checkout.pack(padx=50, side = 'right')
         self.root.mainloop()
@@ -101,6 +101,64 @@ class Gui():
         except:
             pass
 
+    def checkout(self):
+        self.frag = "False"
+        self.sub = tk.Toplevel()
+        self.sub.attributes("-fullscreen", True)
+        lbl = tk.Label(self.sub,text='入退出管理システム ---退室---',font=("",self.text_size))
+        lbl2 = tk.Label(self.sub,text='カードを読み取り部にタッチしてください。',font=("",self.text_size2))
+        lbl.place(x=2, y=2)
+        lbl2.place(x=2, y=self.text_lo)
+        thread1 = threading.Thread(target=self.checkoutReadIdm)
+        thread2 = threading.Thread(target=self.timeOut)
+        thread3 = threading.Thread(target=self.fragTimer)
+        thread1.setDaemon(True)
+        thread2.setDaemon(True)
+        thread3.setDaemon(True)
+        thread1.start()
+        thread2.start()
+        thread3.start()
+        self.sub.mainloop()
+
+    def checkoutOutputIdm(self,tag):
+        tag = str(tag)                        #変数tsgを文字列型に変換
+        id_check = ('ID=' in tag)             #対応カードかどうか確認
+        if id_check == True:                  #対応カードなら実行
+            idm = tag.find('ID=')  + 3             #idのインデックスを検索
+            idm_end = idm + 16         #idの終了インデックスを指定
+            result_idm = tag[idm:idm_end]           #idを出力
+            cur = self.conn.cursor(dictionary=True)  #カーソル作成
+            cur.execute("SELECT name FROM service_user WHERE idm = '%s';" % result_idm)
+            sqlresult = cur.fetchall()
+            if sqlresult:
+                try:
+                    self.clf.close()
+                except:
+                    pass
+                self.result = sqlresult[0]["name"] + "さん お疲れ様でした"
+                self.frag = "True"
+                cur = self.conn.cursor()  #カーソル作成
+                date = datetime.now().strftime('%Y-%m-%d %H:%M')
+                cur.execute("INSERT INTO history (idm,type,date) VALUES ('%s','退室','%s');" % (result_idm, date))
+                cur.execute("DELETE FROM history WHERE date NOT IN (SELECT * FROM (SELECT date FROM history ORDER BY date DESC LIMIT 3000) AS v)")
+                self.conn.commit()
+                cur.close()
+                self.sendmessage(result_idm,"退室")
+            else:
+                self.result = "[エラー]このカードは登録されていません"
+                self.frag = "True"
+        else:                                 #非対応カードの場合実行
+            self.result = "[エラー]未対応カードです"       #エラーメッセージを出力
+            self.frag = "True"
+
+    def checkoutReadIdm(self):
+        self.clf = nfc.ContactlessFrontend('usb')                        #nfcpyドキュメントを参照
+        tag = self.clf.connect(rdwr={'on-connect': self.checkoutOutputIdm })       #nfcpyドキュメントを参照
+        try:
+            self.clf.close()
+        except:
+            pass
+
     def timeOut(self):
         time.sleep(4)
         self.result = "[エラー]タイムアウトです"
@@ -118,9 +176,6 @@ class Gui():
             lbl_status.place(x=2, y=self.center_y)
             time.sleep(6)
             self.sub.destroy()
-
-    def end(self):
-        self.root.quit()
 
     def sendmessage(self,idm,message):
         cur = self.conn.cursor(dictionary=True)  #カーソル作成
