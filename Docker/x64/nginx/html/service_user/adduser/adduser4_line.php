@@ -22,12 +22,11 @@ if($result==1){
 }
 
 try {
-  $sql  = $pdo->prepare("INSERT INTO service_user (idm,name,mainEmail,notice,password) VALUES (?,?,?,?,?)");
+  $sql  = $pdo->prepare("INSERT INTO service_user (idm,name,mainEmail,notice) VALUES (?,?,?,?)");
   $sql->bindValue(1,$_SESSION["addcard"]["cardidm"]);
   $sql->bindValue(2,$_SESSION["addcard"]["user"]);
   $sql->bindValue(3,$_SESSION["addcard"]["email"]);
   $sql->bindValue(4,$_SESSION["addcard"]["sendMethod"]);
-  $sql->bindValue(5,$_SESSION["addcard"]["password"]);
   $sql->execute();
 }catch (Exception $e){
   $errorMessages[] = "データベースエラーです";
