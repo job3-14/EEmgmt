@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Exec=/opt/start.sh
+Hidden=false
+Name=GUI app
+Comment=GUI app
+X-MATE-Autostart-enabled=true

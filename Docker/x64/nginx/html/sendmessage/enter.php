@@ -31,7 +31,7 @@ try {
 
 try {
   $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
-  $sql = $pdo->prepare("DELETE FROM history  WHERE date NOT IN (SELECT * FROM (SELECT date FROM history ORDER BY date DESC LIMIT 100) AS v)");
+  $sql = $pdo->prepare("DELETE FROM history  WHERE date NOT IN (SELECT * FROM (SELECT date FROM history ORDER BY date DESC LIMIT 3000) AS v)");
   $sql->execute();
 }catch (Exception $e){
   $errorMessages[] = "データベースエラーです";
