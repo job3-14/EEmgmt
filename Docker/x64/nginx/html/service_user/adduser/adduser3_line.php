@@ -58,16 +58,13 @@ $_SESSION["errorMessages"]=array();
     <h5>メールアドレス(メイン)</h5>
     <?php echo $_SESSION["addcard"]["email"] ?>
 
-    <h5>パスワード</h5>
-    ***************** (セキュリティのため表示していません)
-
     <br>
     <div class="c-r-button">
     <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="button" onclick="history.back()">
        戻る
     </button>
 
-    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="button"  onclick="location.href='./adduser6_line.php'">
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="button"  onclick="location.href='./adduser4_line.php'">
        登録実行
     </button>
 </div>
