@@ -81,30 +81,6 @@ if(isset($_POST["viewexit"])){
 }else{
   $_SESSION["permission"]["viewexit"]=0;
 }
-if(isset($_POST["viewloginlog"])){
-  $permission2[] = "管理者ログイン試行ログ閲覧";
-  $_SESSION["permission"]["viewloginlog"]=1;
-}else{
-  $_SESSION["permission"]["viewloginlog"]=0;
-}
-if(isset($_POST["deletelog"])){
-  $permission2[] = "入退室履歴の削除";
-  $_SESSION["permission"]["deletelog"]=1;
-}else{
-  $_SESSION["permission"]["deletelog"]=0;
-}
-if(isset($_POST["initialize"])){
-  $permission2[] = "初期化操作";
-  $_SESSION["permission"]["initialize"]=1;
-}else{
-  $_SESSION["permission"]["initialize"]=0;
-}
-if(isset($_POST["setmail"])){
-  $permission2[] = "メールサーバー設定操作";
-  $_SESSION["permission"]["setmail"]=1;
-}else{
-  $_SESSION["permission"]["setmail"]=0;
-}
 if(isset($_POST["shutdown"])){
   $permission2[] = "システム終了(シャットダウン)";
   $_SESSION["permission"]["shutdown"]=1;

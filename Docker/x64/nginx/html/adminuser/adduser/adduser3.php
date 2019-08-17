@@ -36,24 +36,19 @@ if (isset($_SESSION["adduser"])){
     $errorMessages[] = "操作エラーです";
     $_SESSION["errorMessages"]=$errorMessages;
     header('Location: /operate_error.php');
-  }
+  }else{
 
-  $sql  = $pdo->prepare("INSERT INTO login (username,pass,addcard,editcard,sendnotice,viewexit,viewloginlog,deletelog,initialize,setmail,shutdown,edituser) VALUES (?,?,?,?,?,?,?,?,?,?,?,?);");
+  $sql = $pdo->prepare("INSERT INTO login (username,pass,addcard,editcard,sendnotice,viewexit,shutdown,edituser) VALUES (?,?,?,?,?,?,?,?)");
   $sql->bindValue(1,$_SESSION["adduser"]);
   $sql->bindValue(2,$_SESSION["addpassword"]);
   $sql->bindValue(3,$_SESSION["permission"]["addcard"]);
   $sql->bindValue(4,$_SESSION["permission"]["editcard"]);
   $sql->bindValue(5,$_SESSION["permission"]["sendnotice"]);
   $sql->bindValue(6,$_SESSION["permission"]["viewexit"]);
-  $sql->bindValue(7,$_SESSION["permission"]["viewloginlog"]);
-  $sql->bindValue(8,$_SESSION["permission"]["deletelog"]);
-  $sql->bindValue(9,$_SESSION["permission"]["initialize"]);
-  $sql->bindValue(10,$_SESSION["permission"]["setmail"]);
-  $sql->bindValue(11,$_SESSION["permission"]["shutdown"]);
-  $sql->bindValue(12,$_SESSION["permission"]["edituser"]);
+  $sql->bindValue(7,$_SESSION["permission"]["shutdown"]);
+  $sql->bindValue(8,$_SESSION["permission"]["edituser"]);
   $sql->execute();
-
-
+}
 }else{
   $errorMessages[] = "操作エラーです。";
   $_SESSION["errorMessages"]=$errorMessages;
