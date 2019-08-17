@@ -31,6 +31,8 @@ class Gui():
         self.text_lo = self.text_size + self.text_size + 40 #テキスト位置計算
         self.root.title("入退出管理システム-メインメニュー")
         self.root.attributes("-fullscreen", True)
+        thread = threading.Thread(target=self.readidm)
+        thread.start()
         ###以下メインウィンドウ作成###
         lbl = tk.Label(text='入退出管理システム',font=("",self.text_size))
         lbl.place(x=2, y=2)
@@ -50,7 +52,7 @@ class Gui():
         lbl2 = tk.Label(self.sub,text='カードを読み取り部にタッチしてください。',font=("",self.text_size2))
         lbl.place(x=2, y=2)
         lbl2.place(x=2, y=self.text_lo)
-        thread1 = threading.Thread(target=self.checkinReadIdm)
+        thread1 = threading.Thread(target=self.checkinOutputIdm)
         thread2 = threading.Thread(target=self.timeOut)
         thread3 = threading.Thread(target=self.fragTimer)
         thread1.setDaemon(True)
@@ -63,7 +65,12 @@ class Gui():
 
 
     def checkinOutputIdm(self,tag):
-        tag = str(tag)                        #変数tsgを文字列型に変換
+        while True:
+            if self.tag:
+                break
+            else:
+                time.sleep(0.1)
+        tag = str(self.tag)                        #変数tsgを文字列型に変換
         id_check = ('ID=' in tag)             #対応カードかどうか確認
         if id_check == True:                  #対応カードなら実行
             idm = tag.find('ID=')  + 3             #idのインデックスを検索
@@ -73,10 +80,6 @@ class Gui():
             cur.execute("SELECT name FROM service_user WHERE idm = '%s';" % result_idm)
             sqlresult = cur.fetchall()
             if sqlresult:
-                try:
-                    self.clf.close()
-                except:
-                    pass
                 self.result = sqlresult[0]["name"] + "さん こんにちは"
                 self.frag = "True"
                 cur = self.conn.cursor()  #カーソル作成
@@ -92,14 +95,6 @@ class Gui():
         else:                                 #非対応カードの場合実行
             self.result = "[エラー]未対応カードです"       #エラーメッセージを出力
             self.frag = "True"
-
-    def checkinReadIdm(self):
-        self.clf = nfc.ContactlessFrontend('usb')                        #nfcpyドキュメントを参照
-        tag = self.clf.connect(rdwr={'on-connect': self.checkinOutputIdm })       #nfcpyドキュメントを参照
-        try:
-            self.clf.close()
-        except:
-            pass
 
     def checkout(self):
         self.frag = "False"
@@ -131,10 +126,6 @@ class Gui():
             cur.execute("SELECT name FROM service_user WHERE idm = '%s';" % result_idm)
             sqlresult = cur.fetchall()
             if sqlresult:
-                try:
-                    self.clf.close()
-                except:
-                    pass
                 self.result = sqlresult[0]["name"] + "さん お疲れ様でした"
                 self.frag = "True"
                 cur = self.conn.cursor()  #カーソル作成
@@ -154,10 +145,6 @@ class Gui():
     def checkoutReadIdm(self):
         self.clf = nfc.ContactlessFrontend('usb')                        #nfcpyドキュメントを参照
         tag = self.clf.connect(rdwr={'on-connect': self.checkoutOutputIdm })       #nfcpyドキュメントを参照
-        try:
-            self.clf.close()
-        except:
-            pass
 
     def timeOut(self):
         time.sleep(4)
@@ -168,10 +155,6 @@ class Gui():
         while self.frag == 'False':
         	time.sleep(0.5)
         else:
-            try:
-                self.clf.close()
-            except:
-                pass
             lbl_status = tk.Label(self.sub,text= self.result ,font=("",self.text_size))
             lbl_status.place(x=2, y=self.center_y)
             time.sleep(6)
@@ -232,5 +215,8 @@ class Gui():
             jsonlist["text"]=sqlresult[0]["name"]+"さんが"+date+"に"+message+"しました。"
             requests.post(url, headers=headers,data=json.dumps(jsonlist))
 
-
+    def readidm(self):
+        while True:
+        	with nfc.ContactlessFrontend("usb") as clf:
+        		self.tag = clf.connect(rdwr={'on-connect': lambda tag: False})
 main = Gui()
