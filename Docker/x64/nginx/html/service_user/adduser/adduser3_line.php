@@ -3,7 +3,7 @@ session_start();
 if (!isset($_SESSION["user"])){
 header('Location: /login.php');
 }
-$_POST = array();
+
 $_SESSION["errorMessages"]=array();
 ?>
 
@@ -43,32 +43,33 @@ $_SESSION["errorMessages"]=array();
 
 <div class="c-add-card mdl-card mdl-shadow--4dp">
   <div class="mdl-card__supporting-text">
-    LINEへ登録する情報を入力してください
+    入力内容を確認してください
   </div>
   <div class="mdl-card__supporting-text">
-    <p>メールアドレスは前ページで設定した内容です。このページでは変更できません。</p>
-    <p>メールアドレスを変更するには[戻る]ボタンをクリックし前ページで設定してください。</p>
-<form action="./adduser4_line.php" method="POST">
-  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <input class="mdl-textfield__input" type="text"  name="email_check" value="<?php echo $_SESSION["addcard"]["email"] ?>" readonly="readonly">
-    <label class="mdl-textfield__label">メールアドレス</label>
-  </div>
-  <br>
-  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <input class="mdl-textfield__input" type="text"  name="password">
-    <label class="mdl-textfield__label">パスワード</label>
-  </div>
+    <h5>ユーザー名</h5>
+    <?php echo $_SESSION["addcard"]["user"] ?>
 
-  <br>
-  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="button" onclick="history.back()">
-     戻る
-  </button>
+    <h5>ICカードidm</h5>
+    <?php echo $_SESSION["addcard"]["cardidm"]; ?>
 
-  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" value=1>
-     次へ
-  </button>
+    <h5>入退室通知送信方法</h5>
+    <?php echo $_SESSION["addcard"]["sendMethod"]; ?>
 
-</form>
+    <h5>メールアドレス(メイン)</h5>
+    <?php echo $_SESSION["addcard"]["email"] ?>
+
+    <h5>パスワード</h5>
+    ***************** (セキュリティのため表示していません)
+
+    <br>
+    <div class="c-r-button">
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="button" onclick="history.back()">
+       戻る
+    </button>
+
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="button"  onclick="location.href='./adduser6_line.php'">
+       登録実行
+    </button>
 </div>
 </div>
 </div>
