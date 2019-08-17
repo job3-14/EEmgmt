@@ -65,27 +65,6 @@ if($method=="email"){
     $mailList = array_unique($mailList); //重複削除
   }
 
-if($method=="line"){
-  if($_POST["setPassword"]=="none"){
-    $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
-    $sql  = $pdo->prepare('SELECT IFNULL(password,"NULL") FROM service_user WHERE idm=?');
-    $sql->bindValue(1,$idm);
-    $sql->execute();
-    $result=$sql->fetchColumn();
-    if($result=="NULL"){
-      $errorMessages[] = "パスワードを入力してください";
-    }
-  }elseif($_POST["setPassword"]=="change"){
-    if(!$_POST["password"]){
-      $errorMessages[] = "パスワードを入力してください";
-    }elseif(strlen($_POST["password"])<6 || strlen($_POST["password"])>=50){
-      $errorMessages[] = "パスワードは6文字から50文字で入力してください";
-    }
-  }else{
-    $operateErrorMessages[]="操作エラーです";
-  }
-}
-
 if($method=="slack"){
   if($_POST["address1"] && !filter_var($_POST["address1"], FILTER_VALIDATE_URL)){
     $errorMessages[] = "URLを入力してください";
