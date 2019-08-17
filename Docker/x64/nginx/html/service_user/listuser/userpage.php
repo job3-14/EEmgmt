@@ -132,7 +132,10 @@ function noticeRadio($sql,$method){
                       リセット
                     </button>
                 </form>
-
+                <br><br>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="button" onclick="location.href='./remove.php?idm=<?php echo $idm; ?>'">
+                    このユーザーを削除
+                  </button>
                </div>
             </div>
           </div>
