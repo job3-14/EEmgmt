@@ -131,7 +131,10 @@ function permission($type){
                       リセット
                     </button>
                 </form>
-
+                <br><br>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="button" onclick="location.href='./remove.php?username=<?php echo $username; ?>'">
+                    このユーザーを削除
+                  </button>
                </div>
             </div>
           </div>
