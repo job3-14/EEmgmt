@@ -73,10 +73,6 @@ class Gui():
             cur.execute("SELECT name FROM service_user WHERE idm = '%s';" % result_idm)
             sqlresult = cur.fetchall()
             if sqlresult:
-                try:
-                    self.clf.close()
-                except:
-                    pass
                 self.result = sqlresult[0]["name"] + "さん こんにちは"
                 self.frag = "True"
                 cur = self.conn.cursor()  #カーソル作成
@@ -94,12 +90,9 @@ class Gui():
             self.frag = "True"
 
     def checkinReadIdm(self):
-        self.clf = nfc.ContactlessFrontend('usb')                        #nfcpyドキュメントを参照
-        tag = self.clf.connect(rdwr={'on-connect': self.checkinOutputIdm })       #nfcpyドキュメントを参照
-        try:
-            self.clf.close()
-        except:
-            pass
+        clf = nfc.ContactlessFrontend('usb')                        #nfcpyドキュメントを参照
+        tag = clf.connect(rdwr={'on-connect': self.checkinOutputIdm })       #nfcpyドキュメントを参照
+        clf.close()
 
     def checkout(self):
         self.frag = "False"
@@ -131,10 +124,6 @@ class Gui():
             cur.execute("SELECT name FROM service_user WHERE idm = '%s';" % result_idm)
             sqlresult = cur.fetchall()
             if sqlresult:
-                try:
-                    self.clf.close()
-                except:
-                    pass
                 self.result = sqlresult[0]["name"] + "さん お疲れ様でした"
                 self.frag = "True"
                 cur = self.conn.cursor()  #カーソル作成
@@ -152,12 +141,9 @@ class Gui():
             self.frag = "True"
 
     def checkoutReadIdm(self):
-        self.clf = nfc.ContactlessFrontend('usb')                        #nfcpyドキュメントを参照
-        tag = self.clf.connect(rdwr={'on-connect': self.checkoutOutputIdm })       #nfcpyドキュメントを参照
-        try:
-            self.clf.close()
-        except:
-            pass
+        clf = nfc.ContactlessFrontend('usb')                        #nfcpyドキュメントを参照
+        tag = clf.connect(rdwr={'on-connect': self.checkoutOutputIdm })       #nfcpyドキュメントを参照
+        clf.close()
 
     def timeOut(self):
         time.sleep(4)
@@ -168,10 +154,6 @@ class Gui():
         while self.frag == 'False':
         	time.sleep(0.5)
         else:
-            try:
-                self.clf.close()
-            except:
-                pass
             lbl_status = tk.Label(self.sub,text= self.result ,font=("",self.text_size))
             lbl_status.place(x=2, y=self.center_y)
             time.sleep(6)
