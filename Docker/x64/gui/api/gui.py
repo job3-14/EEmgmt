@@ -6,7 +6,7 @@ import mysql.connector
 import time
 import nfc, threading
 import setting
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 import requests, json
 
 class Gui():
@@ -31,6 +31,7 @@ class Gui():
         self.text_lo = self.text_size + self.text_size + 40 #テキスト位置計算
         self.root.title("入退出管理システム-メインメニュー")
         self.root.attributes("-fullscreen", True)
+        self.jst = timezone(timedelta(hours=+9), 'JST')
         ###以下メインウィンドウ作成###
         lbl = tk.Label(text='入退出管理システム',font=("",self.text_size))
         lbl.place(x=2, y=2)
@@ -76,7 +77,7 @@ class Gui():
                 self.result = sqlresult[0]["name"] + "さん こんにちは"
                 self.frag = "True"
                 cur = self.conn.cursor()  #カーソル作成
-                date = datetime.now().strftime('%Y-%m-%d %H:%M')
+                date = datetime.now(self.jst).strftime('%Y-%m-%d %H:%M')
                 cur.execute("INSERT INTO history (idm,type,date) VALUES ('%s','入室','%s');" % (result_idm, date))
                 cur.execute("DELETE FROM history WHERE date NOT IN (SELECT * FROM (SELECT date FROM history ORDER BY date DESC LIMIT 3000) AS v)")
                 self.conn.commit()
@@ -127,7 +128,7 @@ class Gui():
                 self.result = sqlresult[0]["name"] + "さん お疲れ様でした"
                 self.frag = "True"
                 cur = self.conn.cursor()  #カーソル作成
-                date = datetime.now().strftime('%Y-%m-%d %H:%M')
+                date = datetime.now(self.jst).strftime('%Y-%m-%d %H:%M')
                 cur.execute("INSERT INTO history (idm,type,date) VALUES ('%s','退室','%s');" % (result_idm, date))
                 cur.execute("DELETE FROM history WHERE date NOT IN (SELECT * FROM (SELECT date FROM history ORDER BY date DESC LIMIT 3000) AS v)")
                 self.conn.commit()
@@ -164,7 +165,7 @@ class Gui():
         cur.execute("SELECT * FROM service_user WHERE idm = '%s';" % idm)
         sqlresult = cur.fetchall()
         cur.close()
-        date = datetime.now().strftime('%m月%d日%H時%M分')
+        date = datetime.now(self.jst).strftime('%m月%d日%H時%M分')
         url = "http://messages:5000/sendMessage"
         headers = {
             "Content-Type": "application/json",
