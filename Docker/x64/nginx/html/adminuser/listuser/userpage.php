@@ -106,34 +106,6 @@ function permission($type){
                 <p>許可する操作を選択してください</p>
 
                 <div class="c-switch">
-                <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-6">
-                  <input type="checkbox" id="switch-6" class="mdl-switch__input" name="viewloginlog" value=1 <?php permission($user[0]["viewloginlog"]);?>>
-                  <span class="mdl-switch__label">管理者ログイン試行ログ閲覧</span>
-                </label>
-                </div>
-
-                <div class="c-switch">
-                <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-7">
-                  <input type="checkbox" id="switch-7" class="mdl-switch__input" name="deletelog" value=1 <?php permission($user[0]["deletelog"]);?>>
-                  <span class="mdl-switch__label">入退室履歴の削除</span>
-                </label>
-                </div>
-
-                <div class="c-switch">
-                <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-8">
-                  <input type="checkbox" id="switch-8" class="mdl-switch__input" name="initialize" value=1 <?php permission($user[0]["initialize"]);?>>
-                  <span class="mdl-switch__label">初期化操作</span>
-                </label>
-                </div>
-
-                <div class="c-switch">
-                <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-9">
-                  <input type="checkbox" id="switch-9" class="mdl-switch__input" name="setmail" value=1 <?php permission($user[0]["setmail"]);?>>
-                  <span class="mdl-switch__label">メールサーバー設定操作</span>
-                </label>
-                </div>
-
-                <div class="c-switch">
                 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-10">
                   <input type="checkbox" id="switch-10" class="mdl-switch__input" name="shutdown" value=1 <?php permission($user[0]["shutdown"]);?>>
                   <span class="mdl-switch__label">システム終了(シャットダウン)</span>
