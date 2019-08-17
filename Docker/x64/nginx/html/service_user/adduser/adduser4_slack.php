@@ -18,7 +18,7 @@ if($_POST["slack1"] && !filter_var($_POST["slack1"], FILTER_VALIDATE_URL)){
 
 if(!is_null($errorMessages)){
   $_SESSION["errorMessages"]=$errorMessages;
-  header('Location: ./adduser_error.php');
+  header('Location: /normal_error.php');
 }else{
   $mailList[] = $_POST["slack1"];
   if($_POST["slack2"]){

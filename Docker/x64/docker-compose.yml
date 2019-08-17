@@ -5,13 +5,22 @@ services:
     build:
        context: .
        dockerfile: Dockerfile_ubuntu
-    devices:
-         -  /dev/bus/usb/001/004
+       args:
+         GUIUSERNAME: ${GUIUSERNAME}
+         GUIPASSWORD: ${GUIPASSWORD}
+    privileged: true
     volumes:
-        - ./gui/:/opt
-        - ./command/file:/var/command
+        - ./gui/api:/opt
+        - ./gui/build:/home/${GUIUSERNAME}/.config/autostart
+        - /dev/bus/usb:/dev/bus/usb
     ports:
         - 3389:3389
+    environment:
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      LINEAPI_TOKEN: ${LINEAPI_TOKEN}
+      FROM_EMAIL: ${FROM_EMAIL}
+      ID_EMAIL: ${ID_EMAIL}
+      PASS_EMAIL: ${PASS_EMAIL}
     restart: always
 
  web:

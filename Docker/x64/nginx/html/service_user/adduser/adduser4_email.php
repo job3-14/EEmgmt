@@ -36,7 +36,7 @@ if(!$_POST["email2"]){
 
 if(!is_null($errorMessages)){
   $_SESSION["errorMessages"]=$errorMessages;
-  header('Location: ./adduser_error.php');
+  header('Location: /normal_error.php');
 }else{
   $mailList[] = $_SESSION["addcard"]["email"];
   if($_POST["email2"]){
