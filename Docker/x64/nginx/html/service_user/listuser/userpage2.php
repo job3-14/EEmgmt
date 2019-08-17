@@ -121,12 +121,11 @@ if(isset($operateErrorMessages)){
   if($method=="line"){
     $password=password_hash($_POST["password"], PASSWORD_DEFAULT);
     $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
-    $sql=$pdo->prepare("UPDATE service_user SET mainEmail=?,idm=?,notice=?,password=? WHERE idm=?");
+    $sql=$pdo->prepare("UPDATE service_user SET mainEmail=?,idm=?,notice=? WHERE idm=?");
     $sql->bindValue(1,$_POST["email"]);
     $sql->bindValue(2,$_POST["cardidm"]);
     $sql->bindValue(3,$_POST["sendMethod"]);
-    $sql->bindValue(4,$password);
-    $sql->bindValue(5,$idm);
+    $sql->bindValue(4,$idm);
     $sql->execute();
   }
 
