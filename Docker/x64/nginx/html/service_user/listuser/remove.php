@@ -66,9 +66,13 @@ function noticeRadio($sql,$method){
               <div class="mdl-card__supporting-text">
                 <h5>ユーザー名: <?php echo $user[0]["name"];?> </h5>
                 <p>このユーザーを削除します</p>
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"  type="button" onclick="location.href='./remove2.php?idm=<?php echo $idm; ?>'">
+                <form action="./remove2.php" method="POST">
+                  <input type="hidden" name="idm" value="<?php echo $idm; ?>">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"  type="submit">
                     ユーザー削除実行
                   </button>
+                </form>
+                <br><br>
                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="button" onclick="location.href='./userpage.php?idm=<?php echo $idm; ?>'">
                     キャンセル
                   </button>
