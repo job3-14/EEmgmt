@@ -4,6 +4,9 @@ if (!isset($_SESSION["user"])){
 header('Location: /login.php');
 }
 include($_SERVER['DOCUMENT_ROOT'] . '/menu_load.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/permission.php');
+//権限確認
+permission("edituser");
 ?>
 
 

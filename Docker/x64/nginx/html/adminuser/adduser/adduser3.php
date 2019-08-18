@@ -9,7 +9,10 @@ header('Location: ./adduser.php');
 unset($_SESSION["adduser_status"]);
 
 include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
-$errorMessages = array();
+include($_SERVER['DOCUMENT_ROOT'] . '/permission.php');
+//権限確認
+permission("edituser");
+
 
 try {
   $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
