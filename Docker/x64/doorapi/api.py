@@ -20,7 +20,7 @@ def index():
     conn.ping(reconnect=True) #自動再接続
     cur = conn.cursor() #操作用カーソルオブジェクト作成
     #######################################
-    cur.execute("SELECT EXISTS(SELECT userid FROM line WHERE userid = '%s');" % event.source.user_id)
+    cur.execute("SELECT EXISTS(SELECT idm FROM service_user WHERE idm = '%s');" % postData["idm"])
     result = cur.fetchone()[0]
     cur.close()
     conn.close()
