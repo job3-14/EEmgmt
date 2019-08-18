@@ -5,6 +5,9 @@ header('Location: /login.php');
 }
 $_POST = array();
 $_SESSION["errorMessages"]=array();
+include($_SERVER['DOCUMENT_ROOT'] . '/permission.php');
+//権限確認
+permission_redirect("edituser");
 unset($_SESSION["permission"]);
 unset($_SESSION["permission2"]);
 ?>

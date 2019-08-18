@@ -5,6 +5,9 @@ header('Location: /login.php');
 }
 include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
 include($_SERVER['DOCUMENT_ROOT'] . '/menu_load.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/permission.php');
+//権限確認
+permission_redirect("editcard");
 $idm=$_POST["idm"];
 $method=$_POST["sendMethod"];
 
