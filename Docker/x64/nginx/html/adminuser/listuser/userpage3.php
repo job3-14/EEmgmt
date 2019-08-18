@@ -6,6 +6,11 @@ header('Location: /login.php');
 include($_SERVER['DOCUMENT_ROOT'] . '/permission.php');
 //権限確認
 permission_redirect("edituser");
+if($_POST["username"]==$_SESSION["user"] && $_POST["edituser"]!=1){
+  $normalErrorMessages[] = "自身のアカウントの管理ユーザー追加,編集機能を削除することはできません";
+  $_SESSION["errorMessages"]=$normalErrorMessages;
+  header('Location: /normal_error.php');
+}
 ?>
 
 
