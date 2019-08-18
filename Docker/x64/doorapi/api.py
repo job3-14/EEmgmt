@@ -18,8 +18,14 @@ def index():
     conn.ping(reconnect=True) #自動再接続
     cur = conn.cursor() #操作用カーソルオブジェクト作成
     #######################################
-    
-    return "OK"
+    cur.execute("SELECT EXISTS(SELECT userid FROM line WHERE userid = '%s');" % event.source.user_id)
+    result = cur.fetchone()[0]
+    cur.close()
+    conn.close()
+    if result==1:
+        return "OK"
+    else:
+        return "ERROR"
 
 
 app.run(debug=False, host='0.0.0.0', port=9000, threaded=True)
