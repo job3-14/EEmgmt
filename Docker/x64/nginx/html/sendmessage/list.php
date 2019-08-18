@@ -2,6 +2,7 @@
 session_start();
 if (!isset($_SESSION["user"])){
 header('Location: /login.php');
+exit;
 }
 $_SESSION["errorMessages"]= array();
 include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
@@ -27,6 +28,7 @@ try {
   $errorMessages[] = "データベースエラーです";
   $_SESSION["errorMessages"]=$errorMessages;
   header('Location: /operate_error.php');
+  exit;
 }
 
 $maxPageCounts = $counts / 100;
@@ -36,6 +38,7 @@ if (isset($_GET["pages"])){
   $currentPages = $_GET["pages"];
   if($pages > $totalPageCounts){  //指定ページ数が実際のページより多い場合
     header('Location: ./list.php');
+    exit;
   }
   $pages *= 100;
   $pages -= 1;
@@ -57,6 +60,7 @@ try {
   $errorMessages[] = "データベースエラーです";
   $_SESSION["errorMessages"]=$errorMessages;
   header('Location: /operate_error.php');
+  exit;
 }
 
 

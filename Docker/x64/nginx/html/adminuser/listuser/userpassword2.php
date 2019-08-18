@@ -2,6 +2,7 @@
 session_start();
 if (!isset($_SESSION["user"])){
 header('Location: /login.php');
+exit;
 }
 include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
 include($_SERVER['DOCUMENT_ROOT'] . '/permission.php');
@@ -27,6 +28,7 @@ if(strlen($password1)<6 || strlen($password1)>=50){
 if(isset($errorMessages)){
   $_SESSION["errorMessages"]=$errorMessages;
   header('Location: /normal_error.php');
+  exit;
 }
 
 $password=password_hash($password, PASSWORD_DEFAULT);
@@ -44,7 +46,9 @@ try {
 if(isset($operateErrorMessages)){
   $_SESSION["errorMessages"]=$operateErrorMessages;
   header('Location: /operate_error.php');
+  exit;
 }
 
 header('Location: ./userpassword3.php?username='.$username);
+exit;
 ?>

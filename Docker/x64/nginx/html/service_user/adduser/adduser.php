@@ -2,6 +2,7 @@
 session_start();
 if (!isset($_SESSION["user"])){
 header('Location: /login.php');
+exit;
 }
 $_POST = array();
 include($_SERVER['DOCUMENT_ROOT'] . '/permission.php');

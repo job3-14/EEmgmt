@@ -2,12 +2,20 @@
 session_start();
 if (!isset($_SESSION["user"])){
 header('Location: /login.php');
+exit;
 }
 include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
 include($_SERVER['DOCUMENT_ROOT'] . '/permission.php');
 //権限確認
 permission_redirect("edituser");
 $username = $_POST["username"];
+
+if($username==$_SESSION["user"]){
+  $errorMessages[] = "自身のアカウントを削除することはできません。";
+  $_SESSION["errorMessages"]=$errorMessages;
+  header('Location: /normal_error.php');
+  exit;
+}
 
 try {
     $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
@@ -34,6 +42,7 @@ if($result==0){
 if(isset($operateErrorMessages)){
   $_SESSION["errorMessages"]=$operateErrorMessages;
   header('Location: /operate_error.php');
+  exit;
 }
 ?>
 

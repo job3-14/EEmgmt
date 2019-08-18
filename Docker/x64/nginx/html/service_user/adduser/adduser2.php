@@ -2,6 +2,7 @@
 session_start();
 if (!isset($_SESSION["user"])){
 header('Location: /login.php');
+exit;
 }
 include($_SERVER['DOCUMENT_ROOT'] . '/permission.php');
 //権限確認
@@ -43,6 +44,7 @@ if($_POST["sendMethod"]==""){
 if(!is_null($errorMessages)){
   $_SESSION["errorMessages"]=$errorMessages;
   header('Location: /normal_error.php');
+  exit;
 }else{
   $_SESSION["addcard"]["user"] = $_POST["user"];
   $_SESSION["addcard"]["email"] = $_POST["email"];
@@ -50,13 +52,17 @@ if(!is_null($errorMessages)){
   $_SESSION["addcard"]["sendMethod"] = $_POST["sendMethod"];
   if($_POST["sendMethod"]=="email"){
     header('Location: ./adduser3_email.php');
+    exit;
   }elseif($_POST["sendMethod"]=="line"){
     header('Location: ./adduser3_line.php');
+    exit;
   }elseif($_POST["sendMethod"]=="slack"){
     header('Location: ./adduser3_slack.php');
+    exit;
   }elseif($_POST["sendMethod"]=="none"){
     $_SESSION["addcard"]["sendMethod2"] = "なし";
     header('Location: ./adduser3_null.php');
+    exit;
   }
 }
 
