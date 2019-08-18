@@ -73,6 +73,17 @@ services:
        - ./flask/:/opt
    restart: always
 
+  doorapi:
+    build:
+       context: .
+       dockerfile: Dockerfile_flask
+    tty: true
+    volumes:
+        - ./doorapi/:/opt
+    restart: always
+    environment:
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+
  linelogin:
    build:
       context: .
