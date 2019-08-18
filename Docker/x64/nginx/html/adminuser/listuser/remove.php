@@ -2,6 +2,7 @@
 session_start();
 if (!isset($_SESSION["user"])){
 header('Location: /login.php');
+exit;
 }
 $_SESSION["errorMessages"]= array();
 include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
@@ -15,6 +16,7 @@ if($username==$_SESSION["user"]){
   $errorMessages[] = "自身のアカウントを削除することはできません。";
   $_SESSION["errorMessages"]=$errorMessages;
   header('Location: /normal_error.php');
+  exit;
 }
 
 try {
@@ -43,6 +45,7 @@ if($result==0){
 if(isset($operateErrorMessages)){
   $_SESSION["errorMessages"]=$operateErrorMessages;
   header('Location: /operate_error.php');
+  exit;
 }
 
 function noticeRadio($sql,$method){

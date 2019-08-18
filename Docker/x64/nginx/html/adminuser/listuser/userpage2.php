@@ -2,6 +2,7 @@
 session_start();
 if (!isset($_SESSION["user"])){
 header('Location: /login.php');
+exit;
 }
 $_SESSION["errorMessages"]= array();
 include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
@@ -24,9 +25,11 @@ function conversion($permission){
 if($normalErrorMessages){
   $_SESSION["errorMessages"]=$normalErrorMessages;
   header('Location: /normal_error.php');
+  exit;
 }elseif($errorMessages){
   $_SESSION["errorMessages"]=$errorMessages;
   header('Location: /operate_error.php');
+  exit;
 }else{
   $permisson["addcard"]=conversion($_POST["addcard"]);
   $permisson["editcard"]=conversion($_POST["editcard"]);
@@ -50,5 +53,6 @@ if($normalErrorMessages){
     $errorMessages[]="データベース接続エラーです";
   }
   header('Location: ./userpage3.php?username='.$_POST["username"]);
+  exit;
 }
 ?>
