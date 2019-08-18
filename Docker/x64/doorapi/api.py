@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 mysql_password = os.environ.get('MYSQL_PASSWORD')
 
-@app.route('/')
+@app.route('/',methods=["POST"])
 def index():
     #データベース接続開始##################
     conn = mysql.connector.connect(
