@@ -3,7 +3,9 @@ session_start();
 if (!isset($_SESSION["user"])){
 header('Location: /login.php');
 }
-
+include($_SERVER['DOCUMENT_ROOT'] . '/permission.php');
+//権限確認
+permission_redirect("shutdown");
 if($_POST["check"]!=1){
   $errorMessages[] = "内容確認にチェックを入れてください";
 }
