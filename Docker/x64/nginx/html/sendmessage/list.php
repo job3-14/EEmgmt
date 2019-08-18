@@ -7,7 +7,6 @@ $_SESSION["errorMessages"]= array();
 include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
 include($_SERVER['DOCUMENT_ROOT'] . '/menu_load.php');
 include($_SERVER['DOCUMENT_ROOT'] . '/permission.php');
-include($_SERVER['DOCUMENT_ROOT'] . '/permission.php');
 //権限確認
 permission_redirect("sendnotice");
 //権限確認
