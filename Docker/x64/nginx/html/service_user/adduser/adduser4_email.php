@@ -2,6 +2,7 @@
 session_start();
 if (!isset($_SESSION["user"])){
 header('Location: /login.php');
+exit;
 }
 include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
 include($_SERVER['DOCUMENT_ROOT'] . '/permission.php');
@@ -40,6 +41,7 @@ if(!$_POST["email2"]){
 if(!is_null($errorMessages)){
   $_SESSION["errorMessages"]=$errorMessages;
   header('Location: /normal_error.php');
+  exit;
 }else{
   $mailList[] = $_SESSION["addcard"]["email"];
   if($_POST["email2"]){
@@ -57,5 +59,6 @@ if(!is_null($errorMessages)){
   $mailList = array_unique($mailList); //重複削除
   $_SESSION["addcard"]["emaiList"] = $mailList;
   header('Location: ./adduser5_email.php');
+  exit;
 }
 ?>

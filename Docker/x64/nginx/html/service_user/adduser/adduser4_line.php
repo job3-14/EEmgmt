@@ -2,6 +2,7 @@
 session_start();
 if (!isset($_SESSION["user"])){
 header('Location: /login.php');
+exit;
 }
 
 include($_SERVER['DOCUMENT_ROOT'] . '/permission.php');
@@ -23,6 +24,7 @@ if($result==1){
   $errorMessages[] = "操作エラーです";
   $_SESSION["errorMessages"]=$errorMessages;
   header('Location: /operate_error.php');
+  exit;
 }
 
 try {

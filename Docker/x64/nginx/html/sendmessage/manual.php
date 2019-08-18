@@ -2,6 +2,7 @@
 session_start();
 if (!isset($_SESSION["user"])){
 header('Location: /login.php');
+exit;
 }
 $_SESSION["errorMessages"]= array();
 include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
@@ -81,4 +82,5 @@ $result = curl_exec($ch);
 curl_close($ch);
 
 header('Location: ./done.php?idm='.$idm);
+exit;
 ?>

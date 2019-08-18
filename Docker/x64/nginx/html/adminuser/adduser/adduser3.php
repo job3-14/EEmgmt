@@ -2,9 +2,11 @@
 session_start();
 if (!isset($_SESSION["user"])){
 header('Location: /login.php');
+exit;
 }
 if ($_SESSION["adduser_status"] !== 1){
 header('Location: ./adduser.php');
+exit;
 }
 unset($_SESSION["adduser_status"]);
 
@@ -19,6 +21,7 @@ try {
   $errorMessages[] = "データベースエラーです";
   $_SESSION["errorMessages"]=$errorMessages;
   header('Location: /normal_error.php');
+  exit;
 }
 
 try {
@@ -38,6 +41,7 @@ if (isset($_SESSION["adduser"])){
     $errorMessages[] = "操作エラーです";
     $_SESSION["errorMessages"]=$errorMessages;
     header('Location: /operate_error.php');
+    exit;
   }else{
 
   $sql = $pdo->prepare("INSERT INTO login (username,pass,addcard,editcard,sendnotice,viewexit,shutdown,edituser) VALUES (?,?,?,?,?,?,?,?)");
@@ -55,6 +59,7 @@ if (isset($_SESSION["adduser"])){
   $errorMessages[] = "操作エラーです。";
   $_SESSION["errorMessages"]=$errorMessages;
   header('Location: /operate_error.php');
+  exit;
 }
 
 
