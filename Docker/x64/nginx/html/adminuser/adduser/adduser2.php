@@ -6,7 +6,9 @@ header('Location: /login.php');
 
 
 include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
-$errorMessages = array();
+include($_SERVER['DOCUMENT_ROOT'] . '/permission.php');
+//権限確認
+permission_redirect("edituser");
 $permission = array();
 $permission2 = array();
 
