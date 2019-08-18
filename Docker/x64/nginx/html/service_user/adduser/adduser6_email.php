@@ -5,6 +5,9 @@ header('Location: /login.php');
 }
 
 include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/permission.php');
+//権限確認
+permission_redirect("addcard");
 $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
 try {
   if(!$_POST["user"]==""){

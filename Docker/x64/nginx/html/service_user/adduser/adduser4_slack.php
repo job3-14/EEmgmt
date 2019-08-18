@@ -4,6 +4,10 @@ if (!isset($_SESSION["user"])){
 header('Location: /login.php');
 }
 
+include($_SERVER['DOCUMENT_ROOT'] . '/permission.php');
+//権限確認
+permission_redirect("addcard");
+
 if($_POST["slack1"] && !filter_var($_POST["slack1"], FILTER_VALIDATE_URL)){
   $errorMessages[] = "URLを入力してください";
 }elseif($_POST["slack2"] && !filter_var($_POST["slack2"], FILTER_VALIDATE_URL)){
