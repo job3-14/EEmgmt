@@ -3,17 +3,24 @@ session_start();
 if (!isset($_SESSION["user"])){
 header('Location: /login.php');
 }
-include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
-function permission($menuName){
+
+function permission($type){
+  include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
   try {
       $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
-      $sql  = $pdo->prepare("SELECT ? FROM login WHERE username = ?");
-      $sql->bindValue(1,$type);
-      $sql->bindValue(2,$username);
+      $sql  = $pdo->prepare("SELECT ".$type." FROM login WHERE username = ?");
+      #$sql->bindValue(1,$type);
+      $sql->bindValue(1,$_SESSION["user"]);
       $sql->execute();
-      $result=  $sql->fetchColumn();
+      $result = $sql->fetchAll();
   }catch (Exception $e){
     $operateErrorMessages[] = "データベース接続エラーです";
   }
+  if ($result[0][$type] != 1){
+    $operateErrorMessages[] = "権限がありません。詳細は管理者に問い合わせください。";
+    $_SESSION["errorMessages"]=$operateErrorMessages;
+    header('Location: /operate_error.php');
 }
+}
+
 ?>
