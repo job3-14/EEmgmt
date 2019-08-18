@@ -11,6 +11,12 @@ include($_SERVER['DOCUMENT_ROOT'] . '/permission.php');
 permission_redirect("edituser");
 $username = $_GET["username"];
 
+if($username==$_SESSION["user"]){
+  $errorMessages[] = "自身のアカウントを削除することはできません。";
+  $_SESSION["errorMessages"]=$errorMessages;
+  header('Location: /normal_error.php');
+}
+
 try {
     $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
     $sql  = $pdo->prepare("SELECT EXISTS(SELECT username FROM login WHERE username=?)");
