@@ -7,6 +7,8 @@ mysql_password = os.environ.get('MYSQL_PASSWORD')
 
 @app.route('/',methods=["POST"])
 def index():
+    postData=request.get_data()
+    postData=json.loads(postData)
     #データベース接続開始##################
     conn = mysql.connector.connect(
     	host='db',
