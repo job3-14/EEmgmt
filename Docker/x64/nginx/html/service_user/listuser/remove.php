@@ -2,6 +2,7 @@
 session_start();
 if (!isset($_SESSION["user"])){
 header('Location: /login.php');
+exit;
 }
 include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
 include($_SERVER['DOCUMENT_ROOT'] . '/menu_load.php');
@@ -36,6 +37,7 @@ if($result==0){
 if(isset($operateErrorMessages)){
   $_SESSION["errorMessages"]=$operateErrorMessages;
   header('Location: /operate_error.php');
+  exit;
 }
 
 function noticeRadio($sql,$method){

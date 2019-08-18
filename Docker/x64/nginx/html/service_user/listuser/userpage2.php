@@ -2,6 +2,7 @@
 session_start();
 if (!isset($_SESSION["user"])){
 header('Location: /login.php');
+exit;
 }
 include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
 include($_SERVER['DOCUMENT_ROOT'] . '/menu_load.php');
@@ -100,9 +101,11 @@ if($method=="slack"){
 if(isset($operateErrorMessages)){
   $_SESSION["errorMessages"]=$operateErrorMessages;
   header('Location: /operate_error.php');
+  exit;
 }elseif(isset($errorMessages)){
   $_SESSION["errorMessages"]=$errorMessages;
   header('Location: /normal_error.php');
+  exit;
 }else{
   if($method=="email"){
     $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
@@ -160,5 +163,6 @@ if(isset($operateErrorMessages)){
   }
 
   header('Location: ./userpage3.php?idm='.$_POST["cardidm"]);
+  exit;
 }
 ?>
