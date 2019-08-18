@@ -2,6 +2,7 @@
 session_start();
 if (!isset($_SESSION["user"])){
 header('Location: /login.php');
+exit;
 }
 include($_SERVER['DOCUMENT_ROOT'] . '/menu_load.php');
 ?>
