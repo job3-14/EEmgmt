@@ -2,7 +2,7 @@
 Description=ipaddress Daemon
 
 [Service]
-ExecStart =/usr/bin/python3 /opt/ipaddress.py
+ExecStart =/usr/bin/python3 /opt/service_program/ipaddress.py
 Type=oneshot
 User=root
 
