@@ -3,7 +3,8 @@ Description=ACT Led Deamon
 
 [Service]
 ExecStart =/usr/bin/python3 /opt/service_program/led.py
-Type=oneshot
+Type=simple
+Restart=always
 User=root
 
 [Install]
