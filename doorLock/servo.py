@@ -1,8 +1,9 @@
 import wiringpi as pi
-import time, nfc,requests, json
+import time, nfc,requests, json, os
 class Door:
     def __init__(self):
         self.servo_pin = 18
+        self.url = "http://%s:9000" % os.environ.get('SERVER_IP')
         CYCLE = 20
         RANGE = 2000
         clock = int( 19.2 / float(RANGE) * CYCLE * 1000 )
@@ -29,7 +30,10 @@ class Door:
             idm = tag.find('ID=')  + 3             #idのインデックスを検索
             idm_end = idm + 16         #idの終了インデックスを指定
             result_idm = tag[idm:idm_end]           #idを出力
-            print(result_idm)
+            headers = {"Content-Type":"application/json"}
+            payload = {"idm": result_idm}
+            authentication = requests.post(self.url, headers=headers,data=json.dumps(payload))
+
 
 
 
