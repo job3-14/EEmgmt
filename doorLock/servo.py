@@ -34,3 +34,4 @@ class Door:
 
 
 main = Door()
+main.readidm()
