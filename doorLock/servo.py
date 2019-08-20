@@ -1,5 +1,5 @@
 import wiringpi as pi
-import time
+import time, nfc
 class Door:
     def __init__(self):
         self.servo_pin = 18
