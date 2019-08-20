@@ -22,7 +22,7 @@ class Door:
         tag = clf.connect(rdwr={'on-connect': self.outputIdm })
         clf.close()
 
-    def outputIdm(self):
+    def outputIdm(self,tag):
         tag = str(tag)                        #変数tsgを文字列型に変換
         id_check = ('ID=' in tag)             #対応カードかどうか確認
         if id_check == True:                  #対応カードなら実行
