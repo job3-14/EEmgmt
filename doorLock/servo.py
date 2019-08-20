@@ -33,7 +33,7 @@ class Door:
             headers = {"Content-Type":"application/json"}
             payload = {"idm": result_idm}
             authentication = requests.post(self.url, headers=headers,data=json.dumps(payload))
-
+            print(authentication.text)
 
 
 
