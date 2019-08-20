@@ -33,8 +33,12 @@ class Door:
             headers = {"Content-Type":"application/json"}
             payload = {"idm": result_idm}
             authentication = requests.post(self.url, headers=headers,data=json.dumps(payload))
-            print(authentication.text)
-
+            if authentication.text == "OK":
+                pi.pwmWrite( self.servo_pin, 150 )   #ドアオープン処理
+                time.sleep(10)
+                pi.pwmWrite( self.servo_pin, 150 )   #ドアクローズ
+                time.sleep(1.5)
+                pi.pwmWrite( self.servo_pin, 0 )    #開放
 
 
 main = Door()
