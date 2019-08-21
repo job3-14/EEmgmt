@@ -26,13 +26,18 @@ class Door:
         thread1.start()
 
     def status(self):
+        button_st = GPIO.input(self.door_pin)
+        if button_st == 1:
+            self.status = "open"
+        else:
+            self.status = "close"
         while True:
             GPIO.wait_for_edge(self.door_pin, GPIO.BOTH) #変化があるまで待機
             button_st = GPIO.input(self.door_pin)
             if button_st == 1:
-                print("OPEN!!")
+                self.status = "open"
             else:
-                print("CLOSE!!")
+                self.status = "close"
 
 
 
