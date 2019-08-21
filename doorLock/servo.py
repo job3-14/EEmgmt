@@ -23,7 +23,10 @@ class Door:
         move_deg = int(0)
         pi.pwmWrite( self.servo_pin, move_deg )
         thread1 = threading.Thread(target=self.status)
+        thread2 = threading.Thread(target=self.readidm)
         thread1.start()
+        thread2.start()
+
 
     def status(self):
         button_st = GPIO.input(self.door_pin)
