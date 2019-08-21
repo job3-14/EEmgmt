@@ -39,6 +39,7 @@ class Gui():
         lbl2.place(x=2, y=self.text_lo)
         checkin = tk.Button(self.root,text="入室\nにゅうしつ",command=self.checkin,height=4,width=9,bg="#7fbfff",activebackground="#7fbfff",font=("",self.buttron_size))
         checkout  = tk.Button(self.root,text="退室\nたいしつ",command=self.checkout ,height=4,width=9,bg="#ffff7f",activebackground="#ffff7f",font=("",self.buttron_size))
+        reservation = tk.Button(self.root,text="カード登録",command=self.reservation)
         checkin.pack(padx=50, side = 'left')
         checkout.pack(padx=50, side = 'right')
         self.root.mainloop()
