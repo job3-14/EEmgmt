@@ -64,10 +64,15 @@ class Door:
 
     def openDoor(self):
         pi.pwmWrite(self.servo_pin, 150)   #ドアオープン処理
-        time.sleep(10)
-        pi.pwmWrite(self.servo_pin, 250)   #ドアクローズ
+        time.sleep(7)
+        while True:
+            if self.status=="open":
+                time.sleep(0.5)
+            else:
+                time.sleep(3)
+                pi.pwmWrite(self.servo_pin, 250)   #ドアクローズ
+                break
         time.sleep(1.5)
         pi.pwmWrite(self.servo_pin, 0)     #開放
-        print("OPENDOOR")
 
 main = Door()
