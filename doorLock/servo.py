@@ -5,10 +5,12 @@ class Door:
     def __init__(self):
         self.servo_pin = 18
         self.door_pin = 21
+        self.button_pin = 20
         self.url = "http://%s:9000" % "192.168.1.98"
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(self.servo_pin,GPIO.IN,pull_up_down=GPIO.PUD_UP)
         GPIO.setup(self.door_pin,GPIO.IN,pull_up_down=GPIO.PUD_UP)
+        GPIO.setup(self.button_pin,GPIO.IN,pull_up_down=GPIO.PUD_UP)
         CYCLE = 20
         RANGE = 2000
         clock = int( 19.2 / float(RANGE) * CYCLE * 1000 )
@@ -27,8 +29,10 @@ class Door:
         pi.pwmWrite( self.servo_pin, move_deg )
         thread1 = threading.Thread(target=self.status)
         thread2 = threading.Thread(target=self.readidm)
+        thread3 = threading.Thread(target=self.button)
         thread1.start()
         thread2.start()
+        thread3.start()
 
 
     def status(self):
@@ -44,8 +48,6 @@ class Door:
                 self.status = "open"
             else:
                 self.status = "close"
-
-
 
     def readidm(self):
         clf = nfc.ContactlessFrontend('usb')
@@ -63,6 +65,13 @@ class Door:
             payload = {"idm": result_idm}
             authentication = requests.post(self.url, headers=headers,data=json.dumps(payload))
             if authentication.text == "OK":
+                self.openDoor()
+
+    def button(self):
+        while True:
+            GPIO.wait_for_edge(self.button_pin, GPIO.BOTH) #変化があるまで待機
+            button_st = GPIO.input(self.button_pin)
+            if button_st == 0:
                 self.openDoor()
 
     def openDoor(self):
