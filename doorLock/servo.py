@@ -27,22 +27,20 @@ class Door:
         time.sleep(1)
         move_deg = int(0)
         pi.pwmWrite( self.servo_pin, move_deg )
+        self.openDoorFrag = 0
         thread1 = threading.Thread(target=self.status)
         thread2 = threading.Thread(target=self.readidm)
         thread3 = threading.Thread(target=self.button)
+        thread4 = threading.Thread(target=self.openDoor)
         thread1.start()
         thread2.start()
         thread3.start()
+        thread4.start()
 
 
     def status(self):
-        button_st = GPIO.input(self.door_pin)
-        if button_st == 1:
-            self.status = "open"
-        else:
-            self.status = "close"
         while True:
-            GPIO.wait_for_edge(self.door_pin, GPIO.BOTH) #変化があるまで待機
+            time.sleep(0.5)
             button_st = GPIO.input(self.door_pin)
             if button_st == 1:
                 self.status = "open"
@@ -65,19 +63,28 @@ class Door:
             payload = {"idm": result_idm}
             authentication = requests.post(self.url, headers=headers,data=json.dumps(payload))
             if authentication.text == "OK":
-                self.openDoor()
+                self.openDoorFrag = 1
 
     def button(self):
         while True:
             GPIO.wait_for_edge(self.button_pin, GPIO.BOTH) #変化があるまで待機
             button_st = GPIO.input(self.button_pin)
+            print(button_st)
             if button_st == 0:
-                self.openDoor()
+                print(button_st)
+                self.openDoorFrag = 1
 
     def openDoor(self):
+        while True:
+            if self.openDoorFrag == 1:
+                self.openDoorFrag = 0
+                break
+            else:
+                time.sleep(0.3)
         pi.pwmWrite(self.servo_pin, 150)   #ドアオープン処理
         time.sleep(7)
         while True:
+            print(self.status)
             if self.status=="open":
                 time.sleep(0.5)
             else:
