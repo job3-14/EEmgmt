@@ -42,6 +42,7 @@ class Gui():
         reservation = tk.Button(self.root,text="カード登録",command=self.reservation)
         checkin.pack(padx=50, side = 'left')
         checkout.pack(padx=50, side = 'right')
+        reservation.place(x=self.screen_width-2,y=2)
         self.root.mainloop()
 
     def checkin(self):
