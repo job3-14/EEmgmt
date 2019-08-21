@@ -6,6 +6,7 @@ class Door:
         self.servo_pin = 18
         self.door_pin = 21
         GPIO.setmode(GPIO.BCM)
+        GPIO.setup(self.servo_pin,GPIO.IN,pull_up_down=GPIO.PUD_UP)
         GPIO.setup(self.door_pin,GPIO.IN,pull_up_down=GPIO.PUD_UP)
         self.url = "http://%s:9000" % os.environ.get('SERVER_IP')
         CYCLE = 20
@@ -24,15 +25,12 @@ class Door:
 
     def status(self):
         while True:
-            GPIO.wait_for_edge(gpio_pin, GPIO.FALLING)
-            i = 0
-
-            for i in range(500):
-                button_st = GPIO.input(gpio_pin)
-                if button_st == 0:
-                    if i >= 499:
-                        print(i)
-                time.sleep(0.01)
+            GPIO.wait_for_edge(self.door_pin, GPIO.BOTH) #変化があるまで待機
+            button_st = GPIO.input(self.door_pin)
+            if button_st == 1:
+                print("OPEN!!")
+            else:
+                print("CLOSE!!")
 
 
 
