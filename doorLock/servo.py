@@ -5,6 +5,7 @@ class Door:
     def __init__(self):
         self.servo_pin = 18
         self.door_pin = 21
+        self.ip = "192.168.1.98"
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(self.servo_pin,GPIO.IN,pull_up_down=GPIO.PUD_UP)
         GPIO.setup(self.door_pin,GPIO.IN,pull_up_down=GPIO.PUD_UP)
