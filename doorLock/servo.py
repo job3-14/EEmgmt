@@ -59,17 +59,16 @@ class Door:
             result_idm = tag[idm:idm_end]           #idを出力
             headers = {"Content-Type":"application/json"}
             payload = {"idm": result_idm}
-            authentication = requests.post(self.url, headers=headers,data=json.dumps(payload))
+            authentication = requests.post(self.ip, headers=headers,data=json.dumps(payload))
             if authentication.text == "OK":
                 self.openDoor()
 
     def openDoor(self):
         pi.pwmWrite(self.servo_pin, 150)   #ドアオープン処理
         time.sleep(10)
-        pi.pwmWrite(self.servo_pin, 150)   #ドアクローズ
+        pi.pwmWrite(self.servo_pin, 250)   #ドアクローズ
         time.sleep(1.5)
         pi.pwmWrite(self.servo_pin, 0)     #開放
         print("OPENDOOR")
 
 main = Door()
-main.readidm()
