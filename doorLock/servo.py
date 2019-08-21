@@ -5,11 +5,10 @@ class Door:
     def __init__(self):
         self.servo_pin = 18
         self.door_pin = 21
-        self.ip = "192.168.1.98"
+        self.url = "http://%s:9000" % "192.168.1.98"
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(self.servo_pin,GPIO.IN,pull_up_down=GPIO.PUD_UP)
         GPIO.setup(self.door_pin,GPIO.IN,pull_up_down=GPIO.PUD_UP)
-        self.url = "http://%s:9000" % os.environ.get('SERVER_IP')
         CYCLE = 20
         RANGE = 2000
         clock = int( 19.2 / float(RANGE) * CYCLE * 1000 )
@@ -59,7 +58,7 @@ class Door:
             result_idm = tag[idm:idm_end]           #idを出力
             headers = {"Content-Type":"application/json"}
             payload = {"idm": result_idm}
-            authentication = requests.post(self.ip, headers=headers,data=json.dumps(payload))
+            authentication = requests.post(self.url, headers=headers,data=json.dumps(payload))
             if authentication.text == "OK":
                 self.openDoor()
 
