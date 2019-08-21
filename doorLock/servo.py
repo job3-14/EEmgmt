@@ -22,6 +22,8 @@ class Door:
         time.sleep(1)
         move_deg = int(0)
         pi.pwmWrite( self.servo_pin, move_deg )
+        thread1 = threading.Thread(target=self.status)
+        thread1.start()
 
     def status(self):
         while True:
