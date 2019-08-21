@@ -34,3 +34,8 @@ CREATE TABLE line(
 email VARCHAR(300) NOT NULL,
 userid VARCHAR(100) NOT NULL,
 PRIMARY KEY (email));
+
+CREATE TABLE reservation(
+number INTEGER NOT NULL,
+idm VARCHAR(30) NOT NULL,
+PRIMARY KEY (number));
