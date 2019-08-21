@@ -156,7 +156,7 @@ class Gui():
         lbl2 = tk.Label(self.sub,text='カードを読み取り部にタッチしてください。',font=("",self.text_size2))
         lbl.place(x=2, y=2)
         lbl2.place(x=2, y=self.text_lo)
-        thread1 = threading.Thread(target=self.checkinReadIdm)
+        thread1 = threading.Thread(target=self.reservationReadIdm)
         thread2 = threading.Thread(target=self.timeOut)
         thread3 = threading.Thread(target=self.fragTimer)
         thread1.setDaemon(True)
