@@ -1,6 +1,6 @@
 import wiringpi as pi
 import RPi.GPIO as GPIO
-import time, nfc,requests, json, os
+import time, nfc,requests, json, os, threading
 class Door:
     def __init__(self):
         self.servo_pin = 18
