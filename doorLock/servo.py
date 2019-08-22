@@ -73,6 +73,20 @@ class Door:
             authentication = requests.post(self.url, headers=headers,data=json.dumps(payload))
             if authentication.text == "OK":
                 self.openDoorFrag = 1
+            else:
+                for i in range(6):
+                    GPIO.output(self.ledRed,True)
+                    time.sleep(0.08)
+                    GPIO.output(self.ledRed,False)
+                    time.sleep(0.08)
+                GPIO.output(self.ledRed,True)
+        else:
+            for i in range(6):
+                GPIO.output(self.ledRed,True)
+                time.sleep(0.08)
+                GPIO.output(self.ledRed,False)
+                time.sleep(0.08)
+            GPIO.output(self.ledRed,True)
 
     def button(self):
         while True:
