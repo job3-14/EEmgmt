@@ -76,22 +76,23 @@ class Door:
 
     def openDoor(self):
         while True:
-            if self.openDoorFrag == 1:
-                self.openDoorFrag = 0
-                break
-            else:
-                time.sleep(0.3)
-        pi.pwmWrite(self.servo_pin, 150)   #ドアオープン処理
-        time.sleep(7)
-        while True:
-            print(self.status)
-            if self.status=="open":
-                time.sleep(0.5)
-            else:
-                time.sleep(3)
-                pi.pwmWrite(self.servo_pin, 250)   #ドアクローズ
-                break
-        time.sleep(1.5)
-        pi.pwmWrite(self.servo_pin, 0)     #開放
+            while True:
+                if self.openDoorFrag == 1:
+                    break
+                else:
+                    time.sleep(0.3)
+            pi.pwmWrite(self.servo_pin,150)   #ドアオープン処理
+            time.sleep(7)
+            while True:
+                print(self.status)
+                if self.status=="open":
+                    time.sleep(0.5)
+                else:
+                    time.sleep(3)
+                    pi.pwmWrite(self.servo_pin, 250)   #ドアクローズ
+                    break
+            time.sleep(1.5)
+            pi.pwmWrite(self.servo_pin, 0)     #開放
+            self.openDoorFrag = 0
 
 main = Door()
