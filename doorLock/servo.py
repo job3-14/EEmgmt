@@ -10,8 +10,10 @@ class Door:
         self.ledRed = 12
         self.url = "http://%s:9000" % "192.168.1.98"
         GPIO.setmode(GPIO.BCM)
-        GPIO.setup(16,GPIO.OUT)
-        GPIO.setup(12,GPIO.OUT)
+        GPIO.setup(self.ledGreen,GPIO.OUT)
+        GPIO.setup(self.ledRed,GPIO.OUT)
+        GPIO.output(self.ledGreen,True)
+        GPIO.output(self.ledRed,True)
         GPIO.setup(self.servo_pin,GPIO.IN,pull_up_down=GPIO.PUD_UP)
         GPIO.setup(self.door_pin,GPIO.IN,pull_up_down=GPIO.PUD_UP)
         GPIO.setup(self.button_pin,GPIO.IN,pull_up_down=GPIO.PUD_UP)
@@ -40,6 +42,7 @@ class Door:
         thread2.start()
         thread3.start()
         thread4.start()
+        GPIO.output(self.ledGreen,False)
 
 
     def status(self):
