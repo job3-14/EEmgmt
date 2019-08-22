@@ -6,14 +6,14 @@ class Door:
         self.servo_pin = 18
         self.door_pin = 21
         self.button_pin = 20
-        self.ledGreen = 16
-        self.ledRed = 12
+        self.ledGreen_pin = 16
+        self.ledRed_pin = 12
         self.url = "http://%s:9000" % "192.168.1.98"
         GPIO.setmode(GPIO.BCM)
-        GPIO.setup(self.ledGreen,GPIO.OUT)
-        GPIO.setup(self.ledRed,GPIO.OUT)
-        GPIO.output(self.ledGreen,True)
-        GPIO.output(self.ledRed,True)
+        GPIO.setup(self.ledGreen_pin,GPIO.OUT)
+        GPIO.setup(self.ledRed_pin,GPIO.OUT)
+        GPIO.output(self.ledGreen_pin,True)
+        GPIO.output(self.ledRed_pin,True)
         GPIO.setup(self.servo_pin,GPIO.IN,pull_up_down=GPIO.PUD_UP)
         GPIO.setup(self.door_pin,GPIO.IN,pull_up_down=GPIO.PUD_UP)
         GPIO.setup(self.button_pin,GPIO.IN,pull_up_down=GPIO.PUD_UP)
@@ -42,7 +42,7 @@ class Door:
         thread2.start()
         thread3.start()
         thread4.start()
-        GPIO.output(self.ledGreen,False)
+        GPIO.output(self.ledGreen_pin,False)
 
 
     def status(self):
@@ -75,18 +75,18 @@ class Door:
                 self.openDoorFrag = 1
             else:
                 for i in range(6):
-                    GPIO.output(self.ledRed,True)
+                    GPIO.output(self.ledRed_pin,True)
                     time.sleep(0.08)
-                    GPIO.output(self.ledRed,False)
+                    GPIO.output(self.ledRed_pin,False)
                     time.sleep(0.08)
-                GPIO.output(self.ledRed,True)
+                GPIO.output(self.ledRed_pin,True)
         else:
             for i in range(6):
-                GPIO.output(self.ledRed,True)
+                GPIO.output(self.ledRed_pin,True)
                 time.sleep(0.08)
-                GPIO.output(self.ledRed,False)
+                GPIO.output(self.ledRed_pin,False)
                 time.sleep(0.08)
-            GPIO.output(self.ledRed,True)
+            GPIO.output(self.ledRed_pin,True)
 
     def button(self):
         while True:
@@ -103,9 +103,9 @@ class Door:
                     break
                 else:
                     time.sleep(0.3)
-            GPIO.output(self.ledGreen,False)
-            GPIO.output(self.ledRed,False)
-            GPIO.output(self.ledGreen,True)
+            GPIO.output(self.ledGreen_pin,False)
+            GPIO.output(self.ledRed_pin,False)
+            GPIO.output(self.ledGreen_pin,True)
             pi.pwmWrite(self.servo_pin,150)   #ドアオープン処理
             time.sleep(7)
             while True:
@@ -116,9 +116,9 @@ class Door:
                     time.sleep(3)
                     pi.pwmWrite(self.servo_pin, 250)   #ドアクローズ
                     break
-            GPIO.output(self.ledGreen,False)
-            GPIO.output(self.ledRed,False)
-            GPIO.output(self.ledRed,True)
+            GPIO.output(self.ledGreen_pin,False)
+            GPIO.output(self.ledRed_pin,False)
+            GPIO.output(self.ledRed_pin,True)
             time.sleep(1.5)
             pi.pwmWrite(self.servo_pin, 0)     #開放
             self.openDoorFrag = 0
