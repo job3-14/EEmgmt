@@ -8,6 +8,8 @@ class Door:
         self.button_pin = 20
         self.ledGreen_pin = 16
         self.ledRed_pin = 12
+        self.openPwm = 150
+        self.closePwm = 250
         self.url = "http://%s:9000" % "192.168.1.98"
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(self.ledGreen_pin,GPIO.OUT)
@@ -25,14 +27,11 @@ class Door:
         pi.pwmSetMode( pi.GPIO.PWM_MODE_MS )
         pi.pwmSetRange( RANGE )
         pi.pwmSetClock( clock )
-        move_deg = int(150)
-        pi.pwmWrite( self.servo_pin, move_deg )
+        pi.pwmWrite( self.servo_pin, self.openPwm )
         time.sleep(1)
-        move_deg = int(250)
-        pi.pwmWrite( self.servo_pin, move_deg )
+        pi.pwmWrite( self.servo_pin, self.closePwm )
         time.sleep(1)
-        move_deg = int(0)
-        pi.pwmWrite( self.servo_pin, move_deg )
+        pi.pwmWrite( self.servo_pin, 0 )
         self.openDoorFrag = 0
         thread1 = threading.Thread(target=self.status)
         thread2 = threading.Thread(target=self.readidm)
@@ -106,7 +105,7 @@ class Door:
             GPIO.output(self.ledGreen_pin,False)
             GPIO.output(self.ledRed_pin,False)
             GPIO.output(self.ledGreen_pin,True)
-            pi.pwmWrite(self.servo_pin,150)   #ドアオープン処理
+            pi.pwmWrite(self.servo_pin,self.openPwm)   #ドアオープン処理
             time.sleep(7)
             while True:
                 print(self.status)
@@ -114,7 +113,7 @@ class Door:
                     time.sleep(0.5)
                 else:
                     time.sleep(3)
-                    pi.pwmWrite(self.servo_pin, 250)   #ドアクローズ
+                    pi.pwmWrite(self.servo_pin, self.closePwm)   #ドアクローズ
                     break
             GPIO.output(self.ledGreen_pin,False)
             GPIO.output(self.ledRed_pin,False)
