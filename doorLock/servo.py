@@ -89,6 +89,9 @@ class Door:
                     break
                 else:
                     time.sleep(0.3)
+            GPIO.output(self.ledGreen,False)
+            GPIO.output(self.ledRed,False)
+            GPIO.output(self.ledGreen,True)
             pi.pwmWrite(self.servo_pin,150)   #ドアオープン処理
             time.sleep(7)
             while True:
@@ -99,6 +102,9 @@ class Door:
                     time.sleep(3)
                     pi.pwmWrite(self.servo_pin, 250)   #ドアクローズ
                     break
+            GPIO.output(self.ledGreen,False)
+            GPIO.output(self.ledRed,False)
+            GPIO.output(self.ledRed,True)
             time.sleep(1.5)
             pi.pwmWrite(self.servo_pin, 0)     #開放
             self.openDoorFrag = 0
