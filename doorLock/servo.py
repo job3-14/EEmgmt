@@ -6,8 +6,12 @@ class Door:
         self.servo_pin = 18
         self.door_pin = 21
         self.button_pin = 20
+        self.ledGreen = 16
+        self.ledRed = 12
         self.url = "http://%s:9000" % "192.168.1.98"
         GPIO.setmode(GPIO.BCM)
+        GPIO.setup(16,GPIO.OUT)
+        GPIO.setup(12,GPIO.OUT)
         GPIO.setup(self.servo_pin,GPIO.IN,pull_up_down=GPIO.PUD_UP)
         GPIO.setup(self.door_pin,GPIO.IN,pull_up_down=GPIO.PUD_UP)
         GPIO.setup(self.button_pin,GPIO.IN,pull_up_down=GPIO.PUD_UP)
@@ -52,6 +56,7 @@ class Door:
             clf = nfc.ContactlessFrontend('usb')
             tag = clf.connect(rdwr={'on-connect': self.outputIdm })
             clf.close()
+            time.sleep(1)
 
     def outputIdm(self,tag):
         tag = str(tag)                        #変数tsgを文字列型に変換
