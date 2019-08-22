@@ -48,9 +48,10 @@ class Door:
                 self.status = "close"
 
     def readidm(self):
-        clf = nfc.ContactlessFrontend('usb')
-        tag = clf.connect(rdwr={'on-connect': self.outputIdm })
-        clf.close()
+        while True:
+            clf = nfc.ContactlessFrontend('usb')
+            tag = clf.connect(rdwr={'on-connect': self.outputIdm })
+            clf.close()
 
     def outputIdm(self,tag):
         tag = str(tag)                        #変数tsgを文字列型に変換
@@ -71,7 +72,6 @@ class Door:
             button_st = GPIO.input(self.button_pin)
             print(button_st)
             if button_st == 0:
-                print(button_st)
                 self.openDoorFrag = 1
 
     def openDoor(self):
