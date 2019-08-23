@@ -183,17 +183,10 @@ class Gui():
             cur.execute("SELECT name FROM service_user WHERE idm = '%s';" % result_idm)
             sqlresult = cur.fetchall()
             if sqlresult:
-                self.result = sqlresult[0]["name"] + "さん お疲れ様でした"
+                self.result = "[エラー]このカードは登録されています"
                 self.frag = "True"
-                cur = self.conn.cursor()  #カーソル作成
-                date = datetime.now(self.jst).strftime('%Y-%m-%d %H:%M')
-                cur.execute("INSERT INTO history (idm,type,date) VALUES ('%s','退室','%s');" % (result_idm, date))
-                cur.execute("DELETE FROM history WHERE date NOT IN (SELECT * FROM (SELECT date FROM history ORDER BY date DESC LIMIT 3000) AS v)")
-                self.conn.commit()
-                cur.close()
-                self.sendmessage(result_idm,"退室")
             else:
-                self.result = "[エラー]このカードは登録されていません"
+                self.result = "未登録カードです"
                 self.frag = "True"
         else:                                 #非対応カードの場合実行
             self.result = "[エラー]未対応カードです"       #エラーメッセージを出力
