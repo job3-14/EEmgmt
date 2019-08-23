@@ -5,6 +5,20 @@ header('Location: /login.php');
 exit;
 }
 include($_SERVER['DOCUMENT_ROOT'] . '/menu_load.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
+
+try {
+    $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
+    $sql = $pdo->prepare("SELECT * FROM login WHERE username=?");
+    $sql->bindValue(1,$_SESSION["user"]);
+    $sql->execute();
+    $user = $sql->fetchAll();
+}catch (Exception $e){
+  $errorMessages[] = "データベースエラーです";
+  $_SESSION["errorMessages"]=$errorMessages;
+  header('Location: /operate_error.php');
+  exit;
+}
 ?>
 
 
