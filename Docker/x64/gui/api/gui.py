@@ -72,13 +72,13 @@ class Gui():
             idm = tag.find('ID=')  + 3             #idのインデックスを検索
             idm_end = idm + 16         #idの終了インデックスを指定
             result_idm = tag[idm:idm_end]           #idを出力
+            self.conn.ping(reconnect=True)
             cur = self.conn.cursor(dictionary=True)  #カーソル作成
             cur.execute("SELECT name FROM service_user WHERE idm = '%s';" % result_idm)
             sqlresult = cur.fetchall()
             if sqlresult:
                 self.result = sqlresult[0]["name"] + "さん こんにちは"
                 self.frag = "True"
-                cur = self.conn.cursor()  #カーソル作成
                 date = datetime.now(self.jst).strftime('%Y-%m-%d %H:%M')
                 cur.execute("INSERT INTO history (idm,type,date) VALUES ('%s','入室','%s');" % (result_idm, date))
                 cur.execute("DELETE FROM history WHERE date NOT IN (SELECT * FROM (SELECT date FROM history ORDER BY date DESC LIMIT 3000) AS v)")
@@ -123,13 +123,13 @@ class Gui():
             idm = tag.find('ID=')  + 3             #idのインデックスを検索
             idm_end = idm + 16         #idの終了インデックスを指定
             result_idm = tag[idm:idm_end]           #idを出力
+            self.conn.ping(reconnect=True)
             cur = self.conn.cursor(dictionary=True)  #カーソル作成
             cur.execute("SELECT name FROM service_user WHERE idm = '%s';" % result_idm)
             sqlresult = cur.fetchall()
             if sqlresult:
                 self.result = sqlresult[0]["name"] + "さん お疲れ様でした"
                 self.frag = "True"
-                cur = self.conn.cursor()  #カーソル作成
                 date = datetime.now(self.jst).strftime('%Y-%m-%d %H:%M')
                 cur.execute("INSERT INTO history (idm,type,date) VALUES ('%s','退室','%s');" % (result_idm, date))
                 cur.execute("DELETE FROM history WHERE date NOT IN (SELECT * FROM (SELECT date FROM history ORDER BY date DESC LIMIT 3000) AS v)")
@@ -179,6 +179,7 @@ class Gui():
             idm = tag.find('ID=')  + 3             #idのインデックスを検索
             idm_end = idm + 16         #idの終了インデックスを指定
             result_idm = tag[idm:idm_end]           #idを出力
+            self.conn.ping(reconnect=True)
             cur = self.conn.cursor(dictionary=True)  #カーソル作成
             cur.execute("SELECT name FROM service_user WHERE idm = '%s';" % result_idm)
             sqlresult = cur.fetchall()
@@ -213,6 +214,7 @@ class Gui():
             self.sub.destroy()
 
     def sendmessage(self,idm,message):
+        self.conn.ping(reconnect=True)
         cur = self.conn.cursor(dictionary=True)  #カーソル作成
         cur.execute("SELECT * FROM service_user WHERE idm = '%s';" % idm)
         sqlresult = cur.fetchall()
@@ -258,6 +260,7 @@ class Gui():
 
         if sqlresult[0]["notice"] == "line":
             jsonlist = {"method":"line"}
+            self.conn.ping(reconnect=True)
             cur = self.conn.cursor(dictionary=True)
             cur.execute("SELECT userid FROM line WHERE email = '%s';" % sqlresult[0]["mainEmail"])
             sqlresult2 = cur.fetchall()
