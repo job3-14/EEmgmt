@@ -186,7 +186,13 @@ class Gui():
                 self.result = "[エラー]このカードは登録されています"
                 self.frag = "True"
             else:
-                self.result = "未登録カードです"
+                cur.execute("SELECT COUNT(number) FROM reservation;")
+                sqlresult = cur.fetchall()
+                number = sqlresult[0]['COUNT(number)'] + 1
+                cur.execute("INSERT INTO reservation (number,idm) VALUES (%s,'%s');" % (number, result_idm))
+                self.conn.commit()
+                cur.close()
+                self.result = "予約登録が完了しました。予約番号は"+str(number)+"です。"
                 self.frag = "True"
         else:                                 #非対応カードの場合実行
             self.result = "[エラー]未対応カードです"       #エラーメッセージを出力
