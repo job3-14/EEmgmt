@@ -26,6 +26,17 @@ include($_SERVER['DOCUMENT_ROOT'] . '/menu_load.php');
       ?>
       <main class="mdl-layout__content">
         <div class="page-content"><!-- Your content goes here --></div>
+        <div class="c-card-padding">
+          <div class="c-large-card mdl-card mdl-shadow--4dp">
+            <div class="mdl-card__supporting-text">
+            許可された権限
+          </div>
+          <div class="mdl-card__supporting-text">
+            <p>helloworld</p>
+        </div>
+        </div>
+
+</div>
       </main>
     </div>
 
