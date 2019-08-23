@@ -34,3 +34,10 @@ CREATE TABLE line(
 email VARCHAR(300) NOT NULL,
 userid VARCHAR(100) NOT NULL,
 PRIMARY KEY (email));
+
+CREATE TABLE reservation(
+number INTEGER NOT NULL,
+idm VARCHAR(30) NOT NULL,
+PRIMARY KEY (number));
+
+INSERT INTO login (username,pass,addcard,editcard,sendnotice,viewexit,shutdown,edituser) VALUES ('admin','$2y$10$108SEqGGklDdtM9ZUmX7pOc..SPruetjTaFj9t3QRvJfL//BvmKYa',1,1,1,1,1,1);
