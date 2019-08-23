@@ -19,6 +19,42 @@ try {
   header('Location: /operate_error.php');
   exit;
 }
+
+function permission($username) {
+  $permissionlist = "許可された権限:";
+  if ($username[0]['addcard']==1){
+    $permissionlist .= " カード登録 /";
+    $count = 1;
+  }
+  if ($username[0]['editcard']==1){
+    $permissionlist .= " カード編集・削除 /";
+    $count = 1;
+  }
+  if ($username[0]['sendnotice']==1){
+    $permissionlist .= " 入退室通知手動送信 /";
+    $count = 1;
+  }
+  if ($username[0]['viewexit']==1){
+    $permissionlist .= " 入退室履歴の閲覧 /";
+    $count = 1;
+  }
+  if ($username[0]['shutdown']==1){
+    $permissionlist .= " システム操作 /";
+    $count = 1;
+  }
+  if ($username[0]['edituser']==1){
+    $permissionlist .= " 管理ユーザーの追加・編集・削除 /";
+    $count = 1;
+  }
+  if ($count==1){
+    $permissionlist = substr($permissionlist, 0 ,-1);
+    //0から-1を切り出し
+  }else{
+    $permissionlist = "許可された権限: なし";
+  }
+
+  return $permissionlist;
+}
 ?>
 
 
@@ -43,10 +79,10 @@ try {
         <div class="c-card-padding">
           <div class="c-large-card mdl-card mdl-shadow--4dp">
             <div class="mdl-card__supporting-text">
-            許可された権限
+            トップページ
           </div>
           <div class="mdl-card__supporting-text">
-            <p>helloworld</p>
+            <?php echo(permission($user)); ?>
         </div>
         </div>
 
