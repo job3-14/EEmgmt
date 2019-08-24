@@ -4,12 +4,10 @@ if (!isset($_SESSION["user"])){
 header('Location: /login.php');
 exit;
 }
-
 include($_SERVER['DOCUMENT_ROOT'] . '/permission.php');
 //権限確認
 permission_redirect("addcard");
 ?>
-
 
 <!DOCTYPE html>
 <html>
@@ -42,8 +40,6 @@ permission_redirect("addcard");
       </header>
       <main class="mdl-layout__content">
         <div class="page-content"><!-- Your content goes here -->
-
-
 <div class="c-add-card mdl-card mdl-shadow--4dp">
   <div class="mdl-card__supporting-text">
     入力内容を確認してください
@@ -67,7 +63,6 @@ permission_redirect("addcard");
       echo $slacklist."<br>";
     }
     ?>
-
     <br>
     <div class="c-r-button">
     <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="button" onclick="history.back()">
@@ -82,8 +77,5 @@ permission_redirect("addcard");
 </div>
       </main>
     </div>
-
-
-
   </body>
 </html>
