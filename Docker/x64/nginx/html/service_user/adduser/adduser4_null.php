@@ -36,9 +36,7 @@ try {
 }catch (Exception $e){
   $errorMessages[] = "データベースエラーです";
 }
-
 ?>
-
 
 <!DOCTYPE html>
 <html>
@@ -71,8 +69,6 @@ try {
       </header>
       <main class="mdl-layout__content">
         <div class="page-content"><!-- Your content goes here -->
-
-
 <div class="c-add-card mdl-card mdl-shadow--4dp">
   <div class="mdl-card__supporting-text">
     完了
@@ -88,10 +84,8 @@ try {
 </div>
 </div>
 </div>
-
 </div>
       </main>
     </div>
-
   </body>
 </html>
