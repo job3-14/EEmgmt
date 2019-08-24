@@ -4,7 +4,6 @@ if (!isset($_SESSION["user"])){
 header('Location: /login.php');
 exit;
 }
-$_SESSION["errorMessages"]= array();
 include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
 include($_SERVER['DOCUMENT_ROOT'] . '/menu_load.php');
 include($_SERVER['DOCUMENT_ROOT'] . '/permission.php');
@@ -110,10 +109,8 @@ function permission($username) {
   }else{
     $permissionlist = "許可された権限: なし";
   }
-
   return $permissionlist;
 }
-
 
 function pages($currentPages,$totalPageCounts){
   echo "ページ移動: ";
@@ -149,12 +146,8 @@ function pages($currentPages,$totalPageCounts){
   echo '...';
   echo '<a href="./list.php?pages='.$totalPageCounts.'">'.$totalPageCounts.'</a>';
 }
-
 }
-
-
 ?>
-
 
 <!DOCTYPE html>
 <html>
@@ -214,14 +207,9 @@ function pages($currentPages,$totalPageCounts){
               }
                ?>
               </ul>
-
               <p><?php pages($currentPages,$totalPageCounts); ?></p>
           </div>
           </div>
-
-
-
-
 </div>
       </main>
     </div>
