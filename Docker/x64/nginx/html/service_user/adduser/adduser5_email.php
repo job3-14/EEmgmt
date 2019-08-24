@@ -10,7 +10,6 @@ include($_SERVER['DOCUMENT_ROOT'] . '/permission.php');
 permission_redirect("addcard");
 ?>
 
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -21,7 +20,6 @@ permission_redirect("addcard");
     <link rel="stylesheet" type="text/css" href="/custom.css">
   </head>
   <body>
-
     <!-- Always shows a header, even in smaller screens. -->
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
       <header class="mdl-layout__header">
@@ -67,13 +65,11 @@ permission_redirect("addcard");
       echo $emaillist."<br>";
     }
     ?>
-
     <br>
     <div class="c-r-button">
     <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="button" onclick="history.back()">
        戻る
     </button>
-
     <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="button"  onclick="location.href='./adduser6_email.php'">
        登録実行
     </button>
@@ -82,8 +78,5 @@ permission_redirect("addcard");
 </div>
       </main>
     </div>
-
-
-
   </body>
 </html>
