@@ -1,7 +1,5 @@
 <?php
 session_start();
-
-
 $_SESSION = array();
 #セッション変数を全て削除
 session_destroy();
@@ -10,4 +8,3 @@ session_destroy();
 session_start();
 $_SESSION["message"] = "ログアウトしました。";
 header('Location: /login.php');
-?>
