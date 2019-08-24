@@ -4,12 +4,10 @@ if (!isset($_SESSION["user"])){
 header('Location: /login.php');
 exit;
 }
-
 include($_SERVER['DOCUMENT_ROOT'] . '/permission.php');
 //権限確認
 permission_redirect("addcard");
 ?>
-
 
 <!DOCTYPE html>
 <html>
@@ -21,7 +19,6 @@ permission_redirect("addcard");
     <link rel="stylesheet" type="text/css" href="/custom.css">
   </head>
   <body>
-
     <!-- Always shows a header, even in smaller screens. -->
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
       <header class="mdl-layout__header">
@@ -42,8 +39,6 @@ permission_redirect("addcard");
       </header>
       <main class="mdl-layout__content">
         <div class="page-content"><!-- Your content goes here -->
-
-
 <div class="c-add-card mdl-card mdl-shadow--4dp">
   <div class="mdl-card__supporting-text">
     送信するメールアドレスを入力してください
@@ -78,24 +73,18 @@ permission_redirect("addcard");
     <input class="mdl-textfield__input" type="text"  name="slack5">
     <label class="mdl-textfield__label">Slack URL</label>
   </div>
-
   <br>
   <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="button" onclick="history.back()">
      戻る
   </button>
-
   <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" value=1>
      次へ
   </button>
-
 </form>
 </div>
 </div>
 </div>
       </main>
     </div>
-
-
-
   </body>
 </html>
