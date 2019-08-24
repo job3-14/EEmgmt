@@ -1,13 +1,8 @@
 #-*- coding:utf-8 -*-
-
 import tkinter as tk
-import os
-import mysql.connector
-import time
-import nfc, threading
+import nfc, threading, requests, json, time, mysql.connector, os
 import setting
 from datetime import datetime, timedelta, timezone
-import requests, json
 
 class Gui():
     def __init__(self):
@@ -269,6 +264,5 @@ class Gui():
             jsonlist["userid"] = sqlresult2[0]["userid"]
             jsonlist["text"]=sqlresult[0]["name"]+"さんが"+date+"に"+message+"しました。"
             requests.post(url, headers=headers,data=json.dumps(jsonlist))
-
 
 main = Gui()
