@@ -9,7 +9,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
 include($_SERVER['DOCUMENT_ROOT'] . '/menu_load.php');
 include($_SERVER['DOCUMENT_ROOT'] . '/permission.php');
 //権限確認
-permission_redirect("editcard");
+permission_redirect("addcard");
 
 try {
     if($_GET["seach"]){
@@ -121,7 +121,7 @@ function pages($currentPages,$totalPageCounts){
           <div class="c-card-padding">
             <div class="c-large-card mdl-card mdl-shadow--4dp">
               <div class="mdl-card__supporting-text">
-              ユーザー情報一覧
+              予約カード番号一覧
             </div>
             <div class="mdl-card__supporting-text">
               <form action="#" method="GET">
