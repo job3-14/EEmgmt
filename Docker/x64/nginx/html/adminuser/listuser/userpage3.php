@@ -15,7 +15,6 @@ if($_POST["username"]==$_SESSION["user"] && $_POST["edituser"]!=1){
 }
 ?>
 
-
 <!DOCTYPE html>
 <html>
   <head>
