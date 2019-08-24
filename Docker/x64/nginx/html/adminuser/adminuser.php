@@ -38,7 +38,7 @@ permission_redirect("edituser");
             管理ユーザー設定
           </div>
           <div class="mdl-card__supporting-text">
-            <a href="./adduser/adduser.php">管理ユーザー情報の登録</a><br>
+            <a href="./adduser/adduser.php">管理ユーザー情報の登録</a><br><br>
             <a href="./listuser/list.php">管理ユーザー情報の一覧</a><br>
           </div>
         </div>
