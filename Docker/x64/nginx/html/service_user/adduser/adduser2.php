@@ -50,6 +50,7 @@ if(!is_null($errorMessages)){
   $_SESSION["addcard"]["email"] = $_POST["email"];
   $_SESSION["addcard"]["cardidm"] = $_POST["cardidm"];
   $_SESSION["addcard"]["sendMethod"] = $_POST["sendMethod"];
+  $_SESSION["adduser2_status"] = 1;
   if($_POST["sendMethod"]=="email"){
     header('Location: ./adduser3_email.php');
     exit;
