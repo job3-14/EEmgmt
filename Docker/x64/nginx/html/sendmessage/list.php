@@ -46,9 +46,9 @@ if (isset($_GET["pages"])){
 
 try {
     if($seach){
-      $userlistsql = "SELECT * FROM service_user WHERE name LIKE '%".$seach."%' ORDER BY idm LIMIT ".$pages." ,100";
+      $userlistsql = "SELECT * FROM service_user WHERE name LIKE '%".$seach."%' ORDER BY idm DESC LIMIT ".$pages." ,100";
     }else{
-      $userlistsql = "SELECT * FROM service_user ORDER BY idm LIMIT ".$pages." ,100";
+      $userlistsql = "SELECT * FROM service_user ORDER BY idm DESC LIMIT ".$pages." ,100";
     }
     $sql  = $pdo->prepare($userlistsql);
     $sql->execute();
