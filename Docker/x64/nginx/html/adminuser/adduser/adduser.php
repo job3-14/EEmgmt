@@ -7,6 +7,7 @@ exit;
 include($_SERVER['DOCUMENT_ROOT'] . '/permission.php');
 //権限確認
 permission_redirect("edituser");
+unset($_SESSION["adduser_status"]);
 ?>
 
 
