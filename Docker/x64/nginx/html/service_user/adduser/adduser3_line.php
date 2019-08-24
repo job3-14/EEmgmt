@@ -4,12 +4,10 @@ if (!isset($_SESSION["user"])){
 header('Location: /login.php');
 exit;
 }
-
 include($_SERVER['DOCUMENT_ROOT'] . '/permission.php');
 //権限確認
 permission_redirect("addcard");
 ?>
-
 
 <!DOCTYPE html>
 <html>
@@ -75,8 +73,5 @@ permission_redirect("addcard");
 </div>
       </main>
     </div>
-
-
-
   </body>
 </html>
