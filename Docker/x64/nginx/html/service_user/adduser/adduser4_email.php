@@ -4,6 +4,12 @@ if (!isset($_SESSION["user"])){
 header('Location: /login.php');
 exit;
 }
+
+if ($_SESSION["adduser2_status"] !== 2){
+header('Location: ./adduser.php');
+exit;
+}
+
 include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
 include($_SERVER['DOCUMENT_ROOT'] . '/permission.php');
 //権限確認
@@ -40,6 +46,7 @@ if(!$_POST["email2"]){
 
 if(!is_null($errorMessages)){
   $_SESSION["errorMessages"]=$errorMessages;
+  $_SESSION["adduser2_status"] = 1;
   header('Location: /normal_error.php');
   exit;
 }else{
@@ -58,6 +65,7 @@ if(!is_null($errorMessages)){
   }
   $mailList = array_unique($mailList); //重複削除
   $_SESSION["addcard"]["emaiList"] = $mailList;
+  $_SESSION["adduser2_status"] = 3;
   header('Location: ./adduser5_email.php');
   exit;
 }

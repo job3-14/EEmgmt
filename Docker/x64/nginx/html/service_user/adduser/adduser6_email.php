@@ -4,6 +4,13 @@ if (!isset($_SESSION["user"])){
 header('Location: /login.php');
 exit;
 }
+
+if ($_SESSION["adduser2_status"] !== 4){
+header('Location: ./adduser.php');
+exit;
+}
+unset($_SESSION["adduser2_status"]);
+
 include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
 include($_SERVER['DOCUMENT_ROOT'] . '/permission.php');
 //権限確認

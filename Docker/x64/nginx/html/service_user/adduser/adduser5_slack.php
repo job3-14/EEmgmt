@@ -7,6 +7,12 @@ exit;
 include($_SERVER['DOCUMENT_ROOT'] . '/permission.php');
 //権限確認
 permission_redirect("addcard");
+
+if ($_SESSION["adduser2_status"] !== 3){
+header('Location: ./adduser.php');
+exit;
+}
+$_SESSION["adduser2_status"] = 4;
 ?>
 
 <!DOCTYPE html>
