@@ -31,7 +31,8 @@ include($_SERVER['DOCUMENT_ROOT'] . '/menu_load.php');
                 利用ユーザー設定
               </div>
               <div class="mdl-card__supporting-text">
-                <a href="./adduser/adduser.php">利用ユーザー情報の登録</a><br>
+                <a href="./adduser/adduser.php">利用ユーザー情報の登録</a><br><br>
+                <a href="./adduser/list.php">予約番号から登録</a><br><br>
                 <a href="./listuser/list.php">利用ユーザー情報の一覧</a><br>
               </div>
             </div>

@@ -4,18 +4,19 @@ if (!isset($_SESSION["user"])){
 header('Location: /login.php');
 exit;
 }
+
 include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
 include($_SERVER['DOCUMENT_ROOT'] . '/menu_load.php');
 include($_SERVER['DOCUMENT_ROOT'] . '/permission.php');
 //権限確認
-permission_redirect("viewexit");
+permission_redirect("addcard");
 
 try {
     if($_GET["seach"]){
      $seach = $_GET["seach"];
-     $countsql= "SELECT COUNT(idm) FROM service_user WHERE name LIKE '%".$seach."%'";
+     $countsql= "SELECT COUNT(idm) FROM reservation WHERE number LIKE '%".$seach."%'";
    }else{
-     $countsql= "SELECT COUNT(idm) FROM service_user";
+     $countsql= "SELECT COUNT(idm) FROM reservation";
    }
     $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
     $sql  = $pdo->prepare($countsql);
@@ -46,9 +47,9 @@ if (isset($_GET["pages"])){
 
 try {
     if($seach){
-      $userlistsql = "SELECT * FROM service_user WHERE name LIKE '%".$seach."%' ORDER BY idm DESC LIMIT ".$pages." ,100";
+      $userlistsql = "SELECT * FROM reservation WHERE number LIKE '%".$seach."%' ORDER BY number ASC LIMIT ".$pages." ,100";
     }else{
-      $userlistsql = "SELECT * FROM service_user ORDER BY idm DESC LIMIT ".$pages." ,100";
+      $userlistsql = "SELECT * FROM reservation ORDER BY number ASC LIMIT ".$pages." ,100";
     }
     $sql  = $pdo->prepare($userlistsql);
     $sql->execute();
@@ -112,7 +113,7 @@ function pages($currentPages,$totalPageCounts){
     <!-- The drawer is always open in large screens. The header is always shown,
       even in small screens. -->
       <?php
-      $menuName = "入退室履歴";
+      $menuName = "利用者者管理メニュー";
       menuload($menuName);
       ?>
       <main class="mdl-layout__content">
@@ -120,7 +121,7 @@ function pages($currentPages,$totalPageCounts){
           <div class="c-card-padding">
             <div class="c-large-card mdl-card mdl-shadow--4dp">
               <div class="mdl-card__supporting-text">
-              ユーザー情報一覧
+              予約カード番号一覧
             </div>
             <div class="mdl-card__supporting-text">
               <form action="#" method="GET">
@@ -145,16 +146,18 @@ function pages($currentPages,$totalPageCounts){
                 echo '<li class="mdl-list__item mdl-list__item--three-line">';
                 echo '<span class="mdl-list__item-primary-content">';
                 echo '<i class="material-icons mdl-list__item-avatar">person</i>';
-                echo '<span> <a href="./userpage.php?idm='.$username['idm'].'">'.$username['name'].'</a></span>';
-                echo '<span class="mdl-list__item-text-body">'.'メールアドレス:'.$username["mainEmail"].'</span>';
+                echo '<span> <a href="./adduser.php?idm='.$username['idm'].'">予約番号:'.$username['number'].'</a></span>';
+                echo '<span class="mdl-list__item-text-body">'.'IDm:'.$username["idm"].'</span>';
                 echo '</span>';
                 echo '</li>';
               }
                ?>
               </ul>
+
               <p><?php pages($currentPages,$totalPageCounts); ?></p>
           </div>
           </div>
+
 </div>
       </main>
     </div>

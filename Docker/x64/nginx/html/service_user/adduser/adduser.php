@@ -7,6 +7,7 @@ exit;
 include($_SERVER['DOCUMENT_ROOT'] . '/permission.php');
 //権限確認
 permission_redirect("addcard");
+$idm = $_GET["idm"];
 ?>
 
 
@@ -62,7 +63,7 @@ permission_redirect("addcard");
   </div>
   <br>
   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <input class="mdl-textfield__input" type="text"  name="cardidm">
+    <input class="mdl-textfield__input" type="text"  name="cardidm" value="<?php echo $idm;?>">
     <label class="mdl-textfield__label">ICカードIDm</label>
   </div>
   <br>

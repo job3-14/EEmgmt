@@ -4,6 +4,7 @@ if (!isset($_SESSION["user"])){
 header('Location: /login.php');
 exit;
 }
+$_SESSION["errorMessages"]= array();
 include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
 include($_SERVER['DOCUMENT_ROOT'] . '/menu_load.php');
 include($_SERVER['DOCUMENT_ROOT'] . '/permission.php');
@@ -46,9 +47,9 @@ if (isset($_GET["pages"])){
 
 try {
     if($seach){
-      $userlistsql = "SELECT * FROM service_user WHERE name LIKE '%".$seach."%' ORDER BY idm LIMIT ".$pages." ,100";
+      $userlistsql = "SELECT * FROM service_user WHERE name LIKE '%".$seach."%' ORDER BY idm DESC LIMIT ".$pages." ,100";
     }else{
-      $userlistsql = "SELECT * FROM service_user ORDER BY idm LIMIT ".$pages." ,100";
+      $userlistsql = "SELECT * FROM service_user ORDER BY idm DESC LIMIT ".$pages." ,100";
     }
     $sql  = $pdo->prepare($userlistsql);
     $sql->execute();
@@ -59,6 +60,7 @@ try {
   header('Location: /operate_error.php');
   exit;
 }
+
 
 function pages($currentPages,$totalPageCounts){
   echo "ページ移動: ";

@@ -46,9 +46,9 @@ if (isset($_GET["pages"])){
 
 try {
     if($seach){
-      $userlistsql = "SELECT * FROM login WHERE username LIKE '%".$seach."%' ORDER BY addcard LIMIT ".$pages." ,100";
+      $userlistsql = "SELECT * FROM login WHERE username LIKE '%".$seach."%' ORDER BY addcard DESC LIMIT ".$pages." ,100";
     }else{
-      $userlistsql = "SELECT * FROM login ORDER BY addcard LIMIT ".$pages." ,100";
+      $userlistsql = "SELECT * FROM login ORDER BY addcard DESC LIMIT ".$pages." ,100";
     }
     $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
     $sql  = $pdo->prepare($userlistsql);
