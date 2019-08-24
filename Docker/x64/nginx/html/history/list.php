@@ -4,7 +4,6 @@ if (!isset($_SESSION["user"])){
 header('Location: /login.php');
 exit;
 }
-$_SESSION["errorMessages"]= array();
 include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
 include($_SERVER['DOCUMENT_ROOT'] . '/menu_load.php');
 include($_SERVER['DOCUMENT_ROOT'] . '/permission.php');
@@ -153,11 +152,9 @@ function pages($currentPages,$totalPageCounts){
               }
                ?>
               </ul>
-
               <p><?php pages($currentPages,$totalPageCounts); ?></p>
           </div>
           </div>
-
 </div>
       </main>
     </div>

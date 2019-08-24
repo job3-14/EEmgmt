@@ -8,8 +8,13 @@ exit;
 include($_SERVER['DOCUMENT_ROOT'] . '/permission.php');
 //権限確認
 permission_redirect("addcard");
-?>
 
+if ($_SESSION["adduser2_status"] !== 1){
+header('Location: ./adduser.php');
+exit;
+}
+$_SESSION["adduser2_status"] = 2;
+?>
 
 <!DOCTYPE html>
 <html>
@@ -21,7 +26,6 @@ permission_redirect("addcard");
     <link rel="stylesheet" type="text/css" href="/custom.css">
   </head>
   <body>
-
     <!-- Always shows a header, even in smaller screens. -->
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
       <header class="mdl-layout__header">
@@ -42,8 +46,6 @@ permission_redirect("addcard");
       </header>
       <main class="mdl-layout__content">
         <div class="page-content"><!-- Your content goes here -->
-
-
 <div class="c-add-card mdl-card mdl-shadow--4dp">
   <div class="mdl-card__supporting-text">
     入力内容を確認してください
@@ -75,8 +77,5 @@ permission_redirect("addcard");
 </div>
       </main>
     </div>
-
-
-
   </body>
 </html>

@@ -88,7 +88,6 @@ function noticeRadio($sql,$method){
                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="button" onclick="location.href='./userpage.php?username=<?php echo $username; ?>'">
                     キャンセル
                   </button>
-
                </div>
             </div>
           </div>

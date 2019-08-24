@@ -8,8 +8,13 @@ exit;
 include($_SERVER['DOCUMENT_ROOT'] . '/permission.php');
 //権限確認
 permission_redirect("addcard");
-?>
 
+if ($_SESSION["adduser2_status"] !== 3){
+header('Location: ./adduser.php');
+exit;
+}
+$_SESSION["adduser2_status"] = 4;
+?>
 
 <!DOCTYPE html>
 <html>
@@ -21,7 +26,6 @@ permission_redirect("addcard");
     <link rel="stylesheet" type="text/css" href="/custom.css">
   </head>
   <body>
-
     <!-- Always shows a header, even in smaller screens. -->
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
       <header class="mdl-layout__header">
@@ -67,13 +71,11 @@ permission_redirect("addcard");
       echo $emaillist."<br>";
     }
     ?>
-
     <br>
     <div class="c-r-button">
     <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="button" onclick="history.back()">
        戻る
     </button>
-
     <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="button"  onclick="location.href='./adduser6_email.php'">
        登録実行
     </button>
@@ -82,8 +84,5 @@ permission_redirect("addcard");
 </div>
       </main>
     </div>
-
-
-
   </body>
 </html>

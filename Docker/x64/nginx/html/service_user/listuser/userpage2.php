@@ -19,6 +19,8 @@ try {
     $sql->bindValue(1,$idm);
     $sql->execute();
     $result=$sql->fetchColumn();
+  }else{
+    $errorMessages[] = "操作エラーです";
   }
 }catch (Exception $e){
   $errorMessages[] = "データベースエラーです";
@@ -108,7 +110,6 @@ if(isset($operateErrorMessages)){
   exit;
 }else{
   if($method=="email"){
-    $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
     $sql=$pdo->prepare("UPDATE service_user SET mainEmail=?,idm=?,notice=?,address1=?,address2=?,address3=?,address4=?,address5=? WHERE idm=?");
     $sql->bindValue(1,$_POST["email"]);
     $sql->bindValue(2,$_POST["cardidm"]);
@@ -126,7 +127,6 @@ if(isset($operateErrorMessages)){
 
   if($method=="line"){
     $password=password_hash($_POST["password"], PASSWORD_DEFAULT);
-    $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
     $sql=$pdo->prepare("UPDATE service_user SET mainEmail=?,idm=?,notice=? WHERE idm=?");
     $sql->bindValue(1,$_POST["email"]);
     $sql->bindValue(2,$_POST["cardidm"]);
@@ -136,7 +136,6 @@ if(isset($operateErrorMessages)){
   }
 
   if($method=="slack"){
-    $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
     $sql=$pdo->prepare("UPDATE service_user SET mainEmail=?,idm=?,notice=?,address1=?,address2=?,address3=?,address4=?,address5=? WHERE idm=?");
     $sql->bindValue(1,$_POST["email"]);
     $sql->bindValue(2,$_POST["cardidm"]);
@@ -153,7 +152,6 @@ if(isset($operateErrorMessages)){
   }
 
   if($method=="none"){
-    $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
     $sql=$pdo->prepare("UPDATE service_user SET mainEmail=?,idm=?,notice=? WHERE idm=?");
     $sql->bindValue(1,$_POST["email"]);
     $sql->bindValue(2,$_POST["cardidm"]);

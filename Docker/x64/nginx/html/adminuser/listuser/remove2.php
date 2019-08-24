@@ -46,7 +46,6 @@ if(isset($operateErrorMessages)){
 }
 ?>
 
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -57,7 +56,6 @@ if(isset($operateErrorMessages)){
     <link rel="stylesheet" type="text/css" href="/custom.css">
   </head>
   <body>
-
     <!-- Always shows a header, even in smaller screens. -->
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
       <header class="mdl-layout__header">
@@ -73,15 +71,12 @@ if(isset($operateErrorMessages)){
       </header>
       <main class="mdl-layout__content">
         <div class="page-content"><!-- Your content goes here -->
-
-
 <div class="c-add-card mdl-card mdl-shadow--4dp">
   <div class="mdl-card__supporting-text">
     完了
   </div>
   <div class="mdl-card__supporting-text">
     削除が完了しました
-
   <br>
   <div class="c-r-button">
   <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="button" onclick="location.href='./list.php'">
@@ -90,10 +85,8 @@ if(isset($operateErrorMessages)){
 </div>
 </div>
 </div>
-
 </div>
       </main>
     </div>
-
   </body>
 </html>

@@ -4,7 +4,6 @@ if (!isset($_SESSION["user"])){
 header('Location: /login.php');
 exit;
 }
-$_SESSION["errorMessages"]= array();
 include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
 include($_SERVER['DOCUMENT_ROOT'] . '/permission.php');
 //権限確認
@@ -23,7 +22,6 @@ try {
 
 $data = date("Y-m-d H:i"); #日時取得
 try {
-  $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
   $sql  = $pdo->prepare("INSERT INTO history (idm,type,date) VALUES (?,?,?)");
   $sql->bindValue(1,$idm);
   $sql->bindValue(2,"退室");
@@ -34,7 +32,6 @@ try {
 }
 
 try {
-  $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4',$DB_USER, $DB_PASS);
   $sql = $pdo->prepare("DELETE FROM history  WHERE date NOT IN (SELECT * FROM (SELECT date FROM history ORDER BY date DESC LIMIT 100) AS v)");
   $sql->execute();
 }catch (Exception $e){

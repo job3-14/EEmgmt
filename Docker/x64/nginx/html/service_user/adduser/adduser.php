@@ -4,11 +4,9 @@ if (!isset($_SESSION["user"])){
 header('Location: /login.php');
 exit;
 }
-$_POST = array();
 include($_SERVER['DOCUMENT_ROOT'] . '/permission.php');
 //権限確認
 permission_redirect("addcard");
-
 ?>
 
 
@@ -89,19 +87,14 @@ permission_redirect("addcard");
   <span class="mdl-radio__label">なし</span>
   </label>
   <br><br>
-
   <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" value=1>
    次へ
  </button>
-
 </form>
 </div>
 </div>
 </div>
       </main>
     </div>
-
-
-
   </body>
 </html>

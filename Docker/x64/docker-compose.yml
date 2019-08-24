@@ -73,7 +73,7 @@ services:
        - ./flask/:/opt
    restart: always
 
-doorapi:
+ doorapi:
   build:
      context: .
      dockerfile: Dockerfile_flask

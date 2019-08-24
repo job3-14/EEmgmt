@@ -4,14 +4,10 @@ if (!isset($_SESSION["user"])){
 header('Location: /login.php');
 exit;
 }
-
-
 include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
 include($_SERVER['DOCUMENT_ROOT'] . '/permission.php');
 //権限確認
 permission_redirect("edituser");
-$permission = array();
-$permission2 = array();
 
 try {
   if(!$_POST["user"]==""){
@@ -177,7 +173,6 @@ $_SESSION["adduser_status"] = 1;
     }
     ?>
   </div>
-
 
   <br>
   <div class="c-r-button">

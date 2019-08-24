@@ -4,12 +4,16 @@ if (!isset($_SESSION["user"])){
 header('Location: /login.php');
 exit;
 }
-
 include($_SERVER['DOCUMENT_ROOT'] . '/permission.php');
 //権限確認
 permission_redirect("addcard");
-?>
 
+if ($_SESSION["adduser2_status"] !== 1){
+header('Location: ./adduser.php');
+exit;
+}
+$_SESSION["adduser2_status"] = 2;
+?>
 
 <!DOCTYPE html>
 <html>
@@ -75,8 +79,5 @@ permission_redirect("addcard");
 </div>
       </main>
     </div>
-
-
-
   </body>
 </html>
