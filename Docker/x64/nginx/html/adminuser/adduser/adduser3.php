@@ -8,10 +8,9 @@ if ($_SESSION["adduser_status"] !== 1){
 header('Location: ./adduser.php');
 exit;
 }
-unset($_SESSION["adduser_status"]);
 
 include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
-$errorMessages = array();include($_SERVER['DOCUMENT_ROOT'] . '/permission.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/permission.php');
 //権限確認
 permission_redirect("edituser");
 
@@ -61,12 +60,8 @@ if (isset($_SESSION["adduser"])){
   header('Location: /operate_error.php');
   exit;
 }
-
-
-unset($_SESSION["permission"]);
-unset($_SESSION["permission2"]);
+unset($_SESSION["adduser_status"]);
 ?>
-
 
 <!DOCTYPE html>
 <html>
@@ -107,7 +102,6 @@ unset($_SESSION["permission2"]);
   </div>
   <div class="mdl-card__supporting-text">
     登録が完了しました
-
   <br>
   <div class="c-r-button">
   <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="button" onclick="location.href='../adminuser.php'">
@@ -116,7 +110,6 @@ unset($_SESSION["permission2"]);
 </div>
 </div>
 </div>
-
 </div>
       </main>
     </div>
