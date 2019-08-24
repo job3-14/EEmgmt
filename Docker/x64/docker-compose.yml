@@ -70,7 +70,7 @@ services:
       dockerfile: Dockerfile_flask
    tty: true
    volumes:
-       - ./flask/:/opt
+       - ./messages/:/opt
    restart: always
 
  doorapi:
