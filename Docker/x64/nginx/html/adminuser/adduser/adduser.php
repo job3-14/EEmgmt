@@ -4,13 +4,9 @@ if (!isset($_SESSION["user"])){
 header('Location: /login.php');
 exit;
 }
-$_POST = array();
-$_SESSION["errorMessages"]=array();
 include($_SERVER['DOCUMENT_ROOT'] . '/permission.php');
 //権限確認
 permission_redirect("edituser");
-unset($_SESSION["permission"]);
-unset($_SESSION["permission2"]);
 ?>
 
 
@@ -124,25 +120,10 @@ unset($_SESSION["permission2"]);
    入力内容確認
 </button>
 </form>
-
-
-
-
-
-
 </div>
 </div>
-
-
-
-
-
-
 </div>
       </main>
     </div>
-
-
-
   </body>
 </html>
