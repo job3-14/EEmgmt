@@ -4,7 +4,6 @@ if (!isset($_SESSION["user"])){
 header('Location: /login.php');
 exit;
 }
-
 include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
 include($_SERVER['DOCUMENT_ROOT'] . '/permission.php');
 //権限確認
@@ -45,9 +44,7 @@ try {
 }catch (Exception $e){
   $errorMessages[] = "データベースエラーです";
 }
-
 ?>
-
 
 <!DOCTYPE html>
 <html>
@@ -59,7 +56,6 @@ try {
     <link rel="stylesheet" type="text/css" href="/custom.css">
   </head>
   <body>
-
     <!-- Always shows a header, even in smaller screens. -->
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
       <header class="mdl-layout__header">
@@ -80,15 +76,12 @@ try {
       </header>
       <main class="mdl-layout__content">
         <div class="page-content"><!-- Your content goes here -->
-
-
 <div class="c-add-card mdl-card mdl-shadow--4dp">
   <div class="mdl-card__supporting-text">
     完了
   </div>
   <div class="mdl-card__supporting-text">
     登録が完了しました
-
   <br>
   <div class="c-r-button">
   <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="button" onclick="location.href='/service_user/service_user.php'">
@@ -97,10 +90,8 @@ try {
 </div>
 </div>
 </div>
-
 </div>
       </main>
     </div>
-
   </body>
 </html>
