@@ -15,7 +15,7 @@ function menuload($menuName)
     echo '<div class="mdl-layout-spacer"></div>';
     echo '<div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">';
     echo '<div class="logout">';
-    echo '<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="location.href="/logout.php"">';
+    echo "<button class=\"mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect\" onclick=\"location.href='/logout.php'\">";
     echo 'ログアウト';
     echo '</button>';
     echo '</div>';
