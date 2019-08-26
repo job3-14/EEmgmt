@@ -5,6 +5,7 @@ Description=Shutdown Button Daemon
 ExecStart=/usr/bin/python3 /opt/service_program/shutdown.py
 Restart=always
 Type=simple
+User=root
 
 [Install]
 WantedBy=multi-user.target
