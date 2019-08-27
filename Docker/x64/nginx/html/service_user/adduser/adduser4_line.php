@@ -5,7 +5,7 @@ if (!isset($_SESSION["user"])) {
     exit;
 }
 
-if ($_SESSION["adduser2_status"] !== 3) {
+if ($_SESSION["adduser2_status"] !== 2) {
     header('Location: ./adduser.php');
     exit;
 }
