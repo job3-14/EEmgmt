@@ -17,9 +17,9 @@ if ($username==$password1) {
 }
 if ($password1=="") {
     $errorMessages[] = "パスワードを入力してください";
-} elseif ($password2) {
+} elseif ($password2=="") {
     $errorMessages[] = "パスワードを2度入力してください";
-} elseif ($password1==$password2) {
+} elseif ($password1!=$password2) {
     $errorMessages[] = "パスワードが一致していません";
 }
 if (strlen($password1)<6 || strlen($password1)>=50) {
@@ -31,7 +31,7 @@ if (isset($errorMessages)) {
     exit;
 }
 
-$password=password_hash($password, PASSWORD_DEFAULT);
+$password=password_hash($password1, PASSWORD_DEFAULT);
 
 try {
     $pdo=new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4', $DB_USER, $DB_PASS);
