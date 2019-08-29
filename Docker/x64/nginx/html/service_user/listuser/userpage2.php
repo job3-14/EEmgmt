@@ -13,7 +13,7 @@ $idm=$_POST["idm"];
 $method=$_POST["sendMethod"];
 
 try {
-    if (!$_POST["user"]=="") {
+    if (!$_POST["idm"]=="") {
         $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4', $DB_USER, $DB_PASS);
         $sql  = $pdo->prepare("SELECT EXISTS(SELECT idm FROM service_user WHERE idm = ?)");
         $sql->bindValue(1, $idm);
@@ -26,8 +26,8 @@ try {
     $errorMessages[] = "データベースエラーです";
 }
 
-if ($result==1) {
-    $errorMessages[] = "このカードは既に登録されています";
+if ($result!=1) {
+    $errorMessages[] = "操作エラーです";
 }
 
 if ($_POST["email"]=="") {
