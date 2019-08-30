@@ -45,6 +45,7 @@ services:
      dockerfile: Dockerfile_php
    volumes:
     - ./nginx/html:/var/www/html
+    - /opt/docker/command/file:/opt/file
    environment:
      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
      FROM_EMAIL: ${FROM_EMAIL}
