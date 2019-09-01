@@ -56,7 +56,7 @@ $_SESSION["adduser2_status"] = 2;
             <p>Webhook URLを入力してください。</p>
             <p>最大5つのURL(送信先)を設定できます。</p>
             <p>URLはこのページでは取得できません。以下のURLから[Incoming Webhook]と検索して送信先を設定してください</p>
-            <p><a href="https://sakai-workspace.slack.com/apps">https://sakai-workspace.slack.com/apps</a></p>
+            <p><a href="https://slack.com/services/new/incoming-webhook">https://slack.com/services/new/incoming-webhook</a></p>
             <form action="./adduser4_slack.php" method="POST">
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <input class="mdl-textfield__input" type="text" name="slack1">
