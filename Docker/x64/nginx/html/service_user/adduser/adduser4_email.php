@@ -40,10 +40,6 @@ if ($_POST["email2"] && !filter_var($_POST["email2"], FILTER_VALIDATE_EMAIL)) {
     $errorMessages[] = "メールアドレスを正しく入力してください";
 }
 
-if (!$_POST["email2"]) {
-    $_POST["email2"];
-}
-
 if (!is_null($errorMessages)) {
     $_SESSION["errorMessages"]=$errorMessages;
     $_SESSION["adduser2_status"] = 1;
