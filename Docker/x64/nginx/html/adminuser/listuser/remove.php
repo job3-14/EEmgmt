@@ -70,7 +70,7 @@ function noticeRadio($sql, $method)
   <!-- The drawer is always open in large screens. The header is always shown,
       even in small screens. -->
   <?php
-      $menuName = "利用者者管理ページ";
+      $menuName = "管理者管理ページ";
       menuload($menuName);
       ?>
   <main class="mdl-layout__content">
