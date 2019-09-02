@@ -106,11 +106,6 @@ class Gui():
             self.result = "[エラー]未対応カードです"       #エラーメッセージを出力
             self.frag = "True"
 
-    def checkinReadIdm(self):
-        clf = nfc.ContactlessFrontend('usb')                        #nfcpyドキュメントを参照
-        tag = clf.connect(rdwr={'on-connect': self.checkinOutputIdm })       #nfcpyドキュメントを参照
-        clf.close()
-
     def checkout(self):
         self.frag = "False"
         self.sub = tk.Toplevel()
@@ -157,11 +152,6 @@ class Gui():
             self.result = "[エラー]未対応カードです"       #エラーメッセージを出力
             self.frag = "True"
 
-    def checkoutReadIdm(self):
-        clf = nfc.ContactlessFrontend('usb')                        #nfcpyドキュメントを参照
-        tag = clf.connect(rdwr={'on-connect': self.checkoutOutputIdm })       #nfcpyドキュメントを参照
-        clf.close()
-
     def reservation(self):
         self.frag = "False"
         self.sub = tk.Toplevel()
@@ -180,11 +170,6 @@ class Gui():
         thread2.start()
         thread3.start()
         self.sub.mainloop()
-
-    def reservationReadIdm(self):
-        clf = nfc.ContactlessFrontend('usb')                        #nfcpyドキュメントを参照
-        tag = clf.connect(rdwr={'on-connect': self.reservationOutputIdm })       #nfcpyドキュメントを参照
-        clf.close()
 
     def reservationOutputIdm(self,tag):
         tag = str(tag)                        #変数tsgを文字列型に変換
