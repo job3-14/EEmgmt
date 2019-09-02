@@ -3,6 +3,8 @@ import tkinter as tk
 import nfc, threading, requests, json, time, mysql.connector, os
 import setting
 from datetime import datetime, timedelta, timezone
+import nfc
+import binascii
 
 class Gui():
     def __init__(self):
@@ -38,7 +40,24 @@ class Gui():
         checkin.pack(padx=50, side = 'left')
         checkout.pack(padx=50, side = 'right')
         reservation.place(x=self.screen_width-100,y=2)
+        thread = threading.Thread(target=self.readidm)
+        thread.setDaemon(True)
+        thread.start()
         self.root.mainloop()
+
+    def readidm(self):
+        suica=nfc.clf.RemoteTarget("212F")
+        suica.sensf_req=bytearray.fromhex("0000030000")
+        while True:
+            with nfc.ContactlessFrontend("usb") as clf:
+                target=clf.sense(suica,iterations=3,interval=1.0)
+                while target:
+                    tag=nfc.tag.activate(clf,target)
+                    tag.sys=3
+                    idm=binascii.hexlify(tag.idm)
+                    print(idm.decode())
+                    time.sleep(0.5)
+                    break
 
     def checkin(self):
         self.frag = "False"
