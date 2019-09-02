@@ -3,6 +3,8 @@ import tkinter as tk
 import nfc, threading, requests, json, time, mysql.connector, os
 import setting
 from datetime import datetime, timedelta, timezone
+import nfc
+import binascii
 
 class Gui():
     def __init__(self):
@@ -38,17 +40,35 @@ class Gui():
         checkin.pack(padx=50, side = 'left')
         checkout.pack(padx=50, side = 'right')
         reservation.place(x=self.screen_width-100,y=2)
+        thread = threading.Thread(target=self.readidm)
+        thread.setDaemon(True)
+        thread.start()
         self.root.mainloop()
+
+    def readidm(self):
+        suica=nfc.clf.RemoteTarget("212F")
+        suica.sensf_req=bytearray.fromhex("0000030000")
+        while True:
+            with nfc.ContactlessFrontend("usb") as clf:
+                target=clf.sense(suica,iterations=3,interval=1.0)
+                while target:
+                    tag=nfc.tag.activate(clf,target)
+                    tag.sys=3
+                    idm=binascii.hexlify(tag.idm)
+                    self.idmStatus = idm.decode()
+                    time.sleep(0.5)
+                    break
 
     def checkin(self):
         self.frag = "False"
+        self.idmStatus = "waiting"
         self.sub = tk.Toplevel()
         self.sub.attributes("-fullscreen", True)
         lbl = tk.Label(self.sub,text='入退出管理システム ---入室---',font=("",self.text_size))
         lbl2 = tk.Label(self.sub,text='カードを読み取り部にタッチしてください。',font=("",self.text_size2))
         lbl.place(x=2, y=2)
         lbl2.place(x=2, y=self.text_lo)
-        thread1 = threading.Thread(target=self.checkinReadIdm)
+        thread1 = threading.Thread(target=self.checkinProcessing)
         thread2 = threading.Thread(target=self.timeOut)
         thread3 = threading.Thread(target=self.fragTimer)
         thread1.setDaemon(True)
@@ -60,47 +80,41 @@ class Gui():
         self.sub.mainloop()
 
 
-    def checkinOutputIdm(self,tag):
-        tag = str(tag)                        #変数tsgを文字列型に変換
-        id_check = ('ID=' in tag)             #対応カードかどうか確認
-        if id_check == True:                  #対応カードなら実行
-            idm = tag.find('ID=')  + 3             #idのインデックスを検索
-            idm_end = idm + 16         #idの終了インデックスを指定
-            result_idm = tag[idm:idm_end]           #idを出力
-            self.conn.ping(reconnect=True)
-            cur = self.conn.cursor(dictionary=True)  #カーソル作成
-            cur.execute("SELECT name FROM service_user WHERE idm = '%s';" % result_idm)
-            sqlresult = cur.fetchall()
-            if sqlresult:
-                self.result = sqlresult[0]["name"] + "さん こんにちは"
-                self.frag = "True"
-                date = datetime.now(self.jst).strftime('%Y-%m-%d %H:%M')
-                cur.execute("INSERT INTO history (idm,type,date) VALUES ('%s','入室','%s');" % (result_idm, date))
-                cur.execute("DELETE FROM history WHERE date NOT IN (SELECT * FROM (SELECT date FROM history ORDER BY date DESC LIMIT 3000) AS v)")
-                self.conn.commit()
-                cur.close()
-                self.sendmessage(result_idm,"入室")
+    def checkinProcessing(self):
+        while True:
+            if self.idmStatus == "waiting":
+                if self.frag == "True":
+                    time.sleep(0.5)
+                    return
             else:
-                self.result = "[エラー]このカードは登録されていません"
-                self.frag = "True"
-        else:                                 #非対応カードの場合実行
-            self.result = "[エラー]未対応カードです"       #エラーメッセージを出力
+                break
+        self.conn.ping(reconnect=True)
+        cur = self.conn.cursor(dictionary=True)  #カーソル作成
+        cur.execute("SELECT name FROM service_user WHERE idm = '%s';" % self.idmStatus)
+        sqlresult = cur.fetchall()
+        if sqlresult:
+            self.result = sqlresult[0]["name"] + "さん こんにちは"
             self.frag = "True"
-
-    def checkinReadIdm(self):
-        clf = nfc.ContactlessFrontend('usb')                        #nfcpyドキュメントを参照
-        tag = clf.connect(rdwr={'on-connect': self.checkinOutputIdm })       #nfcpyドキュメントを参照
-        clf.close()
+            date = datetime.now(self.jst).strftime('%Y-%m-%d %H:%M')
+            cur.execute("INSERT INTO history (idm,type,date) VALUES ('%s','入室','%s');" % (self.idmStatus, date))
+            cur.execute("DELETE FROM history WHERE date NOT IN (SELECT * FROM (SELECT date FROM history ORDER BY date DESC LIMIT 3000) AS v)")
+            self.conn.commit()
+            cur.close()
+            self.sendmessage(self.idmStatus,"入室")
+        else:
+            self.result = "[エラー]このカードは登録されていません"
+            self.frag = "True"
 
     def checkout(self):
         self.frag = "False"
+        self.idmStatus = "waiting"
         self.sub = tk.Toplevel()
         self.sub.attributes("-fullscreen", True)
         lbl = tk.Label(self.sub,text='入退出管理システム ---退室---',font=("",self.text_size))
         lbl2 = tk.Label(self.sub,text='カードを読み取り部にタッチしてください。',font=("",self.text_size2))
         lbl.place(x=2, y=2)
         lbl2.place(x=2, y=self.text_lo)
-        thread1 = threading.Thread(target=self.checkoutReadIdm)
+        thread1 = threading.Thread(target=self.checkoutProcessing)
         thread2 = threading.Thread(target=self.timeOut)
         thread3 = threading.Thread(target=self.fragTimer)
         thread1.setDaemon(True)
@@ -111,47 +125,41 @@ class Gui():
         thread3.start()
         self.sub.mainloop()
 
-    def checkoutOutputIdm(self,tag):
-        tag = str(tag)                        #変数tsgを文字列型に変換
-        id_check = ('ID=' in tag)             #対応カードかどうか確認
-        if id_check == True:                  #対応カードなら実行
-            idm = tag.find('ID=')  + 3             #idのインデックスを検索
-            idm_end = idm + 16         #idの終了インデックスを指定
-            result_idm = tag[idm:idm_end]           #idを出力
-            self.conn.ping(reconnect=True)
-            cur = self.conn.cursor(dictionary=True)  #カーソル作成
-            cur.execute("SELECT name FROM service_user WHERE idm = '%s';" % result_idm)
-            sqlresult = cur.fetchall()
-            if sqlresult:
-                self.result = sqlresult[0]["name"] + "さん お疲れ様でした"
-                self.frag = "True"
-                date = datetime.now(self.jst).strftime('%Y-%m-%d %H:%M')
-                cur.execute("INSERT INTO history (idm,type,date) VALUES ('%s','退室','%s');" % (result_idm, date))
-                cur.execute("DELETE FROM history WHERE date NOT IN (SELECT * FROM (SELECT date FROM history ORDER BY date DESC LIMIT 3000) AS v)")
-                self.conn.commit()
-                cur.close()
-                self.sendmessage(result_idm,"退室")
+    def checkoutProcessing(self):
+        while True:
+            if self.idmStatus == "waiting":
+                if self.frag == "True":
+                    time.sleep(0.5)
+                    return
             else:
-                self.result = "[エラー]このカードは登録されていません"
-                self.frag = "True"
-        else:                                 #非対応カードの場合実行
-            self.result = "[エラー]未対応カードです"       #エラーメッセージを出力
+                break
+        self.conn.ping(reconnect=True)
+        cur = self.conn.cursor(dictionary=True)  #カーソル作成
+        cur.execute("SELECT name FROM service_user WHERE idm = '%s';" % self.idmStatus)
+        sqlresult = cur.fetchall()
+        if sqlresult:
+            self.result = sqlresult[0]["name"] + "さん お疲れさまでした。"
             self.frag = "True"
-
-    def checkoutReadIdm(self):
-        clf = nfc.ContactlessFrontend('usb')                        #nfcpyドキュメントを参照
-        tag = clf.connect(rdwr={'on-connect': self.checkoutOutputIdm })       #nfcpyドキュメントを参照
-        clf.close()
+            date = datetime.now(self.jst).strftime('%Y-%m-%d %H:%M')
+            cur.execute("INSERT INTO history (idm,type,date) VALUES ('%s','退室','%s');" % (self.idmStatus, date))
+            cur.execute("DELETE FROM history WHERE date NOT IN (SELECT * FROM (SELECT date FROM history ORDER BY date DESC LIMIT 3000) AS v)")
+            self.conn.commit()
+            cur.close()
+            self.sendmessage(self.idmStatus,"退室")
+        else:
+            self.result = "[エラー]このカードは登録されていません"
+            self.frag = "True"
 
     def reservation(self):
         self.frag = "False"
+        self.idmStatus = "waiting"
         self.sub = tk.Toplevel()
         self.sub.attributes("-fullscreen", True)
         lbl = tk.Label(self.sub,text='入退出管理システム ---カード登録---',font=("",self.text_size))
         lbl2 = tk.Label(self.sub,text='カードを読み取り部にタッチしてください。',font=("",self.text_size2))
         lbl.place(x=2, y=2)
         lbl2.place(x=2, y=self.text_lo)
-        thread1 = threading.Thread(target=self.reservationReadIdm)
+        thread1 = threading.Thread(target=self.reservationProcessing)
         thread2 = threading.Thread(target=self.timeOut)
         thread3 = threading.Thread(target=self.fragTimer)
         thread1.setDaemon(True)
@@ -162,36 +170,29 @@ class Gui():
         thread3.start()
         self.sub.mainloop()
 
-    def reservationReadIdm(self):
-        clf = nfc.ContactlessFrontend('usb')                        #nfcpyドキュメントを参照
-        tag = clf.connect(rdwr={'on-connect': self.reservationOutputIdm })       #nfcpyドキュメントを参照
-        clf.close()
-
-    def reservationOutputIdm(self,tag):
-        tag = str(tag)                        #変数tsgを文字列型に変換
-        id_check = ('ID=' in tag)             #対応カードかどうか確認
-        if id_check == True:                  #対応カードなら実行
-            idm = tag.find('ID=')  + 3             #idのインデックスを検索
-            idm_end = idm + 16         #idの終了インデックスを指定
-            result_idm = tag[idm:idm_end]           #idを出力
-            self.conn.ping(reconnect=True)
-            cur = self.conn.cursor(dictionary=True)  #カーソル作成
-            cur.execute("SELECT name FROM service_user WHERE idm = '%s';" % result_idm)
-            sqlresult = cur.fetchall()
-            if sqlresult:
-                self.result = "[エラー]このカードは登録されています"
-                self.frag = "True"
+    def reservationProcessing(self):
+        while True:
+            if self.idmStatus == "waiting":
+                if self.frag == "True":
+                    time.sleep(0.5)
+                    return
             else:
-                cur.execute("SELECT COUNT(number) FROM reservation;")
-                sqlresult = cur.fetchall()
-                number = sqlresult[0]['COUNT(number)'] + 1
-                cur.execute("INSERT INTO reservation (number,idm) VALUES (%s,'%s');" % (number, result_idm))
-                self.conn.commit()
-                cur.close()
-                self.result = "予約登録が完了しました。予約番号は"+str(number)+"です。"
-                self.frag = "True"
-        else:                                 #非対応カードの場合実行
-            self.result = "[エラー]未対応カードです"       #エラーメッセージを出力
+                break                        #変数tsgを文字列型に変換
+        self.conn.ping(reconnect=True)
+        cur = self.conn.cursor(dictionary=True)  #カーソル作成
+        cur.execute("SELECT name FROM service_user WHERE idm = '%s';" % self.idmStatus)
+        sqlresult = cur.fetchall()
+        if sqlresult:
+            self.result = "[エラー]このカードは登録されています"
+            self.frag = "True"
+        else:
+            cur.execute("SELECT COUNT(number) FROM reservation;")
+            sqlresult = cur.fetchall()
+            number = sqlresult[0]['COUNT(number)'] + 1
+            cur.execute("INSERT INTO reservation (number,idm) VALUES (%s,'%s');" % (number, self.idmStatus))
+            self.conn.commit()
+            cur.close()
+            self.result = "予約登録が完了しました。予約番号は"+str(number)+"です。"
             self.frag = "True"
 
     def timeOut(self):
