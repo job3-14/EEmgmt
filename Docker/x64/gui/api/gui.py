@@ -36,10 +36,10 @@ class Gui():
         lbl2.place(x=2, y=self.text_lo)
         checkin = tk.Button(self.root,text="入室\nにゅうしつ",command=self.checkin,height=4,width=9,bg="#7fbfff",activebackground="#7fbfff",font=("",self.buttron_size))
         checkout  = tk.Button(self.root,text="退室\nたいしつ",command=self.checkout ,height=4,width=9,bg="#ffff7f",activebackground="#ffff7f",font=("",self.buttron_size))
-        reservation = tk.Button(self.root,text="カード登録",command=self.reservation)
+        reservation = tk.Button(self.root,text="カード登録",command=self.reservation,width=10,height=10)
         checkin.pack(padx=50, side = 'left')
         checkout.pack(padx=50, side = 'right')
-        reservation.place(x=self.screen_width-100,y=2)
+        reservation.place(x=self.screen_width-130,y=20)
         thread = threading.Thread(target=self.readidm)
         thread.setDaemon(True)
         thread.start()
@@ -49,6 +49,7 @@ class Gui():
         suica=nfc.clf.RemoteTarget("212F")
         suica.sensf_req=bytearray.fromhex("0000030000")
         while True:
+            time.sleep(0.3)
             with nfc.ContactlessFrontend("usb") as clf:
                 target=clf.sense(suica,iterations=3,interval=1.0)
                 while target:
@@ -56,7 +57,7 @@ class Gui():
                     tag.sys=3
                     idm=binascii.hexlify(tag.idm)
                     self.idmStatus = idm.decode()
-                    time.sleep(0.5)
+                    time.sleep(0.3)
                     break
 
     def checkin(self):
@@ -145,7 +146,8 @@ class Gui():
             cur.execute("DELETE FROM history WHERE date NOT IN (SELECT * FROM (SELECT date FROM history ORDER BY date DESC LIMIT 3000) AS v)")
             self.conn.commit()
             cur.close()
-            self.sendmessage(self.idmStatus,"退室")
+            idm = self.idmStatus
+            self.sendmessage(idm,"退室")
         else:
             self.result = "[エラー]このカードは登録されていません"
             self.frag = "True"
@@ -258,7 +260,7 @@ class Gui():
             jsonlist = {"method":"line"}
             self.conn.ping(reconnect=True)
             cur = self.conn.cursor(dictionary=True)
-            cur.execute("SELECT userid FROM line WHERE email = '%s';" % sqlresult[0]["mainEmail"])
+            cur.execute("SELECT * FROM line WHERE email='%s';" % sqlresult[0]["mainEmail"])
             sqlresult2 = cur.fetchall()
             cur.close()
             jsonlist["lineToken"] = setting.lineapi_token()
