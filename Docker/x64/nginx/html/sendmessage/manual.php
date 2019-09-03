@@ -63,9 +63,13 @@ if ($user[0]["notice"]=="email") {
 }
 
 if ($user[0]["notice"]=="line") {
+    $sql  = $pdo->prepare("SELECT * FROM line WHERE email=?");
+    $sql->bindValue(1, $user[0]["mainEmail"]);
+    $sql->execute();
+    $lineuser = $sql->fetchAll();
     $jsonList=array("method"=>"line");
     $jsonList["lineToken"]=getenv("LINEAPI_TOKEN");
-    $jsonList["userid"]=$user[0]["address1"];
+    $jsonList["userid"]=$lineuser[0]["userid"];
 }
 
 $data = date("m月d日H時i分"); #日時取得
