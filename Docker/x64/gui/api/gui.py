@@ -26,11 +26,11 @@ class Gui():
         self.text_size = int(self.screen_width * 0.02868253968254)#テキストサイズ計算
         self.text_size2 = int(self.text_size / 2)#テキストサイズ計算
         self.text_lo = self.text_size + self.text_size + 40 #テキスト位置計算
-        self.root.title("入退出管理システム-メインメニュー")
+        self.root.title("入退室管理システム-メインメニュー")
         self.root.attributes("-fullscreen", True)
         self.jst = timezone(timedelta(hours=+9), 'JST')
         ###以下メインウィンドウ作成###
-        lbl = tk.Label(text='入退出管理システム',font=("",self.text_size))
+        lbl = tk.Label(text='入退室管理システム',font=("",self.text_size))
         lbl.place(x=2, y=2)
         lbl2 = tk.Label(text='入室か退室を選択してください。',font=("",self.text_size2))
         lbl2.place(x=2, y=self.text_lo)
@@ -65,7 +65,7 @@ class Gui():
         self.idmStatus = "waiting"
         self.sub = tk.Toplevel()
         self.sub.attributes("-fullscreen", True)
-        lbl = tk.Label(self.sub,text='入退出管理システム ---入室---',font=("",self.text_size))
+        lbl = tk.Label(self.sub,text='入退室管理システム ---入室---',font=("",self.text_size))
         lbl2 = tk.Label(self.sub,text='カードを読み取り部にタッチしてください。',font=("",self.text_size2))
         lbl.place(x=2, y=2)
         lbl2.place(x=2, y=self.text_lo)
@@ -111,7 +111,7 @@ class Gui():
         self.idmStatus = "waiting"
         self.sub = tk.Toplevel()
         self.sub.attributes("-fullscreen", True)
-        lbl = tk.Label(self.sub,text='入退出管理システム ---退室---',font=("",self.text_size))
+        lbl = tk.Label(self.sub,text='入退室管理システム ---退室---',font=("",self.text_size))
         lbl2 = tk.Label(self.sub,text='カードを読み取り部にタッチしてください。',font=("",self.text_size2))
         lbl.place(x=2, y=2)
         lbl2.place(x=2, y=self.text_lo)
@@ -157,7 +157,7 @@ class Gui():
         self.idmStatus = "waiting"
         self.sub = tk.Toplevel()
         self.sub.attributes("-fullscreen", True)
-        lbl = tk.Label(self.sub,text='入退出管理システム ---カード登録---',font=("",self.text_size))
+        lbl = tk.Label(self.sub,text='入退室管理システム ---カード登録---',font=("",self.text_size))
         lbl2 = tk.Label(self.sub,text='カードを読み取り部にタッチしてください。',font=("",self.text_size2))
         lbl.place(x=2, y=2)
         lbl2.place(x=2, y=self.text_lo)
@@ -208,7 +208,7 @@ class Gui():
         else:
             lbl_status = tk.Label(self.sub,text= self.result ,font=("",self.text_size))
             lbl_status.place(x=2, y=self.center_y)
-            time.sleep(6)
+            time.sleep(4)
             self.sub.destroy()
 
     def sendmessage(self,idm,message):
