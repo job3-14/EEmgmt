@@ -11,7 +11,7 @@ if($_POST["check"]!=1){
   $errorMessages[] = "内容確認にチェックを入れてください";
 }
 
-$path = "/var/command/signalfile.py";
+$path = "/opt/file/signalfile.py";
 if(!is_null($errorMessages)){
   $_SESSION["errorMessages"]=$errorMessages;
   header('Location: /normal_error.php');

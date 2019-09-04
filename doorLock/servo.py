@@ -1,6 +1,6 @@
 import wiringpi as pi
 import RPi.GPIO as GPIO
-import time, nfc,requests, json, os, threading
+import time, nfc,requests, json, os, threading, binascii
 class Door:
     def __init__(self):
         self.servo_pin = 18
@@ -8,7 +8,7 @@ class Door:
         self.button_pin = 20
         self.ledGreen_pin = 16
         self.ledRed_pin = 12
-        self.openPwm = 150
+        self.openPwm = 165
         self.closePwm = 250
         self.url = "http://%s:9000" % "192.168.1.98"
         GPIO.setmode(GPIO.BCM)
@@ -33,59 +33,52 @@ class Door:
         time.sleep(1)
         pi.pwmWrite( self.servo_pin, 0 )
         self.openDoorFrag = 0
+        self.suica=nfc.clf.RemoteTarget("212F")
+        self.suica.sensf_req=bytearray.fromhex("0000030000")
         thread1 = threading.Thread(target=self.status)
         thread2 = threading.Thread(target=self.readidm)
         thread3 = threading.Thread(target=self.button)
         thread4 = threading.Thread(target=self.openDoor)
         thread1.start()
-        thread2.start()
+        #thread2.start()
         thread3.start()
         thread4.start()
         GPIO.output(self.ledGreen_pin,False)
+        self.readidm()
 
 
     def status(self):
         while True:
-            time.sleep(0.5)
             button_st = GPIO.input(self.door_pin)
             if button_st == 1:
                 self.status = "open"
             else:
                 self.status = "close"
+            time.sleep(0.5)
 
     def readidm(self):
         while True:
-            clf = nfc.ContactlessFrontend('usb')
-            tag = clf.connect(rdwr={'on-connect': self.outputIdm })
-            clf.close()
-            time.sleep(1)
-
-    def outputIdm(self,tag):
-        tag = str(tag)                        #変数tsgを文字列型に変換
-        id_check = ('ID=' in tag)             #対応カードかどうか確認
-        if id_check == True:                  #対応カードなら実行
-            idm = tag.find('ID=')  + 3             #idのインデックスを検索
-            idm_end = idm + 16         #idの終了インデックスを指定
-            result_idm = tag[idm:idm_end]           #idを出力
-            headers = {"Content-Type":"application/json"}
-            payload = {"idm": result_idm}
-            authentication = requests.post(self.url, headers=headers,data=json.dumps(payload))
-            if authentication.text == "OK":
-                self.openDoorFrag = 1
-            else:
-                for i in range(6):
-                    GPIO.output(self.ledRed_pin,True)
-                    time.sleep(0.08)
-                    GPIO.output(self.ledRed_pin,False)
-                    time.sleep(0.08)
-                GPIO.output(self.ledRed_pin,True)
-        else:
-            for i in range(6):
-                GPIO.output(self.ledRed_pin,True)
-                time.sleep(0.08)
-                GPIO.output(self.ledRed_pin,False)
-                time.sleep(0.08)
-            GPIO.output(self.ledRed_pin,True)
+            time.sleep(0.5)
+            with nfc.ContactlessFrontend("usb") as clf:
+                target=clf.sense(self.suica,iterations=3,interval=1.0)
+                while target:
+                    tag=nfc.tag.activate(clf,target)
+                    tag.sys=3
+                    idm=binascii.hexlify(tag.idm)
+                    idm = idm.decode()
+                    headers = {"Content-Type":"application/json"}
+                    payload = {"idm": idm}
+                    authentication = requests.post(self.url, headers=headers,data=json.dumps(payload))
+                    if authentication.text == "OK":
+                        self.openDoorFrag = 1
+                    else:
+                        for i in range(6):
+                            GPIO.output(self.ledRed_pin,True)
+                            time.sleep(0.08)
+                            GPIO.output(self.ledRed_pin,False)
+                            time.sleep(0.08)
+                        GPIO.output(self.ledRed_pin,True)
+                    break
 
     def button(self):
         while True:

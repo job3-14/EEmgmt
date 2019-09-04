@@ -4,18 +4,19 @@ if (!isset($_SESSION["user"])) {
     header('Location: /login.php');
     exit;
 }
+
 include($_SERVER['DOCUMENT_ROOT'] . '/db_setting.php');
 include($_SERVER['DOCUMENT_ROOT'] . '/menu_load.php');
 include($_SERVER['DOCUMENT_ROOT'] . '/permission.php');
 //権限確認
-permission_redirect("edituser");
+permission_redirect("addcard");
 
 try {
     if ($_GET["seach"]) {
         $seach = $_GET["seach"];
-        $countsql= "SELECT COUNT(username) FROM login WHERE username LIKE '%".$seach."%'";
+        $countsql= "SELECT COUNT(idm) FROM reservation WHERE number LIKE '%".$seach."%'";
     } else {
-        $countsql= "SELECT COUNT(username) FROM login";
+        $countsql= "SELECT COUNT(idm) FROM reservation";
     }
     $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4', $DB_USER, $DB_PASS);
     $sql  = $pdo->prepare($countsql);
@@ -46,11 +47,10 @@ if (isset($_GET["pages"])) {
 
 try {
     if ($seach) {
-        $userlistsql = "SELECT * FROM login WHERE username LIKE '%".$seach."%' ORDER BY addcard DESC LIMIT ".$pages." ,100";
+        $userlistsql = "SELECT * FROM reservation WHERE number LIKE '%".$seach."%' ORDER BY number ASC LIMIT ".$pages." ,100";
     } else {
-        $userlistsql = "SELECT * FROM login ORDER BY addcard DESC LIMIT ".$pages." ,100";
+        $userlistsql = "SELECT * FROM reservation ORDER BY number ASC LIMIT ".$pages." ,100";
     }
-    $pdo = new PDO('mysql:host='.$DB_HOST.';dbname='.$DB_NAME.';charset=utf8mb4', $DB_USER, $DB_PASS);
     $sql  = $pdo->prepare($userlistsql);
     $sql->execute();
     $userlist=  $sql->fetchAll();
@@ -61,57 +61,6 @@ try {
     exit;
 }
 
-function permission($username)
-{
-    $permissionlist = "許可された権限:";
-    if ($username['addcard']==1) {
-        $permissionlist .= " カード登録 /";
-        $count = 1;
-    }
-    if ($username['editcard']==1) {
-        $permissionlist .= " カード編集・削除 /";
-        $count = 1;
-    }
-    if ($username['sendnotice']==1) {
-        $permissionlist .= " 入退室通知手動送信 /";
-        $count = 1;
-    }
-    if ($username['viewexit']==1) {
-        $permissionlist .= " 入退室履歴の閲覧 /";
-        $count = 1;
-    }
-    if ($username['viewloginlog']==1) {
-        $permissionlist .= " 管理者ログイン試行ログ閲覧 /";
-        $count = 1;
-    }
-    if ($username['deletelog']==1) {
-        $permissionlist .= " 入退室履歴の削除 /";
-        $count = 1;
-    }
-    if ($username['initialize']==1) {
-        $permissionlist .= " 初期化操作 /";
-        $count = 1;
-    }
-    if ($username['setmail']==1) {
-        $permissionlist .= " メールサーバー設定操作 /";
-        $count = 1;
-    }
-    if ($username['shutdown']==1) {
-        $permissionlist .= " システム操作 /";
-        $count = 1;
-    }
-    if ($username['edituser']==1) {
-        $permissionlist .= " 管理ユーザーの追加・編集・削除 /";
-        $count = 1;
-    }
-    if ($count==1) {
-        $permissionlist = substr($permissionlist, 0, -1);
-    //0から-1を切り出し
-    } else {
-        $permissionlist = "許可された権限: なし";
-    }
-    return $permissionlist;
-}
 
 function pages($currentPages, $totalPageCounts)
 {
@@ -151,6 +100,7 @@ function pages($currentPages, $totalPageCounts)
 }
 ?>
 
+
 <!DOCTYPE html>
 <html>
 
@@ -166,7 +116,7 @@ function pages($currentPages, $totalPageCounts)
   <!-- The drawer is always open in large screens. The header is always shown,
       even in small screens. -->
   <?php
-      $menuName = "管理者管理ページ";
+      $menuName = "利用者者管理メニュー";
       menuload($menuName);
       ?>
   <main class="mdl-layout__content">
@@ -175,7 +125,7 @@ function pages($currentPages, $totalPageCounts)
       <div class="c-card-padding">
         <div class="c-large-card mdl-card mdl-shadow--4dp">
           <div class="mdl-card__supporting-text">
-            ユーザー情報一覧
+            予約カード番号一覧
           </div>
           <div class="mdl-card__supporting-text">
             <form action="#" method="GET">
@@ -192,12 +142,7 @@ function pages($currentPages, $totalPageCounts)
               </button>
             </form>
             <p>１ページにつき100件表示します</p>
-            <?php
-              if ($seach) {
-                  echo "<p>'".$seach."'の検索結果</p>";
-              }
-               ?>
-            <p>ヒット件数: <?php echo $counts;?></p>
+            <p>ユーザー件数: <?php echo $counts;?></p>
             <p><?php pages($currentPages, $totalPageCounts); ?></p>
             <ul class='mdl-list'>
               <?php
@@ -205,19 +150,22 @@ function pages($currentPages, $totalPageCounts)
                   echo '<li class="mdl-list__item mdl-list__item--three-line">';
                   echo '<span class="mdl-list__item-primary-content">';
                   echo '<i class="material-icons mdl-list__item-avatar">person</i>';
-                  echo '<span> <a href="./userpage.php?username='.$username['username'].'">'.$username['username'].'</a></span>';
-                  echo '<span class="mdl-list__item-text-body">'.permission($username).'</span>';
+                  echo '<span> <a href="./adduser.php?idm='.$username['idm'].'">予約番号:'.$username['number'].'</a></span>';
+                  echo '<span class="mdl-list__item-text-body">'.'IDm:'.$username["idm"].'</span>';
                   echo '</span>';
                   echo '</li>';
               }
                ?>
             </ul>
+
             <p><?php pages($currentPages, $totalPageCounts); ?></p>
           </div>
         </div>
+
       </div>
     </div>
   </main>
+
 </body>
 
 </html>
